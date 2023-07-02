@@ -1,9 +1,9 @@
-﻿using CarMarketplace.Web.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-
-namespace CarMarketplace.Web.Controllers
+﻿namespace CarMarketplace.Web.Controllers
 {
+    using CarMarketplace.Web.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Diagnostics;
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,7 +18,7 @@ namespace CarMarketplace.Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Search()
         {
             return View();
         }
