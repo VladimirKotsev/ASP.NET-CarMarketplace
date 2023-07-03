@@ -1,2 +1,24 @@
-﻿
-<p>Hello this is where the search page iis going to be</p>
+﻿@model 
+
+<p>Hello this is where the search page is going to be</p>
+@using (Html.BeginForm("Search", "Dealership", FormMethod.Get))
+{
+    <div>
+        @Html.LabelFor(m => m.Make)
+        @Html.TextBoxFor(m => m.Make)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Model)
+        @Html.TextBoxFor(m => m.Model)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.MinPrice)
+        @Html.TextBoxFor(m => m.MinPrice)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.MaxPrice)
+        @Html.TextBoxFor(m => m.MaxPrice)
+    </div>
+
+    <input type="submit" value="Search" />
+}

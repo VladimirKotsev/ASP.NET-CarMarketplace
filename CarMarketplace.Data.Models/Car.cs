@@ -17,13 +17,9 @@
         [Key]
         public Guid Id { get; set; }
 
-        [Required]
-        [MaxLength(BrandMaxLength)]
-        public string Brand { get; set; } = null!;
+        public int ManufacturerId { get; set; }
 
-        [Required]
-        [MaxLength(ModelMaxLenght)]
-        public string Model { get; set; } = null!;
+        public int ModelId { get; set; }
 
         public int ColorId { get; set; }
 
@@ -60,6 +56,9 @@
 
         public int OwnerId { get; set; }
         public IdentityUser Owner { get; set; } = null!;
+
+        [DataType("decimal")]
+        public decimal Price { get; set; }
 
         //Not required info about a car
 

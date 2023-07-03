@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CarMarketplace.Common\CarMarketplace.Common.csproj" />
     <ProjectReference Include="..\CarMarketplace.Data\CarMarketplace.Data.csproj" />
+    <ProjectReference Include="..\CarMarketplace.Services.Data\CarMarketplace.Services.Data.csproj" />
   </ItemGroup>
 
 </Project>

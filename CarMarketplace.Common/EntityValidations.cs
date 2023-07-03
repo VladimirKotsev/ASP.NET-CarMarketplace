@@ -4,12 +4,6 @@
     {
         public static class Car
         {
-            public const int BrandMaxLength = 29;
-            public const int BrandMinLength = 2;
-
-            public const int ModelMaxLenght = 45;
-            public const int ModelMinLenght = 3;
-
             public static int YearMaxValue = DateTime.UtcNow.Year;
             public const int YearMinValue = 1886;
 
@@ -28,6 +22,18 @@
             public const int VINNumberFixedLength = 17;
         }
 
+        public class CarManufacturer
+        {
+            public const int ManufacturerMaxLength = 29;
+            public const int ManufacturerMinLength = 2;
+        }
+
+        public class CarModel
+        {
+            public const int ModelMaxLenght = 45;
+            public const int ModelMinLenght = 3;
+        }
+
         public static class Engine
         {
             public const int DisplacementMaxValue = 80000;
@@ -42,7 +48,7 @@
             public const double CoolantCapacityMaxValue = 4;
             public const double CoolantCapacityMinValue = 0.5;
         }
-        
+
 
     }
 }

@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Web", "CarMarketplace.Web\CarMarketplace.Web.csproj", "{407F3A14-0F3D-4ED6-94C2-CB1C3BEF2999}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Web", "CarMarketplace.Web\CarMarketplace.Web.csproj", "{407F3A14-0F3D-4ED6-94C2-CB1C3BEF2999}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Data", "CarMarketplace.Data\CarMarketplace.Data.csproj", "{F9B357C9-19A2-4EDD-9C53-119E6389DC65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Data", "CarMarketplace.Data\CarMarketplace.Data.csproj", "{F9B357C9-19A2-4EDD-9C53-119E6389DC65}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4CD4802C-9078-4B07-A9B1-6441CD9B4125}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Data.Models", "CarMarketplace.Data.Models\CarMarketplace.Data.Models.csproj", "{07BE0825-CB9E-439C-9CBD-7D0768FE9E87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Data.Models", "CarMarketplace.Data.Models\CarMarketplace.Data.Models.csproj", "{07BE0825-CB9E-439C-9CBD-7D0768FE9E87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Common", "CarMarketplace.Common\CarMarketplace.Common.csproj", "{F0E07561-37C6-448E-8EAF-7C0865941AB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Common", "CarMarketplace.Common\CarMarketplace.Common.csproj", "{F0E07561-37C6-448E-8EAF-7C0865941AB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{48E375C1-6A71-470A-93DD-191A5D22C413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Services.Data.Models", "CarMarketplace.Services.Data.Models\CarMarketplace.Services.Data.Models.csproj", "{58D5C602-50F2-4DD1-AFFC-A1224342AB70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Services.Data", "CarMarketplace.Services.Data\CarMarketplace.Services.Data.csproj", "{4168547A-8188-41F2-B0B4-BF3EA6072BF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +41,14 @@ Global
 		{F0E07561-37C6-448E-8EAF-7C0865941AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0E07561-37C6-448E-8EAF-7C0865941AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0E07561-37C6-448E-8EAF-7C0865941AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D5C602-50F2-4DD1-AFFC-A1224342AB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D5C602-50F2-4DD1-AFFC-A1224342AB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D5C602-50F2-4DD1-AFFC-A1224342AB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D5C602-50F2-4DD1-AFFC-A1224342AB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4168547A-8188-41F2-B0B4-BF3EA6072BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4168547A-8188-41F2-B0B4-BF3EA6072BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4168547A-8188-41F2-B0B4-BF3EA6072BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4168547A-8188-41F2-B0B4-BF3EA6072BF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +56,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F9B357C9-19A2-4EDD-9C53-119E6389DC65} = {4CD4802C-9078-4B07-A9B1-6441CD9B4125}
 		{07BE0825-CB9E-439C-9CBD-7D0768FE9E87} = {4CD4802C-9078-4B07-A9B1-6441CD9B4125}
+		{58D5C602-50F2-4DD1-AFFC-A1224342AB70} = {48E375C1-6A71-470A-93DD-191A5D22C413}
+		{4168547A-8188-41F2-B0B4-BF3EA6072BF0} = {48E375C1-6A71-470A-93DD-191A5D22C413}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BD20B6C-7805-4FE4-845D-D75F9DB16984}
