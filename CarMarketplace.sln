@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Common", "Ca
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{48E375C1-6A71-470A-93DD-191A5D22C413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Services.Data.Models", "CarMarketplace.Services.Data.Models\CarMarketplace.Services.Data.Models.csproj", "{58D5C602-50F2-4DD1-AFFC-A1224342AB70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Services.Data.Models", "CarMarketplace.Services.Data.Models\CarMarketplace.Services.Data.Models.csproj", "{58D5C602-50F2-4DD1-AFFC-A1224342AB70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Services.Data", "CarMarketplace.Services.Data\CarMarketplace.Services.Data.csproj", "{4168547A-8188-41F2-B0B4-BF3EA6072BF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Services.Data", "CarMarketplace.Services.Data\CarMarketplace.Services.Data.csproj", "{4168547A-8188-41F2-B0B4-BF3EA6072BF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

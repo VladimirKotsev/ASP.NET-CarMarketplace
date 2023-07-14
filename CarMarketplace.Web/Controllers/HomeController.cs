@@ -1,6 +1,6 @@
 ﻿namespace CarMarketplace.Web.Controllers
 {
-    using CarMarketplace.Web.Models;
+    using CarMarketplace.Web.ViewModels;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
 
