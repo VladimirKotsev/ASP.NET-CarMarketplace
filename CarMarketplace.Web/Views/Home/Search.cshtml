@@ -1,7 +1,7 @@
-﻿
+﻿@model CatalogSearchViewModel
 
 <p>Hello this is where the search page is going to be</p>
-@*@using (Html.BeginForm("Search", "Dealership", FormMethod.Get))
+@using (Html.BeginForm("Search", "Dealership", FormMethod.Get))
 {
     <div>
         @Html.LabelFor(m => m.Make)
@@ -21,4 +21,4 @@
     </div>
 
     <input type="submit" value="Search" />
-}*@
+}
