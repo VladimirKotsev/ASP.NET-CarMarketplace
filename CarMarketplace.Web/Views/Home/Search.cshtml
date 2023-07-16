@@ -1,15 +1,27 @@
 ﻿@model CatalogSearchViewModel
 
-<p>Hello this is where the search page is going to be</p>
+@{
+    ViewData["Title"] = "Search";
+}
+
+<title>@ViewBag["Data"]</title>
 @using (Html.BeginForm("Search", "Dealership", FormMethod.Get))
 {
     <div>
-        @Html.LabelFor(m => m.Make)
-        @Html.TextBoxFor(m => m.Make)
+        <select class="form-control" id="Make" name="Make">
+            @foreach (var make in Model.Makes)
+            {
+                <option value="@make">@make</option>
+            }
+        </select>
     </div>
     <div>
-        @Html.LabelFor(m => m.Model)
-        @Html.TextBoxFor(m => m.Model)
+        <select class="form-control" id="Models" name="Make">
+            @foreach (var model in Model.Models.Where(x => x.Manufacturer ==)
+            {
+                <option value="@make">@make</option>
+            }
+        </select>
     </div>
     <div>
         @Html.LabelFor(m => m.MinPrice)
