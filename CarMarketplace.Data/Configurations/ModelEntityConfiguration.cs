@@ -293,7 +293,12 @@
                 ModelName = "Z8"
             });
 
-
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "Z8"
+            });
 
             return models.ToArray();
         }
