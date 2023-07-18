@@ -26,4 +26,8 @@
     <ProjectReference Include="..\CarMarketplace.Services.Data\CarMarketplace.Services.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\testImages\" />
+  </ItemGroup>
+
 </Project>
