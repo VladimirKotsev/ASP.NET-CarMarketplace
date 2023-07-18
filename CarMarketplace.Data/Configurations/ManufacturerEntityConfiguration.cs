@@ -21,77 +21,206 @@
         {
             ICollection<CarManufacturer> manufacturers = new HashSet<CarManufacturer>();
 
+            int id = 1;
+
             manufacturers.Add(new CarManufacturer
             {
-                Id = 1,
+                Id = id++,
                 Name = "Audi"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 2,
+                Id = id++,
                 Name = "BMW"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 3,
-                Name = "Mercedes-benz"
+                Id = id++,
+                Name = "Mercedes-Benz"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 4,
+                Id = id++,
                 Name = "Honda"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 5,
+                Id = id++,
                 Name = "Huyndai"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 6,
+                Id = id++,
                 Name = "Ford"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 7,
+                Id = id++,
                 Name = "Nissan"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 8,
+               Id = id++,
                 Name = "Renault"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 9,
+                Id = id++,
                 Name = "Peugeot"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 10,
+                Id = id++,
                 Name = "Fiat"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 11,
+                Id = id++,
                 Name = "Opel"
             });
 
             manufacturers.Add(new CarManufacturer
             {
-                Id = 12,
+                Id = id++,
                 Name = "Toyota"
             });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Chevrolet"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Jaguar"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Jeep"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Kia"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Lexus"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Porsche"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Subaru"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Volkswagen"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Volvo"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Citroën"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Dacia"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Land Rover"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Mazda"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Mini"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Seat"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Škoda"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Smart"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Suzuki"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Rolls-Royce"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Ferrari"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Lamborghini"
+            });
+
 
             return manufacturers.ToArray();
         }

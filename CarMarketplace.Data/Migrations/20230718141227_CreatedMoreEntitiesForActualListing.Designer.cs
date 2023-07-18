@@ -4,6 +4,7 @@ using CarMarketplace.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    partial class CarMarketplaceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230718141227_CreatedMoreEntitiesForActualListing")]
+    partial class CreatedMoreEntitiesForActualListing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,9 +96,6 @@ namespace CarMarketplace.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ApplicationUserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -146,8 +145,6 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("ColorId");
@@ -194,7 +191,7 @@ namespace CarMarketplace.Data.Migrations
                         new
                         {
                             Id = 3,
-                            Name = "Mercedes-Benz"
+                            Name = "Mercedes-benz"
                         },
                         new
                         {
@@ -240,111 +237,6 @@ namespace CarMarketplace.Data.Migrations
                         {
                             Id = 12,
                             Name = "Toyota"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "Chevrolet"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "Jaguar"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "Jeep"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Name = "Kia"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Name = "Lexus"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Name = "Porsche"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Name = "Subaru"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            Name = "Volkswagen"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Name = "Volvo"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Name = "Citroën"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            Name = "Dacia"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            Name = "Land Rover"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            Name = "Mazda"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            Name = "Mini"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            Name = "Seat"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            Name = "Škoda"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            Name = "Smart"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            Name = "Suzuki"
-                        },
-                        new
-                        {
-                            Id = 31,
-                            Name = "Rolls-Royce"
-                        },
-                        new
-                        {
-                            Id = 32,
-                            Name = "Ferrari"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            Name = "Lamborghini"
                         });
                 });
 
@@ -356,10 +248,8 @@ namespace CarMarketplace.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("ManufacturerName")
-                        .IsRequired()
-                        .HasMaxLength(29)
-                        .HasColumnType("nvarchar(29)");
+                    b.Property<int>("ManufacturerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ModelName")
                         .IsRequired()
@@ -368,272 +258,70 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ManufacturerId");
+
                     b.ToTable("Models");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            ManufacturerName = "Audi",
-                            ModelName = "80"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ManufacturerName = "Audi",
-                            ModelName = "90"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ManufacturerName = "Audi",
-                            ModelName = "100"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ManufacturerName = "Audi",
-                            ModelName = "A1"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ManufacturerName = "Audi",
-                            ModelName = "A3"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ManufacturerName = "Audi",
+                            ManufacturerId = 1,
                             ModelName = "A4"
                         },
                         new
                         {
-                            Id = 7,
-                            ManufacturerName = "Audi",
+                            Id = 2,
+                            ManufacturerId = 1,
                             ModelName = "A5"
                         },
                         new
                         {
-                            Id = 8,
-                            ManufacturerName = "Audi",
+                            Id = 3,
+                            ManufacturerId = 1,
                             ModelName = "A6"
                         },
                         new
                         {
-                            Id = 9,
-                            ManufacturerName = "Audi",
+                            Id = 4,
+                            ManufacturerId = 1,
+                            ModelName = "A3"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ManufacturerId = 1,
                             ModelName = "A8"
                         },
                         new
                         {
+                            Id = 6,
+                            ManufacturerId = 2,
+                            ModelName = "316"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ManufacturerId = 2,
+                            ModelName = "320"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ManufacturerId = 2,
+                            ModelName = "328"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ManufacturerId = 2,
+                            ModelName = "320d"
+                        },
+                        new
+                        {
                             Id = 10,
-                            ManufacturerName = "Audi",
-                            ModelName = "Q2"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ManufacturerName = "Audi",
-                            ModelName = "Q3"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ManufacturerName = "Audi",
-                            ModelName = "Q5"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ManufacturerName = "Audi",
-                            ModelName = "Q7"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ManufacturerName = "Audi",
-                            ModelName = "Q8"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ManufacturerName = "Audi",
-                            ModelName = "TT"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ManufacturerName = "Audi",
-                            ModelName = "R8"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            ManufacturerName = "BMW",
-                            ModelName = "1 Series"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            ManufacturerName = "BMW",
-                            ModelName = "2 Series"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ManufacturerName = "BMW",
-                            ModelName = "3 Series"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            ManufacturerName = "BMW",
-                            ModelName = "4 Series"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            ManufacturerName = "BMW",
-                            ModelName = "5 Series"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            ManufacturerName = "BMW",
-                            ModelName = "6 Series"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            ManufacturerName = "BMW",
-                            ModelName = "7 Series"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            ManufacturerName = "BMW",
-                            ModelName = "8 Series"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            ManufacturerName = "BMW",
-                            ModelName = "X1"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            ManufacturerName = "BMW",
-                            ModelName = "X2"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            ManufacturerName = "BMW",
-                            ModelName = "X3"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            ManufacturerName = "BMW",
-                            ModelName = "X4"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            ManufacturerName = "BMW",
-                            ModelName = "X5"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            ManufacturerName = "BMW",
-                            ModelName = "X6"
-                        },
-                        new
-                        {
-                            Id = 31,
-                            ManufacturerName = "BMW",
-                            ModelName = "X7"
-                        },
-                        new
-                        {
-                            Id = 32,
-                            ManufacturerName = "BMW",
-                            ModelName = "i3"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            ManufacturerName = "BMW",
-                            ModelName = "i8"
-                        },
-                        new
-                        {
-                            Id = 34,
-                            ManufacturerName = "BMW",
-                            ModelName = "M1"
-                        },
-                        new
-                        {
-                            Id = 35,
-                            ManufacturerName = "BMW",
-                            ModelName = "M2"
-                        },
-                        new
-                        {
-                            Id = 36,
-                            ManufacturerName = "BMW",
-                            ModelName = "M3"
-                        },
-                        new
-                        {
-                            Id = 37,
-                            ManufacturerName = "BMW",
-                            ModelName = "M4"
-                        },
-                        new
-                        {
-                            Id = 38,
-                            ManufacturerName = "BMW",
-                            ModelName = "M5"
-                        },
-                        new
-                        {
-                            Id = 39,
-                            ManufacturerName = "BMW",
-                            ModelName = "M6"
-                        },
-                        new
-                        {
-                            Id = 40,
-                            ManufacturerName = "BMW",
-                            ModelName = "M8"
-                        },
-                        new
-                        {
-                            Id = 41,
-                            ManufacturerName = "BMW",
-                            ModelName = "Z1"
-                        },
-                        new
-                        {
-                            Id = 42,
-                            ManufacturerName = "BMW",
-                            ModelName = "Z3"
-                        },
-                        new
-                        {
-                            Id = 43,
-                            ManufacturerName = "BMW",
-                            ModelName = "Z4"
-                        },
-                        new
-                        {
-                            Id = 44,
-                            ManufacturerName = "BMW",
-                            ModelName = "Z8"
+                            ManufacturerId = 2,
+                            ModelName = "530d"
                         });
                 });
 
@@ -698,37 +386,6 @@ namespace CarMarketplace.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Engines");
-                });
-
-            modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Seller");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -868,10 +525,6 @@ namespace CarMarketplace.Data.Migrations
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Car", b =>
                 {
-                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", null)
-                        .WithMany("CarsOnSale")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("CarMarketplace.Data.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
@@ -902,8 +555,8 @@ namespace CarMarketplace.Data.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("CarMarketplace.Data.Models.Seller", "Seller")
-                        .WithMany("CarOnSale")
+                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "Seller")
+                        .WithMany("CarsOnSale")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -921,15 +574,15 @@ namespace CarMarketplace.Data.Migrations
                     b.Navigation("Seller");
                 });
 
-            modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
+            modelBuilder.Entity("CarMarketplace.Data.Models.CarModel", b =>
                 {
-                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "User")
+                    b.HasOne("CarMarketplace.Data.Models.CarManufacturer", "Manufacturer")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("ManufacturerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Manufacturer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -996,11 +649,6 @@ namespace CarMarketplace.Data.Migrations
             modelBuilder.Entity("CarMarketplace.Data.Models.CarModel", b =>
                 {
                     b.Navigation("Cars");
-                });
-
-            modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
-                {
-                    b.Navigation("CarOnSale");
                 });
 #pragma warning restore 612, 618
         }

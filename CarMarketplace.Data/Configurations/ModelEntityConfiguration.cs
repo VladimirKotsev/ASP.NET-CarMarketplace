@@ -21,68 +21,279 @@
         {
             ICollection<CarModel> models = new HashSet<CarModel>();
 
+            int id = 1;
+
+            //Audi
+
             models.Add(new CarModel
             {
-                Id = 1,
-                ManufacturerId = 1,
-                ModelName = "A4"
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "80"
             });
             models.Add(new CarModel
             {
-                Id = 2,
-                ManufacturerId = 1,
-                ModelName = "A5"
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "90"
             });
             models.Add(new CarModel
             {
-                Id = 3,
-                ManufacturerId = 1,
-                ModelName = "A6"
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "100"
             });
             models.Add(new CarModel
             {
-                Id = 4,
-                ManufacturerId = 1,
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "A1"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
                 ModelName = "A3"
             });
             models.Add(new CarModel
             {
-                Id = 5,
-                ManufacturerId = 1,
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "A4"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "A5"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "A6"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
                 ModelName = "A8"
             });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "Q2"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "Q3"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "Q5"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "Q7"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "Q8"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "TT"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Audi",
+                ModelName = "R8"
+            });
+
+            //BMW
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "1 Series"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "2 Series"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "3 Series"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "4 Series"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "5 Series"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "6 Series"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "7 Series"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "8 Series"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "X1"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "X2"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "X3"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "X4"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "X5"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "X6"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "X7"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "i3"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "i8"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "M1"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "M2"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "M3"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "M4"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "M5"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "M6"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "M8"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "Z1"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "Z3"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "Z4"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "BMW",
+                ModelName = "Z8"
+            });
 
 
-            models.Add(new CarModel
-            {
-                Id = 6,
-                ManufacturerId = 2,
-                ModelName = "316"
-            });
-            models.Add(new CarModel
-            {
-                Id = 7,
-                ManufacturerId = 2,
-                ModelName = "320"
-            });
-            models.Add(new CarModel
-            {
-                Id = 8,
-                ManufacturerId = 2,
-                ModelName = "328"
-            });
-            models.Add(new CarModel
-            {
-                Id = 9,
-                ManufacturerId = 2,
-                ModelName = "320d"
-            });
-            models.Add(new CarModel
-            {
-                Id = 10,
-                ManufacturerId = 2,
-                ModelName = "530d"
-            });
 
             return models.ToArray();
         }

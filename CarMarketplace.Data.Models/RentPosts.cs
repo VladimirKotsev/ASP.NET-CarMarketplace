@@ -1,11 +1,12 @@
 ﻿namespace CarMarketplace.Data.Models
 {
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
+    using System.Reflection.Metadata.Ecma335;
 
-    public class SaleList
+    public class RentPosts
     {
-        public SaleList()
+        public RentPosts()
         {
             this.Id = Guid.NewGuid();
         }
@@ -24,10 +25,17 @@
         public virtual Car Car { get; set; } = null!;
 
         [Required]
-        public int Price { get; set; }
+        public int PricePerDay { get; set; }
 
         [Required]
-        public DateTime PublishDate { get; set; }
+        public int Days { get; set; }
+
+        public double TotalPrice
+        {
+            get { return Days * PricePerDay; }
+            set { }
+        }
+
 
     }
 }

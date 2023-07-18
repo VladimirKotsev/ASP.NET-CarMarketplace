@@ -1,11 +1,11 @@
 ﻿namespace CarMarketplace.Data.Models
 {
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public class RentList
+    public class SalePosts
     {
-        public RentList()
+        public SalePosts()
         {
             this.Id = Guid.NewGuid();
         }
@@ -15,7 +15,7 @@
 
         [Required]
         [ForeignKey(nameof(UserId))]
-        public virtual ApplicationUser User { get; set; } = null!;
+        public virtual Seller User { get; set; } = null!;
 
         public Guid CarId { get; set; }
 

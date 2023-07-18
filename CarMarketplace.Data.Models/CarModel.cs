@@ -16,14 +16,12 @@
         public int Id { get; set; }
 
         [Required]
-        public int ManufacturerId { get; set; }
-
-        [ForeignKey(nameof(ManufacturerId))]
-        public virtual CarManufacturer Manufacturer { get; set; } = null!;
+        [MaxLength(ManufacturerMaxLength)]
+        public string ManufacturerName { get; set; } = null!;
 
         [Required]
         [MaxLength(ModelMaxLenght)]
         public string ModelName { get; set; } = null!;
-        public IEnumerable<Car> Cars { get; set; }
+        public ICollection<Car> Cars { get; set; }
     }
 }

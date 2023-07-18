@@ -66,7 +66,7 @@
 
         [Required]
         [ForeignKey(nameof(SellerId))]
-        public virtual ApplicationUser Seller { get; set; } = null!;
+        public virtual Seller Seller { get; set; } = null!;
 
         //Not required info about a car
 
