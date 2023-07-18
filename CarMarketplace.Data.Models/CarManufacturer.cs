@@ -6,11 +6,18 @@
 
     public class CarManufacturer
     {
+        public CarManufacturer()
+        {
+            this.Cars = new HashSet<Car>();
+        }
+
         [Key]
         public int Id { get; set; }
 
         [Required]
         [MaxLength(ManufacturerMaxLength)]
         public string Name { get; set; } = null!;
+
+        public IEnumerable<Car> Cars { get; set; }
     }
 }

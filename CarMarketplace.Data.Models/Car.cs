@@ -62,11 +62,11 @@
         [Required]
         public virtual Category Category { get; set; } = null!;
 
-        public int OwnerId { get; set; }
-        public IdentityUser Owner { get; set; } = null!;
+        public Guid SellerId { get; set; }
 
-        [DataType("decimal")]
-        public decimal Price { get; set; }
+        [Required]
+        [ForeignKey(nameof(SellerId))]
+        public virtual ApplicationUser Seller { get; set; } = null!;
 
         //Not required info about a car
 

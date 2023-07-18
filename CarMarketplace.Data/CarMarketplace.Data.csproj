@@ -15,4 +15,8 @@
     <ProjectReference Include="..\CarMarketplace.Data.Models\CarMarketplace.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

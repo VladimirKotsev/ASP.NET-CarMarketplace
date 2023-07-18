@@ -9,6 +9,11 @@
     {
         public void Configure(EntityTypeBuilder<CarManufacturer> builder)
         {
+            builder
+                .HasMany(x => x.Cars)
+                .WithOne(x => x.Make)
+                .OnDelete(DeleteBehavior.NoAction);
+
             builder.HasData(this.GenerateHouses());
         }
 

@@ -7,6 +7,11 @@
 
     public class CarModel
     {
+        public CarModel()
+        {
+            this.Cars = new HashSet<Car>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -19,5 +24,6 @@
         [Required]
         [MaxLength(ModelMaxLenght)]
         public string ModelName { get; set; } = null!;
+        public IEnumerable<Car> Cars { get; set; }
     }
 }

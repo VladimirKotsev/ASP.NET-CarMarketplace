@@ -49,6 +49,16 @@
             public const double CoolantCapacityMinValue = 0.5;
         }
 
+        public static class Users
+        {
+            public const int PhoneNumberLegnth = 10;
+
+            public const int FirstNameMinLength = 3;
+            public const int FirstNameMaxLength = 50;
+
+            public const int LastNameMinLength = 5;
+            public const int LastNameMaxLength = 50;
+        }
 
     }
 }

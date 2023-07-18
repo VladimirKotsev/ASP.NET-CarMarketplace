@@ -610,15 +610,15 @@ namespace CarMarketplace.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("CarMarketplace.Data.Models.CarManufacturer", "Make")
-                        .WithMany()
+                        .WithMany("Cars")
                         .HasForeignKey("ManufacturerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CarMarketplace.Data.Models.CarModel", "Model")
-                        .WithMany()
+                        .WithMany("Cars")
                         .HasForeignKey("ModelId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Owner")
@@ -705,6 +705,16 @@ namespace CarMarketplace.Data.Migrations
             modelBuilder.Entity("CarMarketplace.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("CarsOnSale");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.CarManufacturer", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.CarModel", b =>
+                {
+                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }
