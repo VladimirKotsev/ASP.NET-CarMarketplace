@@ -19,9 +19,20 @@
 
         public int ManufacturerId { get; set; }
 
+        [ForeignKey(nameof(ManufacturerId))]
+        [Required]
+        public virtual CarManufacturer Make { get; set; }
+
         public int ModelId { get; set; }
 
+        [ForeignKey(nameof(ModelId))]
+        [Required]
+        public virtual CarModel Model { get; set; }
+
         public int ColorId { get; set; }
+
+        [Required]
+        public string City { get; set; } = null!;
 
         [ForeignKey(nameof(ColorId))]
         [Required]
@@ -39,11 +50,8 @@
         [MaxLength(OdometerMaxLength)]
         public string Odometer { get; set; } = null!;
 
-        public int TransmissionId { get; set; }
-
         [Required]
-        [ForeignKey(nameof(TransmissionId))]
-        public virtual Transmission Transmission { get; set; } = null!;
+        public string TransmissionType { get; set; } = null!;
 
         [Required]
         public int EuroStandart { get; set; }

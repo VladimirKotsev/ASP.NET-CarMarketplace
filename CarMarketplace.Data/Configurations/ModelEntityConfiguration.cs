@@ -3,13 +3,12 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     using CarMarketplace.Data.Models;
+    using Microsoft.EntityFrameworkCore;
 
-    public class ModelEntityConfiguration
+    public class ModelEntityConfiguration : IEntityTypeConfiguration<CarModel>
     {
         public void Configure(EntityTypeBuilder<CarModel> builder)
         {
-            builder.HasKey(m => new { m.Id, m.ManufacturerId });
-
             builder.HasData(this.GenerateHouses());
         }
 

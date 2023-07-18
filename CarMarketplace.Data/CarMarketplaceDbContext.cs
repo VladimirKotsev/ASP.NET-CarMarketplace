@@ -1,12 +1,14 @@
 ﻿namespace CarMarketplace.Data
 {
-    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore;
-
-    using CarMarketplace.Data.Models;
     using System.Reflection;
 
-    public class CarMarketplaceDbContext : IdentityDbContext
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Identity;
+
+    using CarMarketplace.Data.Models;
+
+    public class CarMarketplaceDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
         public CarMarketplaceDbContext(DbContextOptions<CarMarketplaceDbContext> options)
             : base(options)
@@ -20,8 +22,6 @@
         public DbSet<Category> Categories { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Engine> Engines { get; set; }
-        public DbSet<FuelType> FuelTypes { get; set; }
-        public DbSet<Transmission> Transmissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

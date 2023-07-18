@@ -1,6 +1,7 @@
 ﻿namespace CarMarketplace.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
+
     public class Color
     {
         [Key]

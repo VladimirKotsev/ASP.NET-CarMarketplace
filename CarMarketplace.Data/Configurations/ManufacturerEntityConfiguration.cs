@@ -1,11 +1,11 @@
 ﻿namespace CarMarketplace.Data.Configurations
 {
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Microsoft.EntityFrameworkCore;
 
     using CarMarketplace.Data.Models;
-    using System;
 
-    public class ManufacturerEntityConfiguration
+    public class ManufacturerEntityConfiguration : IEntityTypeConfiguration<CarManufacturer>
     {
         public void Configure(EntityTypeBuilder<CarManufacturer> builder)
         {

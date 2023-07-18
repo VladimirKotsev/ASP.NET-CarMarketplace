@@ -1,8 +1,11 @@
 ﻿namespace CarMarketplace.Web.Controllers
 {
-    using CarMarketplace.Web.ViewModels;
-    using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
+
+    using Microsoft.AspNetCore.Mvc;
+
+    using CarMarketplace.Services.Data.Models;
+    using CarMarketplace.Web.ViewModels;
 
     public class HomeController : Controller
     {
@@ -20,7 +23,7 @@
 
         public IActionResult Search()
         {
-            return View();
+            return View(new CatalogSearchViewModel());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

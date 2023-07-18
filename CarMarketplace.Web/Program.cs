@@ -11,25 +11,23 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<CarMarketplaceDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-//builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
-//{
-//    options.SignIn.RequireConfirmedAccount =
-//        builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
-//    options.Password.RequireLowercase =
-//        builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
-//    options.Password.RequireUppercase =
-//        builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
-//    options.Password.RequireNonAlphanumeric =
-//        builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
-//    options.Password.RequiredLength =
-//        builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
-//})
-//.AddEntityFrameworkStores<CarMarketplaceDbContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount =
+        builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
+    options.Password.RequireLowercase =
+        builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
+    options.Password.RequireUppercase =
+        builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
+    options.Password.RequireNonAlphanumeric =
+        builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
+    options.Password.RequiredLength =
+        builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
+})
+.AddEntityFrameworkStores<CarMarketplaceDbContext>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<CarMarketplaceDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
