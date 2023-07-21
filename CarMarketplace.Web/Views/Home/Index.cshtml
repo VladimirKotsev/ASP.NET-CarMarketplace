@@ -7,50 +7,40 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<div id="carousel" class="carousel slide" data-ride="carousel">
-    <table class="carousel-inner">
-        <tr class="carousel-item active">
-
-            <td class="w-50">
-                <img class="card-img-top" src="/testImages/Night GTR.jpg" alt="Car Image">
-                <div class="card-body">
-                    <h5 class="card-title">BMW 3 Series</h5>
-                    <p class="card-text">Year: 2019</p>
-                    <p class="card-text">Mileage: 20,000 km</p>
-                    <p class="card-text">Condition: Used</p>
-                    <h6 class="">€30,000</h6>
-                    <p class="card-text">Contact: John Doe</p>
-                    <p class="card-text">Phone: 123-456-7890</p>
-                    <p class="card-text">Email: johndoe@example.com</p>
-                </div>
-            </td>
-            <td class="w-50">
-                <img class="card-img-top car-image" src="/testImages/Night GTR.jpg" alt="Car Image">
-                <div class="card-body">
-                    <h5 class="card-title">BMW 3 Series</h5>
-                    <p class="card-text">Year: 2019</p>
-                    <p class="card-text">Mileage: 20,000 km</p>
-                    <p class="card-text">Condition: Used</p>
-                    <h6 class="">€30,000</h6>
-                    <p class="card-text">Contact: John Doe</p>
-                    <p class="card-text">Phone: 123-456-7890</p>
-                    <p class="card-text">Email: johndoe@example.com</p>
-                </div>
-            </td>
-       
-        </tr>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a asp-controller="Home" asp-action="Index"></a>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="~/testImages/plant-in-wood.jpg" class="d-block" style="Height: 40rem" />
+                        </td>
+                        <td>
+                            <p>az sum gosho</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="..." alt="Second slide">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="..." alt="Third slide">
         </div>
-    </table>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>

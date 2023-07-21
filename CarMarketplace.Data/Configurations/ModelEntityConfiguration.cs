@@ -796,14 +796,792 @@
             {
                 Id = id++,
                 ManufacturerName = "Peugeot",
-                ModelName = "Espace"
+                ModelName = "1007"
             });
             models.Add(new CarModel
             {
                 Id = id++,
                 ManufacturerName = "Peugeot",
-                ModelName = "Laguna"
+                ModelName = "106"
             });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "107"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "108"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "2008"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "206"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "207"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "208"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "3008"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "306"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "307"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "308"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "4007"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "4008"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "406"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "407"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "408"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "5008"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "508"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Peugeot",
+                ModelName = "Partner"
+            });
+
+            //Fiat
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "Punto"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "Stilo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "500"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "Panda"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "Tipo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "500L"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "Doblo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "Bravo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "Multipla"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Fiat",
+                ModelName = "Fiorino"
+            });
+
+            //Opel
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "Insignia"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "Astra"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "Corsa"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "Zafira"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "Mokka"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "Antara"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "GT"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "Meriva"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Opel",
+                ModelName = "Frontera"
+            });
+
+            //Toyota
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Yaris"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Corolla"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Auris"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "C-HR"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "RAV4"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Land Cruiser"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Prius"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Camry"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Supra"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Avensis"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Verso"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Aygo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "GT86"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Hilux"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Carina"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Toyota",
+                ModelName = "Celica"
+            });
+
+            //Chevrolet
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Spark"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Aveo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Cruze"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Trax"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Captiva"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Orlando"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Corvette"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Camaro"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Matiz"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Tahoe"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Chevrolet",
+                ModelName = "Tacuma"
+            });
+
+            //Jaguar
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "XE"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "XF"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "XJ"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "F-Type"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "F-Pace"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "E-Pace"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "I-Pace"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "S-Type"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "X-Type"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jaguar",
+                ModelName = "XJR"
+            });
+
+            //Jeep
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Renegade"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Compass"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Cherokee"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Grand Cherokee"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Wrangler"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Gladiator"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Commander"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Patriot"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Grand Wagoneer"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Jeep",
+                ModelName = "Patriot"
+            });
+
+            //Kia
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Picanto"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Rio"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Stonic"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Soul"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Ceed"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Optima"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Stinger"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Seltos"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Sportage"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Sorento"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Kia",
+                ModelName = "Venga"
+            });
+
+            //Lexus
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lexus",
+                ModelName = "IS"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lexus",
+                ModelName = "ES"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lexus",
+                ModelName = "GS"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lexus",
+                ModelName = "LS"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lexus",
+                ModelName = "RX"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lexus",
+                ModelName = "NX"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lexus",
+                ModelName = "LC"
+            });
+
+            //Porsche
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "911"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "718 Boxster"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "718 Cayman"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "Panamera"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "Macan"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "Cayenne"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "Taycan"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "959"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "944"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "911 GT2"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "911 GT3"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "911 Turbo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Porsche",
+                ModelName = "911 Carrera 4S"
+            });
+
+            //Subaru
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "Impreza"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "XV"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "Forester"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "Outback"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "Legacy"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "Levong"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "WRX"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "BRZ"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Subaru",
+                ModelName = "Ascent"
+            });
+
+            //Volkswagen
+
+
 
             return models.ToArray();
         }
