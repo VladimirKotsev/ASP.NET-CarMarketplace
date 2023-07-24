@@ -4,10 +4,11 @@
 
     using Microsoft.AspNetCore.Mvc;
 
-    using CarMarketplace.Services.Data.Models;
+    using CarMarketplace.Web.Controllers.Common;
+    using Microsoft.AspNetCore.Authorization;
     using CarMarketplace.Web.ViewModels;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -16,14 +17,15 @@
             _logger = logger;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
-        }
+        }  
 
-        public IActionResult Search()
+        public IActionResult BecomeSeller()
         {
-            return View(new CatalogSearchViewModel());
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

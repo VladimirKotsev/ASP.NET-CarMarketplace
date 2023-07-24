@@ -22,6 +22,10 @@
         public DbSet<Category> Categories { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Engine> Engines { get; set; }
+        public DbSet<Seller> Sellers { get; set; }
+        public DbSet<SalePost> SalePosts { get; set; }
+        public DbSet<RentPost> RentPosts { get; set; }
+        public DbSet<Lender> Lenders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

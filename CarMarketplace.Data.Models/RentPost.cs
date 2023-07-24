@@ -4,9 +4,9 @@
     using System.ComponentModel.DataAnnotations;
     using System.Reflection.Metadata.Ecma335;
 
-    public class RentPosts
+    public class RentPost
     {
-        public RentPosts()
+        public RentPost()
         {
             this.Id = Guid.NewGuid();
         }

@@ -17,6 +17,16 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="exampleSelect1" class="form-label mt-4">Select Model</label>
+            <select class="form-select" id="ModelSelect disabled">
+                <option>All</option>
+                @foreach (var item in Model.Models)
+                {
+                    <option value="@item.Id">@item</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
             <label for="exampleTextarea" class="form-label mt-4">Example textarea</label>
             <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
         </div>
@@ -83,3 +93,4 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </fieldset>
 </form>
+<script src="~/js/search.js"></script>
