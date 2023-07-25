@@ -2,6 +2,6 @@
 {
     public interface IBecomeSellerService
     {
-        public bool IsUserASellerAsync();
+        public bool IsUserASeller(string userId);
     }
 }

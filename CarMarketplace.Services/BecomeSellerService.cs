@@ -1,18 +1,22 @@
-﻿namespace CarMarketplace.Services
+﻿using CarMarketplace.Services.Contracts;
+
+namespace CarMarketplace.Services
 {
     using CarMarketplace.Data;
-    using CarMarketplace.Services.Contracts;
-
     public class BecomeSellerService : IBecomeSellerService
     {
         private readonly CarMarketplaceDbContext dbContext;
-        public BecomeSellerService(CarMarketplaceDbContext dbContext) 
+        public BecomeSellerService(CarMarketplaceDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
-        public async bool IsUserASellerAsync()
+        public bool IsUserASeller(string userId)
         {
-            var isUserASeller = dbContext.
+            var isUserASeller = dbContext
+                .Sellers
+                .Any(s => s.UserId.ToString() == userId);
+
+            return isUserASeller;
         }
     }
 }
