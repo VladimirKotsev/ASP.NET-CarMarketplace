@@ -11,8 +11,6 @@
             this.Id = Guid.NewGuid();
             this.CarsOnSale = new HashSet<Car>();
         }
-        public bool IsSeller { get; set; }
-        public bool IsLender { get; set; }
 
         public virtual ICollection<Car> CarsOnSale { get; set; }
     }

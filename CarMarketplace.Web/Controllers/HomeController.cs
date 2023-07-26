@@ -11,10 +11,6 @@
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-        private string UserId
-        {
-            get { return User.FindFirstValue(ClaimTypes.NameIdentifier); }
-        }
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -26,7 +22,6 @@
         {
             return View();
         }  
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

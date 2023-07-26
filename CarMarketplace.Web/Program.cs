@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 using CarMarketplace.Data;
 using CarMarketplace.Data.Models;
+using CarMarketplace.Services;
+using CarMarketplace.Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ISellerService, SellerService>();
 
 var app = builder.Build();
 
