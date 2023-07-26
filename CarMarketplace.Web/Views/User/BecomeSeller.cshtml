@@ -1,1 +1,17 @@
-﻿<p>You are at information page for seller</p>
+﻿<h3>We need your personal information in order to become a seller!</h3>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+</form>

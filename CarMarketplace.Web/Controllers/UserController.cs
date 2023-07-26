@@ -15,21 +15,39 @@
         }
 
         private readonly ISellerService sellerService;
+        private readonly ILenderService lenderService;
 
-        public UserController(ISellerService _sellerService)
+        public UserController(ISellerService _sellerService, ILenderService _lenderService)
         {
             this.sellerService = _sellerService;
+            this.lenderService = _lenderService;
         }
 
         [HttpGet]
         [Route("User/BecomeSeller")]
         public async Task<IActionResult> BecomeSeller()
         {
-            bool isAgent = await sellerService.SellerExistbyUserIdAsync(this.UserId);
+            bool isSeller = await sellerService.SellerExistbyUserIdAsync(this.UserId);
 
-            if (isAgent)
+            if (isSeller)
             {
                 TempData["ErrorMessage"] = "You are already a seller!";
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        [Route("User/BecomeLender")]
+        public async Task<IActionResult> BecomeLender()
+        {
+            bool isLender = await lenderService.LenderExistbyUserIdAsync(this.UserId);
+
+            if (isLender)
+            {
+                TempData["ErrorMessage"] = "You are already a lender!";
 
                 return RedirectToAction("Index", "Home");
             }

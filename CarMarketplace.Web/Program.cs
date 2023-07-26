@@ -33,6 +33,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ISellerService, SellerService>();
+builder.Services.AddScoped<ILenderService, LenderService>();
+
 
 var app = builder.Build();
 
