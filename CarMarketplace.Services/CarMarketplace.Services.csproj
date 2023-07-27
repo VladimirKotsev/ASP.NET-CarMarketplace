@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CarMarketplace.Data\CarMarketplace.Data.csproj" />
+    <ProjectReference Include="..\CarMarketplace.Web.ViewModels\CarMarketplace.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

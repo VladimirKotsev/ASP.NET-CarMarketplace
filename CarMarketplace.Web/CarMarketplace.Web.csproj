@@ -23,8 +23,8 @@
     <ProjectReference Include="..\CarMarketplace.Common\CarMarketplace.Common.csproj" />
     <ProjectReference Include="..\CarMarketplace.Data\CarMarketplace.Data.csproj" />
     <ProjectReference Include="..\CarMarketplace.Services.Data.Models\CarMarketplace.Services.Data.Models.csproj" />
-    <ProjectReference Include="..\CarMarketplace.Services.Data\CarMarketplace.Services.Data.csproj" />
     <ProjectReference Include="..\CarMarketplace.Services\CarMarketplace.Services.csproj" />
+    <ProjectReference Include="..\CarMarketplace.Web.ViewModels\CarMarketplace.Web.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>

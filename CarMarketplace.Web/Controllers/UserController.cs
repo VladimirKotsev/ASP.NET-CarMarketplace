@@ -6,6 +6,7 @@
 
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.Controllers.Common;
+    using CarMarketplace.Web.ViewModels.User;
 
     public class UserController : BaseController
     {
@@ -39,6 +40,28 @@
             return View();
         }
 
+        [HttpPost]
+        [Route("User/BecomeSeller")]
+        public async Task<IActionResult> BecomeSeller(UserPersonalnfoViewModel model)
+        {
+            bool isPhoneNumberTaken =
+                await sellerService.SellerExistbyPhoneNumberAsync(model.PhoneNumber);
+            if (isPhoneNumberTaken)
+            {
+                ModelState.AddModelError(nameof(model.PhoneNumber), "Seller with the provided phone number already exists!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await sellerService.RegisterUserAsSellerAsync(this.UserId, model);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
         [HttpGet]
         [Route("User/BecomeLender")]
         public async Task<IActionResult> BecomeLender()
@@ -53,6 +76,27 @@
             }
 
             return View();
+        }
+
+        [HttpPost]
+        [Route("User/BecomeLender")]
+        public async Task<IActionResult> BecomeLender(UserPersonalnfoViewModel model)
+        {
+            bool isPhoneNumberTaken =
+                await lenderService.LenderExistbyPhoneNumberAsync(model.PhoneNumber);
+            if (isPhoneNumberTaken)
+            {
+                ModelState.AddModelError(nameof(model.PhoneNumber), "Lender with the provided phone number already exists!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await lenderService.RegisterUserAsLenderAsync(this.UserId, model);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
