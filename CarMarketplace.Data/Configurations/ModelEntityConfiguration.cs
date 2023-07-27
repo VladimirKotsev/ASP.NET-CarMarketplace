@@ -1581,6 +1581,315 @@
 
             //Volkswagen
 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Polo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Golf"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Passat"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Tiguan"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "T-Roc"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Touran"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "T-Cross"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Arteon"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Up!"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "ID.3"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Jetta"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Sharan"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Scirocco"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Amarok"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Caddy"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Touareg"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volkswagen",
+                ModelName = "Beetle"
+            });
+
+            //Volvo
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "XC60"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "XC40"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "XC90"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "V60"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "V40"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "V90"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "S60"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "S90"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "C30"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "C70"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "S40"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "S80"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "V50"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Volvo",
+                ModelName = "V70"
+            });
+
+            //Citroën
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C2"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C3"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C3 Aircross"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C3 Picasso"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C4"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C4 Cactus"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C5"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C5 Aircross"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C6"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "Berlingo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "DS3"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "DS4"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "DS5"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "DS7"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "Grand C4 Picasso"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "C-Elysée"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "Xsara Picasso"
+            }); 
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "Xsara"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Citroën",
+                ModelName = "ZX"
+            });
+
+            //Dacia
+
 
 
             return models.ToArray();
