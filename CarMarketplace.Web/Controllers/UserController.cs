@@ -37,7 +37,8 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            ViewData["Title"] = "seller";
+            return View("BecomeProvider");
         }
 
         [HttpPost]
@@ -53,7 +54,7 @@
 
             if (!ModelState.IsValid)
             {
-                return View();
+                return View("BecomeProvider");
             }
 
             await sellerService.RegisterUserAsSellerAsync(this.UserId, model);
@@ -75,7 +76,8 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            ViewData["Title"] = "lender";
+            return View("BecomeProvider");
         }
 
         [HttpPost]
@@ -91,7 +93,7 @@
 
             if (!ModelState.IsValid)
             {
-                return View();
+                return View("BecomeProvider");
             }
 
             await lenderService.RegisterUserAsLenderAsync(this.UserId, model);

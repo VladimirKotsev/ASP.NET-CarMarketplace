@@ -19,6 +19,7 @@
         {
             var seller = new Seller()
             {
+                UserId = Guid.Parse(userId),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber

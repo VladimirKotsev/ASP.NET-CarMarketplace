@@ -1,0 +1,30 @@
+﻿@model UserPersonalnfoViewModel
+
+@{
+    var action = "Become" + ViewData["Title"];
+}
+
+<h5 class="mt-5">We need your personal information in order to become a @ViewData["Title"]!</h5>
+
+<form asp-action="@action" method="post">
+    <div class="mb-3 mt-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" required>
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" required>
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" required>
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <input type="submit" class="btn btn-primary mt-2">
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
