@@ -17,7 +17,8 @@
             builder.HasData(this.GenerateHouses());
         }
 
-        //This method seeds all data for car models in the database
+        //This method seeds data for car models in the database
+        //Please keep in mind the data is not fulfilled, It is for educational purposes
         private CarModel[] GenerateHouses()
         {
             ICollection<CarModel> models = new HashSet<CarModel>();
@@ -52,7 +53,7 @@
             });
             models.Add(new CarModel
             {
-                Id = id++,
+                Id = id++, // 5
                 ManufacturerName = "Audi",
                 ModelName = "A3"
             });
@@ -2525,4 +2526,3 @@
         }
     }
 }
-

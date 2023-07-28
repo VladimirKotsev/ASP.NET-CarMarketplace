@@ -11,10 +11,6 @@
 
         public int Horsepower { get; set; }
 
-        public double? OilCapacity { get; set; }
-
-        public double? CoolantCapacity { get; set; }
-
         [Required]
         public string FuelType { get; set; } = null!;
     }

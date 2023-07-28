@@ -12,6 +12,8 @@
             builder.HasData(this.GenerateColors());
         }
 
+
+        //This method seeds data for car colors in the database
         private Color[] GenerateColors()
         {
             var colors = new HashSet<Color>();

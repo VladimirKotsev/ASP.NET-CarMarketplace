@@ -17,7 +17,8 @@
             builder.HasData(this.GenerateHouses());
         }
 
-        //This method seeds all data for car manufacturers/brands names in the database
+        //This method seeds data for car manufacturers/brands names in the database
+        //Please keep in mind the data is not fulfilled, It is for educational purposes
         private CarManufacturer[] GenerateHouses()
         {
             ICollection<CarManufacturer> manufacturers = new HashSet<CarManufacturer>();
