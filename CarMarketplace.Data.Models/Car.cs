@@ -34,9 +34,12 @@
         [ForeignKey(nameof(ColorId))]
         [Required]
         public virtual Color Color { get; set; } = null!;
-        [Required]
-        public string City { get; set; } = null!;
 
+        public int ProvinceId { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(ProvinceId))]
+        public virtual Province Province { get; set; } = null!;
 
         public int Year { get; set; }
 

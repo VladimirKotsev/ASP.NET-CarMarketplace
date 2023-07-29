@@ -62,5 +62,11 @@
             public const int LastNameMaxLength = 50;
         }
 
+        public static class Province
+        {
+            public const int ProvinceNameMinLength = 4;
+            public const int ProvinceNameMaxLength = 14;
+        }
+
     }
 }
