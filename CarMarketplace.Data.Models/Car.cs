@@ -31,12 +31,12 @@
 
         public int ColorId { get; set; }
 
-        [Required]
-        public string City { get; set; } = null!;
-
         [ForeignKey(nameof(ColorId))]
         [Required]
         public virtual Color Color { get; set; } = null!;
+        [Required]
+        public string City { get; set; } = null!;
+
 
         public int Year { get; set; }
 

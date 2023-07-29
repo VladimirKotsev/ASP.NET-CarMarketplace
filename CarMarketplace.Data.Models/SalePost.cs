@@ -8,6 +8,7 @@
         public SalePost()
         {
             this.Id = Guid.NewGuid();
+            this.ImageUrls = new HashSet<string>();
         }
         public Guid Id { get; set; }
 
@@ -28,5 +29,7 @@
 
         [Required]
         public DateTime PublishDate { get; set; }
+
+        public ICollection<string> ImageUrls { get; set; }
     }
 }

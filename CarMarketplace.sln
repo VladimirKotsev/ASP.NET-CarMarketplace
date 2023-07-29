@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarMarketplace.Web.ViewModels", "CarMarketplace.Web.ViewModels\CarMarketplace.Web.ViewModels.csproj", "{1D8E8467-3908-4EC8-870D-10B6FA6CDF94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Services.Data", "CarMarketplace.Services.Data\CarMarketplace.Services.Data.csproj", "{4F9DFBC7-3075-4C4A-84C0-B7B8E36D5073}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{1D8E8467-3908-4EC8-870D-10B6FA6CDF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D8E8467-3908-4EC8-870D-10B6FA6CDF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D8E8467-3908-4EC8-870D-10B6FA6CDF94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F9DFBC7-3075-4C4A-84C0-B7B8E36D5073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F9DFBC7-3075-4C4A-84C0-B7B8E36D5073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F9DFBC7-3075-4C4A-84C0-B7B8E36D5073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F9DFBC7-3075-4C4A-84C0-B7B8E36D5073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{07BE0825-CB9E-439C-9CBD-7D0768FE9E87} = {4CD4802C-9078-4B07-A9B1-6441CD9B4125}
 		{58D5C602-50F2-4DD1-AFFC-A1224342AB70} = {48E375C1-6A71-470A-93DD-191A5D22C413}
 		{474E5759-AAC7-4659-BF53-E3ED781DE0CC} = {48E375C1-6A71-470A-93DD-191A5D22C413}
+		{4F9DFBC7-3075-4C4A-84C0-B7B8E36D5073} = {48E375C1-6A71-470A-93DD-191A5D22C413}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BD20B6C-7805-4FE4-845D-D75F9DB16984}

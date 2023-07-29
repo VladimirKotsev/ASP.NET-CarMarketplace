@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CloudinaryDotNet" Version="1.21.0" />
+  </ItemGroup>
+
 </Project>

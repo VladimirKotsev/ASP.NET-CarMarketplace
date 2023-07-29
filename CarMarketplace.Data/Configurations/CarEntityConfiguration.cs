@@ -27,6 +27,7 @@
                 Id = Guid.Parse("864237e2-7f7a-469f-b019-697c848fc3aa"),
                 ManufacturerId = 1,
                 ModelId = 5,
+                ColorId = 2,
 
             });
 

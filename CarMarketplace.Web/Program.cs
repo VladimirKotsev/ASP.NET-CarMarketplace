@@ -5,6 +5,8 @@ using CarMarketplace.Data;
 using CarMarketplace.Data.Models;
 using CarMarketplace.Services;
 using CarMarketplace.Services.Contracts;
+using System.Security.Principal;
+using CloudinaryDotNet;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +37,15 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ISellerService, SellerService>();
 builder.Services.AddScoped<ILenderService, LenderService>();
 
+
+string clouldName = builder.Configuration.GetValue<string>("Cloudinary:CloudName");
+string apiKey = builder.Configuration.GetValue<string>("Cloudinary:ApiKey");
+string apiSecret = builder.Configuration.GetValue<string>("Cloudinary:ApiSecret");
+
+Account cloudinaryCredentials = new Account(clouldName, apiKey, apiSecret);
+Cloudinary cloudinary = new Cloudinary(cloudinaryCredentials);
+
+builder.Services.AddSingleton(cloudinary);
 
 var app = builder.Build();
 
