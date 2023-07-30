@@ -1,57 +1,71 @@
-﻿@{
+﻿@model ICollection<CarCardViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
+    ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Here you can browse for the perfect car</p>
 </div>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item">
-            <div class="section">
-                <img class="img" src="~/testImages/TestImage.jpg" />
-                <div class="section">
-                    <p>Make: Mercedes-Benz</p>
-                    <p>Model: G class</p>
-                    <p>Year: 2011</p>
-                </div>
-            </div>
-            <div class="section">
-                <img class="img" src="~/testImages/TestImage2.jpg" />
-                <div class="section">
-                    <p>Make: </p>
-                    <p>Model: </p>
-                    <p>Year: </p>
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner carousel-fade">
+        <div class="carousel-item active">
+            @{
+                var src = ViewData["CloudDomain"] + "v1690719882/Untitled_design_1_fxzgnn.png";
+            }
+            <a href="">
+                @*to do!!!!!!*@
+                <img src="@src" class="d-block w-100 rounded img-fluid" style="filter: brightness(70%)" alt="...">
+            </a>
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 900px;">
+                    <p class="fs-4 text">Experience the pinnacle of engineering and luxury with German cars. Impeccable craftsmanship, cutting-edge technology, and unmatched performance come together to create an exhilarating driving experience. Discover a world of automotive excellence with our iconic German cars.</p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <div class="section">
-                <img class="img" src="~/testImages/TestImage3jpg.jpg" />
-                <div class="section">
-                    <p>Make: BMW</p>
-                    <p>Model: 320</p>
-                    <p>Year: 2011</p>
+            @{
+                src = ViewData["CloudDomain"] + "v1690720138/Japan-banner_ccycha.png";
+            }
+            <a href="">
+                @*to do!!!!!!*@
+                <img src="@src" class="d-block w-100 rounded img-fluid" style="filter: brightness(70%)" alt="...">
+            </a>
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 900px;">
+                    <p class="fs-4 text">Discover the epitome of engineering excellence with Japan cars. Immerse yourself in cutting-edge technology, unmatched reliability, and sleek design that captures both the heart and mind. Elevate your driving experience and embrace the future of mobility with Japan cars.</p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-
+            @{
+                src = ViewData["CloudDomain"] + "v1690720855/italy-banner_i7mejr.png";
+            }
+            <a>
+                @*to do!!!!!!*@
+                <img src="@src" class="d-block w-100 rounded img-fluid" style="filter: brightness(70%)" alt="...">
+            </a>
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 900px;">
+                    <p class="fs-4 text">Discover the allure of Italy's finest cars, where passion meets precision. Immerse yourself in the elegance of iconic designs, cutting-edge technology, and exhilarating performance. Experience the art of driving at its finest with Italy cars, where every journey becomes a symphony of style and engineering mastery.</p>
+                </div>
+            </div>
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>

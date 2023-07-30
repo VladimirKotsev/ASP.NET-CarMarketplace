@@ -28,8 +28,4 @@
     <ProjectReference Include="..\CarMarketplace.Web.ViewModels\CarMarketplace.Web.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\testImages\" />
-  </ItemGroup>
-
 </Project>

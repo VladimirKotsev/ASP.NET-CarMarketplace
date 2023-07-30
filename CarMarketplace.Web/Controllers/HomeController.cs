@@ -1,26 +1,27 @@
 ﻿namespace CarMarketplace.Web.Controllers
 {
     using System.Diagnostics;
-    using System.Security.Claims;
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Web.ViewModels;
+    using CarMarketplace.Services.Contracts;
+
     public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IHomeService homeService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IHomeService homeService)
         {
-            _logger = logger;
+            this.homeService = homeService;
         }
 
         [AllowAnonymous]
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            return View(await this.homeService.GetSalePostsAsync());
         }  
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

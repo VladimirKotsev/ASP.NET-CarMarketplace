@@ -34,8 +34,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<ISellerService, SellerService>();
 builder.Services.AddScoped<ILenderService, LenderService>();
+
 
 
 string clouldName = builder.Configuration.GetValue<string>("Cloudinary:CloudName");
