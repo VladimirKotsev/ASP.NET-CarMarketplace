@@ -114,7 +114,11 @@
                 Id = id++,
                 Name = "Cream"
             });
-
+            colors.Add(new Color
+            {
+                Id = id++,
+                Name = "Silver"
+            });
             return colors.ToArray();
         }
     }

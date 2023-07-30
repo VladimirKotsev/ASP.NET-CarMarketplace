@@ -487,6 +487,7 @@
                 ModelName = "S2000"
             });
 
+            //75
             //Huyndai
 
             models.Add(new CarModel
@@ -914,6 +915,7 @@
                 ModelName = "Partner"
             });
 
+            //144
             //Fiat
 
             models.Add(new CarModel

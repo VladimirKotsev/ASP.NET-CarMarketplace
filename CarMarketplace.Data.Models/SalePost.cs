@@ -8,15 +8,14 @@
         public SalePost()
         {
             this.Id = Guid.NewGuid();
-            this.ImageUrls = new HashSet<string>();
         }
         public Guid Id { get; set; }
 
-        public Guid UserId { get; set; }
+        public Guid SellerId { get; set; }
 
         [Required]
-        [ForeignKey(nameof(UserId))]
-        public virtual Seller User { get; set; } = null!;
+        [ForeignKey(nameof(SellerId))]
+        public virtual Seller Seller { get; set; } = null!;
 
         public Guid CarId { get; set; }
 
@@ -30,6 +29,8 @@
         [Required]
         public DateTime PublishDate { get; set; }
 
-        public ICollection<string> ImageUrls { get; set; }
+        [Required]
+        [Column(TypeName = "varchar(5000)")]
+        public string ImageUrls { get; set; } = null!;
     }
 }

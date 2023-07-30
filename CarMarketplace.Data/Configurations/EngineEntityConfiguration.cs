@@ -32,6 +32,13 @@
             engines.Add(new Engine()
             {
                 Id = id++,
+                Displacement = 1900,
+                Horsepower = 105,
+                FuelType = "Diesel"
+            });
+            engines.Add(new Engine()
+            {
+                Id = id++,
                 Displacement = 2000,
                 Horsepower = 140,
                 FuelType = "Diesel"
@@ -83,6 +90,13 @@
                 Id = id++,
                 Displacement = 1600,
                 Horsepower = 130,
+                FuelType = "Diesel"
+            });
+            engines.Add(new Engine()
+            {
+                Id = id++,
+                Displacement = 1700,
+                Horsepower = 116,
                 FuelType = "Diesel"
             });
             engines.Add(new Engine()
