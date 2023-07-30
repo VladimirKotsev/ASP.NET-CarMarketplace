@@ -2524,6 +2524,174 @@
                 ModelName = "Reventón"
             });
 
+            //Alfa Romeo
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "Giulia"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "Stelvio"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "Giulietta"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "4C"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "MiTo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "159"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "Brera"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "147"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "GT"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "156"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "GTV"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "166"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "33"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "164"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "155"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "145"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Alfa Romeo",
+                ModelName = "146"
+            });
+
+            //Lancia
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Aurelia"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Appia"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Fulvia"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Flaminia"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Stratos"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Delta"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Beta"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Gamma"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = "Montecarlo"
+            });
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Lancia",
+                ModelName = ""
+            });
+
             return models.ToArray();
         }
     }

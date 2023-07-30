@@ -223,6 +223,18 @@
                 Name = "Lamborghini"
             });
 
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Alfa Romeo"
+            });
+
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Lancia"
+            });
+
 
             return manufacturers.ToArray();
         }
