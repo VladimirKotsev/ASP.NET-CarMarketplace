@@ -2689,7 +2689,7 @@
             {
                 Id = id++,
                 ManufacturerName = "Lancia",
-                ModelName = ""
+                ModelName = "Thema"
             });
 
             return models.ToArray();

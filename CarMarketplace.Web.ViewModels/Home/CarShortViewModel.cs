@@ -4,7 +4,7 @@
 
     using CarMarketplace.Data.Models;
 
-    public class CarCardViewModel
+    public class CarShortViewModel
     {
         public Guid Id { get; set; }
 
@@ -25,6 +25,9 @@
 
         [Required]
         public string CarModel { get; set; } = null!;
+
+        [Required]
+        public string CarName { get; set; } = null!;
 
         [Required]
         public string CarProvinceName { get; set; } = null!;

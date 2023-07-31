@@ -34,9 +34,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<ISellerService, SellerService>();
 builder.Services.AddScoped<ILenderService, LenderService>();
+builder.Services.AddScoped<ICatalogService, CatalogService>();
 
 
 

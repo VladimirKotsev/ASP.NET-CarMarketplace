@@ -11,17 +11,11 @@
 
     public class HomeController : BaseController
     {
-        private readonly IHomeService homeService;
-
-        public HomeController(IHomeService homeService)
-        {
-            this.homeService = homeService;
-        }
 
         [AllowAnonymous]
-        public async Task<ActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await this.homeService.GetSalePostsAsync());
+            return View();
         }  
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
