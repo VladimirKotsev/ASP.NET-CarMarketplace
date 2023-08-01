@@ -12,6 +12,7 @@
         {
             this.catalogService = _catalogService;
         }
+
         [AllowAnonymous]
         public IActionResult Search()
         {
