@@ -14,9 +14,9 @@
         }
 
         [AllowAnonymous]
-        public IActionResult Search()
+        public async Task<IActionResult> Search()
         {
-            return View();
+            return View(await this.catalogService.GetSearchViewModelAsync());
         }
 
         [AllowAnonymous]

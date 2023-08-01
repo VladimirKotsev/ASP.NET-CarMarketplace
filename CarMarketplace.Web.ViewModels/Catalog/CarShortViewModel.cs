@@ -1,4 +1,4 @@
-﻿namespace CarMarketplace.Web.ViewModels.Home
+﻿namespace CarMarketplace.Web.ViewModels.Catalog
 {
     using System.ComponentModel.DataAnnotations;
 

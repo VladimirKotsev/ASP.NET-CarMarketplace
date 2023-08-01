@@ -6,7 +6,7 @@
 
     using CarMarketplace.Data;
     using CarMarketplace.Services.Contracts;
-    using CarMarketplace.Web.ViewModels.Home;
+    using CarMarketplace.Web.ViewModels.Catalog;
 
     public class CatalogService : ICatalogService
     {
@@ -38,6 +38,43 @@
                 .ToArrayAsync();
 
             return lastPosts;
+        }
+
+        public async Task<SearchViewModel> GetSearchViewModelAsync()
+        {
+            SearchViewModel model = new SearchViewModel();
+
+            model.Makes = await this.dbContext
+                .Manufacturers
+                .Select(m => new CarManufacturerViewModel()
+                {
+                    Id = m.Id,
+                    Name = m.Name
+                })
+                .OrderBy(m => m.Name)
+                .ToArrayAsync();
+
+            model.Models = await this.dbContext
+                .Models
+                .Select(m => new CarModelViewModel()
+                {
+                    Id = m.Id,
+                    ModelName = m.ModelName,
+                    ManufacturerName = m.ManufacturerName
+                })
+                .OrderBy(m => m.ModelName)
+                .ToArrayAsync();
+
+            model.Categories = await this.dbContext
+                .Categories
+                .Select(c => new CategoryViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                })
+                .ToArrayAsync();
+
+            return model;
         }
     }
 }
