@@ -6,18 +6,17 @@
 
     public class CarShortViewModel
     {
-        public Guid Id { get; set; }
-
-        [Required]
-        public Car Car { get; set; } = null!;
+        public Guid CarId { get; set; }
 
         [Required]
         public string MainPictureUrl { get; set; } = null!;
 
+        [Required]
         public int Price { get; set; }
 
+        [Required]
         public DateTime PublishDate { get; set; }
-
+        [Required]
         public int CarYear { get; set; }
 
         [Required]
@@ -31,5 +30,17 @@
 
         [Required]
         public string CarProvinceName { get; set; } = null!;
+
+        [Required]
+        public string CarTransmissionType { get; set; } = null!;
+
+        [Required]
+        public string CarEngineFuelType { get; set; } = null!;
+
+        [Required]
+        public int CarEngineDisplacement { get; set; }
+
+        [Required]
+        public int CarHorsePower { get; set; }
     }
 }

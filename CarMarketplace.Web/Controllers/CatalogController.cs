@@ -4,6 +4,8 @@
     using Microsoft.AspNetCore.Mvc;
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Services.Contracts;
+    using System.ComponentModel.DataAnnotations;
+    using CarMarketplace.Web.ViewModels;
 
     public class CatalogController : BaseController
     {
@@ -20,9 +22,27 @@
         }
 
         [AllowAnonymous]
+        [ActionName("CatalogHome")]
+        public async Task<IActionResult> CatalogHome()
+        {
+            return View("CatalogHome", await this.catalogService.GetLatestSalePostsAsync());
+        }
+
+        [AllowAnonymous]
+        [ActionName("Catalog")]
         public async Task<IActionResult> Catalog()
         {
-            return View(await this.catalogService.GetLatestSalePostsAsync());
+            return View("Catalog" ,await this.catalogService.GetLatestSalePostsAsync());
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("Catalog/SetViewData")]
+        public ActionResult SetViewData(ViewDataViewModel data)
+        {
+            Console.WriteLine(data);
+            ViewData[data.key] = data.value;
+            return new EmptyResult();
         }
     }
 }

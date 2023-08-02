@@ -45,8 +45,8 @@
 
         public int EngineId { get; set; }
 
-        [ForeignKey(nameof(EngineId))]
         [Required]
+        [ForeignKey(nameof(EngineId))]
         public virtual Engine Engine { get; set; } = null!;
 
         [Required]

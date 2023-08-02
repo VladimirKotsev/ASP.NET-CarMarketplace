@@ -1,67 +1,38 @@
 ﻿@model ICollection<CarShortViewModel>
 
 @{
+    ViewData["Title"] = "Catalog";
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
     var imageSrc = "";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h1 class="my-4">Car Catalog</h1>
-        </div>
-        <div class="col-md-6 align-middle">
-            <a asp-controller="Catalog" asp-action="Search" class="btn btn-primary mt-3 float-end">Search</a>
-        </div>
+<div class="container mt-5">
+    <div class="d-grid gap-2 col-6 mx-auto text-center mt-5">
+        <h1>@ViewData["Title"]</h1>
     </div>
-
-    <div class="row">
-        @foreach (var post in Model.Take(3))
-        {
-            imageSrc = ViewData["CloudDomain"] + post.MainPictureUrl;
-            <a href="#" class="col-md-4" style="text-decoration: none">
-                <div>
-                    <div class="card mb-4">
-                        <img src="@imageSrc" class="card-img-top" alt="@post.CarName">
-                        <div class="card-body">
-                            <h3 class="card-title"><strong>@post.CarName</strong></h3>
-                            <hr>
-                            <span class="card-text fs-3">Price: @post.Price lv.</span>
+    @foreach (var post in Model)
+    {
+        imageSrc = ViewData["CloudDomain"] + @post.MainPictureUrl;
+        <div class="container text-center border rounded shadow-lg p-3 mb-4 mt-4">
+            <div class="row align-items-start">
+                <div class="col-5">
+                    <img src="@imageSrc" class="card-img" alt="@post.CarName">
+                </div>
+                <div class="col">
+                    <div class="col mt-3 text-start">
+                        <h1>@post.CarName @post.CarYear</h1>
+                        <hr>
+                        <div class="mt-4">
+                            <span class="fs-1"><span class="text-success">@post.Price</span><span class="fw-bold"> BGN</span></span>
                             <br>
-                            <span class="card-text">Year: @post.CarYear</span>
+                            <span class="fs-1">@post.CarEngineDisplacement</span>
+                            <span class="fs-1">@post.CarEngineFuelType</span>
                             <br>
-                            <p class="card-text">@post.CarProvinceName</p>
-                            <span class="card-text">@post.PublishDate.ToString("HH:mm:ss MM/dd/yyyy")</span>
-                            <br>
+                            <span class="fs-1">@post.CarProvinceName</span>
                         </div>
                     </div>
                 </div>
-            </a>
-        }
-    </div>
-    <div class="row">
-        @foreach (var post in Model.Skip(3).Take(3))
-        {
-            imageSrc = ViewData["CloudDomain"] + post.MainPictureUrl;
-            <a href="#" class="col-md-4" style="text-decoration: none">
-                <div>
-                    <div class="card mb-4">
-                        <img src="@imageSrc" class="card-img-top" alt="@post.CarName">
-                        <div class="card-body">
-                            <h3 class="card-title"><strong>@post.CarName</strong></h3>
-                            <span class="card-text fs-3">Price: @post.Price lv.</span>
-                            <br>
-                            <span class="card-text">Year: @post.CarYear</span>
-                            <br>
-                            <p class="card-text">@post.CarProvinceName</p>
-                            <span class="card-text">@post.PublishDate.ToString("HH:mm:ss MM/dd/yyyy")</span>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        }
-    </div>
+            </div>
+        </div>
+    }
 </div>
-
-

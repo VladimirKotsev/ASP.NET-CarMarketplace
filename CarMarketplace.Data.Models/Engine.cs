@@ -7,7 +7,7 @@
         [Key]
         public int Id { get; set; }
 
-        public int? Displacement { get; set; }
+        public int Displacement { get; set; }
 
         public int Horsepower { get; set; }
 

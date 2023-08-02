@@ -10,8 +10,8 @@
     <fieldset>
         <div class="form-group">
             <label for="exampleSelect1" class="form-label mt-4">Select Make</label>
-            <select class="form-select" id="MakeSelect">
-                <option>All</option>
+            <select class="form-select" id="MakeSelect" onchange="SetViewData()">
+                <option value="All">All</option>
                 @foreach (var item in Model.Makes)
                 {
                     <option value="@item.Id">@item.Name</option>
@@ -21,21 +21,36 @@
         <div class="form-group">
             <label for="exampleSelect1" class="form-label mt-4">Select Model</label>
             <select class="form-select" id="ModelSelect" disabled>
-                <option>All</option>
-                @foreach (var item in Model.Models)
+                <option value="All">All</option>
+                @*@foreach (var item in Model.Models.Where(m => m.ManufacturerName == ViewData["Make"]))
                 {
-                    <option value="@item.Id">@item.ModelName</option>
-                }
+                <option value="@item.Id">@item.ModelName</option>
+                }*@
             </select>
         </div>
         <div class="form-group">
             <label for="exampleSelect1" class="form-label mt-4">Select Category</label>
             <select class="form-select" id="CategorySelect">
                 <option>All</option>
-                @foreach (var item in Model.Categories)
+
+
+
+                <script>
+                    let arr = @Json.Serialize(Model.Models
+                        .Select(x => new {
+                            MakeName = x.ManufacturerName,
+                            ModelName = x.ModelName
+                        })
+                        .ToArray()));     
+                    localStorage.setItem("Models", arr);
+                </script>
+
+
+
+                @*@foreach (var item in Model.Categories)
                 {
                     <option value="@item.Id">@item.Name</option>
-                }
+                }*@
             </select>
         </div>
         <div class="row mt-3">
@@ -129,75 +144,34 @@
             <div class="year-dot year-dot-end"></div>
             <br>
             <input type="text" id="year-range-slider" class="slider">
-
-            @*<label for="customRange3" class="form-label">Example range</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">*@
         </fieldset>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button asp-controller="Catalog" asp-action="Catalog" type="submit" class="btn btn-primary">Submit</button>
     </fieldset>
 </form>
 
+<script src="~/js/search.js"></script>
+                @*<script type='text/javascript'>
+    function SetViewData() {
+        let select = document.querySelector('#MakeSelect')
+        let make = select.options[select.selectedIndex].text;
 
+        document.querySelector("#ModelSelect").disabled = false;
+        let data = {
+            'key': "Make",
+            'value': make,
+            'viewModel': @Model
+        }
 
-<div class="container mt-5">
-    <h2>Car Search Form</h2>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="make">Make</label>
-                <select id="make" class="form-control">
-                    <option value="">Select Make</option>
-                    <!-- Add options for car makes -->
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="model">Model</label>
-                <select id="model" class="form-control">
-                    <option value="">Select Model</option>
-                    <!-- Add options for car models -->
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="year">Year Range</label>
-                <input type="text" id="year" class="form-control" placeholder="e.g., 2000-2023">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="bodyShape">Body Shape</label>
-                <select id="bodyShape" class="form-control">
-                    <option value="">Select Body Shape</option>
-                    <!-- Add options for body shapes -->
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="price">Price Range</label>
-                <input type="text" id="price" class="form-control" placeholder="e.g., $10000-$50000">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="transmission">Transmission</label>
-                <select id="transmission" class="form-control">
-                    <option value="">Select Transmission</option>
-                    <option value="manual">Manual</option>
-                    <option value="automatic">Automatic</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="maxKm">Max Kilometers</label>
-                <input type="number" id="maxKm" class="form-control" placeholder="e.g., 50000">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="horsepower">Horsepower Range</label>
-                <input type="text" id="horsepower" class="form-control" placeholder="e.g., 150-300">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="displacement">Displacement Range</label>
-                <input type="text" id="displacement" class="form-control" placeholder="e.g., 2.0-4.0">
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-</div>
-@*<script src="~/js/search.js"></script>*@
+        $.ajax({
+            type: "POST",
+            url: '/Catalog/SetViewData',
+            data: data,
+            success: function (response) {
+                document.querySelector("#ModelSelect")
+            },
+            error: function (request, status, error) {
+                console.log("error")
+            }
+        });
+    }
+</script>*@

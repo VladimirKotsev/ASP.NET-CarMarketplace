@@ -25,12 +25,16 @@
                 .Take(6)
                 .Select(p => new CarShortViewModel()
                 {
-                    Id = p.Id,
+                    CarId = p.CarId,
                     CarMake = p.Car.Make.Name,
                     CarModel = p.Car.Model.ModelName,
                     CarName = p.Car.Make.Name + " " + p.Car.Model.ModelName,
                     CarYear = p.Car.Year,
                     CarProvinceName = p.Car.Province.ProvinceName,
+                    CarEngineDisplacement = p.Car.Engine.Displacement,
+                    CarHorsePower = p.Car.Engine.Horsepower,
+                    CarEngineFuelType = p.Car.Engine.FuelType,
+                    CarTransmissionType = p.Car.TransmissionType,
                     Price = p.Price,
                     MainPictureUrl = p.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First(),
                     PublishDate = p.PublishDate
