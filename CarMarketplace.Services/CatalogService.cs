@@ -32,7 +32,7 @@
                     CarYear = p.Car.Year,
                     CarProvinceName = p.Car.Province.ProvinceName,
                     CarEngineDisplacement = p.Car.Engine.Displacement,
-                    CarHorsePower = p.Car.Engine.Horsepower,
+                    CarHorsepower = p.Car.Engine.Horsepower,
                     CarEngineFuelType = p.Car.Engine.FuelType,
                     CarTransmissionType = p.Car.TransmissionType,
                     Price = p.Price,

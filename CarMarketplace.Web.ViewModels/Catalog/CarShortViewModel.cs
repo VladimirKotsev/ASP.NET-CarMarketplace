@@ -41,6 +41,6 @@
         public int CarEngineDisplacement { get; set; }
 
         [Required]
-        public int CarHorsePower { get; set; }
+        public int CarHorsepower { get; set; }
     }
 }
