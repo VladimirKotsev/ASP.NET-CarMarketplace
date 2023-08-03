@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Identity;
 
     using CarMarketplace.Data.Models;
+    using System.Collections.Generic;
 
     public class CarMarketplaceDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
@@ -26,6 +27,7 @@
         public DbSet<SalePost> SalePosts { get; set; }
         public DbSet<RentPost> RentPosts { get; set; }
         public DbSet<Lender> Lenders { get; set; }
+        public DbSet<Province> Provinces { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -4,6 +4,7 @@ using CarMarketplace.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    partial class CarMarketplaceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230803162250_ChangesToEntities")]
+    partial class ChangesToEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3547,7 +3549,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Provinces");
+                    b.ToTable("Province");
 
                     b.HasData(
                         new
@@ -3759,7 +3761,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"),
                             ImageUrls = "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg",
                             Price = 7000,
-                            PublishDate = new DateTime(2023, 8, 3, 19, 40, 43, 309, DateTimeKind.Local).AddTicks(598),
+                            PublishDate = new DateTime(2023, 8, 3, 19, 22, 49, 885, DateTimeKind.Local).AddTicks(2374),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3768,7 +3770,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("913c5349-94de-4dc2-9e7d-346b57648227"),
                             ImageUrls = "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg",
                             Price = 2000,
-                            PublishDate = new DateTime(2023, 8, 3, 19, 40, 43, 309, DateTimeKind.Local).AddTicks(661),
+                            PublishDate = new DateTime(2023, 8, 3, 19, 22, 49, 885, DateTimeKind.Local).AddTicks(2437),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3777,7 +3779,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"),
                             ImageUrls = "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg",
                             Price = 17000,
-                            PublishDate = new DateTime(2023, 8, 3, 19, 40, 43, 309, DateTimeKind.Local).AddTicks(672),
+                            PublishDate = new DateTime(2023, 8, 3, 19, 22, 49, 885, DateTimeKind.Local).AddTicks(2461),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         });
                 });

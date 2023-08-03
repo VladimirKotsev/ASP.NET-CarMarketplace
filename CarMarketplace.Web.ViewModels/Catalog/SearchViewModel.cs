@@ -11,6 +11,8 @@
 
         public ICollection<CategoryViewModel> Categories { get; set; } = null!;
 
+        public ICollection<ProvinceViewModel> Provinces { get; set; } = null!;
+
         public int FromHorsepower { get; set; }
         public int ToHorsepower { get; set; }
 

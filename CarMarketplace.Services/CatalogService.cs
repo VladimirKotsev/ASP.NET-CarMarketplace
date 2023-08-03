@@ -145,6 +145,15 @@
                 })
                 .ToArrayAsync();
 
+            model.Provinces = await this.dbContext
+                .Provinces
+                .Select(p => new ProvinceViewModel()
+                {
+                    Id = p.Id,
+                    ProvinceName = p.ProvinceName,
+                })
+                .ToArrayAsync();
+
             return model;
         }
     }

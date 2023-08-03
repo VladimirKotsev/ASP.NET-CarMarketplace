@@ -32,7 +32,7 @@
         <div class="form-group">
             <label for="exampleSelect1" class="form-label mt-4 fs-4">Select Category</label>
             <select class="form-select" id="CategorySelect">
-                <option>All</option>A
+                <option>All</option>
                 @foreach (var item in Model.Categories)
                 {
                     <option value="@item.Id">@item.Name</option>
@@ -66,6 +66,16 @@
         <div class="form-group">
             <label for="exampleTextarea" class="form-label mt-4 fs-4">Example textarea</label>
             <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="ProvinceSelect" class="form-label mt-4 fs-4">Select Province</label>
+            <select class="form-select" id="ProvinceSelect">
+                <option>All</option>
+                @foreach (var item in Model.Provinces)
+                {
+                    <option value="@item.Id">@item.ProvinceName</option>
+                }
+            </select>
         </div>
         <div class="row mt-3">
             <br />
