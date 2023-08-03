@@ -2,9 +2,9 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Services.Contracts;
-    using System.ComponentModel.DataAnnotations;
     using CarMarketplace.Web.ViewModels;
 
     public class CatalogController : BaseController
@@ -22,27 +22,33 @@
         }
 
         [AllowAnonymous]
-        [ActionName("CatalogHome")]
-        public async Task<IActionResult> CatalogHome()
+        [ActionName("Home")]
+        public async Task<IActionResult> Home()
         {
-            return View("CatalogHome", await this.catalogService.GetLatestSalePostsAsync());
+            return View(await this.catalogService.GetLatestSalePostsAsync());
         }
 
         [AllowAnonymous]
         [ActionName("Catalog")]
         public async Task<IActionResult> Catalog()
         {
-            return View("Catalog" ,await this.catalogService.GetLatestSalePostsAsync());
+            return View("Catalog", await this.catalogService.GetLatestSalePostsAsync());
         }
 
         [AllowAnonymous]
-        [HttpPost]
-        [Route("Catalog/SetViewData")]
-        public ActionResult SetViewData(ViewDataViewModel data)
+        public async Task<IActionResult> Details(Guid id)
         {
-            Console.WriteLine(data);
-            ViewData[data.key] = data.value;
-            return new EmptyResult();
+            return View(await this.catalogService.GetSalePostByIdAsync(id));
         }
+
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("Catalog/SetViewData")]
+        //public ActionResult SetViewData(ViewDataViewModel data)
+        //{
+        //    Console.WriteLine(data);
+        //    ViewData[data.key] = data.value;
+        //    return new EmptyResult();
+        //}
     }
 }

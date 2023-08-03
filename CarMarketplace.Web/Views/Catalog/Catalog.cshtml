@@ -1,4 +1,4 @@
-﻿@model ICollection<CarShortViewModel>
+﻿@model ICollection<SalePostViewModel>
 
 @{
     ViewData["Title"] = "Catalog";
@@ -12,28 +12,31 @@
     </div>
     @foreach (var post in Model)
     {
-        imageSrc = ViewData["CloudDomain"] + @post.MainPictureUrl;
+        imageSrc = ViewData["CloudDomain"] + @post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
         <div class="container text-center border rounded shadow-lg p-3 mb-4 mt-4">
-            <a href="#" class="row align-items-start text-decoration-none">
+            <a asp-controller="Catalog" asp-action="Details" asp-route-id="@post.Id" class="row align-items-start text-decoration-none">
                 <div class="col-5">
-                    <img src="@imageSrc" class="card-img" alt="@post.CarName">
+                    <img src="@imageSrc" class="card-img" alt="@post.Car.CarName">
                 </div>
                 <div class="col">
                     <div class="col mt-3 text-start">
-                        <h1>@post.CarName @post.CarYear</h1>
+                        <h1>@post.Car.CarName @post.Car.Year</h1>
                         <hr>
                         <div class="mt-5">
                             <span class="fs-1"><span class="text-success">@post.Price</span><span class="fw-bold"> BGN</span></span>
                             <br>
-                            <span class="fs-1">@post.CarEngineDisplacement</span>
-                            <span class="fs-1">@post.CarEngineFuelType</span>
+                            @{
+                                var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
+                            }
+                            <span class="fs-1">@displacement </span>
+                            <span class="fs-1">@post.Car.Engine.FuelType</span>
                             <br>
-                            <span class="fs-1">@post.CarTransmissionType</span>
+                            <span class="fs-1">@post.Car.TransmissionType</span>
                             <br>
-                            <span class="fs-1">@post.CarProvinceName</span>
+                            <span class="fs-1">@post.Car.Province</span>
                             <br>
                             <div class="mt-4 text-end">
-                                <span class="fs-3">@post.PublishDate</span>
+                                <span class="fs-3">@post.PublishDate.ToString("HH:mm:ss MM/dd/yyyy")</span>
                             </div>
                         </div>
                     </div>

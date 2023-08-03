@@ -3,14 +3,15 @@
     ViewData["Title"] = "Search";
 }
 
+
 <div class="d-grid gap-2 col-6 mx-auto text-center mt-5">
     <h3>@ViewData["Title"]</h3>
 </div>
 <form>
     <fieldset>
         <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4">Select Make</label>
-            <select class="form-select" id="MakeSelect" onchange="SetViewData()">
+            <label for="exampleSelect1" class="form-label mt-4 fs-4">Select Make</label>
+            <select class="form-select" id="MakeSelect" onchange="loadModels()">
                 <option value="All">All</option>
                 @foreach (var item in Model.Makes)
                 {
@@ -19,7 +20,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4">Select Model</label>
+            <label for="exampleSelect1" class="form-label mt-4 fs-4">Select Model</label>
             <select class="form-select" id="ModelSelect" disabled>
                 <option value="All">All</option>
                 @*@foreach (var item in Model.Models.Where(m => m.ManufacturerName == ViewData["Make"]))
@@ -29,39 +30,24 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4">Select Category</label>
+            <label for="exampleSelect1" class="form-label mt-4 fs-4">Select Category</label>
             <select class="form-select" id="CategorySelect">
-                <option>All</option>
-
-
-
-                <script>
-                    let arr = @Json.Serialize(Model.Models
-                        .Select(x => new {
-                            MakeName = x.ManufacturerName,
-                            ModelName = x.ModelName
-                        })
-                        .ToArray()));     
-                    localStorage.setItem("Models", arr);
-                </script>
-
-
-
-                @*@foreach (var item in Model.Categories)
+                <option>All</option>A
+                @foreach (var item in Model.Categories)
                 {
                     <option value="@item.Id">@item.Name</option>
-                }*@
+                }
             </select>
         </div>
         <div class="row mt-3">
             <br />
             <span class="fs-4">Kilometers:</span>
             <div class="form-group col-md-4">
-                <label for="fromKm">From:</label>
+                <label for="fromKm" class="form-label mt-4 fs-4">From:</label>
                 <input type="number" id="fromKm" class="form-control" placeholder="e.g., 50000">
             </div>
             <div class="form-group col-md-4">
-                <label for="toKm">To:</label>
+                <label for="toKm" class="form-label mt-4 fs-4">To:</label>
                 <input type="number" id="toKm" class="form-control" placeholder="e.g., 150000">
             </div>
         </div>
@@ -69,109 +55,69 @@
             <br />
             <span class="fs-4">Horsepower:</span>
             <div class="form-group col-md-4">
-                <label for="fromHP">From:</label>
+                <label for="fromHP" class="form-label mt-4 fs-4">From:</label>
                 <input type="number" id="fromHP" class="form-control" placeholder="e.g., 100">
             </div>
             <div class="form-group col-md-4">
-                <label for="toHP">To:</label>
+                <label for="toHP" class="form-label mt-4 fs-4">To:</label>
                 <input type="number" id="toHP" class="form-control" placeholder="e.g., 240">
             </div>
         </div>
-
         <div class="form-group">
-            <label for="exampleTextarea" class="form-label mt-4">Example textarea</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            <label for="exampleTextarea" class="form-label mt-4 fs-4">Example textarea</label>
+            <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
         </div>
-        <div class="form-group">
-            <label for="formFile" class="form-label mt-4">Default file input example</label>
-            <input class="form-control" type="file" id="formFile">
+        <div class="row mt-3">
+            <br />
+            <span class="fs-3">Year:</span>
+            <div class="form-group col-md-4">
+                <label for="fromYear" class="form-label mt-4 fs-4">From:</label>
+                <input type="number" id="fromYear" class="form-control" placeholder="e.g., 1995">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="toYear" class="form-label mt-4 fs-4">To:</label>
+                <input type="number" id="toYear" class="form-control" placeholder="e.g., 2005">
+            </div>
         </div>
-        <fieldset class="form-group">
-            <legend class="mt-4">Radio buttons</legend>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                <label class="form-check-label" for="optionsRadios1">
-                    Option one is this and that—be sure to include why it's great
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                <label class="form-check-label" for="optionsRadios2">
-                    Option two can be something else and selecting it will deselect option one
-                </label>
-            </div>
-            <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
-                <label class="form-check-label" for="optionsRadios3">
-                    Option three is disabled
-                </label>
-            </div>
+        <fieldset class="form-group mt-3">
+            <label for="PriceTo" class="form-label mt-4 fs-3">Price To: <span id="selectedValue" class="fw-bold">50000</span></label>
+            <input type="range" class="form-range" id="priceTo" min="100" max="100000" step="50">
         </fieldset>
-        <fieldset class="form-group">
-            <legend class="mt-4">Checkboxes</legend>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Default checkbox
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
-                <label class="form-check-label" for="flexCheckChecked">
-                    Checked checkbox
-                </label>
-            </div>
-        </fieldset>
-        <fieldset class="form-group">
-            <legend class="mt-4">Switches</legend>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-            </div>
-        </fieldset>
-        <fieldset class="form-group">
-            <legend class="mt-4">Ranges</legend>
-            <label for="Range1" class="form-label">Year from:</label>
-            <input type="range" class="form-range" id="YearFromRange">
-            <label for="Range" class="form-label">Year to range</label>
-            <input type="range" class="form-range" id="YearToRange">
-
-            <div class="year-dot year-dot-start"></div>
-            <div class="year-dot year-dot-end"></div>
-            <br>
-            <input type="text" id="year-range-slider" class="slider">
-        </fieldset>
-        <button asp-controller="Catalog" asp-action="Catalog" type="submit" class="btn btn-primary">Submit</button>
+        <div class="d-grid col-3 mx-auto mt-4">
+            <a asp-controller="Catalog" asp-action="Catalog" class="btn btn-primary" id="submitForm">Submit</a>
+        </div>
     </fieldset>
 </form>
-
-<script src="~/js/search.js"></script>
-                @*<script type='text/javascript'>
-    function SetViewData() {
-        let select = document.querySelector('#MakeSelect')
-        let make = select.options[select.selectedIndex].text;
-
-        document.querySelector("#ModelSelect").disabled = false;
-        let data = {
-            'key': "Make",
-            'value': make,
-            'viewModel': @Model
-        }
-
-        $.ajax({
-            type: "POST",
-            url: '/Catalog/SetViewData',
-            data: data,
-            success: function (response) {
-                document.querySelector("#ModelSelect")
-            },
-            error: function (request, status, error) {
-                console.log("error")
-            }
+@section scripts{
+    <script type="text/javascript">
+        $('a#submitForm').click(function () {
+            $.ajax({
+                url: '@Url.Action("CalculateItemQuote", "Quote")',
+                type: 'POST',
+                data: {
+                    'ProductId': $('#ProductId').val(),
+                    'Quantity': $('#Quantity').val()
+                },
+                dataType: 'json',
+                traditional: true,
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                success: function (data) {
+                    $("#bifoldHeaderPartial").html(data);
+                    $('#bifoldHeaderPartial').show();
+                }
+            });
         });
-    }
-</script>*@
+    </script>
+    <script>
+        function loadModels() {
+            localStorage.clear;
+            var make = document.querySelector('#MakeSelect').options[makeSelect.selectedIndex].text;
+        @ViewData["MakeSelected"] = make;
+            console.log(make);
+            var models = JSON.parse('@Html.Raw(Json.Serialize(@Model.Models.Where(x => x.ManufacturerName == ViewData["MakeSelected"])))');
+            console.log(models);
+            localStorage.setItem("models", models);
+        }
+    </script>
+    <script src="~/js/search.js"></script>
+}

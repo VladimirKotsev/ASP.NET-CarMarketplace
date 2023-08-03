@@ -41,6 +41,8 @@
         [ForeignKey(nameof(ProvinceId))]
         public virtual Province Province { get; set; } = null!;
 
+        public string? City { get; set; }
+
         public int Year { get; set; }
 
         public int EngineId { get; set; }

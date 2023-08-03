@@ -6,7 +6,9 @@
 
     using CarMarketplace.Data;
     using CarMarketplace.Services.Contracts;
+    using CarMarketplace.Services.Mapping;
     using CarMarketplace.Web.ViewModels.Catalog;
+    using System;
 
     public class CatalogService : ICatalogService
     {
@@ -17,33 +19,98 @@
             this.dbContext = _dbContext;   
         }
 
-        public async Task<ICollection<CarShortViewModel>> GetLatestSalePostsAsync()
+        public async Task<ICollection<SalePostViewModel>> GetLatestSalePostsAsync()
         {
-            ICollection<CarShortViewModel> lastPosts = await this.dbContext
+            ICollection<SalePostViewModel> lastPosts = await this.dbContext
                 .SalePosts
-                .OrderBy(p => p.PublishDate)
+                .OrderBy(sp => sp.PublishDate)
                 .Take(6)
-                .Select(p => new CarShortViewModel()
+                .Select(sp => new SalePostViewModel() 
                 {
-                    CarId = p.CarId,
-                    CarMake = p.Car.Make.Name,
-                    CarModel = p.Car.Model.ModelName,
-                    CarName = p.Car.Make.Name + " " + p.Car.Model.ModelName,
-                    CarYear = p.Car.Year,
-                    CarProvinceName = p.Car.Province.ProvinceName,
-                    CarEngineDisplacement = p.Car.Engine.Displacement,
-                    CarHorsepower = p.Car.Engine.Horsepower,
-                    CarEngineFuelType = p.Car.Engine.FuelType,
-                    CarTransmissionType = p.Car.TransmissionType,
-                    Price = p.Price,
-                    MainPictureUrl = p.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First(),
-                    PublishDate = p.PublishDate
+                    Car = new CarViewModel() 
+                    {
+                        CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
+                        Make = sp.Car.Make.Name,
+                        Model = sp.Car.Model.ModelName,
+                        Category = sp.Car.Category.Name,
+                        Description = sp.Car.Description,
+                        TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
+                        Color = sp.Car.Color.Name,
+                        EuroStandart = sp.Car.EuroStandart,
+                        Odometer = sp.Car.Odometer,
+                        Province = sp.Car.Province.ProvinceName,
+                        VinNumber = sp.Car.VinNumber,
+                        TransmissionType = sp.Car.TransmissionType,
+                        Year = sp.Car.Year,
+                        Engine = new EngineViewModel() 
+                        {
+                            Displacement = sp.Car.Engine.Displacement,
+                            Horsepower = sp.Car.Engine.Horsepower,
+                            FuelType = sp.Car.Engine.FuelType
+                        }
+                    },
+                    Seller = new SellerViewModel()
+                    {
+                        FirstName = sp.Seller.FirstName,
+                        LastName = sp.Seller.LastName,
+                        PhoneNumber = sp.Seller.PhoneNumber
+                    },
+                    PublishDate = sp.PublishDate,
+                    ImageUrls = sp.ImageUrls,
+                    Price = sp.Price,
+                    Id = sp.Id
                 })
                 .ToArrayAsync();
 
             return lastPosts;
         }
 
+        public async Task<SalePostViewModel> GetSalePostByIdAsync(Guid postId)
+        {
+            var postById = await this.dbContext
+                .SalePosts
+                .Where(x => x.Id == postId)
+                .Select(sp => new SalePostViewModel()
+                {
+                    Car = new CarViewModel()
+                    {
+                        CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
+                        Make = sp.Car.Make.Name,
+                        Model = sp.Car.Model.ModelName,
+                        Category = sp.Car.Category.Name,
+                        Description = sp.Car.Description,
+                        TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
+                        Color = sp.Car.Color.Name,
+                        EuroStandart = sp.Car.EuroStandart,
+                        Odometer = sp.Car.Odometer,
+                        Province = sp.Car.Province.ProvinceName,
+                        City = sp.Car.City,
+                        VinNumber = sp.Car.VinNumber,
+                        TransmissionType = sp.Car.TransmissionType,
+                        Year = sp.Car.Year,
+                        Engine = new EngineViewModel()
+                        {
+                            Displacement = sp.Car.Engine.Displacement,
+                            Horsepower = sp.Car.Engine.Horsepower,
+                            FuelType = sp.Car.Engine.FuelType
+                        }
+                    },
+                    Seller = new SellerViewModel()
+                    {
+                        FirstName = sp.Seller.FirstName,
+                        LastName = sp.Seller.LastName,
+                        PhoneNumber = sp.Seller.PhoneNumber
+                    },
+                    PublishDate = sp.PublishDate,
+                    ImageUrls = sp.ImageUrls,
+                    Price = sp.Price,
+                    Id = sp.Id
+                })
+                .FirstAsync();
+
+            return postById;
+                
+        }
         public async Task<SearchViewModel> GetSearchViewModelAsync()
         {
             SearchViewModel model = new SearchViewModel();

@@ -1,29 +1,32 @@
-﻿let makeSelect = document.querySelector('#MakeSelect');
+﻿const rangeInput = document.querySelector("#priceTo");
+const selectedValueElement = document.getElementById("selectedValue");
 
-makeSelect.addEventListener('change', (e) => getMake(e));
+rangeInput.addEventListener("change", function () {
+    selectedValueElement.innerText = rangeInput.value + " BGN";
+});
 
-function getMake(e) {
 
-    console.log(e.target.value);
+//let makeSelect = document.querySelector('#MakeSelect');
 
-    let modelSelect = document.querySelector("#ModelSelect");
-    modelSelect.disabled = false;
+//makeSelect.addEventListener('change', (e) => getMake(e));
 
-    let make = makeSelect.options[makeSelect.selectedIndex].text;
+//function getMake(e) {
 
-    let arr = JSON.stringify(localStorage.getItem("Models"));
-    console.log(arr);
+//    let modelSelect = document.querySelector("#ModelSelect");
+//    modelSelect.disabled = false;
+
+//    let make = makeSelect.options[makeSelect.selectedIndex].text;
     
-    //for (let i = 0; i < Model.Models.length; i++) {
-    //    console
-    //}
-}
+//    //for (let i = 0; i < Model.Models.length; i++) {
+//    //    console
+//    //}
+//}
 
-let htmlTemplate = `
-@foreach (var item in Model.Models.Where(m => m.ManufacturerName == ViewData["Make"]))
-{
-    <option value="@item.Id">@item.ModelName</option>
-}`;
+//let htmlTemplate = `
+//@foreach (var item in Model.Models.Where(m => m.ManufacturerName == ViewData["Make"]))
+//{
+//    <option value="@item.Id">@item.ModelName</option>
+//}`;
 
 //function SetViewData() {
 //    let select = document.querySelector('#MakeSelect')

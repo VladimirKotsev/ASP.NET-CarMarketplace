@@ -18,11 +18,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
+    <PackageReference Include="System-Web-Helpers.dll" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CarMarketplace.Common\CarMarketplace.Common.csproj" />
     <ProjectReference Include="..\CarMarketplace.Data\CarMarketplace.Data.csproj" />
+    <ProjectReference Include="..\CarMarketplace.Services.Mapping\CarMarketplace.Services.Mapping.csproj" />
     <ProjectReference Include="..\CarMarketplace.Services\CarMarketplace.Services.csproj" />
     <ProjectReference Include="..\CarMarketplace.Web.ViewModels\CarMarketplace.Web.ViewModels.csproj" />
   </ItemGroup>

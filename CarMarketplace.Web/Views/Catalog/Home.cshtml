@@ -1,4 +1,4 @@
-﻿@model ICollection<CarShortViewModel>
+﻿@model ICollection<SalePostViewModel>
 
 @{
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
@@ -18,19 +18,19 @@
     <div class="row">
         @foreach (var post in Model.Take(3))
         {
-            imageSrc = ViewData["CloudDomain"] + post.MainPictureUrl;
-            <a href="#" class="col-md-4" style="text-decoration: none">
+            imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
+            <a asp-controller="Catalog" asp-action="Details" asp-route-id="@post.Id" class="col-md-4" style="text-decoration: none">
                 <div>
                     <div class="card mb-4">
-                        <img src="@imageSrc" class="card-img-top" alt="@post.CarName">
+                        <img src="@imageSrc" class="card-img-top" alt="@post.Car.CarName">
                         <div class="card-body">
-                            <h3 class="card-title"><strong>@post.CarName</strong></h3>
+                            <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
                             <hr>
-                            <span class="card-text fs-2">Price: <span class="card-text fs-3 text-success">@post.Price BGN</span></span>
+                            <span class="card-text fs-2">Price: <span class="card-text fs-3 text-success">@post.Price</span> BGN</span>
                             <br>
-                            <span class="card-text fs-3">Year: @post.CarYear</span>
+                            <span class="card-text fs-3">Year: @post.Car.Year</span>
                             <br>
-                            <p class="card-text fs-3">@post.CarProvinceName</p>
+                            <p class="card-text fs-3">@post.Car.Province</p>
                             <span class="card-text fs-4">@post.PublishDate.ToString("HH:mm:ss MM/dd/yyyy")</span>
                             <br>
                         </div>
@@ -42,18 +42,18 @@
     <div class="row">
         @foreach (var post in Model.Skip(3).Take(3))
         {
-            imageSrc = ViewData["CloudDomain"] + post.MainPictureUrl;
-            <a href="#" class="col-md-4" style="text-decoration: none">
+            imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
+            <a asp-controller="Catalog" asp-action="Details" asp-route-id="@post.Id" class="col-md-4" style="text-decoration: none">
                 <div>
                     <div class="card mb-4">
-                        <img src="@imageSrc" class="card-img-top" alt="@post.CarName">
+                        <img src="@imageSrc" class="card-img-top" alt="@post.Car.CarName">
                         <div class="card-body">
-                            <h3 class="card-title"><strong>@post.CarName</strong></h3>
+                            <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
                             <span class="card-text fs-3">Price: @post.Price lv.</span>
                             <br>
-                            <span class="card-text">Year: @post.CarYear</span>
+                            <span class="card-text">Year: @post.Car.Year</span>
                             <br>
-                            <p class="card-text">@post.CarProvinceName</p>
+                            <p class="card-text">@post.Car.Province</p>
                             <span class="card-text">@post.PublishDate.ToString("HH:mm:ss MM/dd/yyyy")</span>
                             <br>
                         </div>

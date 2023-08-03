@@ -7,6 +7,9 @@ using CarMarketplace.Services;
 using CarMarketplace.Services.Contracts;
 using System.Security.Principal;
 using CloudinaryDotNet;
+using CarMarketplace.Web.ViewModels;
+using System.Reflection;
+using CarMarketplace.Services.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +53,8 @@ Cloudinary cloudinary = new Cloudinary(cloudinaryCredentials);
 builder.Services.AddSingleton(cloudinary);
 
 var app = builder.Build();
+
+AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -4,8 +4,10 @@
 
     public interface ICatalogService
     {
-        public Task<ICollection<CarShortViewModel>> GetLatestSalePostsAsync();
+        public Task<ICollection<SalePostViewModel>> GetLatestSalePostsAsync();
 
         public Task<SearchViewModel> GetSearchViewModelAsync();
+
+        public Task<SalePostViewModel> GetSalePostByIdAsync(Guid postId);
     }
 }
