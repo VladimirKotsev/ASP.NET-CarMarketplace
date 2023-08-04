@@ -170,51 +170,5 @@
 
             return model;
         }
-
-        public Task<ICollection<SalePostViewModel>> GetSellerPostsAsync(Guid postId)
-        {
-            ICollection<SalePostViewModel> sellerPosts = await this.dbContext
-                .SalePosts
-                .OrderBy(sp => sp.PublishDate)
-                .Take(6)
-                .Select(sp => new SalePostViewModel()
-                {
-                    Car = new CarViewModel()
-                    {
-                        CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
-                        Make = sp.Car.Make.Name,
-                        Model = sp.Car.Model.ModelName,
-                        Category = sp.Car.Category.Name,
-                        Description = sp.Car.Description,
-                        TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
-                        Color = sp.Car.Color.Name,
-                        EuroStandart = sp.Car.EuroStandart,
-                        Odometer = sp.Car.Odometer,
-                        Province = sp.Car.Province.ProvinceName,
-                        VinNumber = sp.Car.VinNumber,
-                        TransmissionType = sp.Car.TransmissionType,
-                        Year = sp.Car.Year,
-                        Engine = new EngineViewModel()
-                        {
-                            Displacement = sp.Car.Engine.Displacement,
-                            Horsepower = sp.Car.Engine.Horsepower,
-                            FuelType = sp.Car.Engine.FuelType
-                        }
-                    },
-                    Seller = new SellerViewModel()
-                    {
-                        FirstName = sp.Seller.FirstName,
-                        LastName = sp.Seller.LastName,
-                        PhoneNumber = sp.Seller.PhoneNumber
-                    },
-                    PublishDate = sp.PublishDate,
-                    ImageUrls = sp.ImageUrls,
-                    Price = sp.Price,
-                    Id = sp.Id
-                })
-                .ToArrayAsync();
-
-            return sellerPosts;
-        }
     }
 }

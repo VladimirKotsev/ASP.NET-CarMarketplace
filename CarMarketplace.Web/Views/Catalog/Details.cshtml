@@ -45,7 +45,7 @@
             }
             <h2>Manufacturer: @Model.Car.Make</h2>
             <p class="fs-2">Car Model: @Model.Car.Model</p>
-            <br />
+            <hr />
             <p class="fs-3">Year: @Model.Car.Year</p>
             <p class="fs-3">Color: @Model.Car.Color</p>
             <p class="fs-3">Price: @Model.Price BGN</p>
@@ -59,7 +59,7 @@
                 }
             </p>
             <hr />
-            <p class="fs-4">@Model.PublishDate.ToString("HH:mm:ss MM/dd/yyyy")</p>
+            <p class="fs-4">@Model.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</p>
         </div>
     </div>
     <div class="row mt-3">

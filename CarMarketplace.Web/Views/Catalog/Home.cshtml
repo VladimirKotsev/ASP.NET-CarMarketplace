@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="my-4">ViewData["Title"]</h1>
+            <h1 class="my-4">@ViewData["Title"]</h1>
         </div>
         <div class="col-md-6 align-middle">
             <a asp-controller="Catalog" asp-action="Search" class="btn btn-primary mt-3 float-end">Search</a>
@@ -32,7 +32,7 @@
                             <span class="card-text fs-3">Year: @post.Car.Year</span>
                             <br>
                             <p class="card-text fs-3">@post.Car.Province</p>
-                            <span class="card-text fs-4">@post.PublishDate.ToString("HH:mm:ss MM/dd/yyyy")</span>
+                            <span class="card-text fs-4">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
                             <br>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
     {
         public static class Car
         {
-            public static int YearMaxValue = DateTime.UtcNow.Year;
+            public const int YearMaxValue = 2023;
             public const int YearMinValue = 1886;
 
             public const int OdometerMaxLength = 7;

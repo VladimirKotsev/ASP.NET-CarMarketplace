@@ -1,0 +1,54 @@
+﻿@model ICollection<SalePostViewModel>
+
+@{
+    ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
+    var imageSrc = "";
+    ViewData["Title"] = "My Collection";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="my-4">@ViewData["Title"]</h1>
+        </div>
+        <div class="col-md-6 align-middle">
+            <a asp-controller="Catalog" asp-action="AddPost" class="btn btn-primary mt-3 col-4 mx-auto float-end">Add a post</a>
+        </div>
+    </div>
+
+    @for (int i = 0; i < Model.Count; i += 3)
+    {
+        <div class="row">
+            @foreach (var post in Model.Skip(i).Take(3))
+            {
+                imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
+                <div class="col-md-4 text-decoration-none">
+                    <div>
+                        <div class="card mb-4">
+                            <img src="@imageSrc" class="card-img-top" alt="@post.Car.CarName">
+                            <div class="card-body">
+                                <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
+                                <hr>
+                                <span class="card-text fs-2">Price: <span class="card-text fs-3 text-success">@post.Price</span> BGN</span>
+                                <br>
+                                <span class="card-text fs-3">Year: @post.Car.Year</span>
+                                <br>
+                                <p class="card-text fs-3">@post.Car.Province</p>
+                                <span class="card-text fs-4">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                                <br>
+                                <div class="row justify-content-center mt-2">
+                                    <div class="col-md-6">
+                                        <a class="btn btn-primary btn-warning col-12">Edit</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="btn btn-primary btn-danger col-12">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

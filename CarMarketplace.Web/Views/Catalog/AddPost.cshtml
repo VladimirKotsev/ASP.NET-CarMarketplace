@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model AddCarForSaleViewModel
+@{
+}
+
+<div class="container mt-5">
+    <h2>Add Car for Sale</h2>
+    <form>
+        <div class="mb-3">
+            <label for="make" class="form-label">Car Make</label>
+            <select class="form-control" id="make" name="make" required>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="model" class="form-label">Car Model</label>
+            <input type="text" class="form-control" id="model" name="model" required>
+        </div>
+        <div class="mb-3">
+            <label for="year" class="form-label">Year</label>
+            <input type="number" class="form-control" id="year" name="year" required>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-md-5">
+                <label for="price" class="form-label">Price</label>
+                <div class="col-md-5">
+                <span class="fs-2">BGN</span>
+                <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="engine" class="form-label">Engine</label>
+            <select type="number" class="form-control" id="engine" name="price" required>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -35,10 +35,10 @@
             return View("Catalog", await this.catalogService.GetLatestSalePostsAsync());
         }
 
-        public async Task<IActionResult> MyPosts()
+        [ActionName("AddPost")]
+        public IActionResult Add()
         {
-
-            return View(await this.catalogService.GetSellerPostsAsync());
+            return View("AddPost");
         }
 
         [AllowAnonymous]

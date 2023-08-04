@@ -1,4 +1,5 @@
-﻿@inject ISellerService SellerService
+﻿@using System.Security.Claims;
+@inject ISellerService SellerService
 @{
     bool isSeller = await SellerService.SellerExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
 }
@@ -8,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CarMarketplace</title>
+    <title>CarMarketplace</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/lux.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -35,7 +36,7 @@
                         @if (isSeller)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="MyPosts">My Posts</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="UserPosts">My Posts</a>
                             </li>
                         }
                     </ul>

@@ -6,6 +6,7 @@
     using CarMarketplace.Data;
     using CarMarketplace.Web.ViewModels.User;
     using CarMarketplace.Data.Models;
+    using CarMarketplace.Web.ViewModels.Catalog;
 
     public class SellerService : ISellerService
     {
@@ -48,6 +49,61 @@
                 .AnyAsync(s => s.UserId.ToString() == userId);
 
             return result;
+        }
+
+        public async Task<ICollection<SalePostViewModel>> GetSellerPostsAsync(Guid sellerId)
+        {
+            ICollection<SalePostViewModel> sellerPosts = await this.dbContext
+                .SalePosts
+                .Where(x => x.SellerId == sellerId)
+                .OrderBy(sp => sp.PublishDate)
+                .Select(sp => new SalePostViewModel()
+                {
+                    Car = new CarViewModel()
+                    {
+                        CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
+                        Make = sp.Car.Make.Name,
+                        Model = sp.Car.Model.ModelName,
+                        Category = sp.Car.Category.Name,
+                        Description = sp.Car.Description,
+                        TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
+                        Color = sp.Car.Color.Name,
+                        EuroStandart = sp.Car.EuroStandart,
+                        Odometer = sp.Car.Odometer,
+                        Province = sp.Car.Province.ProvinceName,
+                        VinNumber = sp.Car.VinNumber,
+                        TransmissionType = sp.Car.TransmissionType,
+                        Year = sp.Car.Year,
+                        Engine = new EngineViewModel()
+                        {
+                            Displacement = sp.Car.Engine.Displacement,
+                            Horsepower = sp.Car.Engine.Horsepower,
+                            FuelType = sp.Car.Engine.FuelType
+                        }
+                    },
+                    Seller = new SellerViewModel()
+                    {
+                        FirstName = sp.Seller.FirstName,
+                        LastName = sp.Seller.LastName,
+                        PhoneNumber = sp.Seller.PhoneNumber
+                    },
+                    PublishDate = sp.PublishDate,
+                    ImageUrls = sp.ImageUrls,
+                    Price = sp.Price,
+                    Id = sp.Id
+                })
+                .ToArrayAsync();
+
+            return sellerPosts;
+        }
+
+        public async Task<Guid> GetSellerIdByUserIdAsync(string userId)
+        {
+            var seller = await this.dbContext
+                .Sellers
+                .FirstAsync(s => s.UserId == Guid.Parse(userId));
+
+            return seller.Id;
         }
     }
 }

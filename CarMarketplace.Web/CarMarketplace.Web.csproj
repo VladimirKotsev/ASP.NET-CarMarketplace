@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Catalog\MyPosts.cshtml" />
+    <None Include="Views\User\UserPosts.cshtml" />
   </ItemGroup>
 
 </Project>

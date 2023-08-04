@@ -62,7 +62,6 @@
             return RedirectToAction("Index", "Home");
         }
 
-
         [HttpGet]
         [Route("User/BecomeLender")]
         public async Task<IActionResult> BecomeLender()
@@ -99,6 +98,12 @@
             await lenderService.RegisterUserAsLenderAsync(this.UserId, model);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [Route("Colletion/UserPosts")]
+        public async Task<IActionResult> UserPosts()
+        {
+            return View(await this.sellerService.GetSellerPostsAsync(await this.sellerService.GetSellerIdByUserIdAsync(this.UserId)));
         }
     }
 }
