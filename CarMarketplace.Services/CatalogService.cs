@@ -19,6 +19,16 @@
             this.dbContext = _dbContext;   
         }
 
+        public async Task<ICollection<SalePostViewModel>> GetFilteredSalePostsAsync(SearchViewModel model)
+        {
+            var posts = await this.dbContext
+                .SalePosts
+                .ToArrayAsync();
+
+            if ()
+        }
+
+
         public async Task<ICollection<SalePostViewModel>> GetLatestSalePostsAsync()
         {
             ICollection<SalePostViewModel> lastPosts = await this.dbContext

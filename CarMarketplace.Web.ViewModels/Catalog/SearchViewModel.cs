@@ -13,20 +13,25 @@
 
         public ICollection<ProvinceViewModel> Provinces { get; set; } = null!;
 
-        public int FromHorsepower { get; set; }
-        public int ToHorsepower { get; set; }
+        public string? ModelName { get; set; }
+        public string Make { get; set; }
+        public string Category { get; set; }
+        public int? ProvinceId { get; set; }
 
-        public int FromKilometers { get; set; }
-        public int ToKilometers { get; set; }
+        public int? FromHorsepower { get; set; }
+        public int? ToHorsepower { get; set; }
 
-        public int FromYear { get; set; }
-        public int ToYear { get; set; }
+        public int? FromKilometers { get; set; }
+        public int? ToKilometers { get; set; }
 
-        public int FromPrice { get; set; }
-        public int ToPrice { get; set; }
+        public int? FromYear { get; set; }
+        public int? ToYear { get; set; }
 
-        public string TransmissionType { get; set; } = null!;
+        public int? FromPrice { get; set; }
+        public int? ToPrice { get; set; }
 
-        public string EngineType { get; set; } = null!;
+        public string? TransmissionType { get; set; } = null!;
+
+        public string? EngineFuelType { get; set; } = null!;
     }
 }

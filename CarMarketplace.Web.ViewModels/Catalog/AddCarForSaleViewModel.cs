@@ -17,8 +17,10 @@
         //httpPost data
         [Required]
         public int MakeId { get; set; }
+
         [Required]
         public int ModelId { get; set; }
+
         [Required]
         [Range(YearMinValue, YearMaxValue)]
         public int Year { get; set; }

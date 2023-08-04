@@ -10,12 +10,13 @@
 <div class="d-grid gap-2 col-6 mx-auto text-center mt-5">
     <h3>@ViewData["Title"]</h3>
 </div>
-<form>
+
+<form method="get" asp-action="Result" asp-controller="Catalog">
     <fieldset>
         <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4 fs-4">Select Make</label>
-            <select class="form-select" id="MakeSelect">
-                <option value="All">All</option>
+            <label for="MakeSelect" class="form-label mt-4 fs-4">Select Make</label>
+            <select class="form-select" asp-for="Make" id="MakeSelect">
+                <option value=0>All</option>
                 @foreach (var item in Model.Makes)
                 {
                     <option value="@item.Id">@item.Name</option>
@@ -23,19 +24,13 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4 fs-4">Select Model</label>
-            <select class="form-select" id="ModelSelect" disabled>
-                <option value="All">All</option>
-                @*@foreach (var item in Model.Models.Where(m => m.ManufacturerName == ViewData["Make"]))
-                {
-                <option value="@item.Id">@item.ModelName</option>
-                }*@
-            </select>
+            <label for="ModelInput" class="form-label mt-4 fs-4">Select Model</label>
+            <input class="form-control" asp-for="ModelName" id="ModelInput" placeholder="e.g., A3, Civic, Yaris" />
         </div>
         <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4 fs-4">Select Category</label>
-            <select class="form-select" id="CategorySelect">
-                <option>All</option>
+            <label for="CategorySelect" class="form-label mt-4 fs-4">Select Category</label>
+            <select class="form-select" asp-for="Category" id="CategorySelect">
+                <option value="0">All</option>
                 @foreach (var item in Model.Categories)
                 {
                     <option value="@item.Id">@item.Name</option>
@@ -47,11 +42,11 @@
             <span class="fs-4">Kilometers:</span>
             <div class="form-group col-md-4">
                 <label for="fromKm" class="form-label mt-4 fs-4">From:</label>
-                <input type="number" id="fromKm" class="form-control" placeholder="e.g., 50000">
+                <input type="number" id="fromKm" asp-for="FromKilometers" class="form-control" placeholder="e.g., 50000">
             </div>
             <div class="form-group col-md-4">
                 <label for="toKm" class="form-label mt-4 fs-4">To:</label>
-                <input type="number" id="toKm" class="form-control" placeholder="e.g., 150000">
+                <input type="number" id="toKm" asp-for="ToKilometers" class="form-control" placeholder="e.g., 150000">
             </div>
         </div>
         <div class="row mt-3">
@@ -59,20 +54,16 @@
             <span class="fs-4">Horsepower:</span>
             <div class="form-group col-md-4">
                 <label for="fromHP" class="form-label mt-4 fs-4">From:</label>
-                <input type="number" id="fromHP" class="form-control" placeholder="e.g., 100">
+                <input type="number" id="fromHP" asp-for="FromHorsepower" class="form-control" placeholder="e.g., 100">
             </div>
             <div class="form-group col-md-4">
                 <label for="toHP" class="form-label mt-4 fs-4">To:</label>
-                <input type="number" id="toHP" class="form-control" placeholder="e.g., 240">
+                <input type="number" id="toHP" asp-for="ToHorsepower" class="form-control" placeholder="e.g., 240">
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleTextarea" class="form-label mt-4 fs-4">Example textarea</label>
-            <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
-        </div>
-        <div class="form-group">
             <label for="ProvinceSelect" class="form-label mt-4 fs-4">Select Province</label>
-            <select class="form-select" id="ProvinceSelect">
+            <select class="form-select" asp-for="ProvinceId" id="ProvinceSelect">
                 <option>All</option>
                 @foreach (var item in Model.Provinces)
                 {
@@ -85,37 +76,27 @@
             <span class="fs-3">Year:</span>
             <div class="form-group col-md-4">
                 <label for="fromYear" class="form-label mt-4 fs-4">From:</label>
-                <input type="number" id="fromYear" class="form-control" placeholder="e.g., 1995">
+                <input type="number" id="fromYear" asp-for="FromYear" class="form-control" min=1886 placeholder="e.g., 1995">
             </div>
             <div class="form-group col-md-4">
                 <label for="toYear" class="form-label mt-4 fs-4">To:</label>
-                <input type="number" id="toYear" class="form-control" placeholder="e.g., 2005">
+                <input type="number" id="toYear" asp-for="ToYear" class="form-control" max="2023" placeholder="e.g., 2005">
             </div>
         </div>
-        <fieldset class="form-group mt-3">
-            <label for="PriceTo" class="form-label mt-4 fs-3">Price To: <span id="selectedValue" class="fw-bold">50000</span></label>
-            <input type="range" class="form-range" id="priceTo" min="100" max="100000" step="50">
-        </fieldset>
+        <div class="row mt-3">
+            <br />
+            <span class="fs-3">Price:</span>
+            <div class="form-group col-md-4">
+                <label for="fromPrice" class="form-label mt-4 fs-4">From:</label>
+                <input type="number" id="fromPrice" asp-for="FromPrice" class="form-control" min="0" placeholder="e.g., 2000">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="toPrice" class="form-label mt-4 fs-4">To:</label>
+                <input type="number" id="toPrice" asp-for="ToPrice" class="form-control" min="0" placeholder="e.g., 5000">
+            </div>
+        </div>
         <div class="d-grid col-3 mx-auto mt-4">
-            <a asp-controller="Catalog" asp-action="Catalog" class="btn btn-primary" id="submitForm">Submit</a>
+            <input class="btn btn-primary" type="submit" id="submitForm" value="Search">
         </div>
     </fieldset>
 </form>
-
-@section Scripts{
-    <script>
-        let makeSelect = document.qquerySelector("#MakeSelector");
-        makeSelect.AddEventListener('change', loadModels)
-
-        function loadModels() {
-
-            localStorage.clear;
-            var make = makeSelect.options[makeSelect.selectedIndex].text;
-           
-            @ViewData["Make"] = make;
-            var models = JSON.parse('@Html.Raw(Json.Serialize(@CatalogService.GetModelsByMakeAsync(@ViewData["Make"].ToString())))');
-            console.log(models);
-            localStorage.setItem("models", models);
-        }
-    </script>
-}

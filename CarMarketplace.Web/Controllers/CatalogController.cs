@@ -6,6 +6,7 @@
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.ViewModels;
+    using CarMarketplace.Web.ViewModels.Catalog;
 
     public class CatalogController : BaseController
     {
@@ -29,11 +30,18 @@
         }
 
         [AllowAnonymous]
-        [ActionName("Catalog")]
-        public async Task<IActionResult> Catalog()
+        public ActionResult Result(SearchViewModel model)
         {
-            return View("Catalog", await this.catalogService.GetLatestSalePostsAsync());
+            return View("Catalog");
         }
+
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ActionName("Catalog")]
+        //public async Task<IActionResult> Catalog(SearchViewModel model)
+        //{
+        //    return View("Catalog", await this.catalogService.GetLatestSalePostsAsync());
+        //}
 
         [ActionName("AddPost")]
         public IActionResult Add()
@@ -46,15 +54,5 @@
         {
             return View(await this.catalogService.GetSalePostByIdAsync(id));
         }
-
-        //[AllowAnonymous]
-        //[HttpPost]
-        //[Route("Catalog/SetViewData")]
-        //public ActionResult SetViewData(ViewDataViewModel data)
-        //{
-        //    Console.WriteLine(data);
-        //    ViewData[data.key] = data.value;
-        //    return new EmptyResult();
-        //}
     }
 }
