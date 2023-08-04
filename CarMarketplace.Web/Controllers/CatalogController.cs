@@ -35,6 +35,12 @@
             return View("Catalog", await this.catalogService.GetLatestSalePostsAsync());
         }
 
+        public async Task<IActionResult> MyPosts()
+        {
+
+            return View(await this.catalogService.GetSellerPostsAsync());
+        }
+
         [AllowAnonymous]
         public async Task<IActionResult> Details(Guid id)
         {

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@inject ISellerService SellerService
+@{
+    bool isSeller = await SellerService.SellerExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,6 +32,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="Home">Catalog</a>
                         </li>
+                        @if (isSeller)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="MyPosts">My Posts</a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

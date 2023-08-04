@@ -2,13 +2,14 @@
 
 @{
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
+    ViewData["Title"] = "Car Catalog";
     var imageSrc = "";
 }
 
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="my-4">Car Catalog</h1>
+            <h1 class="my-4">ViewData["Title"]</h1>
         </div>
         <div class="col-md-6 align-middle">
             <a asp-controller="Catalog" asp-action="Search" class="btn btn-primary mt-3 float-end">Search</a>

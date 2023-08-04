@@ -1,7 +1,10 @@
 ﻿@model SearchViewModel
 @{
     ViewData["Title"] = "Search";
+    ViewData["Make"] = "";
 }
+
+@inject ICatalogService CatalogService
 
 
 <div class="d-grid gap-2 col-6 mx-auto text-center mt-5">
@@ -11,7 +14,7 @@
     <fieldset>
         <div class="form-group">
             <label for="exampleSelect1" class="form-label mt-4 fs-4">Select Make</label>
-            <select class="form-select" id="MakeSelect" onchange="loadModels()">
+            <select class="form-select" id="MakeSelect">
                 <option value="All">All</option>
                 @foreach (var item in Model.Makes)
                 {
@@ -98,36 +101,21 @@
         </div>
     </fieldset>
 </form>
-@section scripts{
-    <script type="text/javascript">
-        $('a#submitForm').click(function () {
-            $.ajax({
-                url: '@Url.Action("CalculateItemQuote", "Quote")',
-                type: 'POST',
-                data: {
-                    'ProductId': $('#ProductId').val(),
-                    'Quantity': $('#Quantity').val()
-                },
-                dataType: 'json',
-                traditional: true,
-                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                success: function (data) {
-                    $("#bifoldHeaderPartial").html(data);
-                    $('#bifoldHeaderPartial').show();
-                }
-            });
-        });
-    </script>
+
+@section Scripts{
     <script>
+        let makeSelect = document.qquerySelector("#MakeSelector");
+        makeSelect.AddEventListener('change', loadModels)
+
         function loadModels() {
+
             localStorage.clear;
-            var make = document.querySelector('#MakeSelect').options[makeSelect.selectedIndex].text;
-        @ViewData["MakeSelected"] = make;
-            console.log(make);
-            var models = JSON.parse('@Html.Raw(Json.Serialize(@Model.Models.Where(x => x.ManufacturerName == ViewData["MakeSelected"])))');
+            var make = makeSelect.options[makeSelect.selectedIndex].text;
+           
+            @ViewData["Make"] = make;
+            var models = JSON.parse('@Html.Raw(Json.Serialize(@CatalogService.GetModelsByMakeAsync(@ViewData["Make"].ToString())))');
             console.log(models);
             localStorage.setItem("models", models);
         }
     </script>
-    <script src="~/js/search.js"></script>
 }

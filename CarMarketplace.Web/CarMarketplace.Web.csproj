@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Catalog\MyPosts.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.21.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.20" />
@@ -27,6 +31,10 @@
     <ProjectReference Include="..\CarMarketplace.Services.Mapping\CarMarketplace.Services.Mapping.csproj" />
     <ProjectReference Include="..\CarMarketplace.Services\CarMarketplace.Services.csproj" />
     <ProjectReference Include="..\CarMarketplace.Web.ViewModels\CarMarketplace.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Catalog\MyPosts.cshtml" />
   </ItemGroup>
 
 </Project>
