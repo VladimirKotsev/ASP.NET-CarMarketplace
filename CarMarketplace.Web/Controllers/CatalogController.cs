@@ -35,7 +35,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return this.View("Search", model);
+                return this.View("Search", await this.catalogService.GetSearchViewModelAsync(model));
             }
 
             return View(await catalogService.GetFilteredSalePostsAsync(model));

@@ -50,7 +50,7 @@
             </div>
             <div class="form-group col-4  border-left border-start border-3">
                 <label for="fromEuro" class="form-label mt-2 fs-4">Euro:</label>
-                <input type="number" id="fromEuro" asp-for="fromEuro" class="form-control" placeholder="e.g., 2, 3">
+                <input type="number" id="fromEuro" asp-for="fromEuro" class="form-control" min="0" placeholder="e.g., 2, 3">
                 <span asp-validation-for="fromEuro" class="text-danger"></span>
             </div>
         </div>
@@ -87,12 +87,12 @@
             <br />
             <span class="fs-3 mt-2">Year:</span>
             <div class="form-floating col-md-4">
-                <input type="number" id="fromYear" asp-for="FromYear" class="form-control" min=1886 placeholder="e.g., 1995">
+                <input type="number" id="fromYear" asp-for="FromYear" class="form-control" style="height: 70px;" min=1886 placeholder="e.g., 1995">
                 <label asp-for="FromYear" class="form-label fs-4">From:</label>
-                <span asp-validation-for="FromPrice" class="text-danger"></span>
+                <span asp-validation-for="FromYear" class="text-danger"></span>
             </div>
             <div class="form-floating col-md-4">
-                <input type="number" id="toYear" asp-for="ToYear" class="form-control" max="2023" placeholder="e.g., 2005">
+                <input type="number" id="toYear" asp-for="ToYear" class="form-control" style="height: 70px;" max="2023" placeholder="e.g., 2005">
                 <label asp-for="ToYear" class="form-label fs-4">To:</label>
                 <span asp-validation-for="ToYear" class="text-danger"></span>
             </div>
@@ -101,12 +101,12 @@
             <br />
             <span class="fs-3 mt-2">Price:</span>
             <div class="form-floating col-md-4">
-                <input type="number" id="fromPrice" asp-for="FromPrice" class="form-control search" min="0" placeholder="e.g., 2000" />
+                <input type="number" asp-for="FromPrice" class="form-control" style="height: 70px;" placeholder="e.g., 2000" />
                 <label asp-for="FromPrice" class="fs-4">From:</label>
                 <span asp-validation-for="FromPrice" class="text-danger"></span>
             </div>
             <div class="form-floating col-md-4">
-                <input type="number" id="toPrice" asp-for="ToPrice" class="form-control search" min="0" placeholder="e.g., 5000"/>
+                <input type="number" id="toPrice" asp-for="ToPrice" class="form-control" style="height: 70px;" placeholder="e.g., 5000" />
                 <label asp-for="ToPrice" class="form-label fs-4">To:</label>
                 <span asp-validation-for="ToPrice" class="text-danger"></span>
             </div>

@@ -40,7 +40,7 @@
         public class CarModel
         {
             public const int ModelMaxLenght = 45;
-            public const int ModelMinLenght = 3;
+            public const int ModelMinLenght = 2;
 
             public const int ManufacturerMaxLength = 29;
         }

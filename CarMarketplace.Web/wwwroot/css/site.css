@@ -1,22 +1,33 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
-.search input {
-    height: 150px
+.fade-background {
+    position: relative;
+    background: linear-gradient(to bottom, rgb(255, 163, 102) 0%, rgb(255, 224, 204) 100%);
+    color: white; /* Adjust text color for visibility */
+    padding: 20px 0; /* Adjust padding as needed */
+}
+
+.container-background {
+    background: rgb(204, 230, 255)
+}
+
+.hover-text-none {
+    text-decoration: none !important;
 }

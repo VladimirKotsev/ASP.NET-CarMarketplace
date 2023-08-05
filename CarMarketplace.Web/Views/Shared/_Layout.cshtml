@@ -20,7 +20,6 @@
 </head>
 <body>
     <header>
-        <partial name="_NotificationsPartial" />
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CarMarketplace</a>
@@ -47,6 +46,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_NotificationsPartial" />
             @RenderBody()
         </main>
     </div>
@@ -58,7 +58,6 @@
     </footer>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/search.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

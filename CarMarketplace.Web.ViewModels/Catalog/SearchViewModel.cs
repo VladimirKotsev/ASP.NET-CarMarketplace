@@ -13,12 +13,13 @@
 
         public ICollection<CategoryViewModel>? Categories { get; set; }
 
-        public ICollection<ProvinceViewModel> Provinces { get; set; }
+        public ICollection<ProvinceViewModel>? Provinces { get; set; }
+
+        public int? Make { get; set; }
 
         [DisplayName("model")]
-        [Range(ModelMinLenght, ModelMaxLenght, ErrorMessage = ErrorMessage)]
+        [StringLength(ModelMaxLenght, MinimumLength = ModelMinLenght, ErrorMessage = ErrorMessage)]
         public string? ModelName { get; set; }
-        public int? Make { get; set; }
         public int? Category { get; set; }
         public int? ProvinceId { get; set; }
 
@@ -30,13 +31,16 @@
         [Range(HorsepowerMinValue, HorsepowerMaxValue, ErrorMessage = ErrorMessage)]
         public int? ToHorsepower { get; set; }
 
-        [DisplayName("odometer")]
+        [DisplayName("odometer kilometers")]
         [Range(OdometerMinLength, OdometerMaxLength, ErrorMessage = ErrorMessage)]
         public int? FromKilometers { get; set; }
 
-        [DisplayName("odometer")]
+        [DisplayName("odometer kilometers")]
         [Range(OdometerMinLength, OdometerMaxLength, ErrorMessage = ErrorMessage)]
         public int? ToKilometers { get; set; }
+
+        [DisplayName("euro")]
+        [Range(EuroStandartMinValue, EuroStandartMaxValue, ErrorMessage = ErrorMessage)]
         public int? fromEuro { get; set; }
 
         [DisplayName("year")]
@@ -54,16 +58,17 @@
         [DisplayName("price")]
         [Range(PriceMinValue, PriceMaxValue, ErrorMessage = ErrorMessage)]
         public int? FromPrice { get; set; }
+
         [DisplayName("price")]
         [Range(PriceMinValue, PriceMaxValue, ErrorMessage = ErrorMessage)]
         public int? ToPrice { get; set; }
 
         [DisplayName("transmission type")]
         [StringLength(TransmissionTypeMaxLength, MinimumLength = TransmissionTypeMinLength, ErrorMessage = ErrorMessage)]
-        public string? TransmissionType { get; set; } = null!;
+        public string? TransmissionType { get; set; }
 
         [DisplayName("engine")]
         [StringLength(FuelTypeMaxLength, MinimumLength = FuelTypeMinLength, ErrorMessage = ErrorMessage)]
-        public string? EngineFuelType { get; set; } = null!;
+        public string? EngineFuelType { get; set; }
     }
 }
