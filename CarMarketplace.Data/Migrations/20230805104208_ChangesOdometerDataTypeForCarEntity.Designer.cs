@@ -4,6 +4,7 @@ using CarMarketplace.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    partial class CarMarketplaceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230805104208_ChangesOdometerDataTypeForCarEntity")]
+    partial class ChangesOdometerDataTypeForCarEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -167,7 +169,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
 
                     b.HasData(
                         new
@@ -235,7 +237,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Manufacturers", (string)null);
+                    b.ToTable("Manufacturers");
 
                     b.HasData(
                         new
@@ -435,7 +437,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Models", (string)null);
+                    b.ToTable("Models");
 
                     b.HasData(
                         new
@@ -3016,7 +3018,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -3075,7 +3077,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors", (string)null);
+                    b.ToTable("Colors");
 
                     b.HasData(
                         new
@@ -3200,7 +3202,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Engines", (string)null);
+                    b.ToTable("Engines");
 
                     b.HasData(
                         new
@@ -3527,7 +3529,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Lenders", (string)null);
+                    b.ToTable("Lenders");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Province", b =>
@@ -3545,7 +3547,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Provinces", (string)null);
+                    b.ToTable("Provinces");
 
                     b.HasData(
                         new
@@ -3717,7 +3719,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RentPosts", (string)null);
+                    b.ToTable("RentPosts");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
@@ -3748,7 +3750,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("SalePosts", (string)null);
+                    b.ToTable("SalePosts");
 
                     b.HasData(
                         new
@@ -3757,7 +3759,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"),
                             ImageUrls = "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg",
                             Price = 3500,
-                            PublishDate = new DateTime(2023, 8, 5, 14, 10, 25, 413, DateTimeKind.Local).AddTicks(5092),
+                            PublishDate = new DateTime(2023, 8, 5, 13, 42, 7, 631, DateTimeKind.Local).AddTicks(4831),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3766,7 +3768,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("913c5349-94de-4dc2-9e7d-346b57648227"),
                             ImageUrls = "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg",
                             Price = 1000,
-                            PublishDate = new DateTime(2023, 8, 5, 14, 10, 25, 413, DateTimeKind.Local).AddTicks(5150),
+                            PublishDate = new DateTime(2023, 8, 5, 13, 42, 7, 631, DateTimeKind.Local).AddTicks(4888),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3775,7 +3777,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"),
                             ImageUrls = "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg",
                             Price = 8500,
-                            PublishDate = new DateTime(2023, 8, 5, 14, 10, 25, 413, DateTimeKind.Local).AddTicks(5157),
+                            PublishDate = new DateTime(2023, 8, 5, 13, 42, 7, 631, DateTimeKind.Local).AddTicks(4895),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         });
                 });
@@ -3808,7 +3810,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Sellers", (string)null);
+                    b.ToTable("Sellers");
 
                     b.HasData(
                         new

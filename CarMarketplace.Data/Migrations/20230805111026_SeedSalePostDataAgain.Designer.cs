@@ -4,6 +4,7 @@ using CarMarketplace.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    partial class CarMarketplaceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230805111026_SeedSalePostDataAgain")]
+    partial class SeedSalePostDataAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -167,7 +169,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
 
                     b.HasData(
                         new
@@ -235,7 +237,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Manufacturers", (string)null);
+                    b.ToTable("Manufacturers");
 
                     b.HasData(
                         new
@@ -435,7 +437,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Models", (string)null);
+                    b.ToTable("Models");
 
                     b.HasData(
                         new
@@ -3016,7 +3018,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -3075,7 +3077,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors", (string)null);
+                    b.ToTable("Colors");
 
                     b.HasData(
                         new
@@ -3200,7 +3202,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Engines", (string)null);
+                    b.ToTable("Engines");
 
                     b.HasData(
                         new
@@ -3527,7 +3529,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Lenders", (string)null);
+                    b.ToTable("Lenders");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Province", b =>
@@ -3545,7 +3547,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Provinces", (string)null);
+                    b.ToTable("Provinces");
 
                     b.HasData(
                         new
@@ -3717,7 +3719,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RentPosts", (string)null);
+                    b.ToTable("RentPosts");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
@@ -3748,7 +3750,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("SalePosts", (string)null);
+                    b.ToTable("SalePosts");
 
                     b.HasData(
                         new
@@ -3808,7 +3810,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Sellers", (string)null);
+                    b.ToTable("Sellers");
 
                     b.HasData(
                         new

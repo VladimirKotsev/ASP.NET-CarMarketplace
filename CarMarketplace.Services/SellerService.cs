@@ -62,20 +62,37 @@
                     Car = new CarViewModel()
                     {
                         CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
-                        Make = sp.Car.Make.Name,
-                        Model = sp.Car.Model.ModelName,
-                        Category = sp.Car.Category.Name,
+                        Make = new CarManufacturerViewModel()
+                        {
+                            Id = sp.Car.ManufacturerId,
+                            Name = sp.Car.Make.Name
+                        },
+                        Model = new CarModelViewModel()
+                        {
+                            Id = sp.Car.ModelId,
+                            ModelName = sp.Car.Model.ModelName
+                        },
+                        Category = new CategoryViewModel()
+                        {
+                            Id = sp.Car.CategoryId,
+                            Name = sp.Car.Category.Name
+                        },
                         Description = sp.Car.Description,
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                         Color = sp.Car.Color.Name,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
-                        Province = sp.Car.Province.ProvinceName,
+                        Province = new ProvinceViewModel()
+                        {
+                            Id = sp.Car.ProvinceId,
+                            ProvinceName = sp.Car.Province.ProvinceName
+                        },
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
                         Engine = new EngineViewModel()
                         {
+                            Id = sp.Car.EngineId,
                             Displacement = sp.Car.Engine.Displacement,
                             Horsepower = sp.Car.Engine.Horsepower,
                             FuelType = sp.Car.Engine.FuelType

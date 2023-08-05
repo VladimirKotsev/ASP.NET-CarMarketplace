@@ -52,8 +52,7 @@
         public virtual Engine Engine { get; set; } = null!;
 
         [Required]
-        [MaxLength(OdometerMaxLength)]
-        public string Odometer { get; set; } = null!;
+        public int Odometer { get; set; }
 
         [Required]
         public string TransmissionType { get; set; } = null!;

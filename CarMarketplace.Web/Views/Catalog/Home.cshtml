@@ -27,11 +27,11 @@
                         <div class="card-body">
                             <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
                             <hr>
-                            <span class="card-text fs-2">Price: <span class="card-text fs-3 text-success">@post.Price</span> BGN</span>
+                            <span class="card-text fs-2">Price: @post.Price<span>BGN</span></span>
                             <br>
                             <span class="card-text fs-3">Year: @post.Car.Year</span>
                             <br>
-                            <p class="card-text fs-3">@post.Car.Province</p>
+                            <p class="card-text fs-3">@post.Car.Province.ProvinceName @post.Car.City</p>
                             <span class="card-text fs-4">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
                             <br>
                         </div>

@@ -3,8 +3,10 @@
     using CarMarketplace.Data.Models;
     using CarMarketplace.Services.Mapping.Contracts;
 
-    public class EngineViewModel : IMapFrom<Engine>
+    public class EngineViewModel
     {
+        public int Id { get; set; }
+
         public int Displacement { get; set; }
 
         public int Horsepower { get; set; }

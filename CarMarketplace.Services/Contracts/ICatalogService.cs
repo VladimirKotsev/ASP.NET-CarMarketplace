@@ -6,7 +6,7 @@
     {
         public Task<ICollection<SalePostViewModel>> GetLatestSalePostsAsync();
 
-        public Task<SearchViewModel> GetSearchViewModelAsync();
+        public Task<SearchViewModel> GetSearchViewModelAsync(SearchViewModel model);
 
         public Task<SalePostViewModel> GetSalePostByIdAsync(Guid postId);
 

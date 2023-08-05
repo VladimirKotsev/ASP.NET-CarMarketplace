@@ -19,15 +19,152 @@
             this.dbContext = _dbContext;   
         }
 
-        public async Task<ICollection<SalePostViewModel>> GetFilteredSalePostsAsync(SearchViewModel model)
+        private ICollection<SalePostViewModel> FilterAllSalePosts(ICollection<SalePostViewModel> posts, SearchViewModel model)
         {
-            var posts = await this.dbContext
-                .SalePosts
-                .ToArrayAsync();
+            if (model.Make != 0)
+            {
+                posts = posts.Where(p => p.Car.Make.Id == model.Make).ToArray();
+            }
+            if (model.ModelName != null)
+            {
+                posts = posts.Where(p => p.Car.Model.ModelName == model.ModelName).ToArray();
+            }
+            if (model.ProvinceId != 0)
+            {
+                posts = posts.Where(p => p.Car.Province.Id == model.ProvinceId).ToArray();
+            }
 
-            if ()
+            if (model.FromHorsepower != null && model.ToHorsepower != null)
+            {
+                posts = posts.Where(p => p.Car.Engine.Horsepower >= model.FromHorsepower && p.Car.Engine.Horsepower <= model.ToHorsepower).ToArray();
+            }
+            else if (model.FromHorsepower != null)
+            {
+                posts = posts.Where(p => p.Car.Engine.Horsepower >= model.FromHorsepower).ToArray();
+            }
+            else if (model.ToHorsepower != null)
+            {
+                posts = posts.Where(p => p.Car.Engine.Horsepower <= model.ToHorsepower).ToArray();
+            }
+
+            if (model.FromKilometers != null && model.ToKilometers != null)
+            {
+                posts = posts.Where(p => p.Car.Odometer >= model.FromKilometers && p.Car.Odometer <= model.ToKilometers).ToArray();
+            }
+            else if (model.FromKilometers != null)
+            {
+                posts = posts.Where(p => p.Car.Odometer >= model.FromKilometers).ToArray();
+            }
+            else if (model.ToKilometers != null)
+            {
+                posts = posts.Where(p => p.Car.Odometer <= model.ToKilometers).ToArray();
+            }
+
+            if (model.FromYear != null && model.ToYear != null)
+            {
+                posts = posts.Where(p => p.Car.Year >= model.FromYear && p.Car.Year <= model.ToYear).ToArray();
+            }
+            else if (model.FromYear != null)
+            {
+                posts = posts.Where(p => p.Car.Year >= model.FromYear).ToArray();
+            }
+            else if (model.ToYear != null)
+            {
+                posts = posts.Where(p => p.Car.Year <= model.ToYear).ToArray();
+            }
+
+            if (model.FromPrice != null && model.ToPrice != null)
+            {
+                posts = posts.Where(p => p.Price >= model.FromPrice && p.Price <= model.ToPrice).ToArray();
+            }
+            else if (model.FromPrice != null)
+            {
+                posts = posts.Where(p => p.Price >= model.FromPrice).ToArray();
+            }
+            else if (model.ToPrice != null)
+            {
+                posts = posts.Where(p => p.Price <= model.ToPrice).ToArray();
+            }
+
+            if (model.EngineFuelType != null)
+            {
+                posts = posts.Where(p => p.Car.Engine.FuelType == model.EngineFuelType).ToArray();
+            }
+            if (model.TransmissionType != null)
+            {
+                posts = posts.Where(p => p.Car.TransmissionType == model.TransmissionType).ToArray();
+            }
+            if (model.Category != 0)
+            {
+                posts = posts.Where(p => p.Car.Category.Id == model.Category).ToArray();
+            }
+
+            return posts;
         }
 
+        public async Task<ICollection<SalePostViewModel>> GetFilteredSalePostsAsync(SearchViewModel model)
+        {
+            ICollection<SalePostViewModel> posts = await this.dbContext
+                .SalePosts
+                .Select(sp => new SalePostViewModel()
+                {
+                    Car = new CarViewModel()
+                    {
+                        CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
+                        Make = new CarManufacturerViewModel()
+                        {
+                            Id = sp.Car.ManufacturerId,
+                            Name = sp.Car.Make.Name
+                        },
+                        Model = new CarModelViewModel()
+                        {
+                            Id = sp.Car.ModelId,
+                            ModelName = sp.Car.Model.ModelName
+                        },
+                        Category = new CategoryViewModel()
+                        {
+                            Id = sp.Car.CategoryId,
+                            Name = sp.Car.Category.Name
+                        },
+                        Description = sp.Car.Description,
+                        TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
+                        Color = sp.Car.Color.Name,
+                        EuroStandart = sp.Car.EuroStandart,
+                        Odometer = sp.Car.Odometer,
+                        Province = new ProvinceViewModel()
+                        {
+                            Id = sp.Car.ProvinceId,
+                            ProvinceName = sp.Car.Province.ProvinceName
+                        },
+                        VinNumber = sp.Car.VinNumber,
+                        TransmissionType = sp.Car.TransmissionType,
+                        Year = sp.Car.Year,
+                        Engine = new EngineViewModel()
+                        {
+                            Id = sp.Car.EngineId,
+                            Displacement = sp.Car.Engine.Displacement,
+                            Horsepower = sp.Car.Engine.Horsepower,
+                            FuelType = sp.Car.Engine.FuelType
+                        }
+                    },
+                    Seller = new SellerViewModel()
+                    {
+                        FirstName = sp.Seller.FirstName,
+                        LastName = sp.Seller.LastName,
+                        PhoneNumber = sp.Seller.PhoneNumber
+                    },
+                    PublishDate = sp.PublishDate,
+                    ImageUrls = sp.ImageUrls,
+                    Price = sp.Price,
+                    Id = sp.Id
+                })
+                .AsNoTracking()
+                .ToArrayAsync();
+
+            posts = FilterAllSalePosts(posts, model);
+
+            return posts;
+        }
 
         public async Task<ICollection<SalePostViewModel>> GetLatestSalePostsAsync()
         {
@@ -35,25 +172,42 @@
                 .SalePosts
                 .OrderBy(sp => sp.PublishDate)
                 .Take(6)
-                .Select(sp => new SalePostViewModel() 
+                .Select(sp => new SalePostViewModel()
                 {
-                    Car = new CarViewModel() 
+                    Car = new CarViewModel()
                     {
                         CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
-                        Make = sp.Car.Make.Name,
-                        Model = sp.Car.Model.ModelName,
-                        Category = sp.Car.Category.Name,
+                        Make = new CarManufacturerViewModel()
+                        {
+                            Id = sp.Car.ManufacturerId,
+                            Name = sp.Car.Make.Name
+                        },
+                        Model = new CarModelViewModel()
+                        {
+                            Id = sp.Car.ModelId,
+                            ModelName = sp.Car.Model.ModelName
+                        },
+                        Category = new CategoryViewModel()
+                        {
+                            Id = sp.Car.CategoryId,
+                            Name = sp.Car.Category.Name
+                        },
                         Description = sp.Car.Description,
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                         Color = sp.Car.Color.Name,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
-                        Province = sp.Car.Province.ProvinceName,
+                        Province = new ProvinceViewModel()
+                        {
+                            Id = sp.Car.ProvinceId,
+                            ProvinceName = sp.Car.Province.ProvinceName
+                        },
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
-                        Engine = new EngineViewModel() 
+                        Engine = new EngineViewModel()
                         {
+                            Id = sp.Car.EngineId,
                             Displacement = sp.Car.Engine.Displacement,
                             Horsepower = sp.Car.Engine.Horsepower,
                             FuelType = sp.Car.Engine.FuelType
@@ -99,21 +253,37 @@
                     Car = new CarViewModel()
                     {
                         CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
-                        Make = sp.Car.Make.Name,
-                        Model = sp.Car.Model.ModelName,
-                        Category = sp.Car.Category.Name,
+                        Make = new CarManufacturerViewModel()
+                        {
+                            Id = sp.Car.ManufacturerId,
+                            Name = sp.Car.Make.Name
+                        },
+                        Model = new CarModelViewModel()
+                        {
+                            Id = sp.Car.ModelId,
+                            ModelName = sp.Car.Model.ModelName
+                        },
+                        Category = new CategoryViewModel()
+                        {
+                            Id = sp.Car.CategoryId,
+                            Name = sp.Car.Category.Name
+                        },
                         Description = sp.Car.Description,
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                         Color = sp.Car.Color.Name,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
-                        Province = sp.Car.Province.ProvinceName,
-                        City = sp.Car.City,
+                        Province = new ProvinceViewModel()
+                        {
+                            Id = sp.Car.ProvinceId,
+                            ProvinceName = sp.Car.Province.ProvinceName
+                        },
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
                         Engine = new EngineViewModel()
                         {
+                            Id = sp.Car.EngineId,
                             Displacement = sp.Car.Engine.Displacement,
                             Horsepower = sp.Car.Engine.Horsepower,
                             FuelType = sp.Car.Engine.FuelType
@@ -135,10 +305,9 @@
             return postById;
                 
         }
-        public async Task<SearchViewModel> GetSearchViewModelAsync()
-        {
-            SearchViewModel model = new SearchViewModel();
 
+        public async Task<SearchViewModel> GetSearchViewModelAsync(SearchViewModel model)
+        {
             model.Makes = await this.dbContext
                 .Manufacturers
                 .Select(m => new CarManufacturerViewModel()

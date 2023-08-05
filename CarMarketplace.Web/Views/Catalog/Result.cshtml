@@ -10,6 +10,12 @@
     <div class="d-grid gap-2 col-6 mx-auto text-center mt-5">
         <h1>@ViewData["Title"]</h1>
     </div>
+    @if (Model.Count == 0)
+    {
+        <div class="d-flex justify-content-center align-items-center mt-5">
+            <h3>Sorry, no cars found.</h3>
+        </div>
+    }
     @foreach (var post in Model)
     {
         imageSrc = ViewData["CloudDomain"] + @post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
@@ -33,7 +39,13 @@
                             <br>
                             <span class="fs-1">@post.Car.TransmissionType</span>
                             <br>
-                            <span class="fs-1">@post.Car.Province</span>
+                            <span class="fs-1">
+                                @post.Car.Province.ProvinceName
+                                @if (@post.Car.City != null)
+                                {
+                                    <span>@post.Car.City</span>
+                                }
+                            </span>
                             <br>
                             <div class="mt-4 text-end">
                                 <span class="fs-3">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>

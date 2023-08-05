@@ -3,18 +3,15 @@
     ViewData["Title"] = "Search";
     ViewData["Make"] = "";
 }
-
-@inject ICatalogService CatalogService
-
-
-<div class="d-grid gap-2 col-6 mx-auto text-center mt-5">
+<div class="mx-auto text-center mt-5">
     <h3>@ViewData["Title"]</h3>
 </div>
 
+<partial name="_ValidationScriptsPartial" />
 <form method="get" asp-action="Result" asp-controller="Catalog">
     <fieldset>
         <div class="form-group">
-            <label for="MakeSelect" class="form-label mt-4 fs-4">Select Make</label>
+            <label for="MakeSelect" class="form-label mt-4 fs-3">Select Make</label>
             <select class="form-select" asp-for="Make" id="MakeSelect">
                 <option value=0>All</option>
                 @foreach (var item in Model.Makes)
@@ -24,47 +21,62 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="ModelInput" class="form-label mt-4 fs-4">Select Model</label>
+            <label for="ModelInput" class="form-label mt-4 fs-3">Select Model</label>
             <input class="form-control" asp-for="ModelName" id="ModelInput" placeholder="e.g., A3, Civic, Yaris" />
+            <span asp-validation-for="ModelName" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="CategorySelect" class="form-label mt-4 fs-4">Select Category</label>
+            <label for="CategorySelect" class="form-label mt-4 fs-3">Select Category</label>
             <select class="form-select" asp-for="Category" id="CategorySelect">
-                <option value="0">All</option>
+                <option value=0>All</option>
                 @foreach (var item in Model.Categories)
                 {
                     <option value="@item.Id">@item.Name</option>
                 }
             </select>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 col-md-13 d-flex">
             <br />
-            <span class="fs-4">Kilometers:</span>
-            <div class="form-group col-md-4">
-                <label for="fromKm" class="form-label mt-4 fs-4">From:</label>
+            <span class="fs-3 mt-2">Kilometers:</span>
+            <div class="form-group col-4">
+                <label for="fromKm" class="form-label mt-2 fs-4">From:</label>
                 <input type="number" id="fromKm" asp-for="FromKilometers" class="form-control" placeholder="e.g., 50000">
+                <span asp-validation-for="FromKilometers" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-4">
-                <label for="toKm" class="form-label mt-4 fs-4">To:</label>
+            <div class="form-group col-4">
+                <label for="toKm" class="form-label mt-2 fs-4">To:</label>
                 <input type="number" id="toKm" asp-for="ToKilometers" class="form-control" placeholder="e.g., 150000">
+                <span asp-validation-for="ToKilometers" class="text-danger"></span>
+            </div>
+            <div class="form-group col-4  border-left border-start border-3">
+                <label for="fromEuro" class="form-label mt-2 fs-4">Euro:</label>
+                <input type="number" id="fromEuro" asp-for="fromEuro" class="form-control" placeholder="e.g., 2, 3">
+                <span asp-validation-for="fromEuro" class="text-danger"></span>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 col-md-13 d-flex">
             <br />
-            <span class="fs-4">Horsepower:</span>
-            <div class="form-group col-md-4">
-                <label for="fromHP" class="form-label mt-4 fs-4">From:</label>
+            <span class="fs-3 mt-2">Horsepower:</span>
+            <div class="form-group col-4">
+                <label for="fromHP" class="form-label mt-2 fs-4">From:</label>
                 <input type="number" id="fromHP" asp-for="FromHorsepower" class="form-control" placeholder="e.g., 100">
+                <span asp-validation-for="FromHorsepower" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-4">
-                <label for="toHP" class="form-label mt-4 fs-4">To:</label>
+            <div class="form-group col-4">
+                <label for="toHP" class="form-label mt-2 fs-4">To:</label>
                 <input type="number" id="toHP" asp-for="ToHorsepower" class="form-control" placeholder="e.g., 240">
+                <span asp-validation-for="ToHorsepower" class="text-danger"></span>
+            </div>
+            <div class="form-group col-4 border-left border-start border-3">
+                <label for="city" class="form-label mt-2 fs-4">City:</label>
+                <input type="text" id="city" asp-for="City" class="form-control" placeholder="e.g., Burgas, Varna, Lovech">
+                <span asp-validation-for="City" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="ProvinceSelect" class="form-label mt-4 fs-4">Select Province</label>
+            <label for="ProvinceSelect" class="form-label mt-4 fs-3">Select Province</label>
             <select class="form-select" asp-for="ProvinceId" id="ProvinceSelect">
-                <option>All</option>
+                <option value=0>All</option>
                 @foreach (var item in Model.Provinces)
                 {
                     <option value="@item.Id">@item.ProvinceName</option>
@@ -73,29 +85,33 @@
         </div>
         <div class="row mt-3">
             <br />
-            <span class="fs-3">Year:</span>
-            <div class="form-group col-md-4">
-                <label for="fromYear" class="form-label mt-4 fs-4">From:</label>
+            <span class="fs-3 mt-2">Year:</span>
+            <div class="form-floating col-md-4">
                 <input type="number" id="fromYear" asp-for="FromYear" class="form-control" min=1886 placeholder="e.g., 1995">
+                <label asp-for="FromYear" class="form-label fs-4">From:</label>
+                <span asp-validation-for="FromPrice" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-4">
-                <label for="toYear" class="form-label mt-4 fs-4">To:</label>
+            <div class="form-floating col-md-4">
                 <input type="number" id="toYear" asp-for="ToYear" class="form-control" max="2023" placeholder="e.g., 2005">
+                <label asp-for="ToYear" class="form-label fs-4">To:</label>
+                <span asp-validation-for="ToYear" class="text-danger"></span>
             </div>
         </div>
         <div class="row mt-3">
             <br />
-            <span class="fs-3">Price:</span>
-            <div class="form-group col-md-4">
-                <label for="fromPrice" class="form-label mt-4 fs-4">From:</label>
-                <input type="number" id="fromPrice" asp-for="FromPrice" class="form-control" min="0" placeholder="e.g., 2000">
+            <span class="fs-3 mt-2">Price:</span>
+            <div class="form-floating col-md-4">
+                <input type="number" id="fromPrice" asp-for="FromPrice" class="form-control search" min="0" placeholder="e.g., 2000" />
+                <label asp-for="FromPrice" class="fs-4">From:</label>
+                <span asp-validation-for="FromPrice" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-4">
-                <label for="toPrice" class="form-label mt-4 fs-4">To:</label>
-                <input type="number" id="toPrice" asp-for="ToPrice" class="form-control" min="0" placeholder="e.g., 5000">
+            <div class="form-floating col-md-4">
+                <input type="number" id="toPrice" asp-for="ToPrice" class="form-control search" min="0" placeholder="e.g., 5000"/>
+                <label asp-for="ToPrice" class="form-label fs-4">To:</label>
+                <span asp-validation-for="ToPrice" class="text-danger"></span>
             </div>
         </div>
-        <div class="d-grid col-3 mx-auto mt-4">
+        <div class="d-grid col-3 mx-auto mt-5">
             <input class="btn btn-primary" type="submit" id="submitForm" value="Search">
         </div>
     </fieldset>

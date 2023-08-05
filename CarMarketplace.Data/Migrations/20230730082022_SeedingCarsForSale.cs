@@ -340,25 +340,25 @@ namespace CarMarketplace.Data.Migrations
                     { 28, "Yambol" }
                 });
 
-            migrationBuilder.InsertData(
+            migrationBuilder.InsertData( 
                 table: "Sellers",
                 columns: new[] { "Id", "FirstName", "LastName", "PhoneNumber", "UserId" },
-                values: new object[] { new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "Vladimir", "Kotsev", "0899904741", new Guid("eaba96e7-8ad5-436d-be68-424370407635") });
+                values: new object[] { new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "Vladimir", "Kotsev", "0899904741", new Guid("1859F1EA-90EA-4876-BCB9-B646F80071A8") });
 
             migrationBuilder.InsertData(
                 table: "Cars",
                 columns: new[] { "Id", "ApplicationUserId", "CategoryId", "ColorId", "Description", "EngineId", "EuroStandart", "LenderId", "ManufacturerId", "ModelId", "Odometer", "ProvinceId", "SellerId", "TechnicalSpecificationURL", "TransmissionType", "VinNumber", "Year" },
-                values: new object[] { new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), null, 3, 3, null, 11, 5, null, 5, 88, "164 000", 13, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/hyundai-ix35-1.7-crdi-115hp-18181", "Manual", null, 2013 });
+                values: new object[] { new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), null, 3, 3, null, 11, 5, null, 5, 88, "164000", 13, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/hyundai-ix35-1.7-crdi-115hp-18181", "Manual", null, 2013 });
 
             migrationBuilder.InsertData(
                 table: "Cars",
                 columns: new[] { "Id", "ApplicationUserId", "CategoryId", "ColorId", "Description", "EngineId", "EuroStandart", "LenderId", "ManufacturerId", "ModelId", "Odometer", "ProvinceId", "SellerId", "TechnicalSpecificationURL", "TransmissionType", "VinNumber", "Year" },
-                values: new object[] { new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), null, 2, 2, null, 2, 4, null, 1, 5, "209 000", 9, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/audi-a3-sportback-8pa-facelift-2008-1.9-tdi-105hp-dpf-4215", "Manual", null, 2009 });
+                values: new object[] { new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), null, 2, 2, null, 2, 4, null, 1, 5, "209000", 9, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/audi-a3-sportback-8pa-facelift-2008-1.9-tdi-105hp-dpf-4215", "Manual", null, 2009 });
 
             migrationBuilder.InsertData(
                 table: "Cars",
                 columns: new[] { "Id", "ApplicationUserId", "CategoryId", "ColorId", "Description", "EngineId", "EuroStandart", "LenderId", "ManufacturerId", "ModelId", "Odometer", "ProvinceId", "SellerId", "TechnicalSpecificationURL", "TransmissionType", "VinNumber", "Year" },
-                values: new object[] { new Guid("913c5349-94de-4dc2-9e7d-346b57648227"), null, 2, 5, null, 26, 3, null, 10, 145, "219 000", 7, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/fiat-punto-ii-188-3dr-1.2-80hp-6984", "Manual", null, 2000 });
+                values: new object[] { new Guid("913c5349-94de-4dc2-9e7d-346b57648227"), null, 2, 5, null, 26, 3, null, 10, 145, "219000", 7, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/fiat-punto-ii-188-3dr-1.2-80hp-6984", "Manual", null, 2000 });
 
             migrationBuilder.InsertData(
                 table: "SalePosts",

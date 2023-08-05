@@ -43,16 +43,16 @@
             @{
                 var displacement = (@Model.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
             }
-            <h2>Manufacturer: @Model.Car.Make</h2>
-            <p class="fs-2">Car Model: @Model.Car.Model</p>
+            <h2>Manufacturer: @Model.Car.Make.Name</h2>
+            <p class="fs-2">Car Model: @Model.Car.Model.ModelName</p>
             <hr />
             <p class="fs-3">Year: @Model.Car.Year</p>
             <p class="fs-3">Color: @Model.Car.Color</p>
             <p class="fs-3">Price: @Model.Price BGN</p>
             <p class="fs-3">Engine: @displacement <span>@Model.Car.Engine.FuelType</span></p>
             <p class="fs-3">Transmission: @Model.Car.TransmissionType</p>
-            <p class="fs-3">Category: @Model.Car.Category</p>
-            <p class="fs-3">Province: @Model.Car.Province 
+            <p class="fs-3">Category: @Model.Car.Category.Name</p>
+            <p class="fs-3">Province: @Model.Car.Province.ProvinceName 
                 @if(Model.Car.City != null)
                 {
                     <span>@Model.Car.City</span>

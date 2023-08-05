@@ -17,9 +17,9 @@
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Search()
+        public async Task<IActionResult> Search(SearchViewModel model)
         {
-            return View(await this.catalogService.GetSearchViewModelAsync());
+            return View(await this.catalogService.GetSearchViewModelAsync(model));
         }
 
         [AllowAnonymous]
@@ -30,18 +30,16 @@
         }
 
         [AllowAnonymous]
-        public ActionResult Result(SearchViewModel model)
+        [HttpGet]
+        public async Task<IActionResult> Result(SearchViewModel model)
         {
-            return View("Catalog");
-        }
+            if (!ModelState.IsValid)
+            {
+                return this.View("Search", model);
+            }
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ActionName("Catalog")]
-        //public async Task<IActionResult> Catalog(SearchViewModel model)
-        //{
-        //    return View("Catalog", await this.catalogService.GetLatestSalePostsAsync());
-        //}
+            return View(await catalogService.GetFilteredSalePostsAsync(model));
+        }
 
         [ActionName("AddPost")]
         public IActionResult Add()
