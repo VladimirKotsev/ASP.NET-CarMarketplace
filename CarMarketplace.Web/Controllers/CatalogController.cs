@@ -9,10 +9,13 @@
     using CarMarketplace.Web.ViewModels.Catalog;
     using System.Diagnostics.Contracts;
     using Microsoft.EntityFrameworkCore.Metadata.Internal;
+    using CarMarketplace.Services;
+    using System.Security.Claims;
 
     public class CatalogController : BaseController
     {
         private readonly ICatalogService catalogService;
+        private readonly ISellerService sellerService;
         public CatalogController(ICatalogService _catalogService)
         {
             this.catalogService = _catalogService;
@@ -45,13 +48,15 @@
         }
 
         [HttpPost]
+        [ActionName("Post")]
         public async Task<IActionResult> Post(AddCarForSaleViewModel viewModel)
         {
             if (!ModelState.IsValid) 
             {
-                return View("AddPost", viewModel);
+                return View("AddPost", await this.catalogService.GetAddPostViewModelAsync(viewModel));
             }
 
+            this.catalogService.AddPostAsync(viewModel, await this.sellerService.GetSellerIdByUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
 
             return View("UserPosts");
         }
@@ -60,7 +65,12 @@
         [ActionName("AddPost")]
         public async Task<IActionResult> Add(AddCarForSaleViewModel viewModel)
         {
-            return View("AddPost", await this.catalogService.GetAddPostViewModelAsync());
+            return View("AddPost", await this.catalogService.GetAddPostViewModelAsync(viewModel));
+        }
+
+        public async IActionResult Delete(Guid postId)
+        {
+            await 
         }
 
         [AllowAnonymous]

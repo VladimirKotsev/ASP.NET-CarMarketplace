@@ -13,10 +13,10 @@
     {
 
         //httpGet data
-        public ICollection<CarManufacturerViewModel> Makes { get; set; } = null!;
-        public ICollection<CategoryViewModel> Categories { get; set; } = null!;
-        public ICollection<ProvinceViewModel> Provinces { get; set; } = null!;
-        public ICollection<ColorViewModel> Colors { get; set; } = null!;
+        public ICollection<CarManufacturerViewModel>? Makes { get; set; }
+        public ICollection<CategoryViewModel>? Categories { get; set; }
+        public ICollection<ProvinceViewModel>? Provinces { get; set; }
+        public ICollection<ColorViewModel>? Colors { get; set; }
 
         //httpPost data
         [Required]
@@ -39,24 +39,33 @@
         [Range(YearMinValue, YearMaxValue, ErrorMessage = ErrorMessage)]
         public int Year { get; set; }
 
+        [DisplayName("displacement")]
         [Required]
         [Range(DisplacementMinValue, DisplacementMaxValue)]
         public int EngineDisplacement { get; set; }
 
+        [DisplayName("fuel type")]
         [Required]
         [StringLength(FuelTypeMaxLength, MinimumLength = FuelTypeMaxLength)]
         public string EngineFuelType { get; set; } = null!;
 
+        [DisplayName("horsepower")]
         [Required]
         [Range(HorsepowerMinValue, HorsepowerMaxValue)]
         public int EngineHorsePower { get; set; }
 
+        [DisplayName("odometer/kilometers")]
+        [Range(OdometerMinLength, OdometerMaxLength, ErrorMessage = ErrorMessage)]
         public int Odometer { get; set; }
 
+        [DisplayName("transmission")]
         [Required]
+        [StringLength(TransmissionTypeMaxLength, MinimumLength = TransmissionTypeMinLength, ErrorMessage = ErrorMessage)]
         public string TransmissionType { get; set; } = null!;
 
+        [DisplayName("euro standart")]
         [Required]
+        [Range(EuroStandartMinValue, EuroStandartMaxValue, ErrorMessage = ErrorMessage)]
         public int EuroStandart { get; set; }
 
         [Required]
@@ -64,12 +73,15 @@
 
         public string? TechnicalSpecificationURL { get; set; }
 
-        [StringLength(VINNumberFixedLength)]
+        [DisplayName("vin")]
+        [StringLength(VINNumberFixedLength, ErrorMessage = ErrorMessage)]
         public string? VinNumber { get; set; }
 
-        [MinLength(DescriptionMinLength)]
+        [DisplayName("description")]
+        [MinLength(DescriptionMinLength, ErrorMessage = ErrorMessage)]
         public string? Description { get; set; }
 
+        [DisplayName("price")]
         [Required]
         [Range(PriceMinValue, PriceMaxValue, ErrorMessage = ErrorMessage)]
         public int Price { get; set; }

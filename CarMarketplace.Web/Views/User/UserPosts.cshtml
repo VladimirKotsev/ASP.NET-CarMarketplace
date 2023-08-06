@@ -46,7 +46,7 @@
                                     <a class="btn btn-primary col-lg-12" asp-controller="Catalog" asp-action="Details" asp-route-id="@post.Id">View</a>
                                 </div>
                                 <div class="col-4">
-                                    <a class="btn btn-primary btn-danger col-lg-12">Delete</a>
+                                    <a class="btn btn-primary btn-danger col-lg-12" asp-controller="Catalog" asp-action="Delete" asp-route-postId="@post.Id">Delete</a>
                                 </div>
                             </div>
                         </div>
