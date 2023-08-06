@@ -394,5 +394,10 @@
 
             return model;
         }
+
+        public async void AddPostAsync(AddCarForSaleViewModel viewModel)
+        {
+            await this.dbContext.AddAsync()
+        }
     }
 }
