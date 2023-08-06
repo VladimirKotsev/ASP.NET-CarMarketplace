@@ -35,6 +35,10 @@
                             <br>
                             <span class="card-text fs-3">Year: <span class="fst-italic">@post.Car.Year</span></span>
                             <br>
+                            @{
+                                var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
+                            }
+                            <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
                             <p class="card-text fs-3 fst-italic">
                                 @post.Car.Province.ProvinceName
                                 @if (post.Car.City != null)

@@ -7,9 +7,13 @@
 </div>
 <div class="container mt-5">
     <form enctype="multipart/form-data">
-        <div class="rounded row justify-items-between col-lg-12">
+        <div class="form-group col-12 mb-3 text-center">
+            <label class="form-label mt-4 fs-4">Choose up to 10 photos</label>
+            <input class="form-control" type="file" multiple>
+        </div>
+        <div class="row col-lg-13">
             <div class="mb-3 col-4">
-                <label asp-for="MakeId" class="form-label fs-3">Manufaturer</label>
+                <label asp-for="MakeId" class="form-label fs-4">Manufaturer</label>
                 <select asp-for="MakeId" class="form-select" name="make" required>
                     <option value="" selected disabled>Select a make</option>
                     @foreach (var item in Model.Makes)
@@ -19,17 +23,17 @@
                 </select>
             </div>
             <div class="mb-3 col-4">
-                <label class="form-label fs-3" asp-for="Model">Model</label>
+                <label class="form-label fs-4" asp-for="Model">Model</label>
                 <input type="text" class="form-control" asp-for="Model" name="model" required>
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">
-                <label asp-for="Year" class="form-label fs-3">Year</label>
+                <label asp-for="Year" class="form-label fs-4">Year</label>
                 <input type="number" class="form-control" asp-for="Year" value="" min="1886" max="2023" required>
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">
-                <label asp-for="CategoryId" class="form-label fs-3">Category</label>
+                <label asp-for="CategoryId" class="form-label fs-4">Category</label>
                 <select asp-for="CategoryId" class="form-select" name="category" required>
                     <option value="" selected disabled>Select a category</option>
                     @foreach (var item in Model.Categories)
@@ -39,23 +43,47 @@
                 </select>
             </div>
             <div class="mb-3 col-4">
-                <label asp-for="ColorId" class="form-label fs-3">Color</label>
-                <select asp-for="ColorId" class="form-control" name="color" required>
+                <label asp-for="ColorId" class="form-label fs-4">Color</label>
+                <select asp-for="ColorId" class="form-select" name="color" required>
+                    <option value="" selected disabled>Select a color</option>
                     @foreach (var item in Model.Colors)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            <div class="mb-3 col-4">
+                <label asp-for="ProvinceId" class="form-label fs-4">Province</label>
+                <select asp-for="ProvinceId" class="form-select" name="province" required>
+                    <option value="" selected disabled>Select a province</option>
+                    @foreach (var item in Model.Provinces)
+                    {
+                        <option value="@item.Id">@item.ProvinceName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row col-lg-13">
+            <h3 class="mt-2">Engine specs:</h3>
+            <div class="mb-3 col-4">
+                <label class="form-label fs-4" asp-for="EngineDisplacement">Displacement</label>
+                <input type="number" class="form-control" asp-for="EngineDisplacement" value="" name="displacement" min="0" max="99999" required>
+                <span asp-validation-for="EngineDisplacement" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label class="form-label fs-4" asp-for="EngineFuelType">Fuel</label>
+                <input type="text" class="form-control" asp-for="EngineFuelType" name="fuel" required>
+                <span asp-validation-for="EngineFuelType" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label class="form-label fs-4" asp-for="EngineHorsePower">Horsepower</label>
+                <input type="number" class="form-control" asp-for="EngineHorsePower" value="" name="horsepower" min=0 max="9999" required>
+                <span asp-validation-for="EngineHorsePower" class="text-danger"></span>
             </div>
         </div>
         <div class="mb-3">
-            <label for="engine" class="form-label">Engine</label>
-            <select type="number" class="form-control" id="engine" name="price" required>
-            </select>
+            <label for="engine" class="form-label fs-4">Description</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>

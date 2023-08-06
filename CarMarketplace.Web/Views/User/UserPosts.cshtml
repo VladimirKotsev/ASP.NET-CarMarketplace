@@ -11,8 +11,10 @@
         <div class="col-md-6">
             <h1 class="my-4">@ViewData["Title"]</h1>
         </div>
-        <div class="col-md-6 align-middle">
-            <a asp-controller="Catalog" asp-action="AddPost" class="btn btn-primary mt-3 col-4 mx-auto float-end">Add a post</a>
+        <div class="col-md-6 my-4 align-items-middle">
+            <div class="d-grid col-3 mx-auto float-end mt-2">
+                <a asp-controller="Catalog" asp-action="AddPost" class="btn btn-primary btn-lg">Add a post</a>
+            </div>
         </div>
     </div>
 
@@ -29,19 +31,22 @@
                             <div class="card-body">
                                 <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
                                 <hr>
-                                <span class="card-text fs-2">Price: <span class="card-text fs-3 text-success">@post.Price</span> BGN</span>
+                                <span class="card-text fs-3">Price: <span class="card-text fs-3 fst-italic">@post.Price</span> BGN</span>
                                 <br>
-                                <span class="card-text fs-3">Year: @post.Car.Year</span>
+                                <span class="card-text fs-3">Year: <span class="fst-italic"></span>@post.Car.Year</span></span>
                                 <br>
-                                <p class="card-text fs-3">@post.Car.Province</p>
-                                <span class="card-text fs-4">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                                <p class="card-text fs-3 fst-italic">@post.Car.Province.ProvinceName</p>
+                                <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
                                 <br>
                                 <div class="row justify-content-center mt-2">
-                                    <div class="col-md-6">
-                                        <a class="btn btn-primary btn-warning col-12">Edit</a>
+                                    <div class="col-4">
+                                        <a class="btn btn-primary btn-warning col-lg-12">Edit</a>
                                     </div>
-                                    <div class="col-md-6">
-                                        <a class="btn btn-primary btn-danger col-12">Delete</a>
+                                    <div class="col-4">
+                                        <a class="btn btn-primary col-lg-12" asp-controller="Catalog" asp-action="Details" asp-route-id="@post.Id">View</a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a class="btn btn-primary btn-danger col-lg-12">Delete</a>
                                     </div>
                                 </div>
                             </div>

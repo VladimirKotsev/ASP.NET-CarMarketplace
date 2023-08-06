@@ -35,8 +35,7 @@
                                 @{
                                     var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
                                 }
-                                <span class="fs-3 fst-italic">@displacement </span>
-                                <span class="fs-3 fst-italic">@post.Car.Engine.FuelType</span>
+                                <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
                                 <br>
                                 <span class="fs-3 fst-italic">@post.Car.TransmissionType</span>
                                 <br>
