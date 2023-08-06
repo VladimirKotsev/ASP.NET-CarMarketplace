@@ -349,5 +349,50 @@
 
             return model;
         }
+
+        public async Task<AddCarForSaleViewModel> GetAddPostViewModelAsync()
+        {
+            AddCarForSaleViewModel model = new AddCarForSaleViewModel();
+
+            model.Makes = await this.dbContext
+                .Manufacturers
+                .Select(m => new CarManufacturerViewModel()
+                {
+                    Id = m.Id,
+                    Name = m.Name
+                })
+                .OrderBy(m => m.Name)
+                .ToArrayAsync();
+
+            model.Colors = await this.dbContext
+                .Colors
+                .Select(c => new ColorViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                })
+                .OrderBy(c => c.Name)
+                .ToArrayAsync();
+
+            model.Categories = await this.dbContext
+                .Categories
+                .Select(c => new CategoryViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                })
+                .ToArrayAsync();
+
+            model.Provinces = await this.dbContext
+                .Provinces
+                .Select(p => new ProvinceViewModel()
+                {
+                    Id = p.Id,
+                    ProvinceName = p.ProvinceName,
+                })
+                .ToArrayAsync();
+
+            return model;
+        }
     }
 }

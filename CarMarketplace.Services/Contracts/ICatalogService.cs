@@ -13,5 +13,7 @@
         public Task<ICollection<CarModelViewModel>> GetModelsByMakeAsync(string make);
 
         public Task<ICollection<SalePostViewModel>> GetFilteredSalePostsAsync(SearchViewModel model);
+
+        public Task<AddCarForSaleViewModel> GetAddPostViewModelAsync();
     }
 }

@@ -42,9 +42,9 @@
         }
 
         [ActionName("AddPost")]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
-            return View("AddPost");
+            return View("AddPost", await this.catalogService.GetAddPostViewModelAsync());
         }
 
         [AllowAnonymous]

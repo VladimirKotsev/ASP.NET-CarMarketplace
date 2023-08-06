@@ -3,7 +3,8 @@
 @model SalePostViewModel
 @{
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
-    var imageUrl = "";
+    var image = "";
+    var imagePublicId = "";
 }
 
 @inject SignInManager<ApplicationUser> SignInManager
@@ -12,54 +13,51 @@
     <div class="row">
         <!-- Photos Section (Left Side) -->
         <div class="col-md-7">
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        @{
-                            imageUrl = ViewData["CloudDomain"] + Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
-                        }
-                        <img src="@imageUrl" class="d-block w-100" alt="@Model.Car.CarName">
-                    </div>
-                    @foreach (var pictureId in Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).Skip(1))
-                    {
-                        imageUrl = ViewData["CloudDomain"] + pictureId;
+            <div class="col-md-7 offset-md-1">
+                <div class="owl-carousel owl-theme">
+                    <div>
+                        @foreach (var imageId in Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries))
+                        {
+                            image = ViewData["CloudDomain"]! + imageId;
 
-                        <div class="carousel-item">
-                            <img src="@imageUrl" class="d-block w-100" alt="@Model.Car.CarName">
-                        </div>
+                            <img src="@image" class="img-fluid rounded float-end" alt="@Model.Car.Make.Name @Model.Car.Model.ModelName">
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    @for (int i = 0; i < Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).Length; i++)
+                    {
+                        imagePublicId = Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries)[i];
+                        image = ViewData["CloudDomain"] + imagePublicId;
+
+                        <img src="@image" class="gallery-item rounded m-1" onclick="loadCarouselItem(@i)" alt="@Model.Car.Make.Name @Model.Car.Model.ModelName">
                     }
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
         <div class="col-md-5 mt-3">
             @{
                 var displacement = (@Model.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
             }
-            <h2>Manufacturer: @Model.Car.Make.Name</h2>
-            <p class="fs-2">Car Model: @Model.Car.Model.ModelName</p>
+            <h2>Manufacturer: <strong>@Model.Car.Make.Name</strong></h2>
+            <p class="fs-2">Car Model: <strong>@Model.Car.Model.ModelName</strong></p>
             <hr />
-            <p class="fs-3">Year: @Model.Car.Year</p>
-            <p class="fs-3">Color: @Model.Car.Color</p>
-            <p class="fs-3">Price: @Model.Price BGN</p>
-            <p class="fs-3">Engine: @displacement <span>@Model.Car.Engine.FuelType</span></p>
-            <p class="fs-3">Transmission: @Model.Car.TransmissionType</p>
-            <p class="fs-3">Category: @Model.Car.Category.Name</p>
-            <p class="fs-3">Province: @Model.Car.Province.ProvinceName 
-                @if(Model.Car.City != null)
+            <p class="fs-3">Year: <span class="fst-italic">@Model.Car.Year</span></p>
+            <p class="fs-3">Color: <span class="fst-italic">@Model.Car.Color</span></p>
+            <p class="fs-3">Price: <span class="fst-italic">@Model.Price BGN</span></p>
+            <p class="fs-3">Engine: <span class="fst-italic">@displacement @Model.Car.Engine.FuelType</span></p>
+            <p class="fs-3">Transmission: <span class="fst-italic">@Model.Car.TransmissionType</span></p>
+            <p class="fs-3">Category: <span class="fst-italic">@Model.Car.Category.Name</span></p>
+            <p class="fs-3">
+                Province: <span class="fst-italic">@Model.Car.Province.ProvinceName</span>
+                @if (Model.Car.City != null)
                 {
-                    <span>@Model.Car.City</span>
+                    <span class="fst-italic">, @Model.Car.City</span>
                 }
+
             </p>
             <hr />
-            <p class="fs-4">@Model.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</p>
+            <p class="fs-4 fst-italic">@Model.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</p>
         </div>
     </div>
     <div class="row mt-3">
@@ -98,14 +96,38 @@
         </div>
     </div>
     @if (Model.Car.Description != null)
-    {      
+    {
         <div class="row mt-5">
             <div class="col-md-12">
                 <h2>Additional Details</h2>
-                <p class="fs-3">
+                <p class="fs-3 fst-italic">
                     @Model.Car.Description
                 </p>
             </div>
         </div>
     }
 </div>
+
+@section Scripts
+    {
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                loop: true,
+                nav: true,
+                navText: ["<i class='fas fa-chevron-left'></i>", "<i class='fas fa-chevron-right'></i>"],
+                responsive: {
+                    0: {
+                        items: 1
+                    }
+                }
+            });
+        });
+
+        function loadCarouselItem(position) {
+            $(".owl-carousel").trigger('to.owl.carousel', position);
+        };
+    </script>
+}

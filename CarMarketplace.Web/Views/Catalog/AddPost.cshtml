@@ -1,37 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model AddCarForSaleViewModel
+﻿@model AddCarForSaleViewModel
 @{
+    ViewData["Title"] = "Add a car for sale";
 }
-
+<div class="mx-auto text-center mt-2">
+    <h1>@ViewData["Title"]</h1>
+</div>
 <div class="container mt-5">
-    <h2>Add Car for Sale</h2>
-    <form>
-        <div class="mb-3">
-            <label for="make" class="form-label">Car Make</label>
-            <select class="form-control" id="make" name="make" required>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="model" class="form-label">Car Model</label>
-            <input type="text" class="form-control" id="model" name="model" required>
-        </div>
-        <div class="mb-3">
-            <label for="year" class="form-label">Year</label>
-            <input type="number" class="form-control" id="year" name="year" required>
-        </div>
-        <div class="mb-3 row">
-            <div class="col-md-5">
-                <label for="price" class="form-label">Price</label>
-                <div class="col-md-5">
-                <span class="fs-2">BGN</span>
-                <input type="number" class="form-control" id="price" name="price" required>
+    <form enctype="multipart/form-data">
+        <div class="rounded row justify-items-between col-lg-12">
+            <div class="mb-3 col-4">
+                <label asp-for="MakeId" class="form-label fs-3">Manufaturer</label>
+                <select asp-for="MakeId" class="form-select" name="make" required>
+                    <option value="" selected disabled>Select a make</option>
+                    @foreach (var item in Model.Makes)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            <div class="mb-3 col-4">
+                <label class="form-label fs-3" asp-for="Model">Model</label>
+                <input type="text" class="form-control" asp-for="Model" name="model" required>
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="Year" class="form-label fs-3">Year</label>
+                <input type="number" class="form-control" asp-for="Year" value="" min="1886" max="2023" required>
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="CategoryId" class="form-label fs-3">Category</label>
+                <select asp-for="CategoryId" class="form-select" name="category" required>
+                    <option value="" selected disabled>Select a category</option>
+                    @foreach (var item in Model.Categories)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="ColorId" class="form-label fs-3">Color</label>
+                <select asp-for="ColorId" class="form-control" name="color" required>
+                    @foreach (var item in Model.Colors)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
         </div>
         <div class="mb-3">
             <label for="engine" class="form-label">Engine</label>
