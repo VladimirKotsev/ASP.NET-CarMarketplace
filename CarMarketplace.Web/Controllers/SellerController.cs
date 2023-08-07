@@ -6,9 +6,11 @@
 
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.Controllers.Common;
-    using CarMarketplace.Web.ViewModels.User;
+    using CarMarketplace.Web.ViewModels.Seller;
+    using CarMarketplace.Web.ViewModels.Catalog;
+    using Microsoft.AspNetCore.Authorization;
 
-    public class UserController : BaseController
+    public class SellerController : BaseController
     {
         private string UserId
         {
@@ -17,7 +19,7 @@
 
         private readonly ISellerService sellerService;
 
-        public UserController(ISellerService _sellerService)
+        public SellerController(ISellerService _sellerService)
         {
             this.sellerService = _sellerService;
         }
@@ -41,7 +43,7 @@
 
         [HttpPost]
         [Route("User/BecomeSeller")]
-        public async Task<IActionResult> BecomeSeller(UserPersonalnfoViewModel model)
+        public async Task<IActionResult> BecomeSeller(SellerPersonalnfoViewModel model)
         {
             bool isPhoneNumberTaken =
                 await sellerService.SellerExistbyPhoneNumberAsync(model.PhoneNumber);
@@ -60,10 +62,11 @@
             return RedirectToAction("Index", "Home");
         }
 
-        [Route("Colletion/UserPosts")]
+        [ActionName("UserPosts")]
         public async Task<IActionResult> UserPosts()
         {
-            return View(await this.sellerService.GetSellerPostsAsync(await this.sellerService.GetSellerIdByUserIdAsync(this.UserId)));
+            return View("UserPosts", await this.sellerService.GetSellerPostsAsync(await this.sellerService.GetSellerIdByUserIdAsync(this.UserId)));
         }
+        
     }
 }

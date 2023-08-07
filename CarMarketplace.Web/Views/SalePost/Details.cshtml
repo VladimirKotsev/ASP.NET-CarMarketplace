@@ -46,7 +46,7 @@
             <p class="fs-2">Car Model: <strong>@Model.Car.Model.ModelName</strong></p>
             <hr />
             <p class="fs-3">Year: <span class="fst-italic">@Model.Car.Year</span></p>
-            <p class="fs-3">Color: <span class="fst-italic">@Model.Car.Color</span></p>
+            <p class="fs-3">Color: <span class="fst-italic">@Model.Car.Color.Name</span></p>
             <p class="fs-3">Price: <span class="fst-italic">@Model.Price BGN</span></p>
             <p class="fs-3">Engine: <span class="fst-italic">@displacement @Model.Car.Engine.FuelType</span></p>
             <p class="fs-3">Transmission: <span class="fst-italic">@Model.Car.TransmissionType</span></p>
@@ -103,7 +103,7 @@
         <div class="row mt-5">
             <div class="col-md-12">
                 <h2>Additional Details</h2>
-                <p class="fs-3 fst-italic">
+                <p class="fs-3">
                     @Model.Car.Description
                 </p>
             </div>

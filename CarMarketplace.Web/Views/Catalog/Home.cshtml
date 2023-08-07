@@ -22,10 +22,10 @@
         @foreach (var post in Model.Take(3))
         {
             imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
-            <a asp-controller="Catalog" asp-action="Details" asp-route-id="@post.Id" class="col-md-4 text-decoration-none">
+            <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="col-md-4 text-decoration-none">
                 <div>
                     <div class="card mb-4">
-                        <img src="@imageSrc" class="card-img-top" alt="@post.Car.CarName">
+                        <img src="@imageSrc" alt="@post.Car.CarName">
                         <div class="card-body">
                             <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
                             <hr>
@@ -58,7 +58,7 @@
         @foreach (var post in Model.Skip(3).Take(3))
         {
             imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
-            <a asp-controller="Catalog" asp-action="Details" asp-route-id="@post.Id" class="col-md-4" style="text-decoration: none">
+            <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="col-md-4" style="text-decoration: none">
                 <div>
                     <div class="card mb-4">
                         <img src="@imageSrc" class="card-img-top" alt="@post.Car.CarName">

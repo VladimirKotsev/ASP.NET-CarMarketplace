@@ -1,15 +1,17 @@
-﻿@model AddCarViewModel
+﻿@model AddViewModel
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Add a car for sale";
 }
 <div class="mx-auto text-center mt-2">
     <h1>@ViewData["Title"]</h1>
 </div>
 <div class="container mt-5">
-    <form enctype="multipart/form-data" asp-action="Post" method="post">
+    <partial name="_ValidationScriptsPartial" />
+    <form enctype="multipart/form-data" asp-controller="SalePost" asp-action="Post" method="post">
         <div class="form-group col-12 mb-3 text-center">
             <label class="form-label mt-4 fs-4">Choose up to 10 photos</label>
-            <input class="form-control" type="file" multiple>
+            <input class="form-control" type="file" asp-for="Images" multiple>
+            <span asp-validation-for="Images" class="text-danger"></span>
         </div>
         <div class="row col-lg-13">
             <div class="mb-3 col-4">
@@ -125,3 +127,4 @@
         </div>
     </form>
 </div>
+

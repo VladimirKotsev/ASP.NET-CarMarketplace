@@ -19,7 +19,7 @@
     @foreach (var post in Model)
     {
         imageSrc = ViewData["CloudDomain"] + @post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
-        <a class="text-decoration-none text-primary" asp-controller="Catalog" asp-action="Details" asp-route-id="@post.Id">
+        <a class="text-decoration-none text-primary" asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id">
             <div class="container text-center border rounded shadow-lg p-3 mb-4 mt-4">
                 <div class="row align-items-start">
                     <div class="col-5">

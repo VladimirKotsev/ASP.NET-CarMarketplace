@@ -1,14 +1,13 @@
-using Microsoft.AspNetCore.Identity;
+using System.Reflection;
+
 using Microsoft.EntityFrameworkCore;
+using CloudinaryDotNet;
 
 using CarMarketplace.Data;
 using CarMarketplace.Data.Models;
 using CarMarketplace.Services;
 using CarMarketplace.Services.Contracts;
-using System.Security.Principal;
-using CloudinaryDotNet;
 using CarMarketplace.Web.ViewModels;
-using System.Reflection;
 using CarMarketplace.Services.Mapping;
 using CarMarketplace.Services.Data.Contracts;
 using CarMarketplace.Services.Data;
@@ -40,6 +39,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ISellerService, SellerService>();
+builder.Services.AddScoped<ISalePostService, SalePostService>();
 builder.Services.AddScoped<ICatalogService, CatalogService>();
 builder.Services.AddScoped<IMediaService, MediaService>();
 

@@ -4,7 +4,7 @@
 
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Data;
-    using CarMarketplace.Web.ViewModels.User;
+    using CarMarketplace.Web.ViewModels.Seller;
     using CarMarketplace.Data.Models;
     using CarMarketplace.Web.ViewModels.Catalog;
 
@@ -16,7 +16,7 @@
             this.dbContext = dbContext;
         }
 
-        public async Task RegisterUserAsSellerAsync(string userId, UserPersonalnfoViewModel model)
+        public async Task RegisterUserAsSellerAsync(string userId, SellerPersonalnfoViewModel model)
         {
             var seller = new Seller()
             {
@@ -77,9 +77,13 @@
                             Id = sp.Car.CategoryId,
                             Name = sp.Car.Category.Name
                         },
+                        Color = new ColorViewModel()
+                        {
+                            Id = sp.Car.ColorId,
+                            Name = sp.Car.Color.Name
+                        },
                         Description = sp.Car.Description,
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
-                        Color = sp.Car.Color.Name,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
                         Province = new ProvinceViewModel()

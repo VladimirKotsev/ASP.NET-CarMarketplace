@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\User\UserPosts.cshtml" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
 </Project>

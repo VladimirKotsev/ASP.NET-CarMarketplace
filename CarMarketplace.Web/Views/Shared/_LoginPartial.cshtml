@@ -10,7 +10,7 @@
     bool isSeller = await SellerService.SellerExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
 }
 
-<ul class="navbar-nav">
+<ul class="navbar-nav fs-4">
     @if (SignInManager.IsSignedIn(User))
     {
         @if (!isSeller)

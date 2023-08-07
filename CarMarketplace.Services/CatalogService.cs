@@ -1,15 +1,13 @@
 ﻿namespace CarMarketplace.Services
 {
+    using System;
     using System.Collections.Generic;
 
     using Microsoft.EntityFrameworkCore;
 
     using CarMarketplace.Data;
     using CarMarketplace.Services.Contracts;
-    using CarMarketplace.Services.Mapping;
     using CarMarketplace.Web.ViewModels.Catalog;
-    using System;
-    using CarMarketplace.Data.Models;
     using CarMarketplace.Services.Data.Contracts;
 
     public class CatalogService : ICatalogService
@@ -107,6 +105,7 @@
             return posts;
         }
 
+
         public async Task<ICollection<SalePostViewModel>> GetFilteredSalePostsAsync(SearchViewModel model)
         {
             ICollection<SalePostViewModel> posts = await this.dbContext
@@ -131,9 +130,13 @@
                             Id = sp.Car.CategoryId,
                             Name = sp.Car.Category.Name
                         },
+                        Color = new ColorViewModel()
+                        {
+                            Id = sp.Car.ColorId,
+                            Name = sp.Car.Color.Name
+                        },
                         Description = sp.Car.Description,
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
-                        Color = sp.Car.Color.Name,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
                         Province = new ProvinceViewModel()
@@ -197,9 +200,13 @@
                             Id = sp.Car.CategoryId,
                             Name = sp.Car.Category.Name
                         },
+                        Color = new ColorViewModel()
+                        {
+                            Id = sp.Car.ColorId,
+                            Name = sp.Car.Color.Name
+                        },
                         Description = sp.Car.Description,
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
-                        Color = sp.Car.Color.Name,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
                         Province = new ProvinceViewModel()
@@ -248,69 +255,6 @@
             return models;
         }
 
-        public async Task<SalePostViewModel> GetSalePostByIdAsync(Guid postId)
-        {
-            var postById = await this.dbContext
-                .SalePosts
-                .Where(x => x.Id == postId)
-                .Select(sp => new SalePostViewModel()
-                {
-                    Car = new CarViewModel()
-                    {
-                        CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
-                        Make = new CarManufacturerViewModel()
-                        {
-                            Id = sp.Car.ManufacturerId,
-                            Name = sp.Car.Make.Name
-                        },
-                        Model = new CarModelViewModel()
-                        {
-                            Id = sp.Car.ModelId,
-                            ModelName = sp.Car.Model.ModelName
-                        },
-                        Category = new CategoryViewModel()
-                        {
-                            Id = sp.Car.CategoryId,
-                            Name = sp.Car.Category.Name
-                        },
-                        Description = sp.Car.Description,
-                        TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
-                        Color = sp.Car.Color.Name,
-                        EuroStandart = sp.Car.EuroStandart,
-                        Odometer = sp.Car.Odometer,
-                        Province = new ProvinceViewModel()
-                        {
-                            Id = sp.Car.ProvinceId,
-                            ProvinceName = sp.Car.Province.ProvinceName
-                        },
-                        VinNumber = sp.Car.VinNumber,
-                        TransmissionType = sp.Car.TransmissionType,
-                        Year = sp.Car.Year,
-                        Engine = new EngineViewModel()
-                        {
-                            Id = sp.Car.EngineId,
-                            Displacement = sp.Car.Engine.Displacement,
-                            Horsepower = sp.Car.Engine.Horsepower,
-                            FuelType = sp.Car.Engine.FuelType
-                        }
-                    },
-                    Seller = new SellerViewModel()
-                    {
-                        FirstName = sp.Seller.FirstName,
-                        LastName = sp.Seller.LastName,
-                        PhoneNumber = sp.Seller.PhoneNumber
-                    },
-                    PublishDate = sp.PublishDate,
-                    ImageUrls = sp.ImageUrls,
-                    Price = sp.Price,
-                    Id = sp.Id
-                })
-                .FirstAsync();
-
-            return postById;
-                
-        }
-
         public async Task<SearchViewModel> GetSearchViewModelAsync(SearchViewModel model)
         {
             model.Makes = await this.dbContext
@@ -353,158 +297,6 @@
                 .ToArrayAsync();
 
             return model;
-        }
-
-        public async Task<AddCarViewModel> GetAddPostViewModelAsync(AddCarViewModel viewModel)
-        {
-            viewModel.Makes = await this.dbContext
-                .Manufacturers
-                .Select(m => new CarManufacturerViewModel()
-                {
-                    Id = m.Id,
-                    Name = m.Name
-                })
-                .OrderBy(m => m.Name)
-                .ToArrayAsync();
-
-            viewModel.Colors = await this.dbContext
-                .Colors
-                .Select(c => new ColorViewModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                })
-                .OrderBy(c => c.Name)
-                .ToArrayAsync();
-
-            viewModel.Categories = await this.dbContext
-                .Categories
-                .Select(c => new CategoryViewModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                })
-                .ToArrayAsync();
-
-            viewModel.Provinces = await this.dbContext
-                .Provinces
-                .Select(p => new ProvinceViewModel()
-                {
-                    Id = p.Id,
-                    ProvinceName = p.ProvinceName,
-                })
-                .ToArrayAsync();
-
-            return viewModel;
-        }
-
-        public async Task AddPostAsync(AddCarViewModel viewModel, Guid sellerId)
-        {
-            Engine? engine = await this.dbContext
-                .Engines
-                .FirstOrDefaultAsync(e => e.Displacement == viewModel.EngineDisplacement
-                && e.Horsepower == viewModel.EngineHorsePower
-                && e.FuelType == viewModel.EngineFuelType);
-
-            if (engine == null)
-            {
-                engine = new Engine()
-                {
-                    Displacement = viewModel.EngineDisplacement,
-                    Horsepower = viewModel.EngineHorsePower,
-                    FuelType = viewModel.EngineFuelType
-                };
-
-                await this.dbContext.Engines.AddAsync(engine);
-            }
-            
-            Category category = await this.dbContext
-                .Categories
-                .FirstAsync(c => c.Id == viewModel.CategoryId);
-
-            Province province = await this.dbContext
-                .Provinces
-                .FirstAsync(p => p.Id == viewModel.ProvinceId);
-
-            CarManufacturer make = await this.dbContext
-                .Manufacturers
-                .FirstAsync(m => m.Id == viewModel.MakeId);
-
-            Color color = await this.dbContext
-                .Colors
-                .FirstAsync(c => c.Id == viewModel.ColorId);
-
-            CarModel? model = await this.dbContext
-                .Models
-                .FirstOrDefaultAsync(m => m.ModelName == viewModel.Model && m.ManufacturerName == make.Name);
-
-            if (model == null)
-            {
-                model = new CarModel()
-                {
-                    ModelName = viewModel.Model,
-                    ManufacturerName = make.Name
-                };
-
-                await this.dbContext.Models.AddAsync(model);
-            }
-
-            Car car = new()
-            {
-                Make = make,
-                Model = model,
-                Color = color,
-                Province = province,
-                Category = category,
-                Engine = engine,
-                City = viewModel.City,
-                Description = viewModel.Description,
-                VinNumber = viewModel.VinNumber,
-                TechnicalSpecificationURL = viewModel.TechnicalSpecificationURL,
-                EuroStandart = viewModel.EuroStandart,
-                Odometer = viewModel.Odometer,
-                TransmissionType = viewModel.TransmissionType,
-                Year = viewModel.Year,
-            };
-
-            Seller seller = await this.dbContext
-                .Sellers
-                .FirstAsync(x => x.Id == sellerId);
-
-            car.Seller = seller;
-            car.SellerId = sellerId;
-
-            var imagePublicIds = new HashSet<string>();
-
-            foreach(var image in viewModel.Images)
-            {
-                var imageUrl = await this.mediaService.UploadPicture(image, car.Make.Name! + car.Model.ModelName!);
-                var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
-                imagePublicIds.Add(imageId);
-            }
-
-            var salePost = new SalePost()
-            {
-                Seller = seller,
-                Car = car,
-                ImageUrls = String.Join(", ", imagePublicIds.Reverse()),
-                PublishDate = DateTime.Now,
-                Price = viewModel.Price
-            };
-
-            await this.dbContext.Cars.AddAsync(car);
-            await this.dbContext.SalePosts.AddAsync(salePost);
-            await this.dbContext.SaveChangesAsync();
-        }
-
-        public async Task DeletePostAsync(Guid postId)
-        {
-            var post = await this.dbContext
-                .SalePosts
-                .FirstAsync(p => p.Id == postId);
-
-            this.dbContext.SalePosts.Remove(post);
-            await this.dbContext.SaveChangesAsync();
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿namespace CarMarketplace.Web.ViewModels.User
+﻿namespace CarMarketplace.Web.ViewModels.Seller
 {
     using System.ComponentModel.DataAnnotations;
 
     using static CarMarketplace.Common.EntityValidations.Users;
 
-    public class UserPersonalnfoViewModel
+    public class SellerPersonalnfoViewModel
     {
         [Required]
         [StringLength(PhoneNumberLegnth, MinimumLength = PhoneNumberLegnth)]

@@ -26,9 +26,9 @@ body {
     height: 60px;
 }
 
-.form-select option {
-    font-size: 21px;
-}
+    .form-select option {
+        font-size: 21px;
+    }
 
 .form-floating label {
     padding-left: 35px;
@@ -46,11 +46,16 @@ body {
     height: auto;
 }
 
-li{
-    color : white;
+.img-edit {
+    max-width: 150px;
+    max-height: 120px;
+    width: auto;
+    height: auto;
 }
 
-.rounded-circle {
-    width: 80px; /* Adjust the width and height as needed */
-    height: 80px; /* Make the button perfectly round */
+a .img-nav {
+    max-width: 75px;
+    max-height: 75px;
 }
+
+

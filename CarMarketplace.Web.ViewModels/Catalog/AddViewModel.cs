@@ -1,24 +1,20 @@
 ﻿namespace CarMarketplace.Web.ViewModels.Catalog
 {
     using Microsoft.AspNetCore.Http;
-    using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Runtime;
+
     using static Common.EntityValidations.Car;
     using static Common.EntityValidations.Engine;
 
-    public class AddCarViewModel
+    public class AddViewModel
     {
-
-        //httpGet data
         public ICollection<CarManufacturerViewModel>? Makes { get; set; }
         public ICollection<CategoryViewModel>? Categories { get; set; }
         public ICollection<ProvinceViewModel>? Provinces { get; set; }
         public ICollection<ColorViewModel>? Colors { get; set; }
 
-        //httpPost data
         [Required]
         public int MakeId { get; set; }
 
