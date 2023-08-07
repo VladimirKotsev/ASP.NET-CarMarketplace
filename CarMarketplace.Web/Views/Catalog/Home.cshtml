@@ -64,12 +64,25 @@
                         <img src="@imageSrc" class="card-img-top" alt="@post.Car.CarName">
                         <div class="card-body">
                             <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
-                            <span class="card-text fs-3">Price: @post.Price lv.</span>
+                            <hr>
+                            <span class="card-text fs-3">
+                                Price: <span class="fst-italic">@post.Price</span><span> BGN</span>
+                            </span>
                             <br>
-                            <span class="card-text">Year: @post.Car.Year</span>
+                            <span class="card-text fs-3">Year: <span class="fst-italic">@post.Car.Year</span></span>
                             <br>
-                            <p class="card-text">@post.Car.Province</p>
-                            <span class="card-text">@post.PublishDate.ToString("HH:mm:ss MM/dd/yyyy")</span>
+                            @{
+                                var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
+                            }
+                            <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
+                            <p class="card-text fs-3 fst-italic">
+                                @post.Car.Province.ProvinceName
+                                @if (post.Car.City != null)
+                                {
+                                    <span class="fs-3">, @post.Car.City</span>
+                                }
+                            </p>
+                            <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
                             <br>
                         </div>
                     </div>

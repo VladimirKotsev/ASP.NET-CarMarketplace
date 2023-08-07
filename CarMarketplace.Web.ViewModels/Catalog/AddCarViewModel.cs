@@ -9,7 +9,7 @@
     using static Common.EntityValidations.Car;
     using static Common.EntityValidations.Engine;
 
-    public class AddCarForSaleViewModel
+    public class AddCarViewModel
     {
 
         //httpGet data
@@ -46,7 +46,7 @@
 
         [DisplayName("fuel type")]
         [Required]
-        [StringLength(FuelTypeMaxLength, MinimumLength = FuelTypeMaxLength)]
+        [StringLength(FuelTypeMaxLength, MinimumLength = FuelTypeMinLength)]
         public string EngineFuelType { get; set; } = null!;
 
         [DisplayName("horsepower")]
@@ -87,6 +87,6 @@
         public int Price { get; set; }
 
         [Required]
-        public ICollection<IFormFile> ImageUrls { get; set; } = null!;
+        public ICollection<IFormFile> Images { get; set; } = null!;
     }
 }

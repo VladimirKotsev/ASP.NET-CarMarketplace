@@ -27,24 +27,21 @@
 </head>
 <body class="bg-body-secondary">
     <header class="bg-primary">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand mb-1" style="color: white" asp-area="" asp-controller="Home" asp-action="Index">CarMarketplace</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">CarMarketplace</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between mt-1">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="Home">Catalog</a>
+                            <a class="nav-link text-dark fs-5" asp-area="" asp-controller="Catalog" asp-action="Home">Catalog</a>
                         </li>
-                        @if (isSeller)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="UserPosts">My Posts</a>
-                            </li>
-                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fs-5" asp-area="" asp-controller="User" asp-action="UserPosts">My Posts</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -58,8 +55,8 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted bg-primary">
+        <div class="container text-white">
             &copy; 2023 - CarMarketplace
         </div>
     </footer>

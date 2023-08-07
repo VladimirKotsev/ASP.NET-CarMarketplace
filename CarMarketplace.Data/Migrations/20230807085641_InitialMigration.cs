@@ -80,40 +80,13 @@ namespace CarMarketplace.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Displacement = table.Column<int>(type: "int", nullable: true),
+                    Displacement = table.Column<int>(type: "int", nullable: false),
                     Horsepower = table.Column<int>(type: "int", nullable: false),
-                    OilCapacity = table.Column<double>(type: "float", nullable: true),
-                    CoolantCapacity = table.Column<double>(type: "float", nullable: true),
                     FuelType = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Engines", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "IdentityUser",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityUser", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -127,6 +100,33 @@ namespace CarMarketplace.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Manufacturers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Models",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ManufacturerName = table.Column<string>(type: "nvarchar(29)", maxLength: 29, nullable: false),
+                    ModelName = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Models", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Provinces",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProvinceName = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Provinces", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -236,21 +236,22 @@ namespace CarMarketplace.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Models",
+                name: "Sellers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ManufacturerId = table.Column<int>(type: "int", nullable: false),
-                    ModelName = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Models", x => x.Id);
+                    table.PrimaryKey("PK_Sellers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Models_Manufacturers_ManufacturerId",
-                        column: x => x.ManufacturerId,
-                        principalTable: "Manufacturers",
+                        name: "FK_Sellers_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -263,16 +264,15 @@ namespace CarMarketplace.Data.Migrations
                     ManufacturerId = table.Column<int>(type: "int", nullable: false),
                     ModelId = table.Column<int>(type: "int", nullable: false),
                     ColorId = table.Column<int>(type: "int", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProvinceId = table.Column<int>(type: "int", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Year = table.Column<int>(type: "int", nullable: false),
                     EngineId = table.Column<int>(type: "int", nullable: false),
-                    Odometer = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: false),
+                    Odometer = table.Column<int>(type: "int", nullable: false),
                     TransmissionType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EuroStandart = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    OwnerId = table.Column<int>(type: "int", nullable: false),
-                    OwnerId1 = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SellerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TechnicalSpecificationURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VinNumber = table.Column<string>(type: "nvarchar(17)", maxLength: 17, nullable: true),
@@ -305,12 +305,6 @@ namespace CarMarketplace.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Cars_IdentityUser_OwnerId1",
-                        column: x => x.OwnerId1,
-                        principalTable: "IdentityUser",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Cars_Manufacturers_ManufacturerId",
                         column: x => x.ManufacturerId,
                         principalTable: "Manufacturers",
@@ -320,42 +314,45 @@ namespace CarMarketplace.Data.Migrations
                         column: x => x.ModelId,
                         principalTable: "Models",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Cars_Provinces_ProvinceId",
+                        column: x => x.ProvinceId,
+                        principalTable: "Provinces",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Cars_Sellers_SellerId",
+                        column: x => x.SellerId,
+                        principalTable: "Sellers",
+                        principalColumn: "Id");
                 });
 
-            migrationBuilder.InsertData(
-                table: "Manufacturers",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
+            migrationBuilder.CreateTable(
+                name: "SalePosts",
+                columns: table => new
                 {
-                    { 1, "Audi" },
-                    { 2, "BMW" },
-                    { 3, "Mercedes-benz" },
-                    { 4, "Honda" },
-                    { 5, "Huyndai" },
-                    { 6, "Ford" },
-                    { 7, "Nissan" },
-                    { 8, "Renault" },
-                    { 9, "Peugeot" },
-                    { 10, "Fiat" },
-                    { 11, "Opel" },
-                    { 12, "Toyota" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Models",
-                columns: new[] { "Id", "ManufacturerId", "ModelName" },
-                values: new object[,]
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SellerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CarId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Price = table.Column<int>(type: "int", nullable: false),
+                    PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ImageUrls = table.Column<string>(type: "varchar(5000)", nullable: false)
+                },
+                constraints: table =>
                 {
-                    { 1, 1, "A4" },
-                    { 2, 1, "A5" },
-                    { 3, 1, "A6" },
-                    { 4, 1, "A3" },
-                    { 5, 1, "A8" },
-                    { 6, 2, "316" },
-                    { 7, 2, "320" },
-                    { 8, 2, "328" },
-                    { 9, 2, "320d" },
-                    { 10, 2, "530d" }
+                    table.PrimaryKey("PK_SalePosts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SalePosts_Cars_CarId",
+                        column: x => x.CarId,
+                        principalTable: "Cars",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SalePosts_Sellers_SellerId",
+                        column: x => x.SellerId,
+                        principalTable: "Sellers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -428,14 +425,29 @@ namespace CarMarketplace.Data.Migrations
                 column: "ModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cars_OwnerId1",
+                name: "IX_Cars_ProvinceId",
                 table: "Cars",
-                column: "OwnerId1");
+                column: "ProvinceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Models_ManufacturerId",
-                table: "Models",
-                column: "ManufacturerId");
+                name: "IX_Cars_SellerId",
+                table: "Cars",
+                column: "SellerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SalePosts_CarId",
+                table: "SalePosts",
+                column: "CarId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SalePosts_SellerId",
+                table: "SalePosts",
+                column: "SellerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sellers_UserId",
+                table: "Sellers",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -456,13 +468,13 @@ namespace CarMarketplace.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Cars");
+                name: "SalePosts");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Cars");
 
             migrationBuilder.DropTable(
                 name: "Categories");
@@ -474,13 +486,19 @@ namespace CarMarketplace.Data.Migrations
                 name: "Engines");
 
             migrationBuilder.DropTable(
-                name: "IdentityUser");
+                name: "Manufacturers");
 
             migrationBuilder.DropTable(
                 name: "Models");
 
             migrationBuilder.DropTable(
-                name: "Manufacturers");
+                name: "Provinces");
+
+            migrationBuilder.DropTable(
+                name: "Sellers");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

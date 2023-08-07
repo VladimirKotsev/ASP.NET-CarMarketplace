@@ -46,6 +46,10 @@ body {
     height: auto;
 }
 
+li{
+    color : white;
+}
+
 .rounded-circle {
     width: 80px; /* Adjust the width and height as needed */
     height: 80px; /* Make the button perfectly round */

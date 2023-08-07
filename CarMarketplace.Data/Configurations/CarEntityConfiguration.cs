@@ -73,6 +73,44 @@
                 TechnicalSpecificationURL = "https://www.auto-data.net/en/hyundai-ix35-1.7-crdi-115hp-18181"
             });
 
+            cars.Add(new Car()
+            {
+                Id = Guid.Parse("61b85678-863c-48d6-9809-f426b78e6bfb"),
+                ManufacturerId = 1,
+                ModelId = 6,
+                ColorId = 4,
+                ProvinceId = 20,
+                Year = 2008,
+                EngineId = 4,
+                Odometer = 160000,
+                TransmissionType = "Automatic",
+                EuroStandart = 5,
+                CategoryId = 7,
+                SellerId = Guid.Parse("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                City = "Sofia",
+                Description = "This is my Audi A4 2008 wagon s-line trim",             
+                TechnicalSpecificationURL = "https://www.auto-data.net/bg/audi-a4-avant-b8-8k-3.0-tdi-v6-240hp-quattro-4344"
+            });
+
+            cars.Add(new Car()
+            {
+                Id = Guid.Parse("2a42e928-40ec-4a02-b55e-694c229a6b81"),
+                ManufacturerId = 28,
+                ModelId = 350,
+                ColorId = 10,
+                ProvinceId = 20,
+                Year = 2007,
+                EngineId = 5,
+                Odometer = 202000,
+                TransmissionType = "Manual",
+                EuroStandart = 4,
+                CategoryId = 7,
+                SellerId = Guid.Parse("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                City = "Sofia",
+                Description = "Import from Switzerland. 4x4 with real 201000 km with catalytic converter. Works excellent.",
+                TechnicalSpecificationURL = "https://www.auto-data.net/bg/skoda-octavia-ii-combi-2.0-fsi-150hp-4x4-14228"
+            });
+
             return cars.ToArray();
         }
     }

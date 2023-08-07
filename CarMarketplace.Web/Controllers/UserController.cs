@@ -16,12 +16,10 @@
         }
 
         private readonly ISellerService sellerService;
-        private readonly ILenderService lenderService;
 
-        public UserController(ISellerService _sellerService, ILenderService _lenderService)
+        public UserController(ISellerService _sellerService)
         {
             this.sellerService = _sellerService;
-            this.lenderService = _lenderService;
         }
 
         [HttpGet]
@@ -58,44 +56,6 @@
             }
 
             await sellerService.RegisterUserAsSellerAsync(this.UserId, model);
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        [HttpGet]
-        [Route("User/BecomeLender")]
-        public async Task<IActionResult> BecomeLender()
-        {
-            bool isLender = await lenderService.LenderExistbyUserIdAsync(this.UserId);
-
-            if (isLender)
-            {
-                TempData["ErrorMessage"] = "You are already a lender!";
-
-                return RedirectToAction("Index", "Home");
-            }
-
-            ViewData["Title"] = "lender";
-            return View("BecomeProvider");
-        }
-
-        [HttpPost]
-        [Route("User/BecomeLender")]
-        public async Task<IActionResult> BecomeLender(UserPersonalnfoViewModel model)
-        {
-            bool isPhoneNumberTaken =
-                await lenderService.LenderExistbyPhoneNumberAsync(model.PhoneNumber);
-            if (isPhoneNumberTaken)
-            {
-                ModelState.AddModelError(nameof(model.PhoneNumber), "Lender with the provided phone number already exists!");
-            }
-
-            if (!ModelState.IsValid)
-            {
-                return View("BecomeProvider");
-            }
-
-            await lenderService.RegisterUserAsLenderAsync(this.UserId, model);
 
             return RedirectToAction("Index", "Home");
         }

@@ -16,9 +16,10 @@
     {
         private readonly ICatalogService catalogService;
         private readonly ISellerService sellerService;
-        public CatalogController(ICatalogService _catalogService)
+        public CatalogController(ICatalogService _catalogService, ISellerService _sellerService)
         {
             this.catalogService = _catalogService;
+            this.sellerService = _sellerService;
         }
 
         [AllowAnonymous]
@@ -49,28 +50,38 @@
 
         [HttpPost]
         [ActionName("Post")]
-        public async Task<IActionResult> Post(AddCarForSaleViewModel viewModel)
+        public async Task<IActionResult> Post(AddCarViewModel viewModel)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return View("AddPost", await this.catalogService.GetAddPostViewModelAsync(viewModel));
             }
+            try
+            {
+                await this.catalogService.AddPostAsync(viewModel, await this.sellerService.GetSellerIdByUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            }
+            catch (Exception)
+            {
 
-            this.catalogService.AddPostAsync(viewModel, await this.sellerService.GetSellerIdByUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                throw;
+            }
 
-            return View("UserPosts");
+
+            return Redirect("/Colletion/UserPosts");
         }
 
         [HttpGet]
         [ActionName("AddPost")]
-        public async Task<IActionResult> Add(AddCarForSaleViewModel viewModel)
+        public async Task<IActionResult> Add(AddCarViewModel viewModel)
         {
             return View("AddPost", await this.catalogService.GetAddPostViewModelAsync(viewModel));
         }
 
-        public async IActionResult Delete(Guid postId)
+        public async Task<IActionResult> Delete(Guid postId)
         {
-            await 
+            await this.catalogService.DeletePostAsync(postId);
+
+            return Redirect("User/UserPosts");
         }
 
         [AllowAnonymous]

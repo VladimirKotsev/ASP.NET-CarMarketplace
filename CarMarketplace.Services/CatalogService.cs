@@ -10,14 +10,18 @@
     using CarMarketplace.Web.ViewModels.Catalog;
     using System;
     using CarMarketplace.Data.Models;
+    using CarMarketplace.Services.Data.Contracts;
 
     public class CatalogService : ICatalogService
     {
         private readonly CarMarketplaceDbContext dbContext;
 
-        public CatalogService(CarMarketplaceDbContext _dbContext)
+        private IMediaService mediaService;
+
+        public CatalogService(CarMarketplaceDbContext _dbContext, IMediaService _mediaService)
         {
-            this.dbContext = _dbContext;   
+            this.dbContext = _dbContext;
+            this.mediaService = _mediaService;
         }
 
         private ICollection<SalePostViewModel> FilterAllSalePosts(ICollection<SalePostViewModel> posts, SearchViewModel model)
@@ -351,7 +355,7 @@
             return model;
         }
 
-        public async Task<AddCarForSaleViewModel> GetAddPostViewModelAsync(AddCarForSaleViewModel viewModel)
+        public async Task<AddCarViewModel> GetAddPostViewModelAsync(AddCarViewModel viewModel)
         {
             viewModel.Makes = await this.dbContext
                 .Manufacturers
@@ -394,20 +398,26 @@
             return viewModel;
         }
 
-        public async void AddPostAsync(AddCarForSaleViewModel viewModel, Guid sellerId)
+        public async Task AddPostAsync(AddCarViewModel viewModel, Guid sellerId)
         {
-            Engine engine = await this.dbContext
+            Engine? engine = await this.dbContext
                 .Engines
-                .FirstOrDefaultAsync(e => e.Displacement == viewModel.EngineDisplacement 
-                && e.Horsepower == viewModel.EngineHorsePower 
-                && e.FuelType == viewModel.EngineFuelType) ?? 
-                new Engine()
+                .FirstOrDefaultAsync(e => e.Displacement == viewModel.EngineDisplacement
+                && e.Horsepower == viewModel.EngineHorsePower
+                && e.FuelType == viewModel.EngineFuelType);
+
+            if (engine == null)
+            {
+                engine = new Engine()
                 {
                     Displacement = viewModel.EngineDisplacement,
                     Horsepower = viewModel.EngineHorsePower,
                     FuelType = viewModel.EngineFuelType
                 };
 
+                await this.dbContext.Engines.AddAsync(engine);
+            }
+            
             Category category = await this.dbContext
                 .Categories
                 .FirstAsync(c => c.Id == viewModel.CategoryId);
@@ -424,9 +434,25 @@
                 .Colors
                 .FirstAsync(c => c.Id == viewModel.ColorId);
 
+            CarModel? model = await this.dbContext
+                .Models
+                .FirstOrDefaultAsync(m => m.ModelName == viewModel.Model && m.ManufacturerName == make.Name);
+
+            if (model == null)
+            {
+                model = new CarModel()
+                {
+                    ModelName = viewModel.Model,
+                    ManufacturerName = make.Name
+                };
+
+                await this.dbContext.Models.AddAsync(model);
+            }
+
             Car car = new()
             {
                 Make = make,
+                Model = model,
                 Color = color,
                 Province = province,
                 Category = category,
@@ -445,17 +471,33 @@
                 .Sellers
                 .FirstAsync(x => x.Id == sellerId);
 
+            car.Seller = seller;
+            car.SellerId = sellerId;
 
+            var imagePublicIds = new HashSet<string>();
 
-            //var salePost = new SalePost()
-            //{
-            //    Seller = seller,
-            //    Car = car,
-            //    ImageUrls
-            //}
+            foreach(var image in viewModel.Images)
+            {
+                var imageUrl = await this.mediaService.UploadPicture(image, car.Make.Name! + car.Model.ModelName!);
+                var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
+                imagePublicIds.Add(imageId);
+            }
+
+            var salePost = new SalePost()
+            {
+                Seller = seller,
+                Car = car,
+                ImageUrls = String.Join(", ", imagePublicIds.Reverse()),
+                PublishDate = DateTime.Now,
+                Price = viewModel.Price
+            };
+
+            await this.dbContext.Cars.AddAsync(car);
+            await this.dbContext.SalePosts.AddAsync(salePost);
+            await this.dbContext.SaveChangesAsync();
         }
 
-        public async void DeletePostAsync(Guid postId)
+        public async Task DeletePostAsync(Guid postId)
         {
             var post = await this.dbContext
                 .SalePosts

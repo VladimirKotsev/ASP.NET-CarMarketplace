@@ -1,7 +1,9 @@
 ﻿namespace CarMarketplace.Services.Data.Contracts
 {
+    using Microsoft.AspNetCore.Http;
+
     public interface IMediaService
     {
-        public Task<string> UploadPicture(string path);
+        public Task<string> UploadPicture(IFormFile file, string name);
     }
 }

@@ -4,6 +4,7 @@
     using CloudinaryDotNet.Actions;
 
     using CarMarketplace.Services.Data.Contracts;
+    using Microsoft.AspNetCore.Http;
 
     public class MediaService : IMediaService
     {
@@ -14,19 +15,30 @@
             this.cloudinary = cloudinary;
         }
 
-        public async Task<string> UploadPicture(string path)
+        public async Task<string> UploadPicture(IFormFile file, string name)
         {
-            var uploadParams = new ImageUploadParams
-            {
-                File = new FileDescription(path),
+            byte[] destinationImage;
 
+            using var memoryStream = new MemoryStream();
+            await file.CopyToAsync(memoryStream);
+            destinationImage = memoryStream.ToArray();
+
+            using var destinationStream = new MemoryStream(destinationImage);
+
+            var uploadParams = new ImageUploadParams()
+            {
+                File = new FileDescription(name, destinationStream),
+                PublicId = name,
             };
 
-            var uploadResult = await cloudinary.UploadAsync(uploadParams);
+            var result = await this.cloudinary.UploadAsync(uploadParams);
 
-            string url = uploadResult.Url.ToString();
+            if (result.Error != null)
+            {
+                throw new InvalidOperationException("The file is too big. Choose a file which is less then 10.4 mb");
+            }
 
-            return url;
+            return result.Url.AbsoluteUri;
         }
     }
 }

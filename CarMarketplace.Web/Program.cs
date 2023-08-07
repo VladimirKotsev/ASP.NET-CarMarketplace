@@ -10,6 +10,8 @@ using CloudinaryDotNet;
 using CarMarketplace.Web.ViewModels;
 using System.Reflection;
 using CarMarketplace.Services.Mapping;
+using CarMarketplace.Services.Data.Contracts;
+using CarMarketplace.Services.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,9 +40,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ISellerService, SellerService>();
-builder.Services.AddScoped<ILenderService, LenderService>();
 builder.Services.AddScoped<ICatalogService, CatalogService>();
-
+builder.Services.AddScoped<IMediaService, MediaService>();
 
 
 string clouldName = builder.Configuration.GetValue<string>("Cloudinary:CloudName");

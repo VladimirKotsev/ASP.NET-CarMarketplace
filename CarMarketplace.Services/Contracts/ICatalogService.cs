@@ -14,10 +14,10 @@
 
         public Task<ICollection<SalePostViewModel>> GetFilteredSalePostsAsync(SearchViewModel model);
 
-        public Task<AddCarForSaleViewModel> GetAddPostViewModelAsync(AddCarForSaleViewModel viewModel);
+        public Task<AddCarViewModel> GetAddPostViewModelAsync(AddCarViewModel viewModel);
 
-        public void AddPostAsync(AddCarForSaleViewModel viewModel, Guid sellerId);
+        public Task AddPostAsync(AddCarViewModel viewModel, Guid sellerId);
 
-        public void DeletePostAsync(Guid postId);
+        public Task DeletePostAsync(Guid postId);
     }
 }

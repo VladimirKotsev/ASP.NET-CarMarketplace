@@ -18,7 +18,6 @@
         }
 
         //This method seeds data for car models in the database
-        //Please keep in mind the data is not fulfilled, It is for educational purposes
         private CarModel[] GenerateHouses()
         {
             ICollection<CarModel> models = new HashSet<CarModel>();
@@ -1142,7 +1141,7 @@
                 Id = id++,
                 ManufacturerName = "Chevrolet",
                 ModelName = "Spark"
-            });
+            }); //180
             models.Add(new CarModel
             {
                 Id = id++,
@@ -1457,7 +1456,7 @@
                 Id = id++,
                 ManufacturerName = "Porsche",
                 ModelName = "718 Boxster"
-            });
+            }); //230
             models.Add(new CarModel
             {
                 Id = id++,
@@ -1581,7 +1580,7 @@
                 ManufacturerName = "Subaru",
                 ModelName = "Ascent"
             });
-
+            //250
             //Volkswagen
 
             models.Add(new CarModel
@@ -1766,7 +1765,7 @@
                 Id = id++,
                 ManufacturerName = "Volvo",
                 ModelName = "V50"
-            }); 
+            }); //280
             models.Add(new CarModel
             {
                 Id = id++,
@@ -1898,7 +1897,7 @@
                 Id = id++,
                 ManufacturerName = "Dacia",
                 ModelName = "Sandero"
-            });
+            }); //300
             models.Add(new CarModel
             {
                 Id = id++,
@@ -2024,7 +2023,7 @@
                 Id = id++,
                 ManufacturerName = "Mazda",
                 ModelName = "MX-5"
-            });
+            });//350
             models.Add(new CarModel
             {
                 Id = id++,
@@ -2150,7 +2149,7 @@
                 Id = id++,
                 ManufacturerName = "Seat",
                 ModelName = "Alhambra"
-            });
+            }); //370
             models.Add(new CarModel
             {
                 Id = id++,

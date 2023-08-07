@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    [Migration("20230803164044_AddedDbSet")]
-    partial class AddedDbSet
+    [Migration("20230807095557_SeedingData")]
+    partial class SeedingData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,19 +117,14 @@ namespace CarMarketplace.Data.Migrations
                     b.Property<int>("EuroStandart")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("LenderId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("ManufacturerId")
                         .HasColumnType("int");
 
                     b.Property<int>("ModelId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Odometer")
-                        .IsRequired()
-                        .HasMaxLength(7)
-                        .HasColumnType("nvarchar(7)");
+                    b.Property<int>("Odometer")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
@@ -161,8 +156,6 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.HasIndex("LenderId");
-
                     b.HasIndex("ManufacturerId");
 
                     b.HasIndex("ModelId");
@@ -179,11 +172,11 @@ namespace CarMarketplace.Data.Migrations
                             Id = new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"),
                             CategoryId = 2,
                             ColorId = 2,
-                            EngineId = 2,
+                            EngineId = 3,
                             EuroStandart = 4,
                             ManufacturerId = 1,
                             ModelId = 5,
-                            Odometer = "209 000",
+                            Odometer = 209000,
                             ProvinceId = 9,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TechnicalSpecificationURL = "https://www.auto-data.net/en/audi-a3-sportback-8pa-facelift-2008-1.9-tdi-105hp-dpf-4215",
@@ -195,11 +188,11 @@ namespace CarMarketplace.Data.Migrations
                             Id = new Guid("913c5349-94de-4dc2-9e7d-346b57648227"),
                             CategoryId = 2,
                             ColorId = 5,
-                            EngineId = 26,
+                            EngineId = 2,
                             EuroStandart = 3,
                             ManufacturerId = 10,
                             ModelId = 145,
-                            Odometer = "219 000",
+                            Odometer = 219000,
                             ProvinceId = 7,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TechnicalSpecificationURL = "https://www.auto-data.net/en/fiat-punto-ii-188-3dr-1.2-80hp-6984",
@@ -211,16 +204,52 @@ namespace CarMarketplace.Data.Migrations
                             Id = new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"),
                             CategoryId = 3,
                             ColorId = 3,
-                            EngineId = 11,
+                            EngineId = 1,
                             EuroStandart = 5,
                             ManufacturerId = 5,
                             ModelId = 88,
-                            Odometer = "164 000",
+                            Odometer = 164000,
                             ProvinceId = 13,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TechnicalSpecificationURL = "https://www.auto-data.net/en/hyundai-ix35-1.7-crdi-115hp-18181",
                             TransmissionType = "Manual",
                             Year = 2013
+                        },
+                        new
+                        {
+                            Id = new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"),
+                            CategoryId = 7,
+                            City = "Sofia",
+                            ColorId = 4,
+                            Description = "This is my Audi A4 2008 wagon s-line trim",
+                            EngineId = 4,
+                            EuroStandart = 5,
+                            ManufacturerId = 1,
+                            ModelId = 6,
+                            Odometer = 160000,
+                            ProvinceId = 20,
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            TechnicalSpecificationURL = "https://www.auto-data.net/bg/audi-a4-avant-b8-8k-3.0-tdi-v6-240hp-quattro-4344",
+                            TransmissionType = "Automatic",
+                            Year = 2008
+                        },
+                        new
+                        {
+                            Id = new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"),
+                            CategoryId = 7,
+                            City = "Sofia",
+                            ColorId = 10,
+                            Description = "Import from Switzerland. 4x4 with real 201000 km with catalytic converter. Works excellent.",
+                            EngineId = 5,
+                            EuroStandart = 4,
+                            ManufacturerId = 28,
+                            ModelId = 350,
+                            Odometer = 202000,
+                            ProvinceId = 20,
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            TechnicalSpecificationURL = "https://www.auto-data.net/bg/skoda-octavia-ii-combi-2.0-fsi-150hp-4x4-14228",
+                            TransmissionType = "Manual",
+                            Year = 2007
                         });
                 });
 
@@ -3210,328 +3239,38 @@ namespace CarMarketplace.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Displacement = 1900,
-                            FuelType = "Diesel",
-                            Horsepower = 130
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Displacement = 1900,
-                            FuelType = "Diesel",
-                            Horsepower = 105
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Displacement = 2000,
-                            FuelType = "Diesel",
-                            Horsepower = 140
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Displacement = 1600,
-                            FuelType = "Diesel",
-                            Horsepower = 130
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Displacement = 2000,
-                            FuelType = "Diesel",
-                            Horsepower = 140
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Displacement = 2100,
-                            FuelType = "Diesel",
-                            Horsepower = 136
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Displacement = 2000,
-                            FuelType = "Diesel",
-                            Horsepower = 136
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Displacement = 1500,
-                            FuelType = "Diesel",
-                            Horsepower = 101
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Displacement = 1600,
-                            FuelType = "Diesel",
-                            Horsepower = 118
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Displacement = 1600,
-                            FuelType = "Diesel",
-                            Horsepower = 130
-                        },
-                        new
-                        {
-                            Id = 11,
                             Displacement = 1700,
                             FuelType = "Diesel",
                             Horsepower = 116
                         },
                         new
                         {
-                            Id = 12,
-                            Displacement = 2000,
-                            FuelType = "Diesel",
-                            Horsepower = 190
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Displacement = 1600,
-                            FuelType = "Diesel",
-                            Horsepower = 160
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Displacement = 2000,
-                            FuelType = "Diesel",
-                            Horsepower = 150
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Displacement = 1600,
-                            FuelType = "Diesel",
-                            Horsepower = 136
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Displacement = 1500,
-                            FuelType = "Diesel",
-                            Horsepower = 115
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Displacement = 3000,
-                            FuelType = "Diesel",
-                            Horsepower = 330
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Displacement = 3000,
-                            FuelType = "Diesel",
-                            Horsepower = 400
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Displacement = 3000,
-                            FuelType = "Diesel",
-                            Horsepower = 235
-                        },
-                        new
-                        {
-                            Id = 20,
-                            Displacement = 2000,
-                            FuelType = "Diesel",
-                            Horsepower = 240
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Displacement = 2000,
-                            FuelType = "Diesel",
-                            Horsepower = 235
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Displacement = 1000,
-                            FuelType = "Petrol",
-                            Horsepower = 115
-                        },
-                        new
-                        {
-                            Id = 23,
-                            Displacement = 1000,
-                            FuelType = "Petrol",
-                            Horsepower = 140
-                        },
-                        new
-                        {
-                            Id = 24,
-                            Displacement = 1200,
-                            FuelType = "Petrol",
-                            Horsepower = 130
-                        },
-                        new
-                        {
-                            Id = 25,
-                            Displacement = 1200,
-                            FuelType = "Petrol",
-                            Horsepower = 130
-                        },
-                        new
-                        {
-                            Id = 26,
+                            Id = 2,
                             Displacement = 1200,
                             FuelType = "Petrol",
                             Horsepower = 80
                         },
                         new
                         {
-                            Id = 27,
-                            Displacement = 2000,
-                            FuelType = "Petrol",
-                            Horsepower = 220
+                            Id = 3,
+                            Displacement = 1900,
+                            FuelType = "Diesel",
+                            Horsepower = 105
                         },
                         new
                         {
-                            Id = 28,
-                            Displacement = 2000,
-                            FuelType = "Petrol",
-                            Horsepower = 300
+                            Id = 4,
+                            Displacement = 3000,
+                            FuelType = "Diesel",
+                            Horsepower = 235
                         },
                         new
                         {
-                            Id = 29,
+                            Id = 5,
                             Displacement = 2000,
-                            FuelType = "Petrol",
-                            Horsepower = 245
-                        },
-                        new
-                        {
-                            Id = 30,
-                            Displacement = 2000,
-                            FuelType = "Petrol",
-                            Horsepower = 255
-                        },
-                        new
-                        {
-                            Id = 31,
-                            Displacement = 1400,
                             FuelType = "Petrol",
                             Horsepower = 150
-                        },
-                        new
-                        {
-                            Id = 32,
-                            Displacement = 1400,
-                            FuelType = "Petrol",
-                            Horsepower = 170
-                        },
-                        new
-                        {
-                            Id = 33,
-                            Displacement = 1200,
-                            FuelType = "Petrol",
-                            Horsepower = 116
-                        },
-                        new
-                        {
-                            Id = 34,
-                            Displacement = 1500,
-                            FuelType = "Petrol",
-                            Horsepower = 150
-                        },
-                        new
-                        {
-                            Id = 35,
-                            Displacement = 1300,
-                            FuelType = "Petrol",
-                            Horsepower = 140
-                        },
-                        new
-                        {
-                            Id = 36,
-                            Displacement = 1500,
-                            FuelType = "Petrol",
-                            Horsepower = 130
-                        },
-                        new
-                        {
-                            Id = 37,
-                            Displacement = 1600,
-                            FuelType = "Petrol",
-                            Horsepower = 177
-                        },
-                        new
-                        {
-                            Id = 38,
-                            Displacement = 2000,
-                            FuelType = "Petrol",
-                            Horsepower = 228
-                        },
-                        new
-                        {
-                            Id = 39,
-                            Displacement = 1800,
-                            FuelType = "Petrol",
-                            Horsepower = 237
-                        },
-                        new
-                        {
-                            Id = 40,
-                            Displacement = 2500,
-                            FuelType = "Petrol",
-                            Horsepower = 186
-                        },
-                        new
-                        {
-                            Id = 41,
-                            Displacement = 2000,
-                            FuelType = "Petrol",
-                            Horsepower = 152
-                        },
-                        new
-                        {
-                            Id = 42,
-                            Displacement = 1500,
-                            FuelType = "Petrol",
-                            Horsepower = 163
                         });
-                });
-
-            modelBuilder.Entity("CarMarketplace.Data.Models.Lender", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Lenders");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Province", b =>
@@ -3694,36 +3433,6 @@ namespace CarMarketplace.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CarMarketplace.Data.Models.RentPost", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CarId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Days")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PricePerDay")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("RentPosts");
-                });
-
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
                 {
                     b.Property<Guid>("Id")
@@ -3761,7 +3470,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"),
                             ImageUrls = "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg",
                             Price = 7000,
-                            PublishDate = new DateTime(2023, 8, 3, 19, 40, 43, 309, DateTimeKind.Local).AddTicks(598),
+                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6300),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3770,7 +3479,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("913c5349-94de-4dc2-9e7d-346b57648227"),
                             ImageUrls = "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg",
                             Price = 2000,
-                            PublishDate = new DateTime(2023, 8, 3, 19, 40, 43, 309, DateTimeKind.Local).AddTicks(661),
+                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6362),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3779,7 +3488,25 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"),
                             ImageUrls = "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg",
                             Price = 17000,
-                            PublishDate = new DateTime(2023, 8, 3, 19, 40, 43, 309, DateTimeKind.Local).AddTicks(672),
+                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6371),
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                        },
+                        new
+                        {
+                            Id = new Guid("efe9de80-c4b1-478a-8b4e-9320bde47eb5"),
+                            CarId = new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"),
+                            ImageUrls = "v1691400036/AudiA4_divn3c.jpg, v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg",
+                            Price = 18500,
+                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6379),
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                        },
+                        new
+                        {
+                            Id = new Guid("63edaa88-527b-4f48-bf3a-5d7c8922cbfd"),
+                            CarId = new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"),
+                            ImageUrls = "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg, v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg",
+                            Price = 6500,
+                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6391),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         });
                 });
@@ -3821,7 +3548,7 @@ namespace CarMarketplace.Data.Migrations
                             FirstName = "Vladimir",
                             LastName = "Kotsev",
                             PhoneNumber = "0899904741",
-                            UserId = new Guid("eaba96e7-8ad5-436d-be68-424370407635")
+                            UserId = new Guid("4bb2ab54-4540-44c8-a4a5-49f005a7da6e")
                         });
                 });
 
@@ -3984,10 +3711,6 @@ namespace CarMarketplace.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CarMarketplace.Data.Models.Lender", null)
-                        .WithMany("RentalCars")
-                        .HasForeignKey("LenderId");
-
                     b.HasOne("CarMarketplace.Data.Models.CarManufacturer", "Make")
                         .WithMany("Cars")
                         .HasForeignKey("ManufacturerId")
@@ -4025,36 +3748,6 @@ namespace CarMarketplace.Data.Migrations
                     b.Navigation("Province");
 
                     b.Navigation("Seller");
-                });
-
-            modelBuilder.Entity("CarMarketplace.Data.Models.Lender", b =>
-                {
-                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("CarMarketplace.Data.Models.RentPost", b =>
-                {
-                    b.HasOne("CarMarketplace.Data.Models.Car", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
@@ -4151,11 +3844,6 @@ namespace CarMarketplace.Data.Migrations
             modelBuilder.Entity("CarMarketplace.Data.Models.CarModel", b =>
                 {
                     b.Navigation("Cars");
-                });
-
-            modelBuilder.Entity("CarMarketplace.Data.Models.Lender", b =>
-                {
-                    b.Navigation("RentalCars");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>

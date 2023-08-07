@@ -13,7 +13,7 @@
             public const int CityMaxLength = 29;
 
             public const int OdometerMinLength = 1;
-            public const int OdometerMaxLength = 7;
+            public const int OdometerMaxLength = 9999999;
 
             public const int OdometerMinValue = 1;
 
