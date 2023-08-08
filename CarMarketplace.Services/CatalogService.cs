@@ -117,7 +117,7 @@
                         Make = new CarManufacturerViewModel()
                         {
                             Id = sp.Car.ManufacturerId,
-                            Name = sp.Car.Make.Name
+                            Name = sp.Car.Manufacturer.Name
                         },
                         Model = new CarModelViewModel()
                         {
@@ -187,7 +187,7 @@
                         Make = new CarManufacturerViewModel()
                         {
                             Id = sp.Car.ManufacturerId,
-                            Name = sp.Car.Make.Name
+                            Name = sp.Car.Manufacturer.Name
                         },
                         Model = new CarModelViewModel()
                         {

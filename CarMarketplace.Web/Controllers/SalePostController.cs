@@ -49,24 +49,43 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(Guid postId)
+        [ActionName("Add")]
+        public async Task<IActionResult> Add()
         {
-            return View("Edit", await salePostService.GetEditViewModelByPostIdAsync(postId));
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Edit(EditViewModel viewModel)
-        {
-            //To do
-            return View("Edit");
+            return View("Add", await this.salePostService.GetAddPostViewModelAsync(new AddViewModel()));
         }
 
         [HttpGet]
-        [ActionName("Add")]
-        public async Task<IActionResult> Add(AddViewModel viewModel)
+        public async Task<IActionResult> Edit(EditViewModel viewModel, Guid postId)
         {
-            return View("Add", await this.salePostService.GetAddPostViewModelAsync(viewModel));
+            ModelState.Clear();
+            return View("Edit", await salePostService.GetEditViewModelByPostIdAsync(viewModel, postId));
         }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        public async Task<IActionResult> EditPost(EditViewModel viewModel, Guid postId)
+        {
+            viewModel.PostId = postId;
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Edit", viewModel);
+            }
+
+            try
+            {
+                await this.salePostService.EditPostByIdAsync(viewModel);
+
+            }
+            catch (InvalidOperationException error)
+            {
+                viewModel.ImagesErrorMessage = error.Message;
+                return RedirectToAction("Edit", viewModel);
+            }
+
+            return Redirect("/Seller/UserPosts");
+        }
+
 
         public async Task<IActionResult> Delete(Guid postId)
         {

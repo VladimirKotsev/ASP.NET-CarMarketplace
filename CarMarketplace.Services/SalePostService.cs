@@ -86,7 +86,7 @@
                         Make = new CarManufacturerViewModel()
                         {
                             Id = sp.Car.ManufacturerId,
-                            Name = sp.Car.Make.Name
+                            Name = sp.Car.Manufacturer.Name
                         },
                         Model = new CarModelViewModel()
                         {
@@ -217,7 +217,7 @@
 
             Car car = new()
             {
-                Make = make,
+                Manufacturer = make,
                 Model = model,
                 Color = color,
                 Province = province,
@@ -244,7 +244,7 @@
 
             foreach (var image in viewModel.Images)
             {
-                var imageUrl = await this.mediaService.UploadPicture(image, car.Make.Name! + car.Model.ModelName!);
+                var imageUrl = await this.mediaService.UploadPicture(image, Guid.NewGuid());
                 var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
                 imagePublicIds.Add(imageId);
             }
@@ -263,10 +263,8 @@
             await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task<EditViewModel> GetEditViewModelByPostIdAsync(Guid postId)
+        public async Task<EditViewModel> GetEditViewModelByPostIdAsync(EditViewModel viewModel, Guid postId)
         {
-            EditViewModel viewModel = new EditViewModel();
-
             SalePostViewModel post = await GetSalePostByIdAsync(postId);
 
             viewModel.Makes = await GetAllMakesAsViewModelsAsync();
@@ -301,5 +299,95 @@
             ;
         }
 
+        public async Task EditPostByIdAsync(EditViewModel viewModel)
+        {
+            Engine? engine = await this.dbContext
+                .Engines
+                .FirstOrDefaultAsync(e => e.Displacement == viewModel.EngineDisplacement
+                && e.Horsepower == viewModel.EngineHorsePower
+                && e.FuelType == viewModel.EngineFuelType);
+
+            if (engine == null)
+            {
+                engine = new Engine()
+                {
+                    Displacement = viewModel.EngineDisplacement,
+                    Horsepower = viewModel.EngineHorsePower,
+                    FuelType = viewModel.EngineFuelType
+                };
+
+                await this.dbContext.Engines.AddAsync(engine);
+            }
+
+            Category category = await this.dbContext
+                .Categories
+                .FirstAsync(c => c.Id == viewModel.CategoryId);
+
+            Province province = await this.dbContext
+                .Provinces
+                .FirstAsync(p => p.Id == viewModel.ProvinceId);
+
+            CarManufacturer make = await this.dbContext
+                .Manufacturers
+                .FirstAsync(m => m.Id == viewModel.MakeId);
+
+            Color color = await this.dbContext
+                .Colors
+                .FirstAsync(c => c.Id == viewModel.ColorId);
+
+            CarModel? model = await this.dbContext
+                .Models
+                .FirstOrDefaultAsync(m => m.ModelName == viewModel.Model && m.ManufacturerName == make.Name);
+
+            if (model == null)
+            {
+                model = new CarModel()
+                {
+                    ModelName = viewModel.Model,
+                    ManufacturerName = make.Name
+                };
+
+                await this.dbContext.Models.AddAsync(model);
+            }
+
+            SalePost postToEdit = await this.dbContext
+                .SalePosts
+                .FirstAsync(sp => sp.Id == viewModel.PostId);
+
+            Car carToEdit = await this.dbContext
+                .Cars
+                .FirstAsync(c => c.Id == postToEdit.CarId);
+
+            carToEdit.Manufacturer = make;
+            carToEdit.Engine = engine;
+            carToEdit.Category = category;
+            carToEdit.Color = color;
+            carToEdit.Model.ModelName = viewModel.Model;
+            carToEdit.Province = province;
+            carToEdit.City = viewModel.City;
+            carToEdit.Year = viewModel.Year;
+            carToEdit.Odometer = viewModel.Odometer;
+            carToEdit.TransmissionType = viewModel.TransmissionType;
+            carToEdit.EuroStandart = viewModel.EuroStandart;
+            carToEdit.TechnicalSpecificationURL = viewModel.TechnicalSpecificationURL;
+            carToEdit.Description = viewModel.Description;
+            carToEdit.VinNumber = viewModel.VinNumber;
+
+            postToEdit.Price = viewModel.Price;
+            postToEdit.PublishDate = DateTime.UtcNow;
+
+            var imagePublicIds = new HashSet<string>();
+
+            foreach (var image in viewModel.Images)
+            {
+                var imageUrl = await this.mediaService.UploadPicture(image, Guid.NewGuid());
+                var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
+                imagePublicIds.Add(imageId);
+            }
+
+            postToEdit.ImageUrls = String.Join(", ", imagePublicIds);
+
+            await this.dbContext.SaveChangesAsync();
+        }
     }
 }

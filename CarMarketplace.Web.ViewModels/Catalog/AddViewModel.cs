@@ -51,7 +51,7 @@
         public int EngineHorsePower { get; set; }
 
         [DisplayName("odometer/kilometers")]
-        [Range(OdometerMinLength, OdometerMaxLength, ErrorMessage = ErrorMessage)]
+        [Range(OdometerMinValue, OdometerMaxValue, ErrorMessage = ErrorMessage)]
         public int Odometer { get; set; }
 
         [DisplayName("transmission")]

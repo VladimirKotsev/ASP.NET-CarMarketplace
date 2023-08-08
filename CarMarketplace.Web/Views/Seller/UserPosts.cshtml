@@ -56,14 +56,27 @@
         </div>
     }
 </div>
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmModalEdit" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-dialog-box">
             <div class="modal-body fs-3">
                 <p>Are you sure you want to <strong>edit</strong> your post?</p>
             </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelAction()">Cancel</button>
+                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelEdit()">Cancel</button>
+                <button type="button" id="confirmButton" class="btn btn-lg btn-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="confirmModalDelete" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-dialog-box">
+            <div class="modal-body fs-3">
+                <p>Are you sure you want to <strong>delete</strong> your post?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelDelete()">Cancel</button>
                 <button type="button" id="confirmButton" class="btn btn-lg btn-danger">Confirm</button>
             </div>
         </div>
@@ -75,13 +88,13 @@
     function showConfirmDelete(id) {
         var url = '@Url.Action("Delete", "SalePost")' + '?postId=' + id;
         $('#confirmButton').get(0).addEventListener('click', () => { confirmAction(url); });
-        $('#confirmModal').modal('show');
+        $('#confirmModalDelete').modal('show');
     }
 
     function showConfirmEdit(id) {
         var url = '@Url.Action("Edit", "SalePost")' + '?postId=' + id;
         $('#confirmButton').get(0).addEventListener('click', () => { confirmAction(url); });
-        $('#confirmModal').modal('show');
+        $('#confirmModalEdit').modal('show');
     }
 
     function confirmAction(url) {
@@ -89,8 +102,17 @@
         window.location.href = url;
     }
 
-    function cancelAction() {
+    function confirmAction(url) {
         $('#confirmModal').modal('hide');
+        window.location.href = url;
+    }
+
+    function cancelDelete() {
+        $('#confirmModalDelete').modal('hide');
+    }
+
+    function cancelEdit() {
+        $('#confirmModalEdit').modal('hide');
     }
 </script>
 

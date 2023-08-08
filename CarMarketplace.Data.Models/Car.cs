@@ -21,7 +21,7 @@
 
         [ForeignKey(nameof(ManufacturerId))]
         [Required]
-        public virtual CarManufacturer Make { get; set; }
+        public virtual CarManufacturer Manufacturer { get; set; }
 
         public int ModelId { get; set; }
 

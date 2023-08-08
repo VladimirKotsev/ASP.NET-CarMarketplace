@@ -16,7 +16,9 @@
         public ICollection<ProvinceViewModel>? Provinces { get; set; }
         public ICollection<ColorViewModel>? Colors { get; set; }
 
-        public Guid PostId { get; set; }
+        public Guid? PostId { get; set; }
+
+        public string? ImagesErrorMessage { get; set; }
 
         public string? ImageUrls { get; set; }
 
@@ -56,7 +58,7 @@
         public int EngineHorsePower { get; set; }
 
         [DisplayName("odometer/kilometers")]
-        [Range(OdometerMinLength, OdometerMaxLength, ErrorMessage = ErrorMessage)]
+        [Range(OdometerMinValue, OdometerMaxValue, ErrorMessage = ErrorMessage)]
         public int Odometer { get; set; }
 
         [DisplayName("transmission")]

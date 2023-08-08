@@ -11,7 +11,7 @@
         {
             builder
                 .HasMany(x => x.Cars)
-                .WithOne(x => x.Make)
+                .WithOne(x => x.Manufacturer)
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasData(this.GenerateHouses());

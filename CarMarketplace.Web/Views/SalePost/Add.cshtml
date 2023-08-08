@@ -12,7 +12,7 @@
             <input class="form-control" type="file" asp-for="Images" multiple>
             @if (Model.ImagesErrorMessage != null)
             {
-                <span class="text-danger fs-4"></span>
+                <span class="text-danger fs-4">@Model.ImagesErrorMessage</span>
             }
         </div>
         <div class="row col-lg-13">
@@ -33,7 +33,7 @@
             </div>
             <div class="mb-3 col-4">
                 <label asp-for="Year" class="form-label fs-4">Year</label>
-                <input type="number" class="form-control" asp-for="Year" value="@Model.Year" min="1886" max="2023" placeholder="e.g., 2017" required>
+                <input type="number" class="form-control" asp-for="Year" value="@((Model.Year != 0) ? Model.Year : null)" min="1886" max="2023" placeholder="e.g., 2017" required>
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">
@@ -71,7 +71,7 @@
             <h3 class="mt-2">Engine specs:</h3>
             <div class="mb-3 col-4">
                 <label class="form-label fs-4" asp-for="EngineDisplacement">Displacement</label>
-                <input type="number" class="form-control" asp-for="EngineDisplacement" value="@Model.EngineDisplacement" min="0" max="99999" placeholder="e.g., 1600, 2000, 2500" required>
+                <input type="number" class="form-control" asp-for="EngineDisplacement" value="@((Model.EngineDisplacement != 0) ? Model.EngineDisplacement : null)" min="0" max="99999" placeholder="e.g., 1600, 2000, 2500" required>
                 <span asp-validation-for="EngineDisplacement" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">
@@ -81,18 +81,18 @@
             </div>
             <div class="mb-3 col-4">
                 <label class="form-label fs-4" asp-for="EngineHorsePower">Horsepower</label>
-                <input type="number" class="form-control" asp-for="EngineHorsePower" value="@Model.EngineHorsePower" min=0 max="9999" placeholder="e.g., 120, 170" required>
+                <input type="number" class="form-control" asp-for="EngineHorsePower" value="@((Model.EngineHorsePower != 0) ? Model.EngineHorsePower : null)" min=0 max="9999" placeholder="e.g., 120, 170" required>
                 <span asp-validation-for="EngineHorsePower" class="text-danger"></span>
             </div>
         </div>
         <div class="mb-3">
             <label asp-for="Price" class="form-label fs-4">Price</label>
-            <input type="number" asp-for="Price" class="form-control" value="@Model.Price" placeholder="Your price will be in BGN" required>
+            <input type="number" asp-for="Price" class="form-control" value="@((Model.Price != 0) ? Model.Price : null)" placeholder="Your price will be in BGN" required>
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Odometer" class="form-label fs-4">Odometer/Kilometers</label>
-            <input type="number" asp-for="Odometer" class="form-control" value="@Model.Odometer" placeholder="e.g., 170000, 250000" required>
+            <input type="number" asp-for="Odometer" class="form-control" value="@((Model.Odometer != 0) ? Model.Odometer : null)" placeholder="e.g., 170000, 250000" required>
             <span asp-validation-for="Odometer" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -107,7 +107,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="EuroStandart" class="form-label fs-4">Euro</label>
-            <input type="number" asp-for="EuroStandart" class="form-control" value="@Model.EuroStandart" placeholder="e.g., 2, 3" required>
+            <input type="number" asp-for="EuroStandart" class="form-control" value="@((Model.EuroStandart != 0) ? Model.EuroStandart : null)" placeholder="e.g., 2, 3" required>
             <span asp-validation-for="EuroStandart" class="text-danger"></span>
         </div>
         <div class="mb-3">

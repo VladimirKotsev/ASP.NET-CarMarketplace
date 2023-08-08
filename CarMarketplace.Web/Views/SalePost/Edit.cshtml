@@ -15,11 +15,15 @@
         }
     </div>
 </div>
-<div class="container mt-1">
+<div class="container mt-1 row-">
     <form enctype="multipart/form-data" asp-action="Edit" method="post">
         <div class="form-group col-12 mb-3 text-center">
             <label class="form-label mt-4 fs-4">Choose up to 10 photos</label>
-            <input class="form-control" type="file" multiple>
+            <input class="form-control" asp-for="Images" type="file" multiple required>
+            @if (Model.ImagesErrorMessage != null)
+            {
+                <span class="text-danger fs-4">@Model.ImagesErrorMessage</span>
+            }
         </div>
         <div class="row col-lg-13">
             <div class="mb-3 col-4">
@@ -39,7 +43,7 @@
             </div>
             <div class="mb-3 col-4">
                 <label asp-for="Year" class="form-label fs-4">Year</label>
-                <input type="number" class="form-control" asp-for="Year" value="@Model.Year" min="1886" max="2023" placeholder="e.g., 2017" required>
+                <input type="number" class="form-control" asp-for="Year" value="@((Model.Year != 0) ? Model.Year : null)" min="1886" max="2023" placeholder="e.g., 2017" required>
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">
@@ -77,7 +81,7 @@
             <h3 class="mt-2">Engine specs:</h3>
             <div class="mb-3 col-4">
                 <label class="form-label fs-4" asp-for="EngineDisplacement">Displacement</label>
-                <input type="number" class="form-control" asp-for="EngineDisplacement" value="@Model.EngineDisplacement" min="0" max="99999" placeholder="e.g., 1600, 2000, 2500" required>
+                <input type="number" class="form-control" asp-for="EngineDisplacement" value="@((Model.EngineDisplacement != 0) ? Model.EngineDisplacement : null)" min="0" max="99999" placeholder="e.g., 1600, 2000, 2500" required>
                 <span asp-validation-for="EngineDisplacement" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">
@@ -87,18 +91,18 @@
             </div>
             <div class="mb-3 col-4">
                 <label class="form-label fs-4" asp-for="EngineHorsePower">Horsepower</label>
-                <input type="number" class="form-control" asp-for="EngineHorsePower" value="@Model.EngineHorsePower" min=0 max="9999" placeholder="e.g., 120, 170" required>
+                <input type="number" class="form-control" asp-for="EngineHorsePower" value="@((Model.EngineHorsePower != 0) ? Model.EngineHorsePower : null)" min=0 max="9999" placeholder="e.g., 120, 170" required>
                 <span asp-validation-for="EngineHorsePower" class="text-danger"></span>
             </div>
         </div>
         <div class="mb-3">
             <label asp-for="Price" class="form-label fs-4">Price</label>
-            <input type="number" asp-for="Price" class="form-control" value="@Model.Price" placeholder="Your price will be in BGN" required>
+            <input type="number" asp-for="Price" class="form-control" value="@((Model.Price != 0) ? Model.Price : null)" placeholder="Your price will be in BGN" required>
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Odometer" class="form-label fs-4">Odometer/Kilometers</label>
-            <input type="number" asp-for="Odometer" class="form-control" value="@Model.Odometer" placeholder="e.g., 170000, 250000" required>
+            <input type="number" asp-for="Odometer" class="form-control" value="@((Model.Odometer != 0) ? Model.Odometer : null)" placeholder="e.g., 170000, 250000" required>
             <span asp-validation-for="Odometer" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -113,7 +117,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="EuroStandart" class="form-label fs-4">Euro</label>
-            <input type="number" asp-for="EuroStandart" class="form-control" value="@Model.EuroStandart" placeholder="e.g., 2, 3" required>
+            <input type="number" asp-for="EuroStandart" class="form-control" value="@((Model.EuroStandart != 0) ? Model.EuroStandart : null)" placeholder="e.g., 2, 3" required>
             <span asp-validation-for="EuroStandart" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -131,21 +135,11 @@
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="d-grid col-3 mx-auto mt-3 mb-2">
-            <input type="submit" class="btn btn-primary fs-4" value="Edit"/>
+            <input type="submit" asp-route-postId="@Model.PostId" class="btn btn-warning fs-4" value="Edit"/>
         </div>
     </form>
 </div>
 
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-dialog-box">
-            <div class="modal-body fs-3">
-                <p>Are you sure you want to <strong>delete</strong> your post?</p>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelAction()">Cancel</button>
-                <button type="button" id="confirmButton" class="btn btn-lg btn-danger">Confirm</button>
-            </div>
-        </div>
-    </div>
-</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

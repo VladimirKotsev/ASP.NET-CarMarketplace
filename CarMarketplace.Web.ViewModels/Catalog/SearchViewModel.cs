@@ -32,11 +32,11 @@
         public int? ToHorsepower { get; set; }
 
         [DisplayName("odometer kilometers")]
-        [Range(OdometerMinLength, OdometerMaxLength, ErrorMessage = ErrorMessage)]
+        [Range(OdometerMinValue, OdometerMaxValue, ErrorMessage = ErrorMessage)]
         public int? FromKilometers { get; set; }
 
         [DisplayName("odometer kilometers")]
-        [Range(OdometerMinLength, OdometerMaxLength, ErrorMessage = ErrorMessage)]
+        [Range(OdometerMinValue, OdometerMaxValue, ErrorMessage = ErrorMessage)]
         public int? ToKilometers { get; set; }
 
         [DisplayName("euro")]

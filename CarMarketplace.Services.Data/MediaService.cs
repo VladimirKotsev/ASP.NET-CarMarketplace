@@ -15,7 +15,7 @@
             this.cloudinary = cloudinary;
         }
 
-        public async Task<string> UploadPicture(IFormFile file, string name)
+        public async Task<string> UploadPicture(IFormFile file, Guid name)
         {
             byte[] destinationImage;
 
@@ -27,8 +27,8 @@
 
             var uploadParams = new ImageUploadParams()
             {
-                File = new FileDescription(name, destinationStream),
-                PublicId = name,
+                File = new FileDescription(name.ToString(), destinationStream),
+                PublicId = name.ToString(),
             };
 
             var result = await this.cloudinary.UploadAsync(uploadParams);
