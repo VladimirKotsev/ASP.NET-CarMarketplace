@@ -25,9 +25,9 @@
             <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="col-md-4 text-decoration-none">
                 <div>
                     <div class="card mb-4">
-                        <img src="@imageSrc" alt="@post.Car.CarName">
+                        <img src="@imageSrc" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
                         <div class="card-body">
-                            <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
+                            <h3 class="card-title"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
                             <hr>
                             <span class="card-text fs-3">
                                 Price: <span class="fst-italic">@post.Price</span><span> BGN</span>
@@ -43,7 +43,7 @@
                                 @post.Car.Province.ProvinceName
                                 @if (post.Car.City != null)
                                 {
-                                    <span class="fs-3">, @post.Car.City</span>
+                                    <span class="fs-3">,@post.Car.City</span>
                                 }
                             </p>
                             <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
@@ -61,9 +61,9 @@
             <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="col-md-4" style="text-decoration: none">
                 <div>
                     <div class="card mb-4">
-                        <img src="@imageSrc" class="card-img-top" alt="@post.Car.CarName">
+                        <img src="@imageSrc" class="card-img-top" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
                         <div class="card-body">
-                            <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
+                            <h3 class="card-title"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
                             <hr>
                             <span class="card-text fs-3">
                                 Price: <span class="fst-italic">@post.Price</span><span> BGN</span>
@@ -79,7 +79,7 @@
                                 @post.Car.Province.ProvinceName
                                 @if (post.Car.City != null)
                                 {
-                                    <span class="fs-3">, @post.Car.City</span>
+                                    <span class="fs-3">,@post.Car.City</span>
                                 }
                             </p>
                             <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>

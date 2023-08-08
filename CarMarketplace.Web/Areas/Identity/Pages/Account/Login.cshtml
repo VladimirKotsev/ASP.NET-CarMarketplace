@@ -14,19 +14,19 @@
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating mb-3 mt-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                    <label asp-for="Input.Email" class="form-label"></label>
+                    <input asp-for="Input.Email" class="form-control" style="height: 80px" autocomplete="username" aria-required="true" />
+                    <label asp-for="Input.Email" class="form-label fs-4"></label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3 mt-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-                    <label asp-for="Input.Password" class="form-label"></label>
+                    <input asp-for="Input.Password" class="form-control custom-input" style="height: 80px" autocomplete="current-password" aria-required="true" />
+                    <label asp-for="Input.Password" class="form-label fs-4"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
                 </div>
-                <div class="d-flex justify-content-center mt-3">
+                <div class="d-flex justify-content-center mt-3 fs-4">
                     <p>
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                     </p>

@@ -16,6 +16,8 @@
         public ICollection<ProvinceViewModel>? Provinces { get; set; }
         public ICollection<ColorViewModel>? Colors { get; set; }
 
+        public Guid PostId { get; set; }
+
         public string? ImageUrls { get; set; }
 
         [Required]

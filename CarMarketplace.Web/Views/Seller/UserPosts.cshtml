@@ -27,9 +27,9 @@
 
                 <div class="col-md-4 text-decoration-none">
                     <div class="card mb-4">
-                        <img src="@imageSrc" class="card-img-top" alt="@post.Car.CarName">
+                        <img src="@imageSrc" class="card-img-top" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
                         <div class="card-body">
-                            <h3 class="card-title"><strong>@post.Car.CarName</strong></h3>
+                            <h3 class="card-title"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
                             <hr>
                             <span class="card-text fs-3">Price: <span class="card-text fs-3 fst-italic">@post.Price</span> BGN</span>
                             <br>
@@ -40,13 +40,13 @@
                             <br>
                             <div class="row justify-content-center mt-2">
                                 <div class="col-4">
-                                    <a class="btn btn-primary btn-warning col-lg-12" asp-controller="SalePost" asp-action="Edit" asp-route-postId="@post.Id">Edit</a>
+                                    <a class="btn btn-primary btn-warning col-lg-12" onclick="showConfirmEdit('@post.Id')">Edit</a>
                                 </div>
                                 <div class="col-4">
                                     <a class="btn btn-primary col-lg-12" asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id">View</a>
                                 </div>
                                 <div class="col-4">
-                                    <a class="btn btn-primary btn-danger col-lg-12" asp-controller="SalePost" asp-action="Delete" asp-route-postId="@post.Id">Delete</a>
+                                    <a class="btn btn-primary btn-danger col-lg-12" onclick="showConfirmDelete('@post.Id')">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -56,4 +56,41 @@
         </div>
     }
 </div>
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-dialog-box">
+            <div class="modal-body fs-3">
+                <p>Are you sure you want to <strong>edit</strong> your post?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelAction()">Cancel</button>
+                <button type="button" id="confirmButton" class="btn btn-lg btn-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showConfirmDelete(id) {
+        var url = '@Url.Action("Delete", "SalePost")' + '?postId=' + id;
+        $('#confirmButton').get(0).addEventListener('click', () => { confirmAction(url); });
+        $('#confirmModal').modal('show');
+    }
+
+    function showConfirmEdit(id) {
+        var url = '@Url.Action("Edit", "SalePost")' + '?postId=' + id;
+        $('#confirmButton').get(0).addEventListener('click', () => { confirmAction(url); });
+        $('#confirmModal').modal('show');
+    }
+
+    function confirmAction(url) {
+        $('#confirmModal').modal('hide');
+        window.location.href = url;
+    }
+
+    function cancelAction() {
+        $('#confirmModal').modal('hide');
+    }
+</script>
 

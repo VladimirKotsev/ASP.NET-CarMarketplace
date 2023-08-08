@@ -114,7 +114,6 @@
                 {
                     Car = new CarViewModel()
                     {
-                        CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
                         Make = new CarManufacturerViewModel()
                         {
                             Id = sp.Car.ManufacturerId,
@@ -144,6 +143,7 @@
                             Id = sp.Car.ProvinceId,
                             ProvinceName = sp.Car.Province.ProvinceName
                         },
+                        City = sp.Car.City,
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
@@ -184,7 +184,6 @@
                 {
                     Car = new CarViewModel()
                     {
-                        CarName = sp.Car.Make.Name + " " + sp.Car.Model.ModelName,
                         Make = new CarManufacturerViewModel()
                         {
                             Id = sp.Car.ManufacturerId,
@@ -214,6 +213,7 @@
                             Id = sp.Car.ProvinceId,
                             ProvinceName = sp.Car.Province.ProvinceName
                         },
+                        City = sp.Car.City,
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,

@@ -3,6 +3,7 @@
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Web.ViewModels.Catalog;
+    using CarMarketplace.Web.ViewModels.SalePost;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Security.Claims;
@@ -37,8 +38,9 @@
             {
                 await this.salePostService.AddPostAsync(viewModel, await this.sellerService.GetSellerIdByUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
             }
-            catch (Exception)
+            catch (InvalidOperationException error)
             {
+                viewModel.ImagesErrorMessage = error.Message;
                 return View("Add", await this.salePostService.GetAddPostViewModelAsync(viewModel));
             }
 
@@ -46,9 +48,17 @@
             return Redirect("/Seller/UserPosts");
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(Guid postId)
         {
             return View("Edit", await salePostService.GetEditViewModelByPostIdAsync(postId));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditViewModel viewModel)
+        {
+            //To do
+            return View("Edit");
         }
 
         [HttpGet]

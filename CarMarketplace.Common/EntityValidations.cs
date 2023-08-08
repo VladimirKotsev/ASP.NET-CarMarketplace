@@ -9,7 +9,7 @@
             public const int YearMinValue = 1886;
             public const int YearMaxValue = 2023;
 
-            public const int CityMinLength = 5;
+            public const int CityMinLength = 4;
             public const int CityMaxLength = 29;
 
             public const int OdometerMinLength = 1;

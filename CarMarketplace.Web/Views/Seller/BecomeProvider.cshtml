@@ -1,28 +1,26 @@
 ﻿@model SellerPersonalnfoViewModel
 
-@{
-    var action = "Become" + ViewData["Title"];
-}
+<h3 class="mt-5 mb-2">We need your personal information in order to become a @ViewData["Title"]!</h3>
 
-<h5 class="mt-5">We need your personal information in order to become a @ViewData["Title"]!</h5>
-
-<form asp-action="@action" method="post">
+<form asp-action="BecomeSeller" method="post">
     <div class="mb-3 mt-3">
-        <label asp-for="FirstName" class="form-label"></label>
+        <label asp-for="FirstName" class="form-label fs-4"></label>
         <input asp-for="FirstName" class="form-control" required>
-        <span asp-validation-for="FirstName" class="text-danger"></span>
+        <span asp-validation-for="FirstName" class="text-danger fs-4"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="LastName" class="form-label"></label>
+        <label asp-for="LastName" class="form-label fs-4"></label>
         <input asp-for="LastName" class="form-control" required>
-        <span asp-validation-for="LastName" class="text-danger"></span>
+        <span asp-validation-for="LastName" class="text-danger  fs-4"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="PhoneNumber" class="form-label"></label>
+        <label asp-for="PhoneNumber" class="form-label fs-4"></label>
         <input asp-for="PhoneNumber" class="form-control" required>
-        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        <span asp-validation-for="PhoneNumber" class="text-danger fs-4"></span>
     </div>
-    <input type="submit" class="btn btn-primary mt-2">
+    <div class="d-grid col-2 mx-auto float-start mt-2">
+        <input type="submit" class="btn btn-primary mt-2 fs-4">
+    </div>
 </form>
 
 @section Scripts {

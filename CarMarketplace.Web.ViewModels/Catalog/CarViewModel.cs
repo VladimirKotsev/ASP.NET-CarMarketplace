@@ -9,8 +9,6 @@
 
         public CarModelViewModel Model { get; set; } = null!;
 
-        public string CarName { get; set; } = null!;
-
         public ColorViewModel Color { get; set; } = null!;
 
         public ProvinceViewModel Province { get; set; } = null!;

@@ -16,7 +16,7 @@
     </div>
 </div>
 <div class="container mt-1">
-    <form enctype="multipart/form-data" asp-action="Post" method="post">
+    <form enctype="multipart/form-data" asp-action="Edit" method="post">
         <div class="form-group col-12 mb-3 text-center">
             <label class="form-label mt-4 fs-4">Choose up to 10 photos</label>
             <input class="form-control" type="file" multiple>
@@ -103,7 +103,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="City" class="form-label fs-4">City</label>
-            <input type="text" asp-for="City" class="form-control" placeholder="e.g., Ruse, Sofia, Plovdiv">
+            <input type="text" asp-for="City" class="form-control" value="@Model.City" placeholder="e.g., Ruse, Sofia, Plovdiv">
             <span asp-validation-for="City" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -131,7 +131,21 @@
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="d-grid col-3 mx-auto mt-3 mb-2">
-            <input type="submit" class="btn btn-primary fs-4" value="Post" />
+            <input type="submit" class="btn btn-primary fs-4" value="Edit"/>
         </div>
     </form>
+</div>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-dialog-box">
+            <div class="modal-body fs-3">
+                <p>Are you sure you want to <strong>delete</strong> your post?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelAction()">Cancel</button>
+                <button type="button" id="confirmButton" class="btn btn-lg btn-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
 </div>

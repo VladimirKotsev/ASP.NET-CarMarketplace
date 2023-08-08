@@ -26,9 +26,9 @@ body {
     height: 60px;
 }
 
-    .form-select option {
-        font-size: 21px;
-    }
+.form-select option {
+    font-size: 21px;
+}
 
 .form-floating label {
     padding-left: 35px;
@@ -58,4 +58,15 @@ a .img-nav {
     max-height: 75px;
 }
 
+.banner {
+    filter: brightness(70%);
+}
 
+.custom-dialog-box {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

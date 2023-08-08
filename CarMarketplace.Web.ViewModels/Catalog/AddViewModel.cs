@@ -84,5 +84,7 @@
 
         [Required]
         public ICollection<IFormFile> Images { get; set; } = null!;
+
+        public string? ImagesErrorMessage { get; set; }
     }
 }

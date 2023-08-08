@@ -1,6 +1,5 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
 }
 
 <div class="text-center">
@@ -16,12 +15,9 @@
     </div>
     <div class="carousel-inner carousel-fade">
         <div class="carousel-item active">
-            @{
-                var src = ViewData["CloudDomain"] + "v1690719882/Untitled_design_1_fxzgnn.png";
-            }
             <a href="">
                 @*to do!!!!!!*@
-                <img src="@src" class="d-block w-100 rounded img-fluid" style="filter: brightness(70%)" alt="...">
+                <img src="/img/German-group-banner.png" class="d-block w-100 rounded img-fluid banner" alt="...">
             </a>
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="max-width: 900px;">
@@ -30,12 +26,9 @@
             </div>
         </div>
         <div class="carousel-item">
-            @{
-                src = ViewData["CloudDomain"] + "v1690720138/Japan-banner_ccycha.png";
-            }
             <a href="">
                 @*to do!!!!!!*@
-                <img src="@src" class="d-block w-100 rounded img-fluid" style="filter: brightness(70%)" alt="...">
+                <img src="~/img/Japan-group-banner.png" class="d-block w-100 rounded img-fluid banner" alt="...">
             </a>
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="max-width: 900px;">
@@ -44,12 +37,9 @@
             </div>
         </div>
         <div class="carousel-item">
-            @{
-                src = ViewData["CloudDomain"] + "v1690720855/italy-banner_i7mejr.png";
-            }
             <a>
                 @*to do!!!!!!*@
-                <img src="@src" class="d-block w-100 rounded img-fluid" style="filter: brightness(70%)" alt="...">
+                <img src="~/img/Italy-group-banner.png" class="d-block w-100 rounded img-fluid banner" alt="...">
             </a>
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="max-width: 900px;">

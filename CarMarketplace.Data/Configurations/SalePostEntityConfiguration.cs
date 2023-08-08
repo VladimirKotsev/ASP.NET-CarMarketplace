@@ -52,7 +52,7 @@
                 CarId = Guid.Parse("61b85678-863c-48d6-9809-f426b78e6bfb"),
                 Price = 18500,
                 PublishDate = DateTime.Now,
-                ImageUrls = "v1691400036/AudiA4_divn3c.jpg, v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg"
+                ImageUrls = "v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400036/AudiA4_divn3c.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg"
             });
 
             salePosts.Add(new SalePost()
