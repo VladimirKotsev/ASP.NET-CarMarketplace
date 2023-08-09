@@ -1,7 +1,11 @@
 ﻿@using System.Security.Claims;
+@using CarMarketplace.Data.Models;
+@using Microsoft.AspNetCore.Identity;
 @inject ISellerService SellerService
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     bool isSeller = await SellerService.SellerExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
+    bool isLogged = SignInManager.IsSignedIn(User);
 }
 
 <!DOCTYPE html>
@@ -45,6 +49,13 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Seller" asp-action="UserPosts">My Posts</a>
+                            </li>
+                        }
+                        @if (isLogged)
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Liked">Liked</a>
                             </li>
                         }
                     </ul>

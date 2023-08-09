@@ -86,7 +86,6 @@
             return Redirect("/Seller/UserPosts");
         }
 
-
         public async Task<IActionResult> Delete(Guid postId)
         {
             await this.salePostService.DeletePostAsync(postId);

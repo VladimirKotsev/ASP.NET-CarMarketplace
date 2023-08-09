@@ -22,14 +22,19 @@
         @foreach (var post in Model.Take(3))
         {
             imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
-            <div class="col-md-4 card">
+            <div class="col-md-4">
                 <div class="card mb-4">
-                    <img src="@imageSrc" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
+                    <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="text-decoration-none">
+                        <img src="@imageSrc" class="card-img" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
+                    </a>
                     <div class="card-body">
                         <div class="row">
-                            <h3 class="card-title"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
-                            <svg class="heart-icon" width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
-
+                            <h3 class="card-title float-start col-10"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
+                            <div class="col-2">
+                                <button class="heart-button" onclick="toggleHeart(this)">
+                                    <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                                </button>
+                            </div>
                         </div>
                         <hr>
                         <span class="card-text fs-3">
@@ -46,7 +51,7 @@
                             @post.Car.Province.ProvinceName
                             @if (post.Car.City != null)
                             {
-                                <span class="fs-3">,@post.Car.City</span>
+                                <span class="fs-3">@post.Car.City</span>
                             }
                         </p>
                         <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
@@ -60,38 +65,78 @@
         @foreach (var post in Model.Skip(3).Take(3))
         {
             imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
-            <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="col-md-4" style="text-decoration: none">
-                <div>
-                    <div class="card mb-4">
-                        <img src="@imageSrc" class="card-img-top" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
-                        <div class="card-body">
-                            <h3 class="card-title"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
-                            <hr>
-                            <span class="card-text fs-3">
-                                Price: <span class="fst-italic">@post.Price</span><span> BGN</span>
-                            </span>
-                            <br>
-                            <span class="card-text fs-3">Year: <span class="fst-italic">@post.Car.Year</span></span>
-                            <br>
-                            @{
-                                var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
-                            }
-                            <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
-                            <p class="card-text fs-3 fst-italic">
-                                @post.Car.Province.ProvinceName
-                                @if (post.Car.City != null)
-                                {
-                                    <span class="fs-3">,@post.Car.City</span>
-                                }
-                            </p>
-                            <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
-                            <br>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="text-decoration-none">
+                        <img src="@imageSrc" class="card-img" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
+                    </a>
+                    <div class="card-body">
+                        <div class="row">
+                            <h3 class="card-title float-start col-10"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
+                            <div class="col-2">
+                                <button class="heart-button" onclick="toggleHeart(this)">
+                                    <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                                </button>
+                            </div>
                         </div>
+                        <hr>
+                        <span class="card-text fs-3">
+                            Price: <span class="fst-italic">@post.Price</span><span> BGN</span>
+                        </span>
+                        <br>
+                        <span class="card-text fs-3">Year: <span class="fst-italic">@post.Car.Year</span></span>
+                        <br>
+                        @{
+                            var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
+                        }
+                        <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
+                        <p class="card-text fs-3 fst-italic">
+                            @post.Car.Province.ProvinceName
+                            @if (post.Car.City != null)
+                            {
+                                <span class="fs-3">@post.Car.City</span>
+                            }
+                        </p>
+                        <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                        <br>
                     </div>
                 </div>
-            </a>
+            </div>
         }
     </div>
 </div>
+
+<style>
+    .heart-button {
+        display: inline-block;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 5px;
+        cursor: pointer;
+        transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    .heart-icon {
+        width: 35px;
+        height: 35px;
+        fill: black;
+        transition: fill 0.3s;
+    }
+
+    .heart-button.active {
+        border-color: white;
+        background-color: white;
+    }
+
+    .heart-button.active .heart-icon {
+        fill: red;
+    }
+</style>
+<script>
+    function toggleHeart(button) {
+        button.classList.toggle('active');
+    }
+</script>
 
 

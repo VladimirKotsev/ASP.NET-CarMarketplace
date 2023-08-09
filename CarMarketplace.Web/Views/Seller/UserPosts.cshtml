@@ -64,11 +64,12 @@
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelEdit()">Cancel</button>
-                <button type="button" id="confirmButton" class="btn btn-lg btn-danger">Confirm</button>
+                <button type="button" id="confirmButtonEdit" class="btn btn-lg btn-danger">Confirm</button>
             </div>
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="confirmModalDelete" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-dialog-box">
@@ -77,7 +78,7 @@
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelDelete()">Cancel</button>
-                <button type="button" id="confirmButton" class="btn btn-lg btn-danger">Confirm</button>
+                <button type="button" id="confirmButtonDelete" class="btn btn-lg btn-danger">Confirm</button>
             </div>
         </div>
     </div>
@@ -87,23 +88,23 @@
 <script>
     function showConfirmDelete(id) {
         var url = '@Url.Action("Delete", "SalePost")' + '?postId=' + id;
-        $('#confirmButton').get(0).addEventListener('click', () => { confirmAction(url); });
+        $('#confirmButtonDelete').get(0).addEventListener('click', () => { confirmActionDelete(url); });
         $('#confirmModalDelete').modal('show');
     }
 
     function showConfirmEdit(id) {
         var url = '@Url.Action("Edit", "SalePost")' + '?postId=' + id;
-        $('#confirmButton').get(0).addEventListener('click', () => { confirmAction(url); });
+        $('#confirmButtonEdit').get(0).addEventListener('click', () => { confirmActionEdit(url); });
         $('#confirmModalEdit').modal('show');
     }
 
-    function confirmAction(url) {
-        $('#confirmModal').modal('hide');
+    function confirmActionDelete(url) {
+        $('#confirmModalDelete').modal('hide');
         window.location.href = url;
     }
 
-    function confirmAction(url) {
-        $('#confirmModal').modal('hide');
+    function confirmActionEdit(url) {
+        $('#confirmModalEdit').modal('hide');
         window.location.href = url;
     }
 

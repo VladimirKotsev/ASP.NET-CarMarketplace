@@ -35,10 +35,18 @@
         {
             if (!ModelState.IsValid)
             {
-                return this.View("Search", await this.catalogService.GetSearchViewModelAsync(model));
+                return this.View("Search", model);
             }
 
             return View(await catalogService.GetFilteredSalePostsAsync(model));
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [ActionName("Results")]
+        public async Task<IActionResult> ResultGroups(string group)
+        {
+            return this.View("Result", await this.catalogService.GetSalePostsByNationAsync(group));
         }
     }
 }

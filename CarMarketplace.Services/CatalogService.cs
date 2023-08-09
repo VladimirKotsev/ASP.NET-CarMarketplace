@@ -1,6 +1,5 @@
 ﻿namespace CarMarketplace.Services
 {
-    using System;
     using System.Collections.Generic;
 
     using Microsoft.EntityFrameworkCore;
@@ -8,21 +7,17 @@
     using CarMarketplace.Data;
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.ViewModels.Catalog;
-    using CarMarketplace.Services.Data.Contracts;
 
     public class CatalogService : ICatalogService
     {
         private readonly CarMarketplaceDbContext dbContext;
 
-        private IMediaService mediaService;
-
-        public CatalogService(CarMarketplaceDbContext _dbContext, IMediaService _mediaService)
+        public CatalogService(CarMarketplaceDbContext _dbContext)
         {
             this.dbContext = _dbContext;
-            this.mediaService = _mediaService;
         }
 
-        private ICollection<SalePostViewModel> FilterAllSalePosts(ICollection<SalePostViewModel> posts, SearchViewModel model)
+        private static ICollection<SalePostViewModel> FilterAllSalePosts(ICollection<SalePostViewModel> posts, SearchViewModel model)
         {
             if (model.Make != 0)
             {
@@ -253,6 +248,236 @@
                 .ToArrayAsync();
 
             return models;
+        }
+
+        public async Task<ICollection<SalePostViewModel>> GetSalePostsByNationAsync(string group)
+        {
+            ICollection<SalePostViewModel> posts = new HashSet<SalePostViewModel>();
+
+            if (group == "german")
+            {
+                ICollection<string> brands = new HashSet<string>
+                {
+                    "Audi",
+                    "BMW",
+                    "Mercedes-Benz",
+                    "Volkswagen",
+                    "Porsche",
+                    "Opel",
+                    "Ford",
+                    "Smart"
+                };
+
+                posts = await this.dbContext
+                    .SalePosts
+                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
+                    .Select(sp => new SalePostViewModel()
+                    {
+                        Car = new CarViewModel()
+                        {
+                            Make = new CarManufacturerViewModel()
+                            {
+                                Id = sp.Car.ManufacturerId,
+                                Name = sp.Car.Manufacturer.Name
+                            },
+                            Model = new CarModelViewModel()
+                            {
+                                Id = sp.Car.ModelId,
+                                ModelName = sp.Car.Model.ModelName
+                            },
+                            Category = new CategoryViewModel()
+                            {
+                                Id = sp.Car.CategoryId,
+                                Name = sp.Car.Category.Name
+                            },
+                            Color = new ColorViewModel()
+                            {
+                                Id = sp.Car.ColorId,
+                                Name = sp.Car.Color.Name
+                            },
+                            Description = sp.Car.Description,
+                            TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
+                            EuroStandart = sp.Car.EuroStandart,
+                            Odometer = sp.Car.Odometer,
+                            Province = new ProvinceViewModel()
+                            {
+                                Id = sp.Car.ProvinceId,
+                                ProvinceName = sp.Car.Province.ProvinceName
+                            },
+                            City = sp.Car.City,
+                            VinNumber = sp.Car.VinNumber,
+                            TransmissionType = sp.Car.TransmissionType,
+                            Year = sp.Car.Year,
+                            Engine = new EngineViewModel()
+                            {
+                                Id = sp.Car.EngineId,
+                                Displacement = sp.Car.Engine.Displacement,
+                                Horsepower = sp.Car.Engine.Horsepower,
+                                FuelType = sp.Car.Engine.FuelType
+                            }
+                        },
+                        Seller = new SellerViewModel()
+                        {
+                            FirstName = sp.Seller.FirstName,
+                            LastName = sp.Seller.LastName,
+                            PhoneNumber = sp.Seller.PhoneNumber
+                        },
+                        PublishDate = sp.PublishDate,
+                        ImageUrls = sp.ImageUrls,
+                        Price = sp.Price,
+                        Id = sp.Id
+                    })
+                    .ToArrayAsync();
+            }
+            else if (group == "italian")
+            {
+                ICollection<string> brands = new HashSet<string>
+                {
+                    "Ferrai",
+                    "Lamborghini",
+                    "Alfa Romeo",
+                    "Fiat",
+                    "Lancia"
+                };
+
+                posts = await this.dbContext
+                    .SalePosts
+                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
+                    .Select(sp => new SalePostViewModel()
+                    {
+                        Car = new CarViewModel()
+                        {
+                            Make = new CarManufacturerViewModel()
+                            {
+                                Id = sp.Car.ManufacturerId,
+                                Name = sp.Car.Manufacturer.Name
+                            },
+                            Model = new CarModelViewModel()
+                            {
+                                Id = sp.Car.ModelId,
+                                ModelName = sp.Car.Model.ModelName
+                            },
+                            Category = new CategoryViewModel()
+                            {
+                                Id = sp.Car.CategoryId,
+                                Name = sp.Car.Category.Name
+                            },
+                            Color = new ColorViewModel()
+                            {
+                                Id = sp.Car.ColorId,
+                                Name = sp.Car.Color.Name
+                            },
+                            Description = sp.Car.Description,
+                            TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
+                            EuroStandart = sp.Car.EuroStandart,
+                            Odometer = sp.Car.Odometer,
+                            Province = new ProvinceViewModel()
+                            {
+                                Id = sp.Car.ProvinceId,
+                                ProvinceName = sp.Car.Province.ProvinceName
+                            },
+                            City = sp.Car.City,
+                            VinNumber = sp.Car.VinNumber,
+                            TransmissionType = sp.Car.TransmissionType,
+                            Year = sp.Car.Year,
+                            Engine = new EngineViewModel()
+                            {
+                                Id = sp.Car.EngineId,
+                                Displacement = sp.Car.Engine.Displacement,
+                                Horsepower = sp.Car.Engine.Horsepower,
+                                FuelType = sp.Car.Engine.FuelType
+                            }
+                        },
+                        Seller = new SellerViewModel()
+                        {
+                            FirstName = sp.Seller.FirstName,
+                            LastName = sp.Seller.LastName,
+                            PhoneNumber = sp.Seller.PhoneNumber
+                        },
+                        PublishDate = sp.PublishDate,
+                        ImageUrls = sp.ImageUrls,
+                        Price = sp.Price,
+                        Id = sp.Id
+                    })
+                    .ToArrayAsync();
+            }
+            else if (group == "japan")
+            {
+                ICollection<string> brands = new HashSet<string>
+                {
+                    "Toyota",
+                    "Lexus",
+                    "Suzuki",
+                    "Mazda",
+                    "Honda",
+                    "Mitsubishi",
+                    "Nissan",
+                    "Subaru"
+                };
+
+                posts = await this.dbContext
+                    .SalePosts
+                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
+                    .Select(sp => new SalePostViewModel()
+                    {
+                        Car = new CarViewModel()
+                        {
+                            Make = new CarManufacturerViewModel()
+                            {
+                                Id = sp.Car.ManufacturerId,
+                                Name = sp.Car.Manufacturer.Name
+                            },
+                            Model = new CarModelViewModel()
+                            {
+                                Id = sp.Car.ModelId,
+                                ModelName = sp.Car.Model.ModelName
+                            },
+                            Category = new CategoryViewModel()
+                            {
+                                Id = sp.Car.CategoryId,
+                                Name = sp.Car.Category.Name
+                            },
+                            Color = new ColorViewModel()
+                            {
+                                Id = sp.Car.ColorId,
+                                Name = sp.Car.Color.Name
+                            },
+                            Description = sp.Car.Description,
+                            TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
+                            EuroStandart = sp.Car.EuroStandart,
+                            Odometer = sp.Car.Odometer,
+                            Province = new ProvinceViewModel()
+                            {
+                                Id = sp.Car.ProvinceId,
+                                ProvinceName = sp.Car.Province.ProvinceName
+                            },
+                            City = sp.Car.City,
+                            VinNumber = sp.Car.VinNumber,
+                            TransmissionType = sp.Car.TransmissionType,
+                            Year = sp.Car.Year,
+                            Engine = new EngineViewModel()
+                            {
+                                Id = sp.Car.EngineId,
+                                Displacement = sp.Car.Engine.Displacement,
+                                Horsepower = sp.Car.Engine.Horsepower,
+                                FuelType = sp.Car.Engine.FuelType
+                            }
+                        },
+                        Seller = new SellerViewModel()
+                        {
+                            FirstName = sp.Seller.FirstName,
+                            LastName = sp.Seller.LastName,
+                            PhoneNumber = sp.Seller.PhoneNumber
+                        },
+                        PublishDate = sp.PublishDate,
+                        ImageUrls = sp.ImageUrls,
+                        Price = sp.Price,
+                        Id = sp.Id
+                    })
+                    .ToArrayAsync();
+            }
+
+            return posts;
         }
 
         public async Task<SearchViewModel> GetSearchViewModelAsync(SearchViewModel model)
