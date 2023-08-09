@@ -17,15 +17,17 @@
 
         }
 
-        public DbSet<Car> Cars { get; set; }
-        public DbSet<CarManufacturer> Manufacturers { get; set; }
-        public DbSet<CarModel> Models { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Color> Colors { get; set; }
-        public DbSet<Engine> Engines { get; set; }
-        public DbSet<Seller> Sellers { get; set; }
-        public DbSet<SalePost> SalePosts { get; set; }
-        public DbSet<Province> Provinces { get; set; }
+        public DbSet<Car> Cars { get; set; } = null!;
+        public DbSet<CarManufacturer> Manufacturers { get; set; } = null!;
+        public DbSet<CarModel> Models { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<Color> Colors { get; set; } = null!;
+        public DbSet<Engine> Engines { get; set; } = null!;
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; } = null!;
+        public DbSet<Seller> Sellers { get; set; } = null!;
+        public DbSet<SalePost> SalePosts { get; set; } = null!;
+        public DbSet<Province> Provinces { get; set; } = null!;
+        public DbSet<SalePostApplicationUsers> SalePostApplicationUsers { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

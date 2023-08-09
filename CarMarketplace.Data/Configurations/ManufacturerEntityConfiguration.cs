@@ -14,12 +14,12 @@
                 .WithOne(x => x.Manufacturer)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasData(this.GenerateHouses());
+            builder.HasData(GenerateHouses());
         }
 
         //This method seeds data for car manufacturers/brands names in the database
         //Please keep in mind the data is not fulfilled, It is for educational purposes
-        private CarManufacturer[] GenerateHouses()
+        private static CarManufacturer[] GenerateHouses()
         {
             ICollection<CarManufacturer> manufacturers = new HashSet<CarManufacturer>();
 

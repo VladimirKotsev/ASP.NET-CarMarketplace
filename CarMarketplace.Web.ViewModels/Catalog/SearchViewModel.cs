@@ -41,7 +41,7 @@
 
         [DisplayName("euro")]
         [Range(EuroStandartMinValue, EuroStandartMaxValue, ErrorMessage = ErrorMessage)]
-        public int? fromEuro { get; set; }
+        public int? FromEuro { get; set; }
 
         [DisplayName("year")]
         [Range(YearMinValue, YearMaxValue, ErrorMessage = ErrorMessage)]

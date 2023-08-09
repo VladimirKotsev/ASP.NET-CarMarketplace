@@ -42,6 +42,7 @@ builder.Services.AddScoped<ISellerService, SellerService>();
 builder.Services.AddScoped<ISalePostService, SalePostService>();
 builder.Services.AddScoped<ICatalogService, CatalogService>();
 builder.Services.AddScoped<IMediaService, MediaService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 string clouldName = builder.Configuration.GetValue<string>("Cloudinary:CloudName");

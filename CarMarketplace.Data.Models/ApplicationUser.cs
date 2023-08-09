@@ -10,8 +10,11 @@
         {
             this.Id = Guid.NewGuid();
             this.CarsOnSale = new HashSet<Car>();
+            this.Favorites = new HashSet<SalePostApplicationUsers>();
         }
 
         public virtual ICollection<Car> CarsOnSale { get; set; }
+
+        public virtual ICollection<SalePostApplicationUsers> Favorites { get; set; }
     }
 }

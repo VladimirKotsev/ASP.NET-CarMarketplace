@@ -355,6 +355,28 @@ namespace CarMarketplace.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "SalePostApplicationUsers",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SalePostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SalePostApplicationUsers", x => new { x.UserId, x.SalePostId });
+                    table.ForeignKey(
+                        name: "FK_SalePostApplicationUsers_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_SalePostApplicationUsers_SalePosts_SalePostId",
+                        column: x => x.SalePostId,
+                        principalTable: "SalePosts",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -435,6 +457,11 @@ namespace CarMarketplace.Data.Migrations
                 column: "SellerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SalePostApplicationUsers_SalePostId",
+                table: "SalePostApplicationUsers",
+                column: "SalePostId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SalePosts_CarId",
                 table: "SalePosts",
                 column: "CarId");
@@ -468,10 +495,13 @@ namespace CarMarketplace.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "SalePosts");
+                name: "SalePostApplicationUsers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "SalePosts");
 
             migrationBuilder.DropTable(
                 name: "Cars");

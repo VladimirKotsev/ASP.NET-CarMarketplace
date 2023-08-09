@@ -8,6 +8,7 @@
         public SalePost()
         {
             this.Id = Guid.NewGuid();
+            this.Users = new HashSet<SalePostApplicationUsers>();
         }
         public Guid Id { get; set; }
 
@@ -32,5 +33,7 @@
         [Required]
         [Column(TypeName = "varchar(5000)")]
         public string ImageUrls { get; set; } = null!;
+
+        public ICollection<SalePostApplicationUsers> Users { get; set; }
     }
 }

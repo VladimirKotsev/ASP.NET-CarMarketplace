@@ -3468,7 +3468,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"),
                             ImageUrls = "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg",
                             Price = 7000,
-                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6300),
+                            PublishDate = new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7207),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3477,7 +3477,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("913c5349-94de-4dc2-9e7d-346b57648227"),
                             ImageUrls = "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg",
                             Price = 2000,
-                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6362),
+                            PublishDate = new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7267),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3486,16 +3486,16 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"),
                             ImageUrls = "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg",
                             Price = 17000,
-                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6371),
+                            PublishDate = new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7290),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
                         {
                             Id = new Guid("efe9de80-c4b1-478a-8b4e-9320bde47eb5"),
                             CarId = new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"),
-                            ImageUrls = "v1691400036/AudiA4_divn3c.jpg, v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg",
+                            ImageUrls = "v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400036/AudiA4_divn3c.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg",
                             Price = 18500,
-                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6379),
+                            PublishDate = new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7298),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3504,9 +3504,24 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"),
                             ImageUrls = "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg, v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg",
                             Price = 6500,
-                            PublishDate = new DateTime(2023, 8, 7, 12, 55, 57, 331, DateTimeKind.Local).AddTicks(6391),
+                            PublishDate = new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7309),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         });
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.SalePostApplicationUsers", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SalePostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "SalePostId");
+
+                    b.HasIndex("SalePostId");
+
+                    b.ToTable("SalePostApplicationUsers");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
@@ -3546,7 +3561,7 @@ namespace CarMarketplace.Data.Migrations
                             FirstName = "Vladimir",
                             LastName = "Kotsev",
                             PhoneNumber = "0899904741",
-                            UserId = new Guid("4bb2ab54-4540-44c8-a4a5-49f005a7da6e")
+                            UserId = new Guid("6d39716f-7f47-47a4-be8a-d467a614889d")
                         });
                 });
 
@@ -3709,7 +3724,7 @@ namespace CarMarketplace.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CarMarketplace.Data.Models.CarManufacturer", "Make")
+                    b.HasOne("CarMarketplace.Data.Models.CarManufacturer", "Manufacturer")
                         .WithMany("Cars")
                         .HasForeignKey("ManufacturerId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -3739,7 +3754,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.Navigation("Engine");
 
-                    b.Navigation("Make");
+                    b.Navigation("Manufacturer");
 
                     b.Navigation("Model");
 
@@ -3765,6 +3780,25 @@ namespace CarMarketplace.Data.Migrations
                     b.Navigation("Car");
 
                     b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.SalePostApplicationUsers", b =>
+                {
+                    b.HasOne("CarMarketplace.Data.Models.SalePost", "SalePost")
+                        .WithMany("Users")
+                        .HasForeignKey("SalePostId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "User")
+                        .WithMany("Favorites")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("SalePost");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
@@ -3832,6 +3866,8 @@ namespace CarMarketplace.Data.Migrations
             modelBuilder.Entity("CarMarketplace.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("CarsOnSale");
+
+                    b.Navigation("Favorites");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.CarManufacturer", b =>
@@ -3842,6 +3878,11 @@ namespace CarMarketplace.Data.Migrations
             modelBuilder.Entity("CarMarketplace.Data.Models.CarModel", b =>
                 {
                     b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>

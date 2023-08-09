@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    [Migration("20230807085641_InitialMigration")]
+    [Migration("20230809063549_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -314,6 +314,21 @@ namespace CarMarketplace.Data.Migrations
                     b.ToTable("SalePosts");
                 });
 
+            modelBuilder.Entity("CarMarketplace.Data.Models.SalePostApplicationUsers", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SalePostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "SalePostId");
+
+                    b.HasIndex("SalePostId");
+
+                    b.ToTable("SalePostApplicationUsers");
+                });
+
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
                 {
                     b.Property<Guid>("Id")
@@ -504,7 +519,7 @@ namespace CarMarketplace.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CarMarketplace.Data.Models.CarManufacturer", "Make")
+                    b.HasOne("CarMarketplace.Data.Models.CarManufacturer", "Manufacturer")
                         .WithMany("Cars")
                         .HasForeignKey("ManufacturerId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -534,7 +549,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.Navigation("Engine");
 
-                    b.Navigation("Make");
+                    b.Navigation("Manufacturer");
 
                     b.Navigation("Model");
 
@@ -560,6 +575,25 @@ namespace CarMarketplace.Data.Migrations
                     b.Navigation("Car");
 
                     b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.SalePostApplicationUsers", b =>
+                {
+                    b.HasOne("CarMarketplace.Data.Models.SalePost", "SalePost")
+                        .WithMany("Users")
+                        .HasForeignKey("SalePostId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "User")
+                        .WithMany("Favorites")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("SalePost");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
@@ -627,6 +661,8 @@ namespace CarMarketplace.Data.Migrations
             modelBuilder.Entity("CarMarketplace.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("CarsOnSale");
+
+                    b.Navigation("Favorites");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.CarManufacturer", b =>
@@ -637,6 +673,11 @@ namespace CarMarketplace.Data.Migrations
             modelBuilder.Entity("CarMarketplace.Data.Models.CarModel", b =>
                 {
                     b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
