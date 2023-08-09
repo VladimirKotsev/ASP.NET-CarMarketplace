@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using CloudinaryDotNet;
 
 using CarMarketplace.Data;
-using CarMarketplace.Data.Models;
 using CarMarketplace.Services;
-using CarMarketplace.Services.Contracts;
+using CarMarketplace.Data.Models;
+using CarMarketplace.Services.Data;
 using CarMarketplace.Web.ViewModels;
 using CarMarketplace.Services.Mapping;
+using CarMarketplace.Services.Contracts;
 using CarMarketplace.Services.Data.Contracts;
-using CarMarketplace.Services.Data;
+using CarMarketplace.Web.Infrastructure.Extensitions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,15 +35,12 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 })
 .AddEntityFrameworkStores<CarMarketplaceDbContext>();
 
+builder.Services.AddApplicationServices(typeof(ISellerService));
+builder.Services.AddApplicationServices(typeof(IMediaService));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddScoped<ISellerService, SellerService>();
-builder.Services.AddScoped<ISalePostService, SalePostService>();
-builder.Services.AddScoped<ICatalogService, CatalogService>();
-builder.Services.AddScoped<IMediaService, MediaService>();
-builder.Services.AddScoped<IUserService, UserService>();
 
 
 string clouldName = builder.Configuration.GetValue<string>("Cloudinary:CloudName");

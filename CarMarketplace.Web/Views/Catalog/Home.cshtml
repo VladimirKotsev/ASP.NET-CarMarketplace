@@ -1,9 +1,15 @@
-﻿@using System.Security.Claims;
-@model ICollection<SalePostViewModel>
+﻿@model ICollection<SalePostViewModel>
 
+@inject SignInManager<ApplicationUser> SignInManager
 @inject IUserService UserService;
 
 @{
+    ICollection<Guid> userFavourites = new HashSet<Guid>();
+    bool isLogged = SignInManager.IsSignedIn(User);
+    if (isLogged)
+    {        
+        userFavourites = await UserService.GetUserFavouritePostIdsAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+    }
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
     ViewData["Title"] = "Latest posts";
     var imageSrc = "";
@@ -26,18 +32,31 @@
         {
             imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
             <div class="col-md-4">
-                <div class="card mb-4">
+                <div class="card mb-4 p-2 shadow">
                     <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="text-decoration-none">
                         <img src="@imageSrc" class="card-img" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
                     </a>
                     <div class="card-body">
                         <div class="row">
+
                             <h3 class="card-title float-start col-10"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
-                            <div class="col-2">
-                                <button class="heart-button" onclick="toggleHeart(this, '@Html.Raw(post.Id)')">
-                                    <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
-                                </button>
-                            </div>
+                            @if (isLogged)
+                            {
+                                <div class="col-2">
+                                    @if (userFavourites.Contains(post.Id))
+                                    {
+                                        <button class="heart-button active" onclick="toggleHeart(this, '@Html.Raw(post.Id)')">
+                                            <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button class="heart-button" onclick="toggleHeart(this, '@Html.Raw(post.Id)')">
+                                            <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                                        </button>
+                                    }
+                                </div>
+                            }
                         </div>
                         <hr>
                         <span class="card-text fs-3">
@@ -69,18 +88,30 @@
         {
             imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
             <div class="col-md-4">
-                <div class="card mb-4">
+                <div class="card mb-4 p-2 shadow">
                     <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="text-decoration-none">
                         <img src="@imageSrc" class="card-img" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
                     </a>
                     <div class="card-body">
                         <div class="row">
-                            <h3 class="card-title float-start col-10"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
-                            <div class="col-2">
-                                <button class="heart-button" onclick="toggleHeart(this, @post.Id">
-                                    <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
-                                </button>
-                            </div>
+                            <h3 class="card-title col-10"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
+                            @if (isLogged)
+                            {
+                                <div class="col-2">
+                                    @if (userFavourites.Contains(post.Id))
+                                    {
+                                        <button class="heart-button active" onclick="toggleHeart(this, '@Html.Raw(post.Id)')">
+                                            <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button class="heart-button" onclick="toggleHeart(this, '@Html.Raw(post.Id)')">
+                                            <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                                        </button>
+                                    }
+                                </div>
+                            }
                         </div>
                         <hr>
                         <span class="card-text fs-3">
@@ -109,54 +140,32 @@
     </div>
 </div>
 
-<style>
-    .heart-button {
-        display: inline-block;
-        background-color: transparent;
-        border: none;
-        box-shadow: none;
-        padding: 5px;
-        cursor: pointer;
-        transition: border-color 0.3s, background-color 0.3s;
-    }
-
-    .heart-icon {
-        width: 35px;
-        height: 35px;
-        fill: black;
-        transition: fill 0.3s;
-    }
-
-    .heart-button.active {
-        border-color: white;
-        background-color: white;
-    }
-
-        .heart-button.active .heart-icon {
-            fill: red;
-        }
-</style>
 <script>
     function toggleHeart(button, postId) {
         button.classList.toggle('active');
-        let userId = '@User.FindFirstValue(ClaimTypes.NameIdentifier)';
-        console.log('You are in');
 
         const data = {
             postId: postId,
-            userId: userId
         };
 
-        console.log(data);
+        if (!button.classList.contains('active')) {
 
-        // Make AJAX request
-        $.ajax({
-            contentType: "application/json",
-            type: 'POST',
-            url: '/User/AddFavourite',
-            data: JSON.stringify(data)
-        });
+            $.ajax({
+                contentType: "application/json",
+                type: 'POST',
+                url: '/User/RemoveFavourite',
+                data: JSON.stringify(data)
+            });
+        }
+        else {
+
+            $.ajax({
+                contentType: "application/json",
+                type: 'POST',
+                url: '/User/AddFavourite',
+                data: JSON.stringify(data)
+            });
+        }
     }
 </script>
-
 

@@ -1,7 +1,4 @@
-﻿@using System.Security.Claims;
-@using CarMarketplace.Data.Models;
-@using Microsoft.AspNetCore.Identity;
-@inject ISellerService SellerService
+﻿@inject ISellerService SellerService
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     bool isSeller = await SellerService.SellerExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
@@ -42,18 +39,17 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between mt-1 ms-2">
                     <ul class="navbar-nav flex-grow-1 fs-4">
-                        <li class="nav-item">
+                        <li class="nav-item ms-1">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="Home">Catalog</a>
                         </li>
                         @if (isSeller)
                         {
-                            <li class="nav-item">
+                            <li class="nav-item ms-1 me-1">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Seller" asp-action="UserPosts">My Posts</a>
                             </li>
                         }
                         @if (isLogged)
                         {
-
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Favourites">Favourites</a>
                             </li>

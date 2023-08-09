@@ -2,6 +2,7 @@
 {
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.Controllers.Common;
+    using CarMarketplace.Web.ViewModels;
     using CarMarketplace.Web.ViewModels.Catalog;
     using CarMarketplace.Web.ViewModels.SalePost;
     using Microsoft.AspNetCore.Authorization;
@@ -24,6 +25,26 @@
         {
             return View(await this.salePostService.GetSalePostByIdAsync(id));
         }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> DetailsReload([FromBody] FavouriteDataViewModel data)
+        {
+            return View("Details", await this.salePostService.GetSalePostByIdAsync(Guid.Parse(data.PostId)));
+        }
+
+        //[AllowAnonymous]
+        //public async Task<IActionResult> RemoveFavourite([FromBody] FavouriteDataViewModel data)
+        //{
+        //    var post = await this.salePostService.GetSalePostByIdAsync(Guid.Parse(data.PostId));
+        //    return RedirectToAction("DetailsReload", post);
+        //}
+
+        //[AllowAnonymous]
+        //public async Task<IActionResult> AddFavourite([FromBody] FavouriteDataViewModel data)
+        //{
+        //    var post = await this.salePostService.GetSalePostByIdAsync(Guid.Parse(data.PostId));
+        //    return RedirectToAction("DetailsReload", post);
+        //}
 
         [HttpPost]
         [ActionName("Post")]

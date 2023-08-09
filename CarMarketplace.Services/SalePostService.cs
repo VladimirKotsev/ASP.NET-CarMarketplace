@@ -133,6 +133,7 @@
                     PublishDate = sp.PublishDate,
                     ImageUrls = sp.ImageUrls,
                     Price = sp.Price,
+                    Likes = sp.SalePostUsers.Count,
                     Id = sp.Id
                 })
                 .FirstAsync();

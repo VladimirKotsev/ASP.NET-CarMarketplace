@@ -18,5 +18,7 @@
 
         public string ImageUrls { get; set; } = null!;
 
+        public int Likes { get; set; }
+
     }
 }

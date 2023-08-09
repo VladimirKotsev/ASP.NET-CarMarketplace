@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{0351E2AA-618
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AA4F8BCC-9141-4C06-A022-AF4219CE3059}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMarketplace.Web.Infrastructure", "CarMarketplace.Web.Infrastructure\CarMarketplace.Web.Infrastructure.csproj", "{279C31E0-AE0C-48AA-A265-458FB81187DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{E1CF5760-C81A-4857-8F84-8DC614B6CD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1CF5760-C81A-4857-8F84-8DC614B6CD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1CF5760-C81A-4857-8F84-8DC614B6CD40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{279C31E0-AE0C-48AA-A265-458FB81187DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279C31E0-AE0C-48AA-A265-458FB81187DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279C31E0-AE0C-48AA-A265-458FB81187DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279C31E0-AE0C-48AA-A265-458FB81187DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{1D8E8467-3908-4EC8-870D-10B6FA6CDF94} = {0351E2AA-6181-4D76-A870-895C8F4056BD}
 		{4F9DFBC7-3075-4C4A-84C0-B7B8E36D5073} = {48E375C1-6A71-470A-93DD-191A5D22C413}
 		{E1CF5760-C81A-4857-8F84-8DC614B6CD40} = {48E375C1-6A71-470A-93DD-191A5D22C413}
+		{279C31E0-AE0C-48AA-A265-458FB81187DF} = {0351E2AA-6181-4D76-A870-895C8F4056BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BD20B6C-7805-4FE4-845D-D75F9DB16984}

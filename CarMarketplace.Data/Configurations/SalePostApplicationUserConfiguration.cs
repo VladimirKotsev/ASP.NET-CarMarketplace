@@ -6,9 +6,9 @@
     using CarMarketplace.Data.Models;
     using System.Reflection.Emit;
 
-    public class SalePostApplicationUserConfiguration : IEntityTypeConfiguration<SalePostApplicationUsers>
+    public class SalePostApplicationUserConfiguration : IEntityTypeConfiguration<SalePostApplicationUser>
     {
-        public void Configure(EntityTypeBuilder<SalePostApplicationUsers> builder)
+        public void Configure(EntityTypeBuilder<SalePostApplicationUser> builder)
         {
             builder.HasKey(x => new
             {
@@ -24,7 +24,7 @@
 
             builder
                 .HasOne(sau => sau.SalePost)
-                .WithMany(sau => sau.Users)
+                .WithMany(sau => sau.SalePostUsers)
                 .HasForeignKey(sau => sau.SalePostId)
                 .OnDelete(DeleteBehavior.NoAction);
         }

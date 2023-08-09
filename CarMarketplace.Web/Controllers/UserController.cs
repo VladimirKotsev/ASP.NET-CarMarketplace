@@ -3,10 +3,10 @@
     using System.Security.Claims;
 
     using Microsoft.AspNetCore.Mvc;
-    using CarMarketplace.Web.Controllers.Common;
 
+    using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Services.Contracts;
-    using CarMarketplace.Web.ViewModels.User;
+    using CarMarketplace.Web.ViewModels;
 
     public class UserController : BaseController
     {
@@ -31,11 +31,16 @@
 
         [HttpPost]
         [Route("User/AddFavourite")]
-        public async Task<IActionResult> AddFavourite([FromBody] FavouriteDataViewModel data)
+        public async Task AddFavourite([FromBody] FavouriteDataViewModel data)
         {
-            await this.userService.AddToUserFavouritesAsync(Guid.Parse(data.PostId), data.UserId);
+            await this.userService.AddToUserFavouritesAsync(Guid.Parse(data.PostId), this.UserId);
+        }
 
-            return RedirectToAction("Favourites");
+        [HttpPost]
+        [Route("User/RemoveFavourite")]
+        public async Task RemoveFavourite([FromBody] FavouriteDataViewModel data)
+        {
+            await this.userService.RemoveUserFavouritePostAsync(Guid.Parse(data.PostId), this.UserId);
         }
     }
 }

@@ -27,7 +27,7 @@
         public DbSet<Seller> Sellers { get; set; } = null!;
         public DbSet<SalePost> SalePosts { get; set; } = null!;
         public DbSet<Province> Provinces { get; set; } = null!;
-        public DbSet<SalePostApplicationUsers> SalePostApplicationUsers { get; set; } = null!;
+        public DbSet<SalePostApplicationUser> SalePostApplicationUsers { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

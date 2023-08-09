@@ -32,7 +32,7 @@ body {
 
 .form-floating label {
     padding-left: 35px;
-    font-size: 20px
+    font-size: 20px;
 }
 
 .form-floating .wide-input {
@@ -69,4 +69,30 @@ a .img-nav {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.heart-button {
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.heart-icon {
+    width: 35px;
+    height: 35px;
+    fill: rgb(44, 62, 80);
+    transition: fill 0.3s;
+}
+
+.heart-button.active {
+    border-color: white;
+    background-color: white;
+}
+
+.heart-button.active .heart-icon {
+    fill: red;
 }

@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class SalePostApplicationUsers
+    public class SalePostApplicationUser
     {
         public Guid UserId { get; set; }
 
@@ -16,5 +16,7 @@
         [Required]
         [ForeignKey(nameof(SalePostId))]
         public SalePost SalePost { get; set; }
+
+        public DateTime AddedToFavourites { get; set; }
     }
 }

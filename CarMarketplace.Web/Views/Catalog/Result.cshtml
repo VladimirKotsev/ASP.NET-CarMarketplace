@@ -1,6 +1,15 @@
 ﻿@model ICollection<SalePostViewModel>
 
+@inject SignInManager<ApplicationUser> SignInManager
+@inject IUserService UserService;
+
 @{
+    ICollection<Guid> userFavourites = new HashSet<Guid>();
+    bool isLogged = SignInManager.IsSignedIn(User);
+    if (isLogged)
+    {
+        userFavourites = await UserService.GetUserFavouritePostIdsAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+    }
     ViewData["Title"] = "Catalog";
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
     var imageSrc = "";
@@ -13,48 +22,94 @@
     @if (Model.Count == 0)
     {
         <div class="text-center mt-4">
-            <img src="/img/Sad_car.png" >
+            <img src="/img/Sad_car.png">
         </div>
     }
     @foreach (var post in Model)
     {
         imageSrc = ViewData["CloudDomain"] + @post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
-        <a class="text-decoration-none text-primary" asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id">
-            <div class="container text-center border rounded shadow-lg p-3 mb-4 mt-4">
-                <div class="row align-items-start">
-                    <div class="col-5">
+        <div class="border rounded shadow bg-white p-3 mb-4 mt-4">
+            <div class="row">
+                <div class="col-5">
+                    <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id">
                         <img src="@imageSrc" class="card-img" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
-                    </div>
-                    <div class="col">
-                        <div class="col mt-3 text-start">
-                            <h2><strong>@post.Car.Make.Name @post.Car.Model.ModelName @post.Car.Year</strong></h2>
-                            <hr>
-                            <div class="mt-4">
-                                <span class="fs-3"><span class="fst-italic">@post.Price</span> <strong>BGN</strong></span>
-                                <br>
-                                @{
-                                    var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="row justify-content-between">
+                        <h2 class="card-title float-start col-6"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h2>
+                        @if (isLogged)
+                        {
+                            <div class="col-2">
+                                @if (userFavourites.Contains(post.Id))
+                                {
+                                    <button class="heart-button active float-end" onclick="toggleHeart(this, '@Html.Raw(post.Id)')">
+                                        <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                                    </button>
                                 }
-                                <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
-                                <br>
-                                <span class="fs-3 fst-italic">@post.Car.TransmissionType</span>
-                                <br>
-                                <span class="fs-3 fst-italic">
-                                    @post.Car.Province.ProvinceName
-                                    @if (@post.Car.City != null)
-                                    {
-                                        <span>@post.Car.City</span>
-                                    }
-                                </span>
-                                <br>
-                                <div class="mt-4 text-end fst-italic">
-                                    <span class="fs-3">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
-                                </div>
+                                else
+                                {
+                                    <button class="heart-button float-end" onclick="toggleHeart(this, '@Html.Raw(post.Id)')">
+                                        <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                                    </button>
+                                }
                             </div>
+                        }
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <span class="fs-3"><span class="fst-italic">@post.Price</span> <strong>BGN</strong></span>
+                        <br>
+                        @{
+                            var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
+                        }
+                        <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
+                        <br>
+                        <span class="fs-3 fst-italic">@post.Car.TransmissionType</span>
+                        <br>
+                        <span class="fs-3 fst-italic">
+                            @post.Car.Province.ProvinceName
+                            @if (@post.Car.City != null)
+                            {
+                                <span>@post.Car.City</span>
+                            }
+                        </span>
+                        <br>
+                        <div class="mt-4 text-end fst-italic">
+                            <span class="fs-3">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
     }
 </div>
+
+<script>
+    function toggleHeart(button, postId) {
+        button.classList.toggle('active');
+
+        const data = {
+            postId: postId,
+        };
+
+        if (!button.classList.contains('active')) {
+
+            $.ajax({
+                contentType: "application/json",
+                type: 'POST',
+                url: '/User/RemoveFavourite',
+                data: JSON.stringify(data)
+            });
+        }
+        else {
+
+            $.ajax({
+                contentType: "application/json",
+                type: 'POST',
+                url: '/User/AddFavourite',
+                data: JSON.stringify(data)
+            });
+        }
+    }
+</script>

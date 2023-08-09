@@ -27,92 +27,136 @@
                 .ApplicationUsers
                 .FirstAsync(u => u.Id == Guid.Parse(userId));
 
-            var userLikedPost = new SalePostApplicationUsers()
+            var userLikedPost = new SalePostApplicationUser()
             {
                 SalePost = post,
                 User = user,
+                AddedToFavourites = DateTime.UtcNow
             };
 
             user.Favorites.Add(userLikedPost);
-            post.Users.Add(userLikedPost);
+            post.SalePostUsers.Add(userLikedPost);
 
             await this.dbContext.SaveChangesAsync();
         }
 
         public async Task<ICollection<SalePostViewModel>> GetUserFavouritesAsync(string userId)
         {
+            ICollection<SalePostViewModel> favSalePosts = new HashSet<SalePostViewModel>();
+
             var userFavorites = await this.dbContext
                 .ApplicationUsers
                 .Where(u => u.Id == Guid.Parse(userId))
                 .Select(a => a.Favorites)
                 .FirstAsync();
 
-            //Need to select salePosts and user, because there are null
-
-            //var salePosts = await dbContext
-            //    .SalePosts
-            //    .Where(s => s.Id == userFavorites.)
-
-            var favSalePosts = userFavorites
-                .Select(f => new SalePostViewModel()
-                {
-                    Car = new CarViewModel()
+            foreach (var salePostId in userFavorites.Select(x => x.SalePostId))
+            {
+                var salePost = await dbContext
+                    .SalePosts
+                    .Select(s => new SalePostViewModel()
                     {
-                        Make = new CarManufacturerViewModel()
+                        Car = new CarViewModel()
                         {
-                            Id = f.SalePost.Car.ManufacturerId,
-                            Name = f.SalePost.Car.Manufacturer.Name
+                            Make = new CarManufacturerViewModel()
+                            {
+                                Id = s.Car.ManufacturerId,
+                                Name = s.Car.Manufacturer.Name
+                            },
+                            Model = new CarModelViewModel()
+                            {
+                                Id = s.Car.ModelId,
+                                ModelName = s.Car.Model.ModelName
+                            },
+                            Category = new CategoryViewModel()
+                            {
+                                Id = s.Car.CategoryId,
+                                Name = s.Car.Category.Name
+                            },
+                            Color = new ColorViewModel()
+                            {
+                                Id = s.Car.ColorId,
+                                Name = s.Car.Color.Name
+                            },
+                            Description = s.Car.Description,
+                            TechnicalSpecificationURL = s.Car.TechnicalSpecificationURL,
+                            EuroStandart = s.Car.EuroStandart,
+                            Odometer = s.Car.Odometer,
+                            Province = new ProvinceViewModel()
+                            {
+                                Id = s.Car.ProvinceId,
+                                ProvinceName = s.Car.Province.ProvinceName
+                            },
+                            City = s.Car.City,
+                            VinNumber = s.Car.VinNumber,
+                            TransmissionType = s.Car.TransmissionType,
+                            Year = s.Car.Year,
+                            Engine = new EngineViewModel()
+                            {
+                                Id = s.Car.EngineId,
+                                Displacement = s.Car.Engine.Displacement,
+                                Horsepower = s.Car.Engine.Horsepower,
+                                FuelType = s.Car.Engine.FuelType
+                            }
                         },
-                        Model = new CarModelViewModel()
+                        Seller = new SellerViewModel()
                         {
-                            Id = f.SalePost.Car.ModelId,
-                            ModelName = f.SalePost.Car.Model.ModelName
+                            FirstName = s.Seller.FirstName,
+                            LastName = s.Seller.LastName,
+                            PhoneNumber = s.Seller.PhoneNumber
                         },
-                        Category = new CategoryViewModel()
-                        {
-                            Id = f.SalePost.Car.CategoryId,
-                            Name = f.SalePost.Car.Category.Name
-                        },
-                        Color = new ColorViewModel()
-                        {
-                            Id = f.SalePost.Car.ColorId,
-                            Name = f.SalePost.Car.Color.Name
-                        },
-                        Description = f.SalePost.Car.Description,
-                        TechnicalSpecificationURL = f.SalePost.Car.TechnicalSpecificationURL,
-                        EuroStandart = f.SalePost.Car.EuroStandart,
-                        Odometer = f.SalePost.Car.Odometer,
-                        Province = new ProvinceViewModel()
-                        {
-                            Id = f.SalePost.Car.ProvinceId,
-                            ProvinceName = f.SalePost.Car.Province.ProvinceName
-                        },
-                        City = f.SalePost.Car.City,
-                        VinNumber = f.SalePost.Car.VinNumber,
-                        TransmissionType = f.SalePost.Car.TransmissionType,
-                        Year = f.SalePost.Car.Year,
-                        Engine = new EngineViewModel()
-                        {
-                            Id = f.SalePost.Car.EngineId,
-                            Displacement = f.SalePost.Car.Engine.Displacement,
-                            Horsepower = f.SalePost.Car.Engine.Horsepower,
-                            FuelType = f.SalePost.Car.Engine.FuelType
-                        }
-                    },
-                    Seller = new SellerViewModel()
-                    {
-                        FirstName = f.SalePost.Seller.FirstName,
-                        LastName = f.SalePost.Seller.LastName,
-                        PhoneNumber = f.SalePost.Seller.PhoneNumber
-                    },
-                    PublishDate = f.SalePost.PublishDate,
-                    ImageUrls = f.SalePost.ImageUrls,
-                    Price = f.SalePost.Price,
-                    Id = f.SalePost.Id
-                })
-                .ToArray();
+                        PublishDate = s.PublishDate,
+                        ImageUrls = s.ImageUrls,
+                        Price = s.Price,
+                        Id = s.Id
+                    })
+                    .FirstAsync(s => s.Id == salePostId);
+
+                favSalePosts.Add(salePost);
+            }
 
             return favSalePosts;
+        }
+
+        public async Task<ICollection<Guid>> GetUserFavouritePostIdsAsync(string userId)
+        {
+            ICollection<Guid> postIds = new HashSet<Guid>();
+
+            var userFavorites = await this.dbContext
+                .ApplicationUsers
+                .Where(u => u.Id == Guid.Parse(userId))
+                .Select(a => a.Favorites)
+                .FirstAsync();
+
+            foreach (var id in userFavorites.Select(x => x.SalePostId))
+            {
+                postIds.Add(id);
+            }
+
+            return postIds;
+        }
+
+        public async Task RemoveUserFavouritePostAsync(Guid postId, string userId)
+        {
+            var post = await this.dbContext
+                .SalePosts
+                .FirstAsync(sp => sp.Id == postId);
+
+            var user = await this.dbContext
+                .ApplicationUsers
+                .FirstAsync(u => u.Id == Guid.Parse(userId));
+
+            var userLikedPost = new SalePostApplicationUser()
+            {
+                SalePost = post,
+                User = user,
+            };
+
+            user.Favorites.Remove(userLikedPost);
+            post.SalePostUsers.Remove(userLikedPost);
+            this.dbContext.SalePostApplicationUsers.Remove(userLikedPost);
+
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }
