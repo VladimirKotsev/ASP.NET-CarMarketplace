@@ -1,6 +1,6 @@
 ﻿namespace CarMarketplace.Services.Contracts
 {
-    using CarMarketplace.Web.ViewModels.Catalog;
+    using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Web.ViewModels.SalePost;
 
     public interface ISalePostService

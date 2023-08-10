@@ -1,10 +1,7 @@
-﻿namespace CarMarketplace.Web.ViewModels.Catalog
+﻿namespace CarMarketplace.Web.ViewModels.Common
 {
-    using CarMarketplace.Services.Mapping.Contracts;
-    using CarMarketplace.Data.Models;
-    using AutoMapper;
 
-    public class SalePostViewModel : IMapFrom<SalePost>
+    public class SalePostViewModel
     {
         public Guid Id { get; set; }
 

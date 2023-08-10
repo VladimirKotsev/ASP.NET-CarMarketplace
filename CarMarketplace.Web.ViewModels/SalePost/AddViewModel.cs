@@ -1,12 +1,13 @@
-﻿namespace CarMarketplace.Web.ViewModels.Catalog
+﻿namespace CarMarketplace.Web.ViewModels.SalePost
 {
     using Microsoft.AspNetCore.Http;
 
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
-    using static Common.EntityValidations.Car;
-    using static Common.EntityValidations.Engine;
+    using CarMarketplace.Web.ViewModels.Common;
+    using static CarMarketplace.Common.EntityValidations.Car;
+    using static CarMarketplace.Common.EntityValidations.Engine;
 
     public class AddViewModel
     {

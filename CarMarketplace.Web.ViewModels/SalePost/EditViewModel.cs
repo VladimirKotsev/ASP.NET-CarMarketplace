@@ -4,12 +4,12 @@
     using System.ComponentModel;
 
     using Microsoft.AspNetCore.Http;
+    using static CarMarketplace.Common.EntityValidations.Car;
+    using static CarMarketplace.Common.EntityValidations.Engine;
+    using CarMarketplace.Web.ViewModels.Common;
+    using CarMarketplace.Services.Mapping.Contracts;
 
-    using CarMarketplace.Web.ViewModels.Catalog;
-    using static Common.EntityValidations.Car;
-    using static Common.EntityValidations.Engine;
-
-    public class EditViewModel
+    public class EditViewModel : IMapFrom<SalePostViewModel>
     {
         public ICollection<CarManufacturerViewModel>? Makes { get; set; }
         public ICollection<CategoryViewModel>? Categories { get; set; }

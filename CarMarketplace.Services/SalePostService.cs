@@ -9,10 +9,11 @@
 
     using CarMarketplace.Data;
     using CarMarketplace.Data.Models;
-    using CarMarketplace.Web.ViewModels.Catalog;
     using CarMarketplace.Services.Data.Contracts;
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.ViewModels.SalePost;
+    using CarMarketplace.Web.ViewModels.Common;
+    using CarMarketplace.Services.Mapping;
 
     public class SalePostService : ISalePostService
     {
@@ -29,11 +30,7 @@
         {
             return await this.dbContext
                 .Manufacturers
-                .Select(m => new CarManufacturerViewModel()
-                {
-                    Id = m.Id,
-                    Name = m.Name
-                })
+                .To<CarManufacturerViewModel>()
                 .OrderBy(m => m.Name)
                 .ToArrayAsync();
         }
@@ -41,11 +38,7 @@
         {
             return await this.dbContext
                 .Colors
-                .Select(c => new ColorViewModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                })
+                .To<ColorViewModel>()
                 .OrderBy(c => c.Name)
                 .ToArrayAsync();
         }
@@ -53,22 +46,14 @@
         {
             return await this.dbContext
                 .Categories
-                .Select(c => new CategoryViewModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                })
+                .To<CategoryViewModel>()
                 .ToArrayAsync();
         }
         private async Task<ICollection<ProvinceViewModel>> GetAllProvincesAsViewModelAsync()
         {
             return await this.dbContext
                 .Provinces
-                .Select(p => new ProvinceViewModel()
-                {
-                    Id = p.Id,
-                    ProvinceName = p.ProvinceName,
-                })
+                .To<ProvinceViewModel>()
                 .ToArrayAsync();
         }
 
@@ -83,57 +68,25 @@
                 {
                     Car = new CarViewModel()
                     {
-                        Make = new CarManufacturerViewModel()
-                        {
-                            Id = sp.Car.ManufacturerId,
-                            Name = sp.Car.Manufacturer.Name
-                        },
-                        Model = new CarModelViewModel()
-                        {
-                            Id = sp.Car.ModelId,
-                            ModelName = sp.Car.Model.ModelName
-                        },
-                        Category = new CategoryViewModel()
-                        {
-                            Id = sp.Car.CategoryId,
-                            Name = sp.Car.Category.Name
-                        },
-                        Color = new ColorViewModel()
-                        {
-                            Id = sp.Car.ColorId,
-                            Name = sp.Car.Color.Name
-                        },
+                        Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
+                        Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),
+                        Category = AutoMapperConfig.MapperInstance.Map<CategoryViewModel>(sp.Car.Category),
+                        Color = AutoMapperConfig.MapperInstance.Map<ColorViewModel>(sp.Car.Color),
                         Description = sp.Car.Description,
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
-                        Province = new ProvinceViewModel()
-                        {
-                            Id = sp.Car.ProvinceId,
-                            ProvinceName = sp.Car.Province.ProvinceName
-                        },
+                        Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
                         City = sp.Car.City,
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
-                        Engine = new EngineViewModel()
-                        {
-                            Id = sp.Car.EngineId,
-                            Displacement = sp.Car.Engine.Displacement,
-                            Horsepower = sp.Car.Engine.Horsepower,
-                            FuelType = sp.Car.Engine.FuelType
-                        }
+                        Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                     },
-                    Seller = new SellerViewModel()
-                    {
-                        FirstName = sp.Seller.FirstName,
-                        LastName = sp.Seller.LastName,
-                        PhoneNumber = sp.Seller.PhoneNumber
-                    },
+                    Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
                     PublishDate = sp.PublishDate,
                     ImageUrls = sp.ImageUrls,
                     Price = sp.Price,
-                    Likes = sp.SalePostUsers.Count,
                     Id = sp.Id
                 })
                 .FirstAsync();

@@ -12,6 +12,7 @@ using CarMarketplace.Services.Mapping;
 using CarMarketplace.Services.Contracts;
 using CarMarketplace.Services.Data.Contracts;
 using CarMarketplace.Web.Infrastructure.Extensitions;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 

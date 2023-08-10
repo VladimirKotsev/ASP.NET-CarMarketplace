@@ -1,13 +1,14 @@
 ﻿namespace CarMarketplace.Web.Controllers
 {
-    using CarMarketplace.Services.Contracts;
-    using CarMarketplace.Web.Controllers.Common;
-    using CarMarketplace.Web.ViewModels;
-    using CarMarketplace.Web.ViewModels.Catalog;
-    using CarMarketplace.Web.ViewModels.SalePost;
+    using System.Security.Claims;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Security.Claims;
+
+    using CarMarketplace.Services.Contracts;
+    using CarMarketplace.Web.Controllers.Common;
+    using CarMarketplace.Web.ViewModels.Common;
+    using CarMarketplace.Web.ViewModels.SalePost;
 
     public class SalePostController : BaseController
     {
@@ -31,20 +32,6 @@
         {
             return View("Details", await this.salePostService.GetSalePostByIdAsync(Guid.Parse(data.PostId)));
         }
-
-        //[AllowAnonymous]
-        //public async Task<IActionResult> RemoveFavourite([FromBody] FavouriteDataViewModel data)
-        //{
-        //    var post = await this.salePostService.GetSalePostByIdAsync(Guid.Parse(data.PostId));
-        //    return RedirectToAction("DetailsReload", post);
-        //}
-
-        //[AllowAnonymous]
-        //public async Task<IActionResult> AddFavourite([FromBody] FavouriteDataViewModel data)
-        //{
-        //    var post = await this.salePostService.GetSalePostByIdAsync(Guid.Parse(data.PostId));
-        //    return RedirectToAction("DetailsReload", post);
-        //}
 
         [HttpPost]
         [ActionName("Post")]

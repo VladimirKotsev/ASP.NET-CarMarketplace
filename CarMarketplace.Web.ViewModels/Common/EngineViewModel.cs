@@ -1,9 +1,9 @@
-﻿namespace CarMarketplace.Web.ViewModels.Catalog
+﻿namespace CarMarketplace.Web.ViewModels.Common
 {
     using CarMarketplace.Data.Models;
     using CarMarketplace.Services.Mapping.Contracts;
 
-    public class EngineViewModel
+    public class EngineViewModel : IMapFrom<Engine>
     {
         public int Id { get; set; }
 

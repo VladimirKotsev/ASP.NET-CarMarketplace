@@ -2,14 +2,14 @@
 {
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using static Common.EntityValidations.Car;
-    using static Common.EntityValidations.Engine;
-    using static Common.EntityValidations.CarModel;
+    using static CarMarketplace.Common.EntityValidations.Car;
+    using static CarMarketplace.Common.EntityValidations.Engine;
+    using static CarMarketplace.Common.EntityValidations.CarModel;
+    using CarMarketplace.Web.ViewModels.Common;
+
     public class SearchViewModel
     {
         public ICollection<CarManufacturerViewModel>? Makes { get; set; }
-
-        public ICollection<CarModelViewModel>? Models { get; set; }
 
         public ICollection<CategoryViewModel>? Categories { get; set; }
 

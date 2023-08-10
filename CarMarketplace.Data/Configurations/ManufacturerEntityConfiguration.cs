@@ -235,6 +235,12 @@
                 Name = "Lancia"
             });
 
+            manufacturers.Add(new CarManufacturer
+            {
+                Id = id++,
+                Name = "Mitsubishi"
+            });
+
 
             return manufacturers.ToArray();
         }

@@ -1,7 +1,9 @@
-﻿namespace CarMarketplace.Web.ViewModels.Catalog
+﻿namespace CarMarketplace.Web.ViewModels.Common
 {
-    using CarMarketplace.Data.Models;
+    using AutoMapper;
+    using CarMarketplace.Services.Mapping;
     using CarMarketplace.Services.Mapping.Contracts;
+    using Data.Models;
 
     public class CarViewModel : IMapFrom<Car>
     {
@@ -30,6 +32,6 @@
 
         public string? Description { get; set; }
 
-        public string? VinNumber { get; set; }     
+        public string? VinNumber { get; set; }
     }
 }

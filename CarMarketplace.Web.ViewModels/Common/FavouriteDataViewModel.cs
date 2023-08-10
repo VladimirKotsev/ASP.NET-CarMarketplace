@@ -1,4 +1,4 @@
-﻿namespace CarMarketplace.Web.ViewModels
+﻿namespace CarMarketplace.Web.ViewModels.Common
 {
     public class FavouriteDataViewModel
     {

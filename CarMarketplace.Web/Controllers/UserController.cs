@@ -6,7 +6,7 @@
 
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Services.Contracts;
-    using CarMarketplace.Web.ViewModels;
+    using CarMarketplace.Web.ViewModels.Common;
 
     public class UserController : BaseController
     {

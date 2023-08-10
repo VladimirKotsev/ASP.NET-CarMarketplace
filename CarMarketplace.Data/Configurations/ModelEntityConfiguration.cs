@@ -2691,6 +2691,148 @@
                 ModelName = "Thema"
             });
 
+            //Mitsubishi
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Outlander"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "ASX"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "L200"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Eclipse Cross"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Pajero"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Space Star"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Colt"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Mirage"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Shogun"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Galant"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Grandis"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "i-MiEV"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Lancer"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "3000GT"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Carisma"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Evo"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "FTO"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Celeste"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Sapporo"
+            });
+
+            models.Add(new CarModel
+            {
+                Id = id++,
+                ManufacturerName = "Mitsubishi",
+                ModelName = "Sigma"
+            });
+
             return models.ToArray();
         }
     }
