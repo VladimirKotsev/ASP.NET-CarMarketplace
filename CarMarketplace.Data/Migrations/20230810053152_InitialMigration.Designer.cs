@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    [Migration("20230809063549_InitialMigration")]
+    [Migration("20230810053152_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -314,13 +314,16 @@ namespace CarMarketplace.Data.Migrations
                     b.ToTable("SalePosts");
                 });
 
-            modelBuilder.Entity("CarMarketplace.Data.Models.SalePostApplicationUsers", b =>
+            modelBuilder.Entity("CarMarketplace.Data.Models.SalePostApplicationUser", b =>
                 {
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("SalePostId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateTimeAdded")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("UserId", "SalePostId");
 
@@ -577,10 +580,10 @@ namespace CarMarketplace.Data.Migrations
                     b.Navigation("Seller");
                 });
 
-            modelBuilder.Entity("CarMarketplace.Data.Models.SalePostApplicationUsers", b =>
+            modelBuilder.Entity("CarMarketplace.Data.Models.SalePostApplicationUser", b =>
                 {
                     b.HasOne("CarMarketplace.Data.Models.SalePost", "SalePost")
-                        .WithMany("Users")
+                        .WithMany("SalePostUsers")
                         .HasForeignKey("SalePostId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -677,7 +680,7 @@ namespace CarMarketplace.Data.Migrations
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("SalePostUsers");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>

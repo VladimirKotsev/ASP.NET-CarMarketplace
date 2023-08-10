@@ -111,6 +111,45 @@
                 TechnicalSpecificationURL = "https://www.auto-data.net/bg/skoda-octavia-ii-combi-2.0-fsi-150hp-4x4-14228"
             });
 
+            cars.Add(new Car()
+            {
+                Id = Guid.Parse("74483b38-f9ab-4deb-a155-2b04e9cfa647"),
+                ManufacturerId = 12,
+                ModelId = 166,
+                ColorId = 1,
+                ProvinceId = 7,
+                Year = 2017,
+                EngineId = 6,
+                Odometer = 206600,
+                TransmissionType = "Automatic",
+                EuroStandart = 6,
+                CategoryId = 7,
+                SellerId = Guid.Parse("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                City = "Dupnitsa",
+                Description = "Personal hybrid vehichle for sale.",
+            });
+            
+            cars.Add(new Car()
+            {
+                Id = Guid.Parse("35b8a5f3-59bd-4997-8b33-2c3b8381085f"),
+                ManufacturerId = 4,
+                ModelId = 64,
+                ColorId = 1,
+                ProvinceId = 20,
+                Year = 1997,
+                EngineId = 7,
+                Odometer = 148000,
+                TransmissionType = "Manual",
+                EuroStandart = 3,
+                CategoryId = 3,
+                SellerId = Guid.Parse("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                City = "Sofia",
+                Description = "For sale is a car in excellent condition. I am the second owner. Imported from Italy 9 years ago. Always serviced on time and kept in a garage. It is not ridden in winter. No rust or rot. In the car, every system works without exception. A radio with a rear view camera for parking is integrated. Original alloy wheels for the model with good summer tires. There is also a set of winter tires on separate steel rims, which I never drove. Paid civil and examination. The car is fitted with gas injection and runs perfectly on both petrol and gas. With its three original keys - two black and one red service key. The original alarm system is working.",
+            });
+
+
+
+
             return cars.ToArray();
         }
     }

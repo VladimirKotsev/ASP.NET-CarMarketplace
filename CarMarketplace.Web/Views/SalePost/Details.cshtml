@@ -88,7 +88,10 @@
             <hr />
             <div class="row d-inline">
                 <span class="fs-4 fst-italic text-start float-start col-6">@Model.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
-                <span class="text-end float-end fst-italic col-3 fs-4 fw-bolder" id="like-span">Likes: @Model.Likes</span>
+                @if (Model.Likes > 0)
+                {
+                    <span class="text-end float-end fst-italic col-3 fs-4 fw-bolder">Likes: <span id="like-span">@Model.Likes</span></span>
+                }
             </div>
         </div>
     </div>
@@ -178,14 +181,14 @@
                     data: JSON.stringify(data),
                     success: function () {
 
-                        $.ajax({
-                            contentType: "application/json",
-                            type: 'POST',
-                            url: '/SalePost/DetailsReload',
-                            data: JSON.stringify(data)
-                        });
+                        var span = document.querySelector('#like-span')
+                        var intValue = parseInt(span.textContent) - 1;
+                        span.classList.add('invisible');
+                        span.textContent = intValue;
+                        span.classList.remove('invisible');
                     }
                 });
+
             }
             else {
 
@@ -194,14 +197,13 @@
                     type: 'POST',
                     url: '/User/AddFavourite',
                     data: JSON.stringify(data),
-                    success: function (){
+                    success: function () {
 
-                        $.ajax({
-                            contentType: "application/json",
-                            type: 'POST',
-                            url: '/SalePost/DetailsReload',
-                            data: JSON.stringify(data)
-                        });
+                        var span = document.querySelector('#like-span')
+                        var intValue = parseInt(span.textContent) + 1;
+                        span.classList.add('invisible');
+                        span.textContent = intValue;
+                        span.classList.remove('invisible');
                     }
                 });
             }

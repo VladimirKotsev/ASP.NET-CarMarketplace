@@ -60,7 +60,9 @@ namespace CarMarketplace.Data.Migrations
                     { 2, 1200, "Petrol", 80 },
                     { 3, 1900, "Diesel", 105 },
                     { 4, 3000, "Diesel", 235 },
-                    { 5, 2000, "Petrol", 150 }
+                    { 5, 2000, "Petrol", 150 },
+                    { 6, 1800, "Hybrid", 99 },
+                    { 7, 1600, "Petrol", 126 }
                 });
 
             migrationBuilder.InsertData(
@@ -74,9 +76,7 @@ namespace CarMarketplace.Data.Migrations
                     { 4, "Honda" },
                     { 5, "Huyndai" },
                     { 6, "Ford" },
-                    { 7, "Nissan" },
-                    { 8, "Renault" },
-                    { 9, "Peugeot" }
+                    { 7, "Nissan" }
                 });
 
             migrationBuilder.InsertData(
@@ -84,6 +84,8 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
+                    { 8, "Renault" },
+                    { 9, "Peugeot" },
                     { 10, "Fiat" },
                     { 11, "Opel" },
                     { 12, "Toyota" },
@@ -109,7 +111,8 @@ namespace CarMarketplace.Data.Migrations
                     { 32, "Ferrari" },
                     { 33, "Lamborghini" },
                     { 34, "Alfa Romeo" },
-                    { 35, "Lancia" }
+                    { 35, "Lancia" },
+                    { 36, "Mitsubishi" }
                 });
 
             migrationBuilder.InsertData(
@@ -129,10 +132,7 @@ namespace CarMarketplace.Data.Migrations
                     { 10, "Audi", "Q2" },
                     { 11, "Audi", "Q3" },
                     { 12, "Audi", "Q5" },
-                    { 13, "Audi", "Q7" },
-                    { 14, "Audi", "Q8" },
-                    { 15, "Audi", "TT" },
-                    { 16, "Audi", "R8" }
+                    { 13, "Audi", "Q7" }
                 });
 
             migrationBuilder.InsertData(
@@ -140,6 +140,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 14, "Audi", "Q8" },
+                    { 15, "Audi", "TT" },
+                    { 16, "Audi", "R8" },
                     { 17, "BMW", "1 Series" },
                     { 18, "BMW", "2 Series" },
                     { 19, "BMW", "3 Series" },
@@ -178,10 +181,7 @@ namespace CarMarketplace.Data.Migrations
                     { 52, "Mercedes-Benz", "E" },
                     { 53, "Mercedes-Benz", "G" },
                     { 54, "Mercedes-Benz", "GLA" },
-                    { 55, "Mercedes-Benz", "GLB" },
-                    { 56, "Mercedes-Benz", "GLC" },
-                    { 57, "Mercedes-Benz", "GLE" },
-                    { 58, "Mercedes-Benz", "GLS" }
+                    { 55, "Mercedes-Benz", "GLB" }
                 });
 
             migrationBuilder.InsertData(
@@ -189,6 +189,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 56, "Mercedes-Benz", "GLC" },
+                    { 57, "Mercedes-Benz", "GLE" },
+                    { 58, "Mercedes-Benz", "GLS" },
                     { 59, "Mercedes-Benz", "S" },
                     { 60, "Mercedes-Benz", "SL" },
                     { 61, "Mercedes-Benz", "S" },
@@ -227,10 +230,7 @@ namespace CarMarketplace.Data.Migrations
                     { 94, "Ford", "Mustang" },
                     { 95, "Ford", "C-MAX" },
                     { 96, "Ford", "Escort" },
-                    { 97, "Nissan", "Micra" },
-                    { 98, "Nissan", "Juke" },
-                    { 99, "Nissan", "Qashqai" },
-                    { 100, "Nissan", "X-Trail" }
+                    { 97, "Nissan", "Micra" }
                 });
 
             migrationBuilder.InsertData(
@@ -238,6 +238,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 98, "Nissan", "Juke" },
+                    { 99, "Nissan", "Qashqai" },
+                    { 100, "Nissan", "X-Trail" },
                     { 101, "Nissan", "Leaf" },
                     { 102, "Nissan", "Murano" },
                     { 103, "Nissan", "GT-R" },
@@ -276,10 +279,7 @@ namespace CarMarketplace.Data.Migrations
                     { 136, "Peugeot", "308" },
                     { 137, "Peugeot", "4007" },
                     { 138, "Peugeot", "4008" },
-                    { 139, "Peugeot", "406" },
-                    { 140, "Peugeot", "407" },
-                    { 141, "Peugeot", "408" },
-                    { 142, "Peugeot", "5008" }
+                    { 139, "Peugeot", "406" }
                 });
 
             migrationBuilder.InsertData(
@@ -287,6 +287,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 140, "Peugeot", "407" },
+                    { 141, "Peugeot", "408" },
+                    { 142, "Peugeot", "5008" },
                     { 143, "Peugeot", "508" },
                     { 144, "Peugeot", "Partner" },
                     { 145, "Fiat", "Punto" },
@@ -325,10 +328,7 @@ namespace CarMarketplace.Data.Migrations
                     { 178, "Toyota", "Carina" },
                     { 179, "Toyota", "Celica" },
                     { 180, "Chevrolet", "Spark" },
-                    { 181, "Chevrolet", "Aveo" },
-                    { 182, "Chevrolet", "Cruze" },
-                    { 183, "Chevrolet", "Trax" },
-                    { 184, "Chevrolet", "Captiva" }
+                    { 181, "Chevrolet", "Aveo" }
                 });
 
             migrationBuilder.InsertData(
@@ -336,6 +336,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 182, "Chevrolet", "Cruze" },
+                    { 183, "Chevrolet", "Trax" },
+                    { 184, "Chevrolet", "Captiva" },
                     { 185, "Chevrolet", "Orlando" },
                     { 186, "Chevrolet", "Corvette" },
                     { 187, "Chevrolet", "Camaro" },
@@ -374,10 +377,7 @@ namespace CarMarketplace.Data.Migrations
                     { 220, "Kia", "Sorento" },
                     { 221, "Kia", "Venga" },
                     { 222, "Lexus", "IS" },
-                    { 223, "Lexus", "ES" },
-                    { 224, "Lexus", "GS" },
-                    { 225, "Lexus", "LS" },
-                    { 226, "Lexus", "RX" }
+                    { 223, "Lexus", "ES" }
                 });
 
             migrationBuilder.InsertData(
@@ -385,6 +385,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 224, "Lexus", "GS" },
+                    { 225, "Lexus", "LS" },
+                    { 226, "Lexus", "RX" },
                     { 227, "Lexus", "NX" },
                     { 228, "Lexus", "LC" },
                     { 229, "Porsche", "911" },
@@ -423,10 +426,7 @@ namespace CarMarketplace.Data.Migrations
                     { 262, "Volkswagen", "Sharan" },
                     { 263, "Volkswagen", "Scirocco" },
                     { 264, "Volkswagen", "Amarok" },
-                    { 265, "Volkswagen", "Caddy" },
-                    { 266, "Volkswagen", "Touareg" },
-                    { 267, "Volkswagen", "Beetle" },
-                    { 268, "Volvo", "XC60" }
+                    { 265, "Volkswagen", "Caddy" }
                 });
 
             migrationBuilder.InsertData(
@@ -434,6 +434,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 266, "Volkswagen", "Touareg" },
+                    { 267, "Volkswagen", "Beetle" },
+                    { 268, "Volvo", "XC60" },
                     { 269, "Volvo", "XC40" },
                     { 270, "Volvo", "XC90" },
                     { 271, "Volvo", "V60" },
@@ -472,10 +475,7 @@ namespace CarMarketplace.Data.Migrations
                     { 304, "Dacia", "Logan MCV" },
                     { 305, "Dacia", "Logan Stepway" },
                     { 306, "Dacia", "Duster" },
-                    { 307, "Dacia", "Dokker" },
-                    { 308, "Dacia", "Lodgy" },
-                    { 309, "Land Rover", "Defender" },
-                    { 310, "Land Rover", "Discovery" }
+                    { 307, "Dacia", "Dokker" }
                 });
 
             migrationBuilder.InsertData(
@@ -483,6 +483,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 308, "Dacia", "Lodgy" },
+                    { 309, "Land Rover", "Defender" },
+                    { 310, "Land Rover", "Discovery" },
                     { 311, "Land Rover", "Discovery Sport" },
                     { 312, "Land Rover", "Range Rover" },
                     { 313, "Land Rover", "Range Rover Velar" },
@@ -521,10 +524,7 @@ namespace CarMarketplace.Data.Migrations
                     { 346, "Seat", "Altea" },
                     { 347, "Seat", "Cupra" },
                     { 348, "Seat", "Fura" },
-                    { 349, "Seat", "Vario" },
-                    { 350, "Škoda", "Octavia" },
-                    { 351, "Škoda", "Fabia" },
-                    { 352, "Škoda", "Superb" }
+                    { 349, "Seat", "Vario" }
                 });
 
             migrationBuilder.InsertData(
@@ -532,6 +532,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 350, "Škoda", "Octavia" },
+                    { 351, "Škoda", "Fabia" },
+                    { 352, "Škoda", "Superb" },
                     { 353, "Škoda", "Kodiaq" },
                     { 354, "Škoda", "Karoq" },
                     { 355, "Škoda", "Scala" },
@@ -570,10 +573,7 @@ namespace CarMarketplace.Data.Migrations
                     { 388, "Ferrari", "812 Superfast" },
                     { 389, "Ferrari", "GTC4Lusso" },
                     { 390, "Ferrari", "Roma" },
-                    { 391, "Ferrari", "SF90 Stradale" },
-                    { 392, "Lamborghini", "Huracán" },
-                    { 393, "Lamborghini", "Aventador" },
-                    { 394, "Lamborghini", "Urus" }
+                    { 391, "Ferrari", "SF90 Stradale" }
                 });
 
             migrationBuilder.InsertData(
@@ -581,6 +581,9 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 392, "Lamborghini", "Huracán" },
+                    { 393, "Lamborghini", "Aventador" },
+                    { 394, "Lamborghini", "Urus" },
                     { 395, "Lamborghini", "Gallardo" },
                     { 396, "Lamborghini", "Diablo" },
                     { 397, "Lamborghini", "Veneno" },
@@ -613,7 +616,34 @@ namespace CarMarketplace.Data.Migrations
                     { 424, "Lancia", "Beta" },
                     { 425, "Lancia", "Gamma" },
                     { 426, "Lancia", "Montecarlo" },
-                    { 427, "Lancia", "Thema" }
+                    { 427, "Lancia", "Thema" },
+                    { 428, "Mitsubishi", "Outlander" },
+                    { 429, "Mitsubishi", "ASX" },
+                    { 430, "Mitsubishi", "L200" },
+                    { 431, "Mitsubishi", "Eclipse Cross" },
+                    { 432, "Mitsubishi", "Pajero" },
+                    { 433, "Mitsubishi", "Space Star" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Models",
+                columns: new[] { "Id", "ManufacturerName", "ModelName" },
+                values: new object[,]
+                {
+                    { 434, "Mitsubishi", "Colt" },
+                    { 435, "Mitsubishi", "Mirage" },
+                    { 436, "Mitsubishi", "Shogun" },
+                    { 437, "Mitsubishi", "Galant" },
+                    { 438, "Mitsubishi", "Grandis" },
+                    { 439, "Mitsubishi", "i-MiEV" },
+                    { 440, "Mitsubishi", "Lancer" },
+                    { 441, "Mitsubishi", "3000GT" },
+                    { 442, "Mitsubishi", "Carisma" },
+                    { 443, "Mitsubishi", "Evo" },
+                    { 444, "Mitsubishi", "FTO" },
+                    { 445, "Mitsubishi", "Celeste" },
+                    { 446, "Mitsubishi", "Sapporo" },
+                    { 447, "Mitsubishi", "Sigma" }
                 });
 
             migrationBuilder.InsertData(
@@ -629,14 +659,7 @@ namespace CarMarketplace.Data.Migrations
                     { 6, "Kardzhali" },
                     { 7, "Kyustendil" },
                     { 8, "Lovech" },
-                    { 9, "Montana" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Provinces",
-                columns: new[] { "Id", "ProvinceName" },
-                values: new object[,]
-                {
+                    { 9, "Montana" },
                     { 10, "Pazardzhik" },
                     { 11, "Pernik" },
                     { 12, "Pleven" },
@@ -661,7 +684,7 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Sellers",
                 columns: new[] { "Id", "FirstName", "LastName", "PhoneNumber", "UserId" },
-                values: new object[] { new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "Vladimir", "Kotsev", "0899904741", new Guid("6d39716f-7f47-47a4-be8a-d467a614889d") });
+                values: new object[] { new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "Vladimir", "Kotsev", "0899904741", new Guid("9faa9109-1c99-4e92-90fb-d76b96740db4") });
 
             migrationBuilder.InsertData(
                 table: "Cars",
@@ -669,7 +692,9 @@ namespace CarMarketplace.Data.Migrations
                 values: new object[,]
                 {
                     { new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"), null, 7, "Sofia", 10, "Import from Switzerland. 4x4 with real 201000 km with catalytic converter. Works excellent.", 5, 4, 28, 350, 202000, 20, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/bg/skoda-octavia-ii-combi-2.0-fsi-150hp-4x4-14228", "Manual", null, 2007 },
+                    { new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"), null, 3, "Sofia", 1, "For sale is a car in excellent condition. I am the second owner. Imported from Italy 9 years ago. Always serviced on time and kept in a garage. It is not ridden in winter. No rust or rot. In the car, every system works without exception. A radio with a rear view camera for parking is integrated. Original alloy wheels for the model with good summer tires. There is also a set of winter tires on separate steel rims, which I never drove. Paid civil and examination. The car is fitted with gas injection and runs perfectly on both petrol and gas. With its three original keys - two black and one red service key. The original alarm system is working.", 7, 3, 4, 64, 148000, 20, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), null, "Manual", null, 1997 },
                     { new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"), null, 7, "Sofia", 4, "This is my Audi A4 2008 wagon s-line trim", 4, 5, 1, 6, 160000, 20, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/bg/audi-a4-avant-b8-8k-3.0-tdi-v6-240hp-quattro-4344", "Automatic", null, 2008 },
+                    { new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"), null, 7, "Dupnitsa", 1, "Personal hybrid vehichle for sale.", 6, 6, 12, 166, 206600, 7, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), null, "Automatic", null, 2017 },
                     { new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), null, 3, null, 3, null, 1, 5, 5, 88, 164000, 13, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/hyundai-ix35-1.7-crdi-115hp-18181", "Manual", null, 2013 },
                     { new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), null, 2, null, 2, null, 3, 4, 1, 5, 209000, 9, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/audi-a3-sportback-8pa-facelift-2008-1.9-tdi-105hp-dpf-4215", "Manual", null, 2009 },
                     { new Guid("913c5349-94de-4dc2-9e7d-346b57648227"), null, 2, null, 5, null, 2, 3, 10, 145, 219000, 7, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/fiat-punto-ii-188-3dr-1.2-80hp-6984", "Manual", null, 2000 }
@@ -680,11 +705,13 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "CarId", "ImageUrls", "Price", "PublishDate", "SellerId" },
                 values: new object[,]
                 {
-                    { new Guid("067ee0a8-c13a-4519-9e80-12b82e33f6f3"), new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg", 17000, new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7290), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("63edaa88-527b-4f48-bf3a-5d7c8922cbfd"), new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"), "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg, v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg", 6500, new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7309), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("9a5a58bd-9e4b-44a2-90a5-23ca5b97d2bc"), new Guid("913c5349-94de-4dc2-9e7d-346b57648227"), "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg", 2000, new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7267), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("c43577f9-2764-437c-b0b6-a7f3bd6651e8"), new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg", 7000, new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7207), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("efe9de80-c4b1-478a-8b4e-9320bde47eb5"), new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"), "v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400036/AudiA4_divn3c.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg", 18500, new DateTime(2023, 8, 9, 9, 41, 7, 693, DateTimeKind.Local).AddTicks(7298), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") }
+                    { new Guid("067ee0a8-c13a-4519-9e80-12b82e33f6f3"), new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg", 17000, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6238), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
+                    { new Guid("2a84f9fc-7068-42a9-9dac-e49d33284196"), new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"), "v1691646413/64d3fb431a7e3d0fcf0b80e2o_anphwq.jpg, v1691646412/64d3fb46c29439437a06b363o_qwemd9.jpg, v1691646412/64d3fb483eb36bd7480a5833b_tmunek.jpg, v1691646415/64d3fb4b0a8dd40f8a0b10c3o_yb9znx.jpg, v1691646412/64d3fb4ddb9605406a046125o_xwnste.jpg, v1691646413/64d3fb4cd9de150f760d6f23o_sf6mqc.jpg", 28500, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6266), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
+                    { new Guid("63edaa88-527b-4f48-bf3a-5d7c8922cbfd"), new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"), "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg, v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg", 6500, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6259), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
+                    { new Guid("96b41a60-8da3-4a54-8422-5c570ae86705"), new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"), "v1691647266/64d3f8349b30846fd708b336o_fe1ma7.jpg, v1691647264/64d3f88754cff649d00f9462o_aefttq.jpg, v1691647264/64d3f88a9b30846fd708b337b_ptog3c.jpg, v1691647264/64d3f88d83abf0e673094a92b_uyfdtb.jpg, v1691647264/64d3f891f6111264730a6732b_u8wh49.jpg, v1691647264/64d3f894ad32aa131c03f293b_cxujvp.jpg, v1691647265/64d3f8a4e43d2c67140a7f12b_vzxxhz.jpg", 5100, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6283), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
+                    { new Guid("9a5a58bd-9e4b-44a2-90a5-23ca5b97d2bc"), new Guid("913c5349-94de-4dc2-9e7d-346b57648227"), "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg", 2000, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6229), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
+                    { new Guid("c43577f9-2764-437c-b0b6-a7f3bd6651e8"), new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg", 7000, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6170), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
+                    { new Guid("efe9de80-c4b1-478a-8b4e-9320bde47eb5"), new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"), "v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400036/AudiA4_divn3c.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg", 18500, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6245), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") }
                 });
         }
 
@@ -714,11 +741,6 @@ namespace CarMarketplace.Data.Migrations
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 8);
-
-            migrationBuilder.DeleteData(
-                table: "Colors",
-                keyColumn: "Id",
-                keyValue: 1);
 
             migrationBuilder.DeleteData(
                 table: "Colors",
@@ -803,11 +825,6 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Manufacturers",
                 keyColumn: "Id",
-                keyValue: 4);
-
-            migrationBuilder.DeleteData(
-                table: "Manufacturers",
-                keyColumn: "Id",
                 keyValue: 6);
 
             migrationBuilder.DeleteData(
@@ -829,11 +846,6 @@ namespace CarMarketplace.Data.Migrations
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 11);
-
-            migrationBuilder.DeleteData(
-                table: "Manufacturers",
-                keyColumn: "Id",
-                keyValue: 12);
 
             migrationBuilder.DeleteData(
                 table: "Manufacturers",
@@ -944,6 +956,11 @@ namespace CarMarketplace.Data.Migrations
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 35);
+
+            migrationBuilder.DeleteData(
+                table: "Manufacturers",
+                keyColumn: "Id",
+                keyValue: 36);
 
             migrationBuilder.DeleteData(
                 table: "Models",
@@ -1249,11 +1266,6 @@ namespace CarMarketplace.Data.Migrations
                 table: "Models",
                 keyColumn: "Id",
                 keyValue: 63);
-
-            migrationBuilder.DeleteData(
-                table: "Models",
-                keyColumn: "Id",
-                keyValue: 64);
 
             migrationBuilder.DeleteData(
                 table: "Models",
@@ -1749,11 +1761,6 @@ namespace CarMarketplace.Data.Migrations
                 table: "Models",
                 keyColumn: "Id",
                 keyValue: 165);
-
-            migrationBuilder.DeleteData(
-                table: "Models",
-                keyColumn: "Id",
-                keyValue: 166);
 
             migrationBuilder.DeleteData(
                 table: "Models",
@@ -3056,6 +3063,106 @@ namespace CarMarketplace.Data.Migrations
                 keyValue: 427);
 
             migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 428);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 429);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 430);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 431);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 432);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 433);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 434);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 435);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 436);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 437);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 438);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 439);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 440);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 441);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 442);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 443);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 444);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 445);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 446);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 447);
+
+            migrationBuilder.DeleteData(
                 table: "Provinces",
                 keyColumn: "Id",
                 keyValue: 1);
@@ -3183,7 +3290,17 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "SalePosts",
                 keyColumn: "Id",
+                keyValue: new Guid("2a84f9fc-7068-42a9-9dac-e49d33284196"));
+
+            migrationBuilder.DeleteData(
+                table: "SalePosts",
+                keyColumn: "Id",
                 keyValue: new Guid("63edaa88-527b-4f48-bf3a-5d7c8922cbfd"));
+
+            migrationBuilder.DeleteData(
+                table: "SalePosts",
+                keyColumn: "Id",
+                keyValue: new Guid("96b41a60-8da3-4a54-8422-5c570ae86705"));
 
             migrationBuilder.DeleteData(
                 table: "SalePosts",
@@ -3208,7 +3325,17 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Cars",
                 keyColumn: "Id",
+                keyValue: new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"));
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
                 keyValue: new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"));
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"));
 
             migrationBuilder.DeleteData(
                 table: "Cars",
@@ -3243,6 +3370,11 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Colors",
                 keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Colors",
+                keyColumn: "Id",
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
@@ -3291,9 +3423,24 @@ namespace CarMarketplace.Data.Migrations
                 keyValue: 5);
 
             migrationBuilder.DeleteData(
+                table: "Engines",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "Engines",
+                keyColumn: "Id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Manufacturers",
+                keyColumn: "Id",
+                keyValue: 4);
 
             migrationBuilder.DeleteData(
                 table: "Manufacturers",
@@ -3304,6 +3451,11 @@ namespace CarMarketplace.Data.Migrations
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "Manufacturers",
+                keyColumn: "Id",
+                keyValue: 12);
 
             migrationBuilder.DeleteData(
                 table: "Manufacturers",
@@ -3323,12 +3475,22 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Models",
                 keyColumn: "Id",
+                keyValue: 64);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
                 keyValue: 88);
 
             migrationBuilder.DeleteData(
                 table: "Models",
                 keyColumn: "Id",
                 keyValue: 145);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 166);
 
             migrationBuilder.DeleteData(
                 table: "Models",

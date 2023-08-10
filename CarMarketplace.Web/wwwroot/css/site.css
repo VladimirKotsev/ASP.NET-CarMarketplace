@@ -96,3 +96,17 @@ a .img-nav {
 .heart-button.active .heart-icon {
     fill: red;
 }
+
+.card-img-catalog{
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-img-result {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center;
+}

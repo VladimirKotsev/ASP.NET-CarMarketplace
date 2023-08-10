@@ -360,7 +360,8 @@ namespace CarMarketplace.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SalePostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    SalePostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DateTimeAdded = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

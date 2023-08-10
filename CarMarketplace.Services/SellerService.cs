@@ -2,14 +2,12 @@
 {
     using Microsoft.EntityFrameworkCore;
 
-    using CarMarketplace.Services.Contracts;
+    using Services.Contracts;
     using CarMarketplace.Data;
-    using CarMarketplace.Web.ViewModels.Seller;
+    using Web.ViewModels.Seller;
     using CarMarketplace.Data.Models;
-    using CarMarketplace.Web.ViewModels.Catalog;
-    using CarMarketplace.Web.ViewModels;
-    using CarMarketplace.Web.ViewModels.Common;
-    using CarMarketplace.Services.Mapping;
+    using Web.ViewModels.Common;
+    using Services.Mapping;
 
     public class SellerService : ISellerService
     {

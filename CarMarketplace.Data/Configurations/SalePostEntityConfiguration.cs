@@ -65,6 +65,26 @@
                 ImageUrls = "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg, v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg"
             });
 
+            salePosts.Add(new SalePost()
+            {
+                Id = Guid.Parse("2a84f9fc-7068-42a9-9dac-e49d33284196"),
+                SellerId = Guid.Parse("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                CarId = Guid.Parse("74483b38-f9ab-4deb-a155-2b04e9cfa647"),
+                Price = 28500,
+                PublishDate = DateTime.Now,
+                ImageUrls = "v1691646413/64d3fb431a7e3d0fcf0b80e2o_anphwq.jpg, v1691646412/64d3fb46c29439437a06b363o_qwemd9.jpg, v1691646412/64d3fb483eb36bd7480a5833b_tmunek.jpg, v1691646415/64d3fb4b0a8dd40f8a0b10c3o_yb9znx.jpg, v1691646412/64d3fb4ddb9605406a046125o_xwnste.jpg, v1691646413/64d3fb4cd9de150f760d6f23o_sf6mqc.jpg"
+            });
+
+            salePosts.Add(new SalePost()
+            {
+                Id = Guid.Parse("96b41a60-8da3-4a54-8422-5c570ae86705"),
+                SellerId = Guid.Parse("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                CarId = Guid.Parse("35b8a5f3-59bd-4997-8b33-2c3b8381085f"),
+                Price = 5100,
+                PublishDate = DateTime.Now,
+                ImageUrls = "v1691647266/64d3f8349b30846fd708b336o_fe1ma7.jpg, v1691647264/64d3f88754cff649d00f9462o_aefttq.jpg, v1691647264/64d3f88a9b30846fd708b337b_ptog3c.jpg, v1691647264/64d3f88d83abf0e673094a92b_uyfdtb.jpg, v1691647264/64d3f891f6111264730a6732b_u8wh49.jpg, v1691647264/64d3f894ad32aa131c03f293b_cxujvp.jpg, v1691647265/64d3f8a4e43d2c67140a7f12b_vzxxhz.jpg"
+            });
+
             return salePosts.ToArray();
         }
     }

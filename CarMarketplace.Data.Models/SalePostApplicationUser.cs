@@ -17,6 +17,6 @@
         [ForeignKey(nameof(SalePostId))]
         public SalePost SalePost { get; set; }
 
-        public DateTime AddedToFavourites { get; set; }
+        public DateTime DateTimeAdded { get; set; }
     }
 }

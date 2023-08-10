@@ -15,7 +15,7 @@
     var imageSrc = "";
 }
 
-<div class="container">
+<div class="">
     <div class="row">
         <div class="col-md-6">
             <h1 class="my-4">@ViewData["Title"]</h1>
@@ -34,7 +34,7 @@
             <div class="col-md-4">
                 <div class="card mb-4 p-2 shadow">
                     <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="text-decoration-none">
-                        <img src="@imageSrc" class="card-img" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
+                        <img src="@imageSrc" class="card-img-catalog" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
                     </a>
                     <div class="card-body">
                         <div class="row">

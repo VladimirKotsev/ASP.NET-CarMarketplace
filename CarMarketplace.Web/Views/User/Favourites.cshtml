@@ -1,4 +1,4 @@
-﻿@model ICollection<SalePostViewModel>
+﻿@model ICollection<FavouriteViewModel>
 
 @{
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
@@ -16,40 +16,41 @@
         <div class="row">
             @foreach (var post in Model.Skip(i).Take(3))
             {
-                imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
+                imageSrc = ViewData["CloudDomain"] + post.SalePost.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
                 <div class="col-md-4">
                     <div class="card mb-4 p-2 shadow">
-                        <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id" class="text-decoration-none">
-                            <img src="@imageSrc" class="card-img" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
+                        <span class="fs-4">Liked: @post.DateTimeAdded.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                        <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.SalePost.Id" class="text-decoration-none">
+                            <img src="@imageSrc" class="card-img" alt="@post.SalePost.Car.Make.Name @post.SalePost.Car.Model.ModelName">
                         </a>
                         <div class="card-body">
                             <div class="row">
-                                <h3 class="card-title col-10"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h3>
+                                <h3 class="card-title col-10"><strong>@post.SalePost.Car.Make.Name @post.SalePost.Car.Model.ModelName</strong></h3>
                                 <div class="col-2">
-                                    <button class="heart-button active" onclick="toggleHeart(this, '@Html.Raw(post.Id)')">
+                                    <button class="heart-button active" onclick="toggleHeart(this, '@Html.Raw(post.SalePost.Id)')">
                                         <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
                                     </button>
                                 </div>
                             </div>
                             <hr>
                             <span class="card-text fs-3">
-                                Price: <span class="fst-italic">@post.Price</span><span> BGN</span>
+                                Price: <span class="fst-italic">@post.SalePost.Price</span><span> BGN</span>
                             </span>
                             <br>
-                            <span class="card-text fs-3">Year: <span class="fst-italic">@post.Car.Year</span></span>
+                            <span class="card-text fs-3">Year: <span class="fst-italic">@post.SalePost.Car.Year</span></span>
                             <br>
                             @{
-                                var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
+                                var displacement = (post.SalePost.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
                             }
-                            <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
+                            <span class="card-text fs-3 fst-italic">@displacement @post.SalePost.Car.Engine.FuelType @post.SalePost.Car.Engine.Horsepower<span>hp</span></span>
                             <p class="card-text fs-3 fst-italic">
-                                @post.Car.Province.ProvinceName
-                                @if (post.Car.City != null)
+                                @post.SalePost.Car.Province.ProvinceName
+                                @if (post.SalePost.Car.City != null)
                                 {
-                                    <span class="fs-3">@post.Car.City</span>
+                                    <span class="fs-3">@post.SalePost.Car.City</span>
                                 }
                             </p>
-                            <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                            <span class="card-text fs-4 fst-italic">@post.SalePost.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
                             <br>
                         </div>
                     </div>

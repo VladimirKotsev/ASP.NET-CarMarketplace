@@ -21,7 +21,7 @@
             sellers.Add(new Seller()
             {
                 Id = Guid.Parse("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
-                UserId = Guid.Parse("6D39716F-7F47-47A4-BE8A-D467A614889D"),
+                UserId = Guid.Parse("9FAA9109-1C99-4E92-90FB-D76B96740DB4"),
                 //Replace this with your auto generated user id copied from dto.AspNetUsers
                 PhoneNumber = "0899904741",
                 FirstName = "Vladimir",

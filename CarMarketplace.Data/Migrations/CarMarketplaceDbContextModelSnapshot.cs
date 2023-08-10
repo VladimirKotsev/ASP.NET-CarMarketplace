@@ -248,6 +248,40 @@ namespace CarMarketplace.Data.Migrations
                             TechnicalSpecificationURL = "https://www.auto-data.net/bg/skoda-octavia-ii-combi-2.0-fsi-150hp-4x4-14228",
                             TransmissionType = "Manual",
                             Year = 2007
+                        },
+                        new
+                        {
+                            Id = new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"),
+                            CategoryId = 7,
+                            City = "Dupnitsa",
+                            ColorId = 1,
+                            Description = "Personal hybrid vehichle for sale.",
+                            EngineId = 6,
+                            EuroStandart = 6,
+                            ManufacturerId = 12,
+                            ModelId = 166,
+                            Odometer = 206600,
+                            ProvinceId = 7,
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            TransmissionType = "Automatic",
+                            Year = 2017
+                        },
+                        new
+                        {
+                            Id = new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"),
+                            CategoryId = 3,
+                            City = "Sofia",
+                            ColorId = 1,
+                            Description = "For sale is a car in excellent condition. I am the second owner. Imported from Italy 9 years ago. Always serviced on time and kept in a garage. It is not ridden in winter. No rust or rot. In the car, every system works without exception. A radio with a rear view camera for parking is integrated. Original alloy wheels for the model with good summer tires. There is also a set of winter tires on separate steel rims, which I never drove. Paid civil and examination. The car is fitted with gas injection and runs perfectly on both petrol and gas. With its three original keys - two black and one red service key. The original alarm system is working.",
+                            EngineId = 7,
+                            EuroStandart = 3,
+                            ManufacturerId = 4,
+                            ModelId = 64,
+                            Odometer = 148000,
+                            ProvinceId = 20,
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            TransmissionType = "Manual",
+                            Year = 1997
                         });
                 });
 
@@ -443,6 +477,11 @@ namespace CarMarketplace.Data.Migrations
                         {
                             Id = 35,
                             Name = "Lancia"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Name = "Mitsubishi"
                         });
                 });
 
@@ -3030,6 +3069,126 @@ namespace CarMarketplace.Data.Migrations
                             Id = 427,
                             ManufacturerName = "Lancia",
                             ModelName = "Thema"
+                        },
+                        new
+                        {
+                            Id = 428,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Outlander"
+                        },
+                        new
+                        {
+                            Id = 429,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "ASX"
+                        },
+                        new
+                        {
+                            Id = 430,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "L200"
+                        },
+                        new
+                        {
+                            Id = 431,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Eclipse Cross"
+                        },
+                        new
+                        {
+                            Id = 432,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Pajero"
+                        },
+                        new
+                        {
+                            Id = 433,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Space Star"
+                        },
+                        new
+                        {
+                            Id = 434,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Colt"
+                        },
+                        new
+                        {
+                            Id = 435,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Mirage"
+                        },
+                        new
+                        {
+                            Id = 436,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Shogun"
+                        },
+                        new
+                        {
+                            Id = 437,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Galant"
+                        },
+                        new
+                        {
+                            Id = 438,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Grandis"
+                        },
+                        new
+                        {
+                            Id = 439,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "i-MiEV"
+                        },
+                        new
+                        {
+                            Id = 440,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Lancer"
+                        },
+                        new
+                        {
+                            Id = 441,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "3000GT"
+                        },
+                        new
+                        {
+                            Id = 442,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Carisma"
+                        },
+                        new
+                        {
+                            Id = 443,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Evo"
+                        },
+                        new
+                        {
+                            Id = 444,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "FTO"
+                        },
+                        new
+                        {
+                            Id = 445,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Celeste"
+                        },
+                        new
+                        {
+                            Id = 446,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Sapporo"
+                        },
+                        new
+                        {
+                            Id = 447,
+                            ManufacturerName = "Mitsubishi",
+                            ModelName = "Sigma"
                         });
                 });
 
@@ -3268,6 +3427,20 @@ namespace CarMarketplace.Data.Migrations
                             Displacement = 2000,
                             FuelType = "Petrol",
                             Horsepower = 150
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Displacement = 1800,
+                            FuelType = "Hybrid",
+                            Horsepower = 99
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Displacement = 1600,
+                            FuelType = "Petrol",
+                            Horsepower = 126
                         });
                 });
 
@@ -3468,7 +3641,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"),
                             ImageUrls = "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg",
                             Price = 7000,
-                            PublishDate = new DateTime(2023, 8, 9, 16, 8, 46, 442, DateTimeKind.Local).AddTicks(4194),
+                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6170),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3477,7 +3650,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("913c5349-94de-4dc2-9e7d-346b57648227"),
                             ImageUrls = "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg",
                             Price = 2000,
-                            PublishDate = new DateTime(2023, 8, 9, 16, 8, 46, 442, DateTimeKind.Local).AddTicks(4251),
+                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6229),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3486,7 +3659,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"),
                             ImageUrls = "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg",
                             Price = 17000,
-                            PublishDate = new DateTime(2023, 8, 9, 16, 8, 46, 442, DateTimeKind.Local).AddTicks(4261),
+                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6238),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3495,7 +3668,7 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"),
                             ImageUrls = "v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400036/AudiA4_divn3c.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg",
                             Price = 18500,
-                            PublishDate = new DateTime(2023, 8, 9, 16, 8, 46, 442, DateTimeKind.Local).AddTicks(4269),
+                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6245),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         },
                         new
@@ -3504,7 +3677,25 @@ namespace CarMarketplace.Data.Migrations
                             CarId = new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"),
                             ImageUrls = "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg, v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg",
                             Price = 6500,
-                            PublishDate = new DateTime(2023, 8, 9, 16, 8, 46, 442, DateTimeKind.Local).AddTicks(4281),
+                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6259),
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                        },
+                        new
+                        {
+                            Id = new Guid("2a84f9fc-7068-42a9-9dac-e49d33284196"),
+                            CarId = new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"),
+                            ImageUrls = "v1691646413/64d3fb431a7e3d0fcf0b80e2o_anphwq.jpg, v1691646412/64d3fb46c29439437a06b363o_qwemd9.jpg, v1691646412/64d3fb483eb36bd7480a5833b_tmunek.jpg, v1691646415/64d3fb4b0a8dd40f8a0b10c3o_yb9znx.jpg, v1691646412/64d3fb4ddb9605406a046125o_xwnste.jpg, v1691646413/64d3fb4cd9de150f760d6f23o_sf6mqc.jpg",
+                            Price = 28500,
+                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6266),
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                        },
+                        new
+                        {
+                            Id = new Guid("96b41a60-8da3-4a54-8422-5c570ae86705"),
+                            CarId = new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"),
+                            ImageUrls = "v1691647266/64d3f8349b30846fd708b336o_fe1ma7.jpg, v1691647264/64d3f88754cff649d00f9462o_aefttq.jpg, v1691647264/64d3f88a9b30846fd708b337b_ptog3c.jpg, v1691647264/64d3f88d83abf0e673094a92b_uyfdtb.jpg, v1691647264/64d3f891f6111264730a6732b_u8wh49.jpg, v1691647264/64d3f894ad32aa131c03f293b_cxujvp.jpg, v1691647265/64d3f8a4e43d2c67140a7f12b_vzxxhz.jpg",
+                            Price = 5100,
+                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6283),
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
                         });
                 });
@@ -3517,7 +3708,7 @@ namespace CarMarketplace.Data.Migrations
                     b.Property<Guid>("SalePostId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("AddedToFavourites")
+                    b.Property<DateTime>("DateTimeAdded")
                         .HasColumnType("datetime2");
 
                     b.HasKey("UserId", "SalePostId");
@@ -3564,7 +3755,7 @@ namespace CarMarketplace.Data.Migrations
                             FirstName = "Vladimir",
                             LastName = "Kotsev",
                             PhoneNumber = "0899904741",
-                            UserId = new Guid("6d39716f-7f47-47a4-be8a-d467a614889d")
+                            UserId = new Guid("9faa9109-1c99-4e92-90fb-d76b96740db4")
                         });
                 });
 

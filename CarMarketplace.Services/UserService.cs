@@ -1,15 +1,16 @@
 ﻿namespace CarMarketplace.Services
 {
-    using CarMarketplace.Data;
-    using CarMarketplace.Data.Models;
-    using CarMarketplace.Services.Contracts;
-    using CarMarketplace.Services.Mapping;
-    using CarMarketplace.Web.ViewModels;
-    using CarMarketplace.Web.ViewModels.Catalog;
-    using CarMarketplace.Web.ViewModels.Common;
-    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
+    using Microsoft.EntityFrameworkCore;
+
+    using CarMarketplace.Data;
+    using CarMarketplace.Data.Models;
+    using Contracts;
+    using Mapping;
+    using Web.ViewModels.Common;
+    using CarMarketplace.Web.ViewModels.User;
 
     public class UserService : IUserService
     {
@@ -34,7 +35,7 @@
             {
                 SalePost = post,
                 User = user,
-                AddedToFavourites = DateTime.UtcNow
+                DateTimeAdded = DateTime.Now
             };
 
             user.Favorites.Add(userLikedPost);
@@ -43,9 +44,9 @@
             await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task<ICollection<SalePostViewModel>> GetUserFavouritesAsync(string userId)
+        public async Task<ICollection<FavouriteViewModel>> GetUserFavouritesAsync(string userId)
         {
-            ICollection<SalePostViewModel> favSalePosts = new HashSet<SalePostViewModel>();
+            ICollection<FavouriteViewModel> favSalePosts = new HashSet<FavouriteViewModel>();
 
             var userFavorites = await this.dbContext
                 .ApplicationUsers
@@ -53,7 +54,7 @@
                 .Select(a => a.Favorites)
                 .FirstAsync();
 
-            foreach (var salePostId in userFavorites.Select(x => x.SalePostId))
+            foreach (var favourite in userFavorites)
             {
                 var salePost = await dbContext
                     .SalePosts
@@ -82,9 +83,13 @@
                         Price = sp.Price,
                         Id = sp.Id
                     })
-                    .FirstAsync(s => s.Id == salePostId);
+                    .FirstAsync(s => s.Id == favourite.SalePostId);
 
-                favSalePosts.Add(salePost);
+                favSalePosts.Add(new FavouriteViewModel()
+                {
+                    SalePost = salePost,
+                    DateTimeAdded = favourite.DateTimeAdded
+                });
             }
 
             return favSalePosts;
