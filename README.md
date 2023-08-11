@@ -1,8 +1,8 @@
 # ASP.NET-CarMarketplace
 
-## 🎣: Project Introduction
+## 🚗: Project Introduction
 
-This is my graduation project for **C# Web** course at [SoftUni](https://softuni.bg/ "SoftUni") (2023).
+This is my graduation project for **C# Web** course at [SoftUni](https://softuni.bg/ "SoftUni") (July 2023).
 
 ## Images
 ![](https://res.cloudinary.com/carmarketplace/image/upload/v1691783031/Car_marcketplae_moqwmp.png)
@@ -10,7 +10,8 @@ This is my graduation project for **C# Web** course at [SoftUni](https://softuni
 
 ## :pencil2: Overview
 
-**Car Marketplace** is a web project creted using ASP.NET Core MVC. The goal is to make browsing for new cars enjoyable and easy to use
+**Car Marketplace** is a web project creted using ASP.NET Core MVC. 
+At the Car Marketplace, we've embarked on a journey to transform the way you explore and discover new cars. Our passion for innovation and user-centric design has led us to create a web project using ASP.NET Core MVC that aims to make browsing for new cars not just easy, but truly enjoyable.
 
 ## :hammer: Used technologies
 * [ASP.NET Core 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
