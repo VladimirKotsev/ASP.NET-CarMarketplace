@@ -13,9 +13,13 @@
 
     public class AddViewModel
     {
+        public AddViewModel()
+        {
+            this.Images = new HashSet<IFormFile>();
+        }
+
         public ICollection<CarManufacturerViewModel>? Makes { get; set; }
         public ICollection<CategoryViewModel>? Categories { get; set; }
-        public ICollection<ProvinceViewModel>? Provinces { get; set; }
         public ICollection<ColorViewModel>? Colors { get; set; }
 
         [Required]
@@ -28,12 +32,6 @@
 
         [Required]
         public int ColorId { get; set; }
-
-        [Required]
-        public int ProvinceId { get; set; }
-
-        [StringLength(CityMaxLength, MinimumLength = CityMinLength)]
-        public string? City { get; set; }
 
         [DisplayName("year")]
         [Required]
@@ -85,7 +83,7 @@
         [Range(PriceMinValue, PriceMaxValue, ErrorMessage = ErrorMessage)]
         public int Price { get; set; }
 
-        public ICollection<IFormFile> Images { get; set; } = null!;
+        public ICollection<IFormFile>? Images { get; set; }
 
         [Required]
         public IFormFile ThumbnailImage { get; set; } = null!;

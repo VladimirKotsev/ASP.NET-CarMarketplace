@@ -65,11 +65,9 @@
         public int? ToPrice { get; set; }
 
         [DisplayName("transmission type")]
-        [StringLength(TransmissionTypeMaxLength, MinimumLength = TransmissionTypeMinLength, ErrorMessage = ErrorMessage)]
         public string? TransmissionType { get; set; }
 
         [DisplayName("engine")]
-        [StringLength(FuelTypeMaxLength, MinimumLength = FuelTypeMinLength, ErrorMessage = ErrorMessage)]
         public string? EngineFuelType { get; set; }
     }
 }

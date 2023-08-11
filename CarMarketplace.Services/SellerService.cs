@@ -19,16 +19,17 @@
 
         public async Task RegisterUserAsSellerAsync(string userId, SellerPersonalnfoViewModel model)
         {
+            var city = await this.dbContext
+                .Cities
+                .FirstAsync(c => c.CityName == model.City);
+
             var seller = new Seller()
             {
                 UserId = Guid.Parse(userId),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,
-                City = new City()
-                {
-                    CityName = model.City
-                }
+                City = city
             };
 
             await this.dbContext
@@ -108,6 +109,13 @@
                 .FirstAsync(s => s.UserId == Guid.Parse(userId));
 
             return seller.Id;
+        }
+
+        public async Task<bool> CityExistByNameAsync(string name)
+        {
+            return await this.dbContext
+                .Cities
+                .AnyAsync(c => c.CityName == name);
         }
     }
 }

@@ -83,11 +83,11 @@
                 posts = posts.Where(p => p.Price <= model.ToPrice).ToArray();
             }
 
-            if (model.EngineFuelType != null)
+            if (model.EngineFuelType != null && model.EngineFuelType != "0")
             {
                 posts = posts.Where(p => p.Car.Engine.FuelType == model.EngineFuelType).ToArray();
             }
-            if (model.TransmissionType != null)
+            if (model.TransmissionType != null && model.TransmissionType != "0")
             {
                 posts = posts.Where(p => p.Car.TransmissionType == model.TransmissionType).ToArray();
             }

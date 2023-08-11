@@ -67,10 +67,15 @@
                 <input type="number" id="toHP" asp-for="ToHorsepower" class="form-control" placeholder="e.g., 240">
                 <span asp-validation-for="ToHorsepower" class="text-danger fs-4"></span>
             </div>
-            <div class="form-group col-4 border-left border-start border-3">
-                <label for="city" class="form-label mt-2 fs-4">City:</label>
-                <input type="text" id="city" asp-for="City" class="form-control" placeholder="e.g., Burgas, Varna, Lovech">
-                <span asp-validation-for="City" class="text-danger fs-4"></span>
+            <div class="form-group col-4 border-left border-start border-3 mt-1">
+                <label asp-for="EngineFuelType" class="form-label fs-4">Fuel</label>
+                <select asp-for="EngineFuelType" class="form-select" required>
+                    <option value="0" selected>All</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Electric">Electric</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
@@ -84,9 +89,12 @@
             </select>
         </div>
         <div class="form-group mt-3">
-            <label class="form-label mt-2 fs-3">Transmission type:</label>
-            <input type="text" asp-for="TransmissionType" class="form-control wide-input" placeholder="e.g., Manual, Automatic">
-            <span asp-validation-for="TransmissionType" class="text-danger fs-4"></span>
+            <label asp-for="TransmissionType" class="form-label fs-3 mt-2">Transmission</label>
+            <select asp-for="TransmissionType" class="form-select" required>
+                <option value="0" selected>All</option>
+                <option value="Manual">Manual</option>
+                <option value="Automatic">Automatic</option>
+            </select>
         </div>
         <div class="row mt-3">
             <br />

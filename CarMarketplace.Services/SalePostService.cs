@@ -50,13 +50,6 @@
                 .To<CategoryViewModel>()
                 .ToArrayAsync();
         }
-        private async Task<ICollection<ProvinceViewModel>> GetAllProvincesAsViewModelAsync()
-        {
-            return await this.dbContext
-                .Provinces
-                .To<ProvinceViewModel>()
-                .ToArrayAsync();
-        }
 
 
 
@@ -122,8 +115,6 @@
 
             viewModel.Categories = await GetAllCategoriesAsViewModelAsync();
 
-            viewModel.Provinces = await GetAllProvincesAsViewModelAsync();
-
             return viewModel;
         }
         public async Task AddPostAsync(AddViewModel viewModel, Guid sellerId)
@@ -149,10 +140,6 @@
             Category category = await this.dbContext
                 .Categories
                 .FirstAsync(c => c.Id == viewModel.CategoryId);
-
-            Province province = await this.dbContext
-                .Provinces
-                .FirstAsync(p => p.Id == viewModel.ProvinceId);
 
             CarManufacturer make = await this.dbContext
                 .Manufacturers
@@ -202,11 +189,15 @@
 
             var imagePublicIds = new HashSet<string>();
 
-            foreach (var image in viewModel.Images)
+            if (viewModel.Images!.Count > 0)
             {
-                var imageUrl = await this.mediaService.UploadPicture(image, Guid.NewGuid());
-                var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
-                imagePublicIds.Add(imageId);
+
+                foreach (var image in viewModel.Images)
+                {
+                    var imageUrl = await this.mediaService.UploadPicture(image, Guid.NewGuid());
+                    var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
+                    imagePublicIds.Add(imageId);
+                }
             }
 
             var thumbnailImageUrl = await this.mediaService.UploadPicture(viewModel.ThumbnailImage, Guid.NewGuid());
@@ -235,8 +226,6 @@
             viewModel.Colors = await GetAllColorsAsViewModelsAsync();
 
             viewModel.Categories = await GetAllCategoriesAsViewModelAsync();
-
-            viewModel.Provinces = await GetAllProvincesAsViewModelAsync();
 
             viewModel.PostId = post.Id;
             viewModel.MakeId = post.Car.Make.Id;
@@ -282,10 +271,6 @@
             Category category = await this.dbContext
                 .Categories
                 .FirstAsync(c => c.Id == viewModel.CategoryId);
-
-            Province province = await this.dbContext
-                .Provinces
-                .FirstAsync(p => p.Id == viewModel.ProvinceId);
 
             CarManufacturer make = await this.dbContext
                 .Manufacturers
@@ -336,11 +321,14 @@
 
             var imagePublicIds = new HashSet<string>();
 
-            foreach (var image in viewModel.Images)
+            if (viewModel.Images.Count > 0)
             {
-                var imageUrl = await this.mediaService.UploadPicture(image, Guid.NewGuid());
-                var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
-                imagePublicIds.Add(imageId);
+                foreach (var image in viewModel.Images)
+                {
+                    var imageUrl = await this.mediaService.UploadPicture(image, Guid.NewGuid());
+                    var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
+                    imagePublicIds.Add(imageId);
+                }
             }
 
             var thumbnailImageUrl = await this.mediaService.UploadPicture(viewModel.ThumbnailImage, Guid.NewGuid());

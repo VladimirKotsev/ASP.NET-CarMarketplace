@@ -14,7 +14,6 @@
         public CarMarketplaceDbContext(DbContextOptions<CarMarketplaceDbContext> options)
             : base(options)
         {
-
         }
 
         public DbSet<Car> Cars { get; set; } = null!;
@@ -28,6 +27,7 @@
         public DbSet<SalePost> SalePosts { get; set; } = null!;
         public DbSet<Province> Provinces { get; set; } = null!;
         public DbSet<SalePostApplicationUser> SalePostApplicationUsers { get; set; } = null!;
+        public DbSet<City> Cities { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

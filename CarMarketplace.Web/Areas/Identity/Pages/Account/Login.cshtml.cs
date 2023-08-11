@@ -99,6 +99,11 @@ namespace CarMarketplace.Web.Areas.Identity.Pages.Account
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
+            if (_signInManager.IsSignedIn(User))
+            {
+                returnUrl = "Home/Index";
+            }
+
             ReturnUrl = returnUrl;
         }
 

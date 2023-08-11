@@ -9,6 +9,7 @@
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Web.ViewModels.SalePost;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
 
     public class SalePostController : BaseController
     {
@@ -75,6 +76,11 @@
         public async Task<IActionResult> EditPost(EditViewModel viewModel, Guid postId)
         {
             viewModel.PostId = postId;
+
+            if (viewModel.Images.Count > 9)
+            {
+                ModelState.AddModelError("Images", "Maximum number of photos in 9");
+            }
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Edit", viewModel);

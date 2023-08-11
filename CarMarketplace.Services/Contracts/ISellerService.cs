@@ -10,7 +10,8 @@
         public Task<bool> SellerExistbyPhoneNumberAsync(string phoneNumber);
         public Task RegisterUserAsSellerAsync(string userId, SellerPersonalnfoViewModel model);
         public Task<ICollection<SalePostViewModel>> GetSellerPostsAsync(Guid sellerId);
-        
+
+        public Task<bool> CityExistByNameAsync(string name);
 
     }
 }

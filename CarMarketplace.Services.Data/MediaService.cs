@@ -8,7 +8,7 @@
 
     public class MediaService : IMediaService
     {
-        private Cloudinary cloudinary;
+        private readonly Cloudinary cloudinary;
 
         public MediaService(Cloudinary cloudinary)
         {

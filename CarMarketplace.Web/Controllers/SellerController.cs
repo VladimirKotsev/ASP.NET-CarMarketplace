@@ -52,6 +52,14 @@
                 ModelState.AddModelError(nameof(model.PhoneNumber), "Seller with the provided phone number already exists!");
             }
 
+            bool existingCity =
+                await sellerService.CityExistByNameAsync(model.City);
+
+            if (!existingCity)
+            {
+                ModelState.AddModelError(nameof(model.City), "The provided city name does not exist");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View("BecomeProvider");
@@ -67,6 +75,8 @@
         {
             return View("UserPosts", await this.sellerService.GetSellerPostsAsync(await this.sellerService.GetSellerIdByUserIdAsync(this.UserId)));
         }
+
+
         
     }
 }
