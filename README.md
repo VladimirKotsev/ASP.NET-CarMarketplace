@@ -5,7 +5,8 @@
 This is my graduation project for **C# Web** course at [SoftUni](https://softuni.bg/ "SoftUni") (2023).
 
 ## Images
-![](https://res.cloudinary.com/carmarketplace/image/upload/v1691783031/Car_marcketplae_moqwmp.png)(https://res.cloudinary.com/carmarketplace/image/upload/v1691783032/Blue_Wood_i8odxx.png)
+![](https://res.cloudinary.com/carmarketplace/image/upload/v1691783031/Car_marcketplae_moqwmp.png)
+![](https://res.cloudinary.com/carmarketplace/image/upload/v1691783032/Blue_Wood_i8odxx.png)
 
 ## :pencil2: Overview
 
@@ -21,15 +22,14 @@ This is my graduation project for **C# Web** course at [SoftUni](https://softuni
 * [MSSQL Server](https://www.microsoft.com/en-us/sql-server)
 * [Cloudinary](https://cloudinary.com/)
 * [In-Memory Database](https://learn.microsoft.com/en-us/sql/relational-databases/in-memory-database?view=sql-server-ver16)
-* 
 * JavaScript
 * AJAX real-time Requests
 
 ## :wrench: DB Diagram
-![]([https://res.cloudinary.com/dksccul6u/image/upload/v1691404629/iwbfvbysfvpz3febi4ms.png](https://res.cloudinary.com/carmarketplace/image/upload/v1691784550/image_2023-08-11_230907744_nfvjjg.png))
+![](https://res.cloudinary.com/carmarketplace/image/upload/v1691784550/image_2023-08-11_230907744_nfvjjg.png)
 
 ## :chart: Unit tests code coverage
-![]([https://res.cloudinary.com/dksccul6u/image/upload/v1691404610/cjzbxvfoklqds4oegyex.png](https://res.cloudinary.com/carmarketplace/image/upload/v1691784702/image_2023-08-11_231141488_uzktvb.png))
+![](https://res.cloudinary.com/carmarketplace/image/upload/v1691784702/image_2023-08-11_231141488_uzktvb.png)
 
 ## :muscle: Template authors
 
