@@ -14,6 +14,7 @@
     using CarMarketplace.Web.ViewModels.SalePost;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Services.Mapping;
+    using static System.Net.Mime.MediaTypeNames;
 
     public class SalePostService : ISalePostService
     {
@@ -76,16 +77,25 @@
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
-                        Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
-                        City = sp.Car.City,
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
                         Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                     },
-                    Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
-                    PublishDate = sp.PublishDate,
-                    ImageUrls = sp.ImageUrls,
+                    Seller = new SellerViewModel()
+                    {
+                        FirstName = sp.Seller.FirstName,
+                        LastName = sp.Seller.LastName,
+                        PhoneNumber = sp.Seller.PhoneNumber,
+                        City = new CityViewModel()
+                        {
+                            CityName = sp.Seller.City.CityName,
+                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Seller.City.Province)
+                        }
+                    },
+                    CreatedOn = sp.CreatedOn,
+                    ThumbnailImage = sp.ThumbnailImagePublicId,
+                    ImageUrls = sp.ImagePublicIds,
                     Price = sp.Price,
                     Likes = sp.SalePostUsers.Count,
                     Id = sp.Id
@@ -95,7 +105,6 @@
             return postById;
 
         }
-
         public async Task DeletePostAsync(Guid postId)
         {
             var post = await this.dbContext
@@ -105,7 +114,6 @@
             this.dbContext.SalePosts.Remove(post);
             await this.dbContext.SaveChangesAsync();
         }
-
         public async Task<AddViewModel> GetAddPostViewModelAsync(AddViewModel viewModel)
         {
             viewModel.Makes = await GetAllMakesAsViewModelsAsync();
@@ -118,7 +126,6 @@
 
             return viewModel;
         }
-
         public async Task AddPostAsync(AddViewModel viewModel, Guid sellerId)
         {
             Engine? engine = await this.dbContext
@@ -175,10 +182,8 @@
                 Manufacturer = make,
                 Model = model,
                 Color = color,
-                Province = province,
                 Category = category,
                 Engine = engine,
-                City = viewModel.City,
                 Description = viewModel.Description,
                 VinNumber = viewModel.VinNumber,
                 TechnicalSpecificationURL = viewModel.TechnicalSpecificationURL,
@@ -204,12 +209,16 @@
                 imagePublicIds.Add(imageId);
             }
 
+            var thumbnailImageUrl = await this.mediaService.UploadPicture(viewModel.ThumbnailImage, Guid.NewGuid());
+            var thumbnailImageId = thumbnailImageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
+
             var salePost = new SalePost()
             {
                 Seller = seller,
                 Car = car,
-                ImageUrls = String.Join(", ", imagePublicIds.Reverse()),
-                PublishDate = DateTime.Now,
+                ThumbnailImagePublicId = thumbnailImageId,
+                ImagePublicIds = String.Join(", ", imagePublicIds),
+                CreatedOn = DateTime.Now,
                 Price = viewModel.Price
             };
 
@@ -217,7 +226,6 @@
             await this.dbContext.SalePosts.AddAsync(salePost);
             await this.dbContext.SaveChangesAsync();
         }
-
         public async Task<EditViewModel> GetEditViewModelByPostIdAsync(EditViewModel viewModel, Guid postId)
         {
             SalePostViewModel post = await GetSalePostByIdAsync(postId);
@@ -234,9 +242,7 @@
             viewModel.MakeId = post.Car.Make.Id;
             viewModel.Model = post.Car.Model.ModelName;
             viewModel.ColorId = post.Car.Color.Id;
-            viewModel.ProvinceId = post.Car.Province.Id;
             viewModel.CategoryId = post.Car.Category.Id;
-            viewModel.City = post.Car.City;
             viewModel.Year = post.Car.Year;
             viewModel.EngineDisplacement = post.Car.Engine.Displacement;
             viewModel.EngineFuelType = post.Car.Engine.FuelType;
@@ -249,11 +255,10 @@
             viewModel.Description = post.Car.Description;
             viewModel.Price = post.Price;
             viewModel.ImageUrls = post.ImageUrls;
+            viewModel.ThumbnailImageUrl = post.ThumbnailImage;
 
             return viewModel;
-            ;
         }
-
         public async Task EditPostByIdAsync(EditViewModel viewModel)
         {
             Engine? engine = await this.dbContext
@@ -318,8 +323,6 @@
             carToEdit.Category = category;
             carToEdit.Color = color;
             carToEdit.Model.ModelName = viewModel.Model;
-            carToEdit.Province = province;
-            carToEdit.City = viewModel.City;
             carToEdit.Year = viewModel.Year;
             carToEdit.Odometer = viewModel.Odometer;
             carToEdit.TransmissionType = viewModel.TransmissionType;
@@ -329,7 +332,7 @@
             carToEdit.VinNumber = viewModel.VinNumber;
 
             postToEdit.Price = viewModel.Price;
-            postToEdit.PublishDate = DateTime.UtcNow;
+            postToEdit.CreatedOn = DateTime.UtcNow;
 
             var imagePublicIds = new HashSet<string>();
 
@@ -340,7 +343,11 @@
                 imagePublicIds.Add(imageId);
             }
 
-            postToEdit.ImageUrls = String.Join(", ", imagePublicIds);
+            var thumbnailImageUrl = await this.mediaService.UploadPicture(viewModel.ThumbnailImage, Guid.NewGuid());
+            var thumbnailImageId = thumbnailImageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
+
+            postToEdit.ThumbnailImagePublicId = thumbnailImageId;
+            postToEdit.ImagePublicIds = String.Join(", ", imagePublicIds);
 
             await this.dbContext.SaveChangesAsync();
         }

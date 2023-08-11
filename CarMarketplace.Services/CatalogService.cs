@@ -30,10 +30,6 @@
             {
                 posts = posts.Where(p => p.Car.Model.ModelName == model.ModelName).ToArray();
             }
-            if (model.ProvinceId != 0)
-            {
-                posts = posts.Where(p => p.Car.Province.Id == model.ProvinceId).ToArray();
-            }
 
             if (model.FromHorsepower != null && model.ToHorsepower != null)
             {
@@ -120,16 +116,25 @@
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
-                        Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
-                        City = sp.Car.City,
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
                         Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                     },
-                    Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
-                    PublishDate = sp.PublishDate,
-                    ImageUrls = sp.ImageUrls,
+                    Seller = new SellerViewModel()
+                    {
+                        FirstName = sp.Seller.FirstName,
+                        LastName = sp.Seller.LastName,
+                        PhoneNumber = sp.Seller.PhoneNumber,
+                        City = new CityViewModel()
+                        {
+                            CityName = sp.Seller.City.CityName,
+                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Seller.City.Province)
+                        }
+                    },
+                    CreatedOn = sp.CreatedOn,
+                    ImageUrls = sp.ImagePublicIds,
+                    ThumbnailImage = sp.ThumbnailImagePublicId,
                     Price = sp.Price,
                     Id = sp.Id
                 })
@@ -145,7 +150,7 @@
         {
             ICollection<SalePostViewModel> lastPosts = await this.dbContext
                 .SalePosts
-                .OrderBy(sp => sp.PublishDate)
+                .OrderBy(sp => sp.CreatedOn)
                 .Take(6)
                 .Select(sp => new SalePostViewModel()
                 {
@@ -159,16 +164,25 @@
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
-                        Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
-                        City = sp.Car.City,
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
                         Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                     },
-                    Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
-                    PublishDate = sp.PublishDate,
-                    ImageUrls = sp.ImageUrls,
+                    Seller = new SellerViewModel()
+                    {
+                        FirstName = sp.Seller.FirstName,
+                        LastName = sp.Seller.LastName,
+                        PhoneNumber = sp.Seller.PhoneNumber,
+                        City = new CityViewModel()
+                        {
+                            CityName = sp.Seller.City.CityName,
+                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Seller.City.Province)
+                        }
+                    },
+                    CreatedOn = sp.CreatedOn,
+                    ThumbnailImage = sp.ThumbnailImagePublicId,
+                    ImageUrls = sp.ImagePublicIds,
                     Price = sp.Price,
                     Id = sp.Id
                 })
@@ -210,16 +224,25 @@
                             TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                             EuroStandart = sp.Car.EuroStandart,
                             Odometer = sp.Car.Odometer,
-                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
-                            City = sp.Car.City,
                             VinNumber = sp.Car.VinNumber,
                             TransmissionType = sp.Car.TransmissionType,
                             Year = sp.Car.Year,
                             Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                         },
-                        Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
-                        PublishDate = sp.PublishDate,
-                        ImageUrls = sp.ImageUrls,
+                        Seller = new SellerViewModel()
+                        {
+                            FirstName = sp.Seller.FirstName,
+                            LastName = sp.Seller.LastName,
+                            PhoneNumber = sp.Seller.PhoneNumber,
+                            City = new CityViewModel()
+                            {
+                                CityName = sp.Seller.City.CityName,
+                                Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Seller.City.Province)
+                            }
+                        },
+                        CreatedOn = sp.CreatedOn,
+                        ThumbnailImage = sp.ThumbnailImagePublicId,
+                        ImageUrls = sp.ImagePublicIds,
                         Price = sp.Price,
                         Id = sp.Id
                     })
@@ -251,16 +274,25 @@
                             TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                             EuroStandart = sp.Car.EuroStandart,
                             Odometer = sp.Car.Odometer,
-                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
-                            City = sp.Car.City,
                             VinNumber = sp.Car.VinNumber,
                             TransmissionType = sp.Car.TransmissionType,
                             Year = sp.Car.Year,
                             Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                         },
-                        Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
-                        PublishDate = sp.PublishDate,
-                        ImageUrls = sp.ImageUrls,
+                        Seller = new SellerViewModel()
+                        {
+                            FirstName = sp.Seller.FirstName,
+                            LastName = sp.Seller.LastName,
+                            PhoneNumber = sp.Seller.PhoneNumber,
+                            City = new CityViewModel()
+                            {
+                                CityName = sp.Seller.City.CityName,
+                                Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Seller.City.Province)
+                            }
+                        },
+                        CreatedOn = sp.CreatedOn,
+                        ThumbnailImage = sp.ThumbnailImagePublicId,
+                        ImageUrls = sp.ImagePublicIds,
                         Price = sp.Price,
                         Id = sp.Id
                     })
@@ -295,16 +327,25 @@
                             TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                             EuroStandart = sp.Car.EuroStandart,
                             Odometer = sp.Car.Odometer,
-                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
-                            City = sp.Car.City,
                             VinNumber = sp.Car.VinNumber,
                             TransmissionType = sp.Car.TransmissionType,
                             Year = sp.Car.Year,
                             Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                         },
-                        Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
-                        PublishDate = sp.PublishDate,
-                        ImageUrls = sp.ImageUrls,
+                        Seller = new SellerViewModel()
+                        {
+                            FirstName = sp.Seller.FirstName,
+                            LastName = sp.Seller.LastName,
+                            PhoneNumber = sp.Seller.PhoneNumber,
+                            City = new CityViewModel()
+                            {
+                                CityName = sp.Seller.City.CityName,
+                                Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Seller.City.Province)
+                            }
+                        },
+                        CreatedOn = sp.CreatedOn,
+                        ThumbnailImage = sp.ThumbnailImagePublicId,
+                        ImageUrls = sp.ImagePublicIds,
                         Price = sp.Price,
                         Id = sp.Id
                     })

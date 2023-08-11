@@ -6,6 +6,6 @@
     {
         public SalePostViewModel SalePost { get; set; } = null!;
 
-        public DateTime DateTimeAdded { get; set; }
+        public DateTime LikedOn { get; set; }
     }
 }

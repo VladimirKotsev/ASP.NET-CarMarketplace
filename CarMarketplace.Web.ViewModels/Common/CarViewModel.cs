@@ -13,9 +13,6 @@
 
         public ColorViewModel Color { get; set; } = null!;
 
-        public ProvinceViewModel Province { get; set; } = null!;
-        public string? City { get; set; }
-
         public int Year { get; set; }
 
         public EngineViewModel Engine { get; set; } = null!;

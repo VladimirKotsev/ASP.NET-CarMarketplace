@@ -28,11 +28,15 @@
         public int Price { get; set; }
 
         [Required]
-        public DateTime PublishDate { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(5000)")]
-        public string ImageUrls { get; set; } = null!;
+        public string ImagePublicIds { get; set; } = null!;
+
+        [Required]
+        [Column(TypeName = "varchar(5000)")]
+        public string ThumbnailImagePublicId { get; set; } = null!;
 
         public ICollection<SalePostApplicationUser> SalePostUsers { get; set; }
     }

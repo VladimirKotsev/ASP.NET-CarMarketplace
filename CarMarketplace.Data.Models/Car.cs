@@ -21,27 +21,19 @@
 
         [ForeignKey(nameof(ManufacturerId))]
         [Required]
-        public virtual CarManufacturer Manufacturer { get; set; }
+        public virtual CarManufacturer Manufacturer { get; set; } = null!;
 
         public int ModelId { get; set; }
 
         [ForeignKey(nameof(ModelId))]
         [Required]
-        public virtual CarModel Model { get; set; }
+        public virtual CarModel Model { get; set; } = null!;
 
         public int ColorId { get; set; }
 
         [ForeignKey(nameof(ColorId))]
         [Required]
         public virtual Color Color { get; set; } = null!;
-
-        public int ProvinceId { get; set; }
-
-        [Required]
-        [ForeignKey(nameof(ProvinceId))]
-        public virtual Province Province { get; set; } = null!;
-
-        public string? City { get; set; }
 
         public int Year { get; set; }
 

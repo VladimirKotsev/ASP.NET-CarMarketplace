@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Http;
     using static CarMarketplace.Common.EntityValidations.Car;
     using static CarMarketplace.Common.EntityValidations.Engine;
+    using static CarMarketplace.Common.EntityValidations.Users;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Services.Mapping.Contracts;
 
@@ -21,6 +22,8 @@
         public string? ImagesErrorMessage { get; set; }
 
         public string? ImageUrls { get; set; }
+
+        public string? ThumbnailImageUrl { get; set; }
 
         [Required]
         public int MakeId { get; set; }
@@ -89,7 +92,8 @@
         [Range(PriceMinValue, PriceMaxValue, ErrorMessage = ErrorMessage)]
         public int Price { get; set; }
 
-        [Required]
+        public IFormFile ThumbnailImage { get; set; } = null!;
+
         public ICollection<IFormFile> Images { get; set; } = null!;
     }
 }

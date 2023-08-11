@@ -11,5 +11,7 @@
         [Required]
         [MaxLength(ProvinceNameMaxLength)]
         public string ProvinceName { get; set; } = null!;
+
+        public virtual ICollection<City> Cities { get; set; } = null!;
     }
 }

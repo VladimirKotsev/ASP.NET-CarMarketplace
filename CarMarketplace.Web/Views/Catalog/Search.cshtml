@@ -23,7 +23,7 @@
         <div class="form-group">
             <label for="ModelInput" class="form-label mt-4 fs-3">Select Model</label>
             <input class="form-control" asp-for="ModelName" id="ModelInput" placeholder="e.g., A3, Civic, Yaris" />
-            <span asp-validation-for="ModelName" class="text-danger"></span>
+            <span asp-validation-for="ModelName" class="text-danger fs-4"></span>
         </div>
         <div class="form-group">
             <label for="CategorySelect" class="form-label mt-4 fs-3">Select Category</label>
@@ -41,17 +41,17 @@
             <div class="form-group col-4">
                 <label for="fromKm" class="form-label mt-2 fs-4">From:</label>
                 <input type="number" id="fromKm" asp-for="FromKilometers" class="form-control" placeholder="e.g., 50000">
-                <span asp-validation-for="FromKilometers" class="text-danger"></span>
+                <span asp-validation-for="FromKilometers" class="text-danger fs-4"></span>
             </div>
             <div class="form-group col-4">
                 <label for="toKm" class="form-label mt-2 fs-4">To:</label>
                 <input type="number" id="toKm" asp-for="ToKilometers" class="form-control" placeholder="e.g., 150000">
-                <span asp-validation-for="ToKilometers" class="text-danger"></span>
+                <span asp-validation-for="ToKilometers" class="text-danger fs-4"></span>
             </div>
             <div class="form-group col-4  border-left border-start border-3">
                 <label for="fromEuro" class="form-label mt-2 fs-4">Euro:</label>
                 <input type="number" id="fromEuro" asp-for="FromEuro" class="form-control" min="0" placeholder="e.g., 2, 3">
-                <span asp-validation-for="FromEuro" class="text-danger"></span>
+                <span asp-validation-for="FromEuro" class="text-danger fs-4"></span>
             </div>
         </div>
         <div class="row mt-3 col-md-13 d-flex">
@@ -60,17 +60,17 @@
             <div class="form-group col-4">
                 <label for="fromHP" class="form-label mt-2 fs-4">From:</label>
                 <input type="number" id="fromHP" asp-for="FromHorsepower" class="form-control" placeholder="e.g., 100">
-                <span asp-validation-for="FromHorsepower" class="text-danger"></span>
+                <span asp-validation-for="FromHorsepower" class="text-danger fs-4"></span>
             </div>
             <div class="form-group col-4">
                 <label for="toHP" class="form-label mt-2 fs-4">To:</label>
                 <input type="number" id="toHP" asp-for="ToHorsepower" class="form-control" placeholder="e.g., 240">
-                <span asp-validation-for="ToHorsepower" class="text-danger"></span>
+                <span asp-validation-for="ToHorsepower" class="text-danger fs-4"></span>
             </div>
             <div class="form-group col-4 border-left border-start border-3">
                 <label for="city" class="form-label mt-2 fs-4">City:</label>
                 <input type="text" id="city" asp-for="City" class="form-control" placeholder="e.g., Burgas, Varna, Lovech">
-                <span asp-validation-for="City" class="text-danger"></span>
+                <span asp-validation-for="City" class="text-danger fs-4"></span>
             </div>
         </div>
         <div class="form-group">
@@ -83,18 +83,23 @@
                 }
             </select>
         </div>
+        <div class="form-group mt-3">
+            <label class="form-label mt-2 fs-3">Transmission type:</label>
+            <input type="text" asp-for="TransmissionType" class="form-control wide-input" placeholder="e.g., Manual, Automatic">
+            <span asp-validation-for="TransmissionType" class="text-danger fs-4"></span>
+        </div>
         <div class="row mt-3">
             <br />
             <span class="fs-3 mt-2">Year:</span>
             <div class="form-floating col-md-4">
                 <input type="number" id="fromYear" asp-for="FromYear" class="form-control wide-input" min=1886 placeholder="e.g., 1995">
                 <label asp-for="FromYear" class="from-label">From:</label>
-                <span asp-validation-for="FromYear" class="text-danger"></span>
+                <span asp-validation-for="FromYear" class="text-danger  fs-4"></span>
             </div>
             <div class="form-floating col-md-4">
                 <input type="number" id="toYear" asp-for="ToYear" class="form-control wide-input" max="2023" placeholder="e.g., 2005">
                 <label asp-for="ToYear" class="form-label">To:</label>
-                <span asp-validation-for="ToYear" class="text-danger"></span>
+                <span asp-validation-for="ToYear" class="text-danger fs-4"></span>
             </div>
         </div>
         <div class="row mt-3">
@@ -103,12 +108,12 @@
             <div class="form-floating col-md-4">
                 <input type="number" asp-for="FromPrice" class="form-control wide-input" placeholder="e.g., 2000" />
                 <label asp-for="FromPrice" class="form-label">From:</label>
-                <span asp-validation-for="FromPrice" class="text-danger"></span>
+                <span asp-validation-for="FromPrice" class="text-danger fs-4"></span>
             </div>
             <div class="form-floating col-md-4">
                 <input type="number" asp-for="ToPrice" class="form-control wide-input" placeholder="e.g., 5000" />
                 <label asp-for="ToPrice" class="form-label">To:</label>
-                <span asp-validation-for="ToPrice" class="text-danger"></span>
+                <span asp-validation-for="ToPrice" class="text-danger fs-4"></span>
             </div>
         </div>
         <div class="d-grid col-3 mx-auto mt-5">

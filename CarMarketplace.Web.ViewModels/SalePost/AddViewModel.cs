@@ -8,6 +8,8 @@
     using CarMarketplace.Web.ViewModels.Common;
     using static CarMarketplace.Common.EntityValidations.Car;
     using static CarMarketplace.Common.EntityValidations.Engine;
+    using static CarMarketplace.Common.EntityValidations.Users;
+    using static CarMarketplace.Common.EntityValidations.CarModel;
 
     public class AddViewModel
     {
@@ -20,6 +22,8 @@
         public int MakeId { get; set; }
 
         [Required]
+        [DisplayName("model")]
+        [StringLength(ModelMaxLenght, MinimumLength = ModelMinLenght, ErrorMessage = ErrorMessage)]
         public string Model { get; set; } = null!;
 
         [Required]
@@ -43,7 +47,6 @@
 
         [DisplayName("fuel type")]
         [Required]
-        [StringLength(FuelTypeMaxLength, MinimumLength = FuelTypeMinLength)]
         public string EngineFuelType { get; set; } = null!;
 
         [DisplayName("horsepower")]
@@ -57,7 +60,6 @@
 
         [DisplayName("transmission")]
         [Required]
-        [StringLength(TransmissionTypeMaxLength, MinimumLength = TransmissionTypeMinLength, ErrorMessage = ErrorMessage)]
         public string TransmissionType { get; set; } = null!;
 
         [DisplayName("euro standart")]
@@ -83,8 +85,10 @@
         [Range(PriceMinValue, PriceMaxValue, ErrorMessage = ErrorMessage)]
         public int Price { get; set; }
 
-        [Required]
         public ICollection<IFormFile> Images { get; set; } = null!;
+
+        [Required]
+        public IFormFile ThumbnailImage { get; set; } = null!;
 
         public string? ImagesErrorMessage { get; set; }
     }

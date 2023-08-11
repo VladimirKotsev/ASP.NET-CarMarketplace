@@ -9,8 +9,6 @@
             public const int YearMinValue = 1886;
             public const int YearMaxValue = 2023;
 
-            public const int CityMinLength = 4;
-            public const int CityMaxLength = 29;
 
             public const int OdometerMinValue = 1;
             public const int OdometerMaxValue = 999999;
@@ -64,6 +62,9 @@
 
             public const int LastNameMinLength = 5;
             public const int LastNameMaxLength = 50;
+
+            public const int CityMinLength = 4;
+            public const int CityMaxLength = 29;
         }
 
         public static class Province

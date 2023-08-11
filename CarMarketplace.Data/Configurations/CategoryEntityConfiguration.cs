@@ -9,11 +9,11 @@
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.HasData(this.GenerateData());
+            builder.HasData(GenerateData());
         }
 
         //This method seeds all data for categories in the database
-        private Category[] GenerateData()
+        private static Category[] GenerateData()
         {
             ICollection<Category> categories = new HashSet<Category>();
 

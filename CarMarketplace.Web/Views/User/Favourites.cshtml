@@ -16,10 +16,10 @@
         <div class="row">
             @foreach (var post in Model.Skip(i).Take(3))
             {
-                imageSrc = ViewData["CloudDomain"] + post.SalePost.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
+                imageSrc = ViewData["CloudDomain"] + post.SalePost.ThumbnailImage;
                 <div class="col-md-4">
                     <div class="card mb-4 p-2 shadow">
-                        <span class="fs-4">Liked: @post.DateTimeAdded.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                        <span class="fs-4">Liked: @post.LikedOn.ToString("HH:mm:ss dd/MM/yyyy")</span>
                         <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.SalePost.Id" class="text-decoration-none">
                             <img src="@imageSrc" class="card-img" alt="@post.SalePost.Car.Make.Name @post.SalePost.Car.Model.ModelName">
                         </a>
@@ -43,14 +43,8 @@
                                 var displacement = (post.SalePost.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
                             }
                             <span class="card-text fs-3 fst-italic">@displacement @post.SalePost.Car.Engine.FuelType @post.SalePost.Car.Engine.Horsepower<span>hp</span></span>
-                            <p class="card-text fs-3 fst-italic">
-                                @post.SalePost.Car.Province.ProvinceName
-                                @if (post.SalePost.Car.City != null)
-                                {
-                                    <span class="fs-3">@post.SalePost.Car.City</span>
-                                }
-                            </p>
-                            <span class="card-text fs-4 fst-italic">@post.SalePost.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                            <p class="card-text fs-3 fst-italic">@post.SalePost.Seller.City.Province.ProvinceName, @post.SalePost.Seller.City.CityName</p>
+                            <span class="card-text fs-4 fst-italic">@post.SalePost.CreatedOn.ToString("HH:mm:ss dd/MM/yyyy")</span>
                             <br>
                         </div>
                     </div>

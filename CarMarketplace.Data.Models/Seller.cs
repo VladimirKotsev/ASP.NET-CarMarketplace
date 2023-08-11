@@ -32,6 +32,12 @@
         [MaxLength(LastNameMaxLength)]
         public string LastName { get; set; } = null!;
 
+        public int CityId { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(CityId))]
+        public virtual City City { get; set; } = null!;
+
         public virtual ICollection<Car> CarOnSale { get; set; } = null!;
     }
 }

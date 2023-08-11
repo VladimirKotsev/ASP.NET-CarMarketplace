@@ -5,6 +5,7 @@
     using static CarMarketplace.Common.EntityValidations.Car;
     using static CarMarketplace.Common.EntityValidations.Engine;
     using static CarMarketplace.Common.EntityValidations.CarModel;
+    using static CarMarketplace.Common.EntityValidations.Users;
     using CarMarketplace.Web.ViewModels.Common;
 
     public class SearchViewModel

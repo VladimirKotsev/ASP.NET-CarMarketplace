@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    [Migration("20230810060417_SeedingData")]
-    partial class SeedingData
+    [Migration("20230810203617_SeedData")]
+    partial class SeedData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,9 +102,6 @@ namespace CarMarketplace.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ColorId")
                         .HasColumnType("int");
 
@@ -124,9 +121,6 @@ namespace CarMarketplace.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Odometer")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
                     b.Property<Guid>("SellerId")
@@ -160,8 +154,6 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.HasIndex("ProvinceId");
-
                     b.HasIndex("SellerId");
 
                     b.ToTable("Cars");
@@ -177,27 +169,10 @@ namespace CarMarketplace.Data.Migrations
                             ManufacturerId = 1,
                             ModelId = 5,
                             Odometer = 209000,
-                            ProvinceId = 9,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TechnicalSpecificationURL = "https://www.auto-data.net/en/audi-a3-sportback-8pa-facelift-2008-1.9-tdi-105hp-dpf-4215",
                             TransmissionType = "Manual",
                             Year = 2009
-                        },
-                        new
-                        {
-                            Id = new Guid("913c5349-94de-4dc2-9e7d-346b57648227"),
-                            CategoryId = 2,
-                            ColorId = 5,
-                            EngineId = 2,
-                            EuroStandart = 3,
-                            ManufacturerId = 10,
-                            ModelId = 145,
-                            Odometer = 219000,
-                            ProvinceId = 7,
-                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
-                            TechnicalSpecificationURL = "https://www.auto-data.net/en/fiat-punto-ii-188-3dr-1.2-80hp-6984",
-                            TransmissionType = "Manual",
-                            Year = 2000
                         },
                         new
                         {
@@ -209,7 +184,6 @@ namespace CarMarketplace.Data.Migrations
                             ManufacturerId = 5,
                             ModelId = 88,
                             Odometer = 164000,
-                            ProvinceId = 13,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TechnicalSpecificationURL = "https://www.auto-data.net/en/hyundai-ix35-1.7-crdi-115hp-18181",
                             TransmissionType = "Manual",
@@ -219,7 +193,6 @@ namespace CarMarketplace.Data.Migrations
                         {
                             Id = new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"),
                             CategoryId = 7,
-                            City = "Sofia",
                             ColorId = 4,
                             Description = "This is my Audi A4 2008 wagon s-line trim",
                             EngineId = 4,
@@ -227,7 +200,6 @@ namespace CarMarketplace.Data.Migrations
                             ManufacturerId = 1,
                             ModelId = 6,
                             Odometer = 160000,
-                            ProvinceId = 20,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TechnicalSpecificationURL = "https://www.auto-data.net/bg/audi-a4-avant-b8-8k-3.0-tdi-v6-240hp-quattro-4344",
                             TransmissionType = "Automatic",
@@ -237,7 +209,6 @@ namespace CarMarketplace.Data.Migrations
                         {
                             Id = new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"),
                             CategoryId = 7,
-                            City = "Sofia",
                             ColorId = 10,
                             Description = "Import from Switzerland. 4x4 with real 201000 km with catalytic converter. Works excellent.",
                             EngineId = 5,
@@ -245,7 +216,6 @@ namespace CarMarketplace.Data.Migrations
                             ManufacturerId = 28,
                             ModelId = 350,
                             Odometer = 202000,
-                            ProvinceId = 20,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TechnicalSpecificationURL = "https://www.auto-data.net/bg/skoda-octavia-ii-combi-2.0-fsi-150hp-4x4-14228",
                             TransmissionType = "Manual",
@@ -255,7 +225,6 @@ namespace CarMarketplace.Data.Migrations
                         {
                             Id = new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"),
                             CategoryId = 7,
-                            City = "Dupnitsa",
                             ColorId = 1,
                             Description = "Personal hybrid vehichle for sale.",
                             EngineId = 6,
@@ -263,7 +232,6 @@ namespace CarMarketplace.Data.Migrations
                             ManufacturerId = 12,
                             ModelId = 166,
                             Odometer = 206600,
-                            ProvinceId = 7,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TransmissionType = "Automatic",
                             Year = 2017
@@ -272,7 +240,6 @@ namespace CarMarketplace.Data.Migrations
                         {
                             Id = new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"),
                             CategoryId = 3,
-                            City = "Sofia",
                             ColorId = 1,
                             Description = "For sale is a car in excellent condition. I am the second owner. Imported from Italy 9 years ago. Always serviced on time and kept in a garage. It is not ridden in winter. No rust or rot. In the car, every system works without exception. A radio with a rear view camera for parking is integrated. Original alloy wheels for the model with good summer tires. There is also a set of winter tires on separate steel rims, which I never drove. Paid civil and examination. The car is fitted with gas injection and runs perfectly on both petrol and gas. With its three original keys - two black and one red service key. The original alarm system is working.",
                             EngineId = 7,
@@ -280,10 +247,24 @@ namespace CarMarketplace.Data.Migrations
                             ManufacturerId = 4,
                             ModelId = 64,
                             Odometer = 148000,
-                            ProvinceId = 20,
                             SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
                             TransmissionType = "Manual",
                             Year = 1997
+                        },
+                        new
+                        {
+                            Id = new Guid("a7979b5b-0402-4c36-bd84-6e506464193d"),
+                            CategoryId = 2,
+                            ColorId = 1,
+                            Description = "In a good shape.",
+                            EngineId = 8,
+                            EuroStandart = 5,
+                            ManufacturerId = 34,
+                            ModelId = 403,
+                            Odometer = 195000,
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            TransmissionType = "Manual",
+                            Year = 2010
                         });
                 });
 
@@ -3253,6 +3234,1548 @@ namespace CarMarketplace.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CarMarketplace.Data.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CityName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProvinceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.ToTable("City");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CityName = "Bansko",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CityName = "Blagoevgrad",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CityName = "Gotse Delchev",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CityName = "Petrich",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CityName = "Razlog",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CityName = "Sandanski",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CityName = "Belitsa",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CityName = "Kresna",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CityName = "Simitli",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CityName = "Strumyani",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CityName = "Yakoruda",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CityName = "Velingrad",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CityName = "Garmen",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CityName = "Dobrinishte",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CityName = "Rila",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CityName = "Kocherinovo",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CityName = "Satovcha",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CityName = "Hadzhidimovo",
+                            ProvinceId = 1
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CityName = "Aytos",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CityName = "Burgas",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CityName = "Balgarovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CityName = "Bratovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CityName = "Bryastovets",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CityName = "Bŭlgari",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CityName = "Dimchevo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CityName = "Drachevo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CityName = "Dyulevo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CityName = "Gabar",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CityName = "Golyamo Bukovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CityName = "Gorno Ezerovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CityName = "Izgrev",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CityName = "Kableshkovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CityName = "Kameno",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CityName = "Karnobat",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CityName = "Kiten",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CityName = "Konstantinovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CityName = "Kosharitsa",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CityName = "Krŭstina",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CityName = "Livada",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CityName = "Malko Tarnovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CityName = "Marinka",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CityName = "Mirolyubovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 43,
+                            CityName = "Nesebar",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CityName = "Obzor",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CityName = "Pomorie",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CityName = "Primorsko",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CityName = "Ravda",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 48,
+                            CityName = "Rosen",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 49,
+                            CityName = "Rudnik",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 50,
+                            CityName = "Rusokastro",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 51,
+                            CityName = "Sadievo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 52,
+                            CityName = "Slanchevo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 53,
+                            CityName = "Sozopol",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 54,
+                            CityName = "Sredets",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 55,
+                            CityName = "Stratsin",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CityName = "Sŭdievo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CityName = "Sungurlare",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 58,
+                            CityName = "Svetlina",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 59,
+                            CityName = "Svoboda",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 60,
+                            CityName = "Tsarevo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 61,
+                            CityName = "Tvarditsa",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 62,
+                            CityName = "Varovnik",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 63,
+                            CityName = "Vedrovo",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 64,
+                            CityName = "Veselie",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 65,
+                            CityName = "Vizitsa",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 66,
+                            CityName = "Vŭrgotch",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 67,
+                            CityName = "Yasna Polyana",
+                            ProvinceId = 2
+                        },
+                        new
+                        {
+                            Id = 68,
+                            CityName = "Dobrich",
+                            ProvinceId = 3
+                        },
+                        new
+                        {
+                            Id = 69,
+                            CityName = "Balchik",
+                            ProvinceId = 3
+                        },
+                        new
+                        {
+                            Id = 70,
+                            CityName = "General Toshevo",
+                            ProvinceId = 3
+                        },
+                        new
+                        {
+                            Id = 71,
+                            CityName = "Kavarna",
+                            ProvinceId = 3
+                        },
+                        new
+                        {
+                            Id = 72,
+                            CityName = "Shabla",
+                            ProvinceId = 3
+                        },
+                        new
+                        {
+                            Id = 73,
+                            CityName = "Tervel",
+                            ProvinceId = 3
+                        },
+                        new
+                        {
+                            Id = 74,
+                            CityName = "Krushari",
+                            ProvinceId = 3
+                        },
+                        new
+                        {
+                            Id = 75,
+                            CityName = "Gabrovo",
+                            ProvinceId = 4
+                        },
+                        new
+                        {
+                            Id = 76,
+                            CityName = "Sevlievo",
+                            ProvinceId = 4
+                        },
+                        new
+                        {
+                            Id = 77,
+                            CityName = "Dryanovo",
+                            ProvinceId = 4
+                        },
+                        new
+                        {
+                            Id = 78,
+                            CityName = "Tryavna",
+                            ProvinceId = 4
+                        },
+                        new
+                        {
+                            Id = 79,
+                            CityName = "Haskovo",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 80,
+                            CityName = "Dimitrovgrad",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 81,
+                            CityName = "Svilengrad",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 82,
+                            CityName = "Harmanli",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 83,
+                            CityName = "Topolovgrad",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 84,
+                            CityName = "Ivaylovgrad",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 85,
+                            CityName = "Lyubimets",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 86,
+                            CityName = "Madzharovo",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 87,
+                            CityName = "Mineralni Bani",
+                            ProvinceId = 5
+                        },
+                        new
+                        {
+                            Id = 88,
+                            CityName = "Kardzhali",
+                            ProvinceId = 6
+                        },
+                        new
+                        {
+                            Id = 89,
+                            CityName = "Momchilgrad",
+                            ProvinceId = 6
+                        },
+                        new
+                        {
+                            Id = 90,
+                            CityName = "Ardino",
+                            ProvinceId = 6
+                        },
+                        new
+                        {
+                            Id = 91,
+                            CityName = "Krumovgrad",
+                            ProvinceId = 6
+                        },
+                        new
+                        {
+                            Id = 92,
+                            CityName = "Dzhebel",
+                            ProvinceId = 6
+                        },
+                        new
+                        {
+                            Id = 93,
+                            CityName = "Kirkovo",
+                            ProvinceId = 6
+                        },
+                        new
+                        {
+                            Id = 94,
+                            CityName = "Kyustendil",
+                            ProvinceId = 7
+                        },
+                        new
+                        {
+                            Id = 95,
+                            CityName = "Boboshevo",
+                            ProvinceId = 7
+                        },
+                        new
+                        {
+                            Id = 96,
+                            CityName = "Brezovo",
+                            ProvinceId = 7
+                        },
+                        new
+                        {
+                            Id = 97,
+                            CityName = "Dupnitsa",
+                            ProvinceId = 7
+                        },
+                        new
+                        {
+                            Id = 98,
+                            CityName = "Sapareva Banya",
+                            ProvinceId = 7
+                        },
+                        new
+                        {
+                            Id = 99,
+                            CityName = "Zemen",
+                            ProvinceId = 7
+                        },
+                        new
+                        {
+                            Id = 100,
+                            CityName = "Lovech",
+                            ProvinceId = 8
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CityName = "Apriltsi",
+                            ProvinceId = 8
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CityName = "Letnitsa",
+                            ProvinceId = 8
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CityName = "Lukovit",
+                            ProvinceId = 8
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CityName = "Teteven",
+                            ProvinceId = 8
+                        },
+                        new
+                        {
+                            Id = 105,
+                            CityName = "Yablanitsa",
+                            ProvinceId = 8
+                        },
+                        new
+                        {
+                            Id = 106,
+                            CityName = "Ugarchin",
+                            ProvinceId = 8
+                        },
+                        new
+                        {
+                            Id = 107,
+                            CityName = "Troyan",
+                            ProvinceId = 8
+                        },
+                        new
+                        {
+                            Id = 108,
+                            CityName = "Montana",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 109,
+                            CityName = "Berkovitsa",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 110,
+                            CityName = "Boychinovtsi",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 111,
+                            CityName = "Brusartsi",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 112,
+                            CityName = "Chiprovtsi",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CityName = "Georgi Damyanovo",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 114,
+                            CityName = "Lom",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 115,
+                            CityName = "Valchedram",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 116,
+                            CityName = "Yakimovo",
+                            ProvinceId = 9
+                        },
+                        new
+                        {
+                            Id = 117,
+                            CityName = "Pazardzhik",
+                            ProvinceId = 10
+                        },
+                        new
+                        {
+                            Id = 118,
+                            CityName = "Belovo",
+                            ProvinceId = 10
+                        },
+                        new
+                        {
+                            Id = 119,
+                            CityName = "Panagyurishte",
+                            ProvinceId = 10
+                        },
+                        new
+                        {
+                            Id = 120,
+                            CityName = "Plovdivtsi",
+                            ProvinceId = 10
+                        },
+                        new
+                        {
+                            Id = 121,
+                            CityName = "Strelcha",
+                            ProvinceId = 10
+                        },
+                        new
+                        {
+                            Id = 122,
+                            CityName = "Septemvri",
+                            ProvinceId = 10
+                        },
+                        new
+                        {
+                            Id = 123,
+                            CityName = "Rakitovo",
+                            ProvinceId = 10
+                        },
+                        new
+                        {
+                            Id = 124,
+                            CityName = "Velingrad",
+                            ProvinceId = 10
+                        },
+                        new
+                        {
+                            Id = 125,
+                            CityName = "Pernik",
+                            ProvinceId = 11
+                        },
+                        new
+                        {
+                            Id = 126,
+                            CityName = "Radomir",
+                            ProvinceId = 11
+                        },
+                        new
+                        {
+                            Id = 127,
+                            CityName = "Batanovtsi",
+                            ProvinceId = 11
+                        },
+                        new
+                        {
+                            Id = 128,
+                            CityName = "Breznik",
+                            ProvinceId = 11
+                        },
+                        new
+                        {
+                            Id = 129,
+                            CityName = "Pleven",
+                            ProvinceId = 12
+                        },
+                        new
+                        {
+                            Id = 130,
+                            CityName = "Dolni Dabnik",
+                            ProvinceId = 12
+                        },
+                        new
+                        {
+                            Id = 131,
+                            CityName = "Gulyantsi",
+                            ProvinceId = 12
+                        },
+                        new
+                        {
+                            Id = 132,
+                            CityName = "Levski",
+                            ProvinceId = 12
+                        },
+                        new
+                        {
+                            Id = 133,
+                            CityName = "Nikopol",
+                            ProvinceId = 12
+                        },
+                        new
+                        {
+                            Id = 134,
+                            CityName = "Cherven Bryag",
+                            ProvinceId = 12
+                        },
+                        new
+                        {
+                            Id = 135,
+                            CityName = "Plovdiv",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 136,
+                            CityName = "Asenovgrad",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 137,
+                            CityName = "Rakovski",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 138,
+                            CityName = "Karlovo",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 139,
+                            CityName = "Parvomay",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 140,
+                            CityName = "Sadovo",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 141,
+                            CityName = "Hisarya",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 142,
+                            CityName = "Perushtitsa",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 143,
+                            CityName = "Saedinenie",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 144,
+                            CityName = "Kuklen",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 145,
+                            CityName = "Sopot",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 146,
+                            CityName = "Krichim",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 147,
+                            CityName = "Rozino",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 148,
+                            CityName = "Laki",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 149,
+                            CityName = "Stamboliyski",
+                            ProvinceId = 13
+                        },
+                        new
+                        {
+                            Id = 150,
+                            CityName = "Razgrad",
+                            ProvinceId = 14
+                        },
+                        new
+                        {
+                            Id = 151,
+                            CityName = "Isperih",
+                            ProvinceId = 14
+                        },
+                        new
+                        {
+                            Id = 152,
+                            CityName = "Loznitsa",
+                            ProvinceId = 14
+                        },
+                        new
+                        {
+                            Id = 153,
+                            CityName = "Samuil",
+                            ProvinceId = 14
+                        },
+                        new
+                        {
+                            Id = 154,
+                            CityName = "Tsar Kaloyan",
+                            ProvinceId = 14
+                        },
+                        new
+                        {
+                            Id = 155,
+                            CityName = "Zavet",
+                            ProvinceId = 14
+                        },
+                        new
+                        {
+                            Id = 156,
+                            CityName = "Ruse",
+                            ProvinceId = 15
+                        },
+                        new
+                        {
+                            Id = 157,
+                            CityName = "Borovo",
+                            ProvinceId = 15
+                        },
+                        new
+                        {
+                            Id = 158,
+                            CityName = "Dve Mogili",
+                            ProvinceId = 15
+                        },
+                        new
+                        {
+                            Id = 159,
+                            CityName = "Ivanovo",
+                            ProvinceId = 15
+                        },
+                        new
+                        {
+                            Id = 160,
+                            CityName = "Slivo Pole",
+                            ProvinceId = 15
+                        },
+                        new
+                        {
+                            Id = 161,
+                            CityName = "Tsenovo",
+                            ProvinceId = 15
+                        },
+                        new
+                        {
+                            Id = 162,
+                            CityName = "Shumen",
+                            ProvinceId = 16
+                        },
+                        new
+                        {
+                            Id = 163,
+                            CityName = "Kaspichan",
+                            ProvinceId = 16
+                        },
+                        new
+                        {
+                            Id = 164,
+                            CityName = "Novi Pazar",
+                            ProvinceId = 16
+                        },
+                        new
+                        {
+                            Id = 165,
+                            CityName = "Veliki Preslav",
+                            ProvinceId = 16
+                        },
+                        new
+                        {
+                            Id = 166,
+                            CityName = "Varbitsa",
+                            ProvinceId = 16
+                        },
+                        new
+                        {
+                            Id = 167,
+                            CityName = "Silistra",
+                            ProvinceId = 17
+                        },
+                        new
+                        {
+                            Id = 168,
+                            CityName = "Alfatar",
+                            ProvinceId = 17
+                        },
+                        new
+                        {
+                            Id = 169,
+                            CityName = "Dulovo",
+                            ProvinceId = 17
+                        },
+                        new
+                        {
+                            Id = 170,
+                            CityName = "Glavinitsa",
+                            ProvinceId = 17
+                        },
+                        new
+                        {
+                            Id = 171,
+                            CityName = "Kaynardzha",
+                            ProvinceId = 17
+                        },
+                        new
+                        {
+                            Id = 172,
+                            CityName = "Sitovo",
+                            ProvinceId = 17
+                        },
+                        new
+                        {
+                            Id = 173,
+                            CityName = "Tutrakan",
+                            ProvinceId = 17
+                        },
+                        new
+                        {
+                            Id = 174,
+                            CityName = "Sliven",
+                            ProvinceId = 18
+                        },
+                        new
+                        {
+                            Id = 175,
+                            CityName = "Kotel",
+                            ProvinceId = 18
+                        },
+                        new
+                        {
+                            Id = 176,
+                            CityName = "Nova Zagora",
+                            ProvinceId = 18
+                        },
+                        new
+                        {
+                            Id = 177,
+                            CityName = "Tvarditsa",
+                            ProvinceId = 18
+                        },
+                        new
+                        {
+                            Id = 178,
+                            CityName = "Smolyan",
+                            ProvinceId = 19
+                        },
+                        new
+                        {
+                            Id = 179,
+                            CityName = "Chepelare",
+                            ProvinceId = 19
+                        },
+                        new
+                        {
+                            Id = 180,
+                            CityName = "Devin",
+                            ProvinceId = 19
+                        },
+                        new
+                        {
+                            Id = 181,
+                            CityName = "Dospat",
+                            ProvinceId = 19
+                        },
+                        new
+                        {
+                            Id = 182,
+                            CityName = "Madan",
+                            ProvinceId = 19
+                        },
+                        new
+                        {
+                            Id = 183,
+                            CityName = "Rudozem",
+                            ProvinceId = 19
+                        },
+                        new
+                        {
+                            Id = 184,
+                            CityName = "Zlatograd",
+                            ProvinceId = 19
+                        },
+                        new
+                        {
+                            Id = 185,
+                            CityName = "Sofia",
+                            ProvinceId = 20
+                        },
+                        new
+                        {
+                            Id = 186,
+                            CityName = "Bankya",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 187,
+                            CityName = "Botevgrad",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 188,
+                            CityName = "Elin Pelin",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 189,
+                            CityName = "Etropole",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 190,
+                            CityName = "Gorna Malina",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 191,
+                            CityName = "Ihtiman",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 192,
+                            CityName = "Kostenets",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 193,
+                            CityName = "Kostinbrod",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 194,
+                            CityName = "Mirkovo",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 195,
+                            CityName = "Pirdop",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 196,
+                            CityName = "Pravets",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 197,
+                            CityName = "Samokov",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 198,
+                            CityName = "Slivnitsa",
+                            ProvinceId = 21
+                        },
+                        new
+                        {
+                            Id = 199,
+                            CityName = "Stara Zagora",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 200,
+                            CityName = "Chirpan",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 201,
+                            CityName = "Galabovo",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 202,
+                            CityName = "Gurkovo",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 203,
+                            CityName = "Kazanlak",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 204,
+                            CityName = "Maglizh",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 205,
+                            CityName = "Nikolaevo",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 206,
+                            CityName = "Opan",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 207,
+                            CityName = "Radnevo",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 208,
+                            CityName = "Shipka",
+                            ProvinceId = 22
+                        },
+                        new
+                        {
+                            Id = 209,
+                            CityName = "Targovishte",
+                            ProvinceId = 23
+                        },
+                        new
+                        {
+                            Id = 210,
+                            CityName = "Omurtag",
+                            ProvinceId = 23
+                        },
+                        new
+                        {
+                            Id = 211,
+                            CityName = "Antonovo",
+                            ProvinceId = 23
+                        },
+                        new
+                        {
+                            Id = 212,
+                            CityName = "Opaka",
+                            ProvinceId = 23
+                        },
+                        new
+                        {
+                            Id = 213,
+                            CityName = "Popovo",
+                            ProvinceId = 23
+                        },
+                        new
+                        {
+                            Id = 214,
+                            CityName = "Varna",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 215,
+                            CityName = "Aksakovo",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 216,
+                            CityName = "Avren",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 217,
+                            CityName = "Beloslav",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 218,
+                            CityName = "Byala",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 219,
+                            CityName = "Devnya",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 220,
+                            CityName = "Dolni Chiflik",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 221,
+                            CityName = "Dalgopol",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 222,
+                            CityName = "Provadia",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 223,
+                            CityName = "Suvorovo",
+                            ProvinceId = 24
+                        },
+                        new
+                        {
+                            Id = 224,
+                            CityName = "Veliko Tarnovo",
+                            ProvinceId = 25
+                        },
+                        new
+                        {
+                            Id = 225,
+                            CityName = "Elena",
+                            ProvinceId = 25
+                        },
+                        new
+                        {
+                            Id = 226,
+                            CityName = "Gorna Oryahovitsa",
+                            ProvinceId = 25
+                        },
+                        new
+                        {
+                            Id = 227,
+                            CityName = "Lyaskovets",
+                            ProvinceId = 25
+                        },
+                        new
+                        {
+                            Id = 228,
+                            CityName = "Pavlikeni",
+                            ProvinceId = 25
+                        },
+                        new
+                        {
+                            Id = 229,
+                            CityName = "Svishtov",
+                            ProvinceId = 25
+                        },
+                        new
+                        {
+                            Id = 230,
+                            CityName = "Strazhitsa",
+                            ProvinceId = 25
+                        },
+                        new
+                        {
+                            Id = 231,
+                            CityName = "Suhindol",
+                            ProvinceId = 25
+                        },
+                        new
+                        {
+                            Id = 232,
+                            CityName = "Vidin",
+                            ProvinceId = 26
+                        },
+                        new
+                        {
+                            Id = 233,
+                            CityName = "Belogradchik",
+                            ProvinceId = 26
+                        },
+                        new
+                        {
+                            Id = 234,
+                            CityName = "Bregovo",
+                            ProvinceId = 26
+                        },
+                        new
+                        {
+                            Id = 235,
+                            CityName = "Boynitsa",
+                            ProvinceId = 26
+                        },
+                        new
+                        {
+                            Id = 236,
+                            CityName = "Gramada",
+                            ProvinceId = 26
+                        },
+                        new
+                        {
+                            Id = 237,
+                            CityName = "Dimovo",
+                            ProvinceId = 26
+                        },
+                        new
+                        {
+                            Id = 238,
+                            CityName = "Kula",
+                            ProvinceId = 26
+                        },
+                        new
+                        {
+                            Id = 239,
+                            CityName = "Vratsa",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 240,
+                            CityName = "Borovan",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 241,
+                            CityName = "Boychinovtsi",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 242,
+                            CityName = "Byala Slatina",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 243,
+                            CityName = "Kozloduy",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 244,
+                            CityName = "Mezdra",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 245,
+                            CityName = "Mizia",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 246,
+                            CityName = "Roman",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 247,
+                            CityName = "Hayredin",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 248,
+                            CityName = "Hristo Danovo",
+                            ProvinceId = 27
+                        },
+                        new
+                        {
+                            Id = 249,
+                            CityName = "Yambol",
+                            ProvinceId = 28
+                        },
+                        new
+                        {
+                            Id = 250,
+                            CityName = "Bolyarovo",
+                            ProvinceId = 28
+                        },
+                        new
+                        {
+                            Id = 251,
+                            CityName = "Elhovo",
+                            ProvinceId = 28
+                        },
+                        new
+                        {
+                            Id = 252,
+                            CityName = "Straldzha",
+                            ProvinceId = 28
+                        },
+                        new
+                        {
+                            Id = 253,
+                            CityName = "Tundzha",
+                            ProvinceId = 28
+                        });
+                });
+
             modelBuilder.Entity("CarMarketplace.Data.Models.Color", b =>
                 {
                     b.Property<int>("Id")
@@ -3443,6 +4966,13 @@ namespace CarMarketplace.Data.Migrations
                             Displacement = 1600,
                             FuelType = "Petrol",
                             Horsepower = 126
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Displacement = 1400,
+                            FuelType = "Petrol",
+                            Horsepower = 170
                         });
                 });
 
@@ -3562,7 +5092,7 @@ namespace CarMarketplace.Data.Migrations
                         new
                         {
                             Id = 20,
-                            ProvinceName = "Sofia-Grad"
+                            ProvinceName = "Sofia-City"
                         },
                         new
                         {
@@ -3615,18 +5145,22 @@ namespace CarMarketplace.Data.Migrations
                     b.Property<Guid>("CarId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ImageUrls")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePublicIds")
                         .IsRequired()
                         .HasColumnType("varchar(5000)");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PublishDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<Guid>("SellerId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ThumbnailImagePublicId")
+                        .IsRequired()
+                        .HasColumnType("varchar(5000)");
 
                     b.HasKey("Id");
 
@@ -3641,64 +5175,71 @@ namespace CarMarketplace.Data.Migrations
                         {
                             Id = new Guid("c43577f9-2764-437c-b0b6-a7f3bd6651e8"),
                             CarId = new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"),
-                            ImageUrls = "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg",
+                            CreatedOn = new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1207),
+                            ImagePublicIds = "v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg",
                             Price = 7000,
-                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6170),
-                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
-                        },
-                        new
-                        {
-                            Id = new Guid("9a5a58bd-9e4b-44a2-90a5-23ca5b97d2bc"),
-                            CarId = new Guid("913c5349-94de-4dc2-9e7d-346b57648227"),
-                            ImageUrls = "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg",
-                            Price = 2000,
-                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6229),
-                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            ThumbnailImagePublicId = "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg"
                         },
                         new
                         {
                             Id = new Guid("067ee0a8-c13a-4519-9e80-12b82e33f6f3"),
                             CarId = new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"),
-                            ImageUrls = "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg",
+                            CreatedOn = new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1261),
+                            ImagePublicIds = "v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg",
                             Price = 17000,
-                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6238),
-                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            ThumbnailImagePublicId = "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg"
                         },
                         new
                         {
                             Id = new Guid("efe9de80-c4b1-478a-8b4e-9320bde47eb5"),
                             CarId = new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"),
-                            ImageUrls = "v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400036/AudiA4_divn3c.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg",
-                            Price = 18500,
-                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6245),
-                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                            CreatedOn = new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1269),
+                            ImagePublicIds = "v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg",
+                            Price = 20500,
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            ThumbnailImagePublicId = "v1691400038/IMG_20230807_120600_154_v7y62d.jpg"
                         },
                         new
                         {
                             Id = new Guid("63edaa88-527b-4f48-bf3a-5d7c8922cbfd"),
                             CarId = new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"),
-                            ImageUrls = "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg, v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg",
+                            CreatedOn = new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1276),
+                            ImagePublicIds = "v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg",
                             Price = 6500,
-                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6259),
-                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            ThumbnailImagePublicId = "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg"
                         },
                         new
                         {
                             Id = new Guid("2a84f9fc-7068-42a9-9dac-e49d33284196"),
                             CarId = new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"),
-                            ImageUrls = "v1691646413/64d3fb431a7e3d0fcf0b80e2o_anphwq.jpg, v1691646412/64d3fb46c29439437a06b363o_qwemd9.jpg, v1691646412/64d3fb483eb36bd7480a5833b_tmunek.jpg, v1691646415/64d3fb4b0a8dd40f8a0b10c3o_yb9znx.jpg, v1691646412/64d3fb4ddb9605406a046125o_xwnste.jpg, v1691646413/64d3fb4cd9de150f760d6f23o_sf6mqc.jpg",
+                            CreatedOn = new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1295),
+                            ImagePublicIds = "v1691646412/64d3fb46c29439437a06b363o_qwemd9.jpg, v1691646412/64d3fb483eb36bd7480a5833b_tmunek.jpg, v1691646415/64d3fb4b0a8dd40f8a0b10c3o_yb9znx.jpg, v1691646412/64d3fb4ddb9605406a046125o_xwnste.jpg, v1691646413/64d3fb4cd9de150f760d6f23o_sf6mqc.jpg",
                             Price = 28500,
-                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6266),
-                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            ThumbnailImagePublicId = "v1691646413/64d3fb431a7e3d0fcf0b80e2o_anphwq.jpg"
                         },
                         new
                         {
                             Id = new Guid("96b41a60-8da3-4a54-8422-5c570ae86705"),
                             CarId = new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"),
-                            ImageUrls = "v1691647266/64d3f8349b30846fd708b336o_fe1ma7.jpg, v1691647264/64d3f88754cff649d00f9462o_aefttq.jpg, v1691647264/64d3f88a9b30846fd708b337b_ptog3c.jpg, v1691647264/64d3f88d83abf0e673094a92b_uyfdtb.jpg, v1691647264/64d3f891f6111264730a6732b_u8wh49.jpg, v1691647264/64d3f894ad32aa131c03f293b_cxujvp.jpg, v1691647265/64d3f8a4e43d2c67140a7f12b_vzxxhz.jpg",
+                            CreatedOn = new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1307),
+                            ImagePublicIds = "v1691647264/64d3f88754cff649d00f9462o_aefttq.jpg, v1691647264/64d3f88a9b30846fd708b337b_ptog3c.jpg, v1691647264/64d3f88d83abf0e673094a92b_uyfdtb.jpg, v1691647264/64d3f891f6111264730a6732b_u8wh49.jpg, v1691647264/64d3f894ad32aa131c03f293b_cxujvp.jpg, v1691647265/64d3f8a4e43d2c67140a7f12b_vzxxhz.jpg",
                             Price = 5100,
-                            PublishDate = new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6283),
-                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16")
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            ThumbnailImagePublicId = "v1691647266/64d3f8349b30846fd708b336o_fe1ma7.jpg"
+                        },
+                        new
+                        {
+                            Id = new Guid("9597b286-3c2a-4fb5-85be-6625aebd2ec1"),
+                            CarId = new Guid("a7979b5b-0402-4c36-bd84-6e506464193d"),
+                            CreatedOn = new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1314),
+                            ImagePublicIds = "v1691694986/646d1ee92e0f90965c007009b_kjjfj0.jpg, v1691694986/646d1edae9827c54ff0ed554b_u9c2er.jpg, v1691694985/646d1edb304e77ceed0a5383b_d1umuk.jpg, v1691694985/646d1edd2e0f90965c007007b_k2ilqv.jpg, v1691694985/646d1ee82e0f90965c007008b_eacs1y.jpg, v1691694985/646d1ee2bfecf229390efce3b_pzk4dj.jpg, v1691694986/646d1ee52f544fc2bf0c7032b_ile2it.jpg, v1691694985/646d1ee6304e77ceed0a5384b_dcjzz1.jpg",
+                            Price = 12000,
+                            SellerId = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            ThumbnailImagePublicId = "v1691694986/646d1ed7b8b79391c90f5463o_ku4zgx.jpg"
                         });
                 });
 
@@ -3710,7 +5251,7 @@ namespace CarMarketplace.Data.Migrations
                     b.Property<Guid>("SalePostId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateTimeAdded")
+                    b.Property<DateTime>("LikedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("UserId", "SalePostId");
@@ -3725,6 +5266,9 @@ namespace CarMarketplace.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -3746,6 +5290,8 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CityId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Sellers");
@@ -3754,10 +5300,11 @@ namespace CarMarketplace.Data.Migrations
                         new
                         {
                             Id = new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
+                            CityId = 94,
                             FirstName = "Vladimir",
                             LastName = "Kotsev",
                             PhoneNumber = "0899904741",
-                            UserId = new Guid("9faa9109-1c99-4e92-90fb-d76b96740db4")
+                            UserId = new Guid("6292b671-f731-4cf1-849e-4ab5fd6d2451")
                         });
                 });
 
@@ -3932,12 +5479,6 @@ namespace CarMarketplace.Data.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("CarMarketplace.Data.Models.Province", "Province")
-                        .WithMany()
-                        .HasForeignKey("ProvinceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CarMarketplace.Data.Models.Seller", "Seller")
                         .WithMany("CarOnSale")
                         .HasForeignKey("SellerId")
@@ -3954,9 +5495,18 @@ namespace CarMarketplace.Data.Migrations
 
                     b.Navigation("Model");
 
-                    b.Navigation("Province");
-
                     b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.City", b =>
+                {
+                    b.HasOne("CarMarketplace.Data.Models.Province", "Province")
+                        .WithMany("Cities")
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Province");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
@@ -3999,11 +5549,19 @@ namespace CarMarketplace.Data.Migrations
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Seller", b =>
                 {
+                    b.HasOne("CarMarketplace.Data.Models.City", "City")
+                        .WithMany("Sellers")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("City");
 
                     b.Navigation("User");
                 });
@@ -4074,6 +5632,16 @@ namespace CarMarketplace.Data.Migrations
             modelBuilder.Entity("CarMarketplace.Data.Models.CarModel", b =>
                 {
                     b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.City", b =>
+                {
+                    b.Navigation("Sellers");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.Province", b =>
+                {
+                    b.Navigation("Cities");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>

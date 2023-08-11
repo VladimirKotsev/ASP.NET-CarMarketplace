@@ -68,6 +68,13 @@
                 Horsepower = 126,
                 FuelType = "Petrol"
             });
+            engines.Add(new Engine()
+            {
+                Id = id++,
+                Displacement = 1400,
+                Horsepower = 170,
+                FuelType = "Petrol"
+            });
 
             return engines.ToArray();
         }

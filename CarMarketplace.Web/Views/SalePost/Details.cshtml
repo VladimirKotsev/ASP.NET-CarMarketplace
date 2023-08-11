@@ -21,13 +21,13 @@
             <div class="owl-carousel owl-theme">
                 <div class="carousel-item active">
                     @{
-                        var publicId = Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
+                        var publicId = Model.ThumbnailImage;
                         image = ViewData["CloudDomain"] + publicId;
                     }
 
                     <img src="@image" class="img-fluid rounded float-end" alt="@Model.Car.Make.Name @Model.Car.Model.ModelName">
                 </div>
-                @foreach (var imageId in Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).Skip(1))
+                @foreach (var imageId in Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries))
                 {
                     image = ViewData["CloudDomain"] + imageId;
                     <img src="@image" class="img-fluid rounded float-end" alt="@Model.Car.Make.Name @Model.Car.Model.ModelName">
@@ -77,17 +77,10 @@
             <p class="fs-3">Engine: <span class="fst-italic">@displacement @Model.Car.Engine.FuelType</span></p>
             <p class="fs-3">Transmission: <span class="fst-italic">@Model.Car.TransmissionType</span></p>
             <p class="fs-3">Category: <span class="fst-italic">@Model.Car.Category.Name</span></p>
-            <p class="fs-3">
-                Province: <span class="fst-italic">@Model.Car.Province.ProvinceName</span>
-                @if (Model.Car.City != null)
-                {
-                    <span class="fst-italic">, @Model.Car.City</span>
-                }
-
-            </p>
+            <p class="fs-3">@Model.Seller.City.Province.ProvinceName, @Model.Seller.City.CityName</p>
             <hr />
             <div class="row d-inline">
-                <span class="fs-4 fst-italic text-start float-start col-6">@Model.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                <span class="fs-4 fst-italic text-start float-start col-6">@Model.CreatedOn.ToString("HH:mm:ss dd/MM/yyyy")</span>
                 @if (Model.Likes > 0)
                 {
                     <span class="text-end float-end fst-italic col-3 fs-4 fw-bolder">Likes: <span id="like-span">@Model.Likes</span></span>

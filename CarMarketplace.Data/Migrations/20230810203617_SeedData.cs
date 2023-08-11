@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarMarketplace.Data.Migrations
 {
-    public partial class SeedingData : Migration
+    public partial class SeedData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,7 +62,8 @@ namespace CarMarketplace.Data.Migrations
                     { 4, 3000, "Diesel", 235 },
                     { 5, 2000, "Petrol", 150 },
                     { 6, 1800, "Hybrid", 99 },
-                    { 7, 1600, "Petrol", 126 }
+                    { 7, 1600, "Petrol", 126 },
+                    { 8, 1400, "Petrol", 170 }
                 });
 
             migrationBuilder.InsertData(
@@ -75,8 +76,7 @@ namespace CarMarketplace.Data.Migrations
                     { 3, "Mercedes-Benz" },
                     { 4, "Honda" },
                     { 5, "Huyndai" },
-                    { 6, "Ford" },
-                    { 7, "Nissan" }
+                    { 6, "Ford" }
                 });
 
             migrationBuilder.InsertData(
@@ -84,6 +84,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
+                    { 7, "Nissan" },
                     { 8, "Renault" },
                     { 9, "Peugeot" },
                     { 10, "Fiat" },
@@ -131,8 +132,7 @@ namespace CarMarketplace.Data.Migrations
                     { 9, "Audi", "A8" },
                     { 10, "Audi", "Q2" },
                     { 11, "Audi", "Q3" },
-                    { 12, "Audi", "Q5" },
-                    { 13, "Audi", "Q7" }
+                    { 12, "Audi", "Q5" }
                 });
 
             migrationBuilder.InsertData(
@@ -140,6 +140,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 13, "Audi", "Q7" },
                     { 14, "Audi", "Q8" },
                     { 15, "Audi", "TT" },
                     { 16, "Audi", "R8" },
@@ -180,8 +181,7 @@ namespace CarMarketplace.Data.Migrations
                     { 51, "Mercedes-Benz", "CLK" },
                     { 52, "Mercedes-Benz", "E" },
                     { 53, "Mercedes-Benz", "G" },
-                    { 54, "Mercedes-Benz", "GLA" },
-                    { 55, "Mercedes-Benz", "GLB" }
+                    { 54, "Mercedes-Benz", "GLA" }
                 });
 
             migrationBuilder.InsertData(
@@ -189,6 +189,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 55, "Mercedes-Benz", "GLB" },
                     { 56, "Mercedes-Benz", "GLC" },
                     { 57, "Mercedes-Benz", "GLE" },
                     { 58, "Mercedes-Benz", "GLS" },
@@ -229,8 +230,7 @@ namespace CarMarketplace.Data.Migrations
                     { 93, "Ford", "Mondeo" },
                     { 94, "Ford", "Mustang" },
                     { 95, "Ford", "C-MAX" },
-                    { 96, "Ford", "Escort" },
-                    { 97, "Nissan", "Micra" }
+                    { 96, "Ford", "Escort" }
                 });
 
             migrationBuilder.InsertData(
@@ -238,6 +238,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 97, "Nissan", "Micra" },
                     { 98, "Nissan", "Juke" },
                     { 99, "Nissan", "Qashqai" },
                     { 100, "Nissan", "X-Trail" },
@@ -278,8 +279,7 @@ namespace CarMarketplace.Data.Migrations
                     { 135, "Peugeot", "307" },
                     { 136, "Peugeot", "308" },
                     { 137, "Peugeot", "4007" },
-                    { 138, "Peugeot", "4008" },
-                    { 139, "Peugeot", "406" }
+                    { 138, "Peugeot", "4008" }
                 });
 
             migrationBuilder.InsertData(
@@ -287,6 +287,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 139, "Peugeot", "406" },
                     { 140, "Peugeot", "407" },
                     { 141, "Peugeot", "408" },
                     { 142, "Peugeot", "5008" },
@@ -327,8 +328,7 @@ namespace CarMarketplace.Data.Migrations
                     { 177, "Toyota", "Hilux" },
                     { 178, "Toyota", "Carina" },
                     { 179, "Toyota", "Celica" },
-                    { 180, "Chevrolet", "Spark" },
-                    { 181, "Chevrolet", "Aveo" }
+                    { 180, "Chevrolet", "Spark" }
                 });
 
             migrationBuilder.InsertData(
@@ -336,6 +336,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 181, "Chevrolet", "Aveo" },
                     { 182, "Chevrolet", "Cruze" },
                     { 183, "Chevrolet", "Trax" },
                     { 184, "Chevrolet", "Captiva" },
@@ -376,8 +377,7 @@ namespace CarMarketplace.Data.Migrations
                     { 219, "Kia", "Sportage" },
                     { 220, "Kia", "Sorento" },
                     { 221, "Kia", "Venga" },
-                    { 222, "Lexus", "IS" },
-                    { 223, "Lexus", "ES" }
+                    { 222, "Lexus", "IS" }
                 });
 
             migrationBuilder.InsertData(
@@ -385,6 +385,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 223, "Lexus", "ES" },
                     { 224, "Lexus", "GS" },
                     { 225, "Lexus", "LS" },
                     { 226, "Lexus", "RX" },
@@ -425,8 +426,7 @@ namespace CarMarketplace.Data.Migrations
                     { 261, "Volkswagen", "Jetta" },
                     { 262, "Volkswagen", "Sharan" },
                     { 263, "Volkswagen", "Scirocco" },
-                    { 264, "Volkswagen", "Amarok" },
-                    { 265, "Volkswagen", "Caddy" }
+                    { 264, "Volkswagen", "Amarok" }
                 });
 
             migrationBuilder.InsertData(
@@ -434,6 +434,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 265, "Volkswagen", "Caddy" },
                     { 266, "Volkswagen", "Touareg" },
                     { 267, "Volkswagen", "Beetle" },
                     { 268, "Volvo", "XC60" },
@@ -474,8 +475,7 @@ namespace CarMarketplace.Data.Migrations
                     { 303, "Dacia", "Logan" },
                     { 304, "Dacia", "Logan MCV" },
                     { 305, "Dacia", "Logan Stepway" },
-                    { 306, "Dacia", "Duster" },
-                    { 307, "Dacia", "Dokker" }
+                    { 306, "Dacia", "Duster" }
                 });
 
             migrationBuilder.InsertData(
@@ -483,6 +483,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 307, "Dacia", "Dokker" },
                     { 308, "Dacia", "Lodgy" },
                     { 309, "Land Rover", "Defender" },
                     { 310, "Land Rover", "Discovery" },
@@ -523,8 +524,7 @@ namespace CarMarketplace.Data.Migrations
                     { 345, "Seat", "Toledo" },
                     { 346, "Seat", "Altea" },
                     { 347, "Seat", "Cupra" },
-                    { 348, "Seat", "Fura" },
-                    { 349, "Seat", "Vario" }
+                    { 348, "Seat", "Fura" }
                 });
 
             migrationBuilder.InsertData(
@@ -532,6 +532,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 349, "Seat", "Vario" },
                     { 350, "Škoda", "Octavia" },
                     { 351, "Škoda", "Fabia" },
                     { 352, "Škoda", "Superb" },
@@ -572,8 +573,7 @@ namespace CarMarketplace.Data.Migrations
                     { 387, "Ferrari", "F12berlinetta" },
                     { 388, "Ferrari", "812 Superfast" },
                     { 389, "Ferrari", "GTC4Lusso" },
-                    { 390, "Ferrari", "Roma" },
-                    { 391, "Ferrari", "SF90 Stradale" }
+                    { 390, "Ferrari", "Roma" }
                 });
 
             migrationBuilder.InsertData(
@@ -581,6 +581,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 391, "Ferrari", "SF90 Stradale" },
                     { 392, "Lamborghini", "Huracán" },
                     { 393, "Lamborghini", "Aventador" },
                     { 394, "Lamborghini", "Urus" },
@@ -621,8 +622,7 @@ namespace CarMarketplace.Data.Migrations
                     { 429, "Mitsubishi", "ASX" },
                     { 430, "Mitsubishi", "L200" },
                     { 431, "Mitsubishi", "Eclipse Cross" },
-                    { 432, "Mitsubishi", "Pajero" },
-                    { 433, "Mitsubishi", "Space Star" }
+                    { 432, "Mitsubishi", "Pajero" }
                 });
 
             migrationBuilder.InsertData(
@@ -630,6 +630,7 @@ namespace CarMarketplace.Data.Migrations
                 columns: new[] { "Id", "ManufacturerName", "ModelName" },
                 values: new object[,]
                 {
+                    { 433, "Mitsubishi", "Space Star" },
                     { 434, "Mitsubishi", "Colt" },
                     { 435, "Mitsubishi", "Mirage" },
                     { 436, "Mitsubishi", "Shogun" },
@@ -670,48 +671,351 @@ namespace CarMarketplace.Data.Migrations
                     { 17, "Silistra" },
                     { 18, "Sliven" },
                     { 19, "Smolyan" },
-                    { 20, "Sofia-Grad" },
+                    { 20, "Sofia-City" },
                     { 21, "Sofia" },
                     { 22, "Stara Zagora" },
                     { 23, "Targovishte" },
                     { 24, "Varna" },
                     { 25, "Veliko Tarnovo" },
                     { 26, "Vidin" },
-                    { 27, "Vratsa" },
-                    { 28, "Yambol" }
+                    { 27, "Vratsa" }
                 });
 
             migrationBuilder.InsertData(
+                table: "Provinces",
+                columns: new[] { "Id", "ProvinceName" },
+                values: new object[] { 28, "Yambol" });
+
+            migrationBuilder.InsertData(
+                table: "City",
+                columns: new[] { "Id", "CityName", "ProvinceId" },
+                values: new object[,]
+                {
+                    { 1, "Bansko", 1 },
+                    { 2, "Blagoevgrad", 1 },
+                    { 3, "Gotse Delchev", 1 },
+                    { 4, "Petrich", 1 },
+                    { 5, "Razlog", 1 },
+                    { 6, "Sandanski", 1 },
+                    { 7, "Belitsa", 1 },
+                    { 8, "Kresna", 1 },
+                    { 9, "Simitli", 1 },
+                    { 10, "Strumyani", 1 },
+                    { 11, "Yakoruda", 1 },
+                    { 12, "Velingrad", 1 },
+                    { 13, "Garmen", 1 },
+                    { 14, "Dobrinishte", 1 },
+                    { 15, "Rila", 1 },
+                    { 16, "Kocherinovo", 1 },
+                    { 17, "Satovcha", 1 },
+                    { 18, "Hadzhidimovo", 1 },
+                    { 19, "Aytos", 2 },
+                    { 20, "Burgas", 2 },
+                    { 21, "Balgarovo", 2 },
+                    { 22, "Bratovo", 2 },
+                    { 23, "Bryastovets", 2 },
+                    { 24, "Bŭlgari", 2 },
+                    { 25, "Dimchevo", 2 },
+                    { 26, "Drachevo", 2 },
+                    { 27, "Dyulevo", 2 },
+                    { 28, "Gabar", 2 },
+                    { 29, "Golyamo Bukovo", 2 },
+                    { 30, "Gorno Ezerovo", 2 },
+                    { 31, "Izgrev", 2 },
+                    { 32, "Kableshkovo", 2 },
+                    { 33, "Kameno", 2 },
+                    { 34, "Karnobat", 2 },
+                    { 35, "Kiten", 2 },
+                    { 36, "Konstantinovo", 2 },
+                    { 37, "Kosharitsa", 2 },
+                    { 38, "Krŭstina", 2 },
+                    { 39, "Livada", 2 },
+                    { 40, "Malko Tarnovo", 2 },
+                    { 41, "Marinka", 2 },
+                    { 42, "Mirolyubovo", 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "City",
+                columns: new[] { "Id", "CityName", "ProvinceId" },
+                values: new object[,]
+                {
+                    { 43, "Nesebar", 2 },
+                    { 44, "Obzor", 2 },
+                    { 45, "Pomorie", 2 },
+                    { 46, "Primorsko", 2 },
+                    { 47, "Ravda", 2 },
+                    { 48, "Rosen", 2 },
+                    { 49, "Rudnik", 2 },
+                    { 50, "Rusokastro", 2 },
+                    { 51, "Sadievo", 2 },
+                    { 52, "Slanchevo", 2 },
+                    { 53, "Sozopol", 2 },
+                    { 54, "Sredets", 2 },
+                    { 55, "Stratsin", 2 },
+                    { 56, "Sŭdievo", 2 },
+                    { 57, "Sungurlare", 2 },
+                    { 58, "Svetlina", 2 },
+                    { 59, "Svoboda", 2 },
+                    { 60, "Tsarevo", 2 },
+                    { 61, "Tvarditsa", 2 },
+                    { 62, "Varovnik", 2 },
+                    { 63, "Vedrovo", 2 },
+                    { 64, "Veselie", 2 },
+                    { 65, "Vizitsa", 2 },
+                    { 66, "Vŭrgotch", 2 },
+                    { 67, "Yasna Polyana", 2 },
+                    { 68, "Dobrich", 3 },
+                    { 69, "Balchik", 3 },
+                    { 70, "General Toshevo", 3 },
+                    { 71, "Kavarna", 3 },
+                    { 72, "Shabla", 3 },
+                    { 73, "Tervel", 3 },
+                    { 74, "Krushari", 3 },
+                    { 75, "Gabrovo", 4 },
+                    { 76, "Sevlievo", 4 },
+                    { 77, "Dryanovo", 4 },
+                    { 78, "Tryavna", 4 },
+                    { 79, "Haskovo", 5 },
+                    { 80, "Dimitrovgrad", 5 },
+                    { 81, "Svilengrad", 5 },
+                    { 82, "Harmanli", 5 },
+                    { 83, "Topolovgrad", 5 },
+                    { 84, "Ivaylovgrad", 5 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "City",
+                columns: new[] { "Id", "CityName", "ProvinceId" },
+                values: new object[,]
+                {
+                    { 85, "Lyubimets", 5 },
+                    { 86, "Madzharovo", 5 },
+                    { 87, "Mineralni Bani", 5 },
+                    { 88, "Kardzhali", 6 },
+                    { 89, "Momchilgrad", 6 },
+                    { 90, "Ardino", 6 },
+                    { 91, "Krumovgrad", 6 },
+                    { 92, "Dzhebel", 6 },
+                    { 93, "Kirkovo", 6 },
+                    { 94, "Kyustendil", 7 },
+                    { 95, "Boboshevo", 7 },
+                    { 96, "Brezovo", 7 },
+                    { 97, "Dupnitsa", 7 },
+                    { 98, "Sapareva Banya", 7 },
+                    { 99, "Zemen", 7 },
+                    { 100, "Lovech", 8 },
+                    { 101, "Apriltsi", 8 },
+                    { 102, "Letnitsa", 8 },
+                    { 103, "Lukovit", 8 },
+                    { 104, "Teteven", 8 },
+                    { 105, "Yablanitsa", 8 },
+                    { 106, "Ugarchin", 8 },
+                    { 107, "Troyan", 8 },
+                    { 108, "Montana", 9 },
+                    { 109, "Berkovitsa", 9 },
+                    { 110, "Boychinovtsi", 9 },
+                    { 111, "Brusartsi", 9 },
+                    { 112, "Chiprovtsi", 9 },
+                    { 113, "Georgi Damyanovo", 9 },
+                    { 114, "Lom", 9 },
+                    { 115, "Valchedram", 9 },
+                    { 116, "Yakimovo", 9 },
+                    { 117, "Pazardzhik", 10 },
+                    { 118, "Belovo", 10 },
+                    { 119, "Panagyurishte", 10 },
+                    { 120, "Plovdivtsi", 10 },
+                    { 121, "Strelcha", 10 },
+                    { 122, "Septemvri", 10 },
+                    { 123, "Rakitovo", 10 },
+                    { 124, "Velingrad", 10 },
+                    { 125, "Pernik", 11 },
+                    { 126, "Radomir", 11 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "City",
+                columns: new[] { "Id", "CityName", "ProvinceId" },
+                values: new object[,]
+                {
+                    { 127, "Batanovtsi", 11 },
+                    { 128, "Breznik", 11 },
+                    { 129, "Pleven", 12 },
+                    { 130, "Dolni Dabnik", 12 },
+                    { 131, "Gulyantsi", 12 },
+                    { 132, "Levski", 12 },
+                    { 133, "Nikopol", 12 },
+                    { 134, "Cherven Bryag", 12 },
+                    { 135, "Plovdiv", 13 },
+                    { 136, "Asenovgrad", 13 },
+                    { 137, "Rakovski", 13 },
+                    { 138, "Karlovo", 13 },
+                    { 139, "Parvomay", 13 },
+                    { 140, "Sadovo", 13 },
+                    { 141, "Hisarya", 13 },
+                    { 142, "Perushtitsa", 13 },
+                    { 143, "Saedinenie", 13 },
+                    { 144, "Kuklen", 13 },
+                    { 145, "Sopot", 13 },
+                    { 146, "Krichim", 13 },
+                    { 147, "Rozino", 13 },
+                    { 148, "Laki", 13 },
+                    { 149, "Stamboliyski", 13 },
+                    { 150, "Razgrad", 14 },
+                    { 151, "Isperih", 14 },
+                    { 152, "Loznitsa", 14 },
+                    { 153, "Samuil", 14 },
+                    { 154, "Tsar Kaloyan", 14 },
+                    { 155, "Zavet", 14 },
+                    { 156, "Ruse", 15 },
+                    { 157, "Borovo", 15 },
+                    { 158, "Dve Mogili", 15 },
+                    { 159, "Ivanovo", 15 },
+                    { 160, "Slivo Pole", 15 },
+                    { 161, "Tsenovo", 15 },
+                    { 162, "Shumen", 16 },
+                    { 163, "Kaspichan", 16 },
+                    { 164, "Novi Pazar", 16 },
+                    { 165, "Veliki Preslav", 16 },
+                    { 166, "Varbitsa", 16 },
+                    { 167, "Silistra", 17 },
+                    { 168, "Alfatar", 17 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "City",
+                columns: new[] { "Id", "CityName", "ProvinceId" },
+                values: new object[,]
+                {
+                    { 169, "Dulovo", 17 },
+                    { 170, "Glavinitsa", 17 },
+                    { 171, "Kaynardzha", 17 },
+                    { 172, "Sitovo", 17 },
+                    { 173, "Tutrakan", 17 },
+                    { 174, "Sliven", 18 },
+                    { 175, "Kotel", 18 },
+                    { 176, "Nova Zagora", 18 },
+                    { 177, "Tvarditsa", 18 },
+                    { 178, "Smolyan", 19 },
+                    { 179, "Chepelare", 19 },
+                    { 180, "Devin", 19 },
+                    { 181, "Dospat", 19 },
+                    { 182, "Madan", 19 },
+                    { 183, "Rudozem", 19 },
+                    { 184, "Zlatograd", 19 },
+                    { 185, "Sofia", 20 },
+                    { 186, "Bankya", 21 },
+                    { 187, "Botevgrad", 21 },
+                    { 188, "Elin Pelin", 21 },
+                    { 189, "Etropole", 21 },
+                    { 190, "Gorna Malina", 21 },
+                    { 191, "Ihtiman", 21 },
+                    { 192, "Kostenets", 21 },
+                    { 193, "Kostinbrod", 21 },
+                    { 194, "Mirkovo", 21 },
+                    { 195, "Pirdop", 21 },
+                    { 196, "Pravets", 21 },
+                    { 197, "Samokov", 21 },
+                    { 198, "Slivnitsa", 21 },
+                    { 199, "Stara Zagora", 22 },
+                    { 200, "Chirpan", 22 },
+                    { 201, "Galabovo", 22 },
+                    { 202, "Gurkovo", 22 },
+                    { 203, "Kazanlak", 22 },
+                    { 204, "Maglizh", 22 },
+                    { 205, "Nikolaevo", 22 },
+                    { 206, "Opan", 22 },
+                    { 207, "Radnevo", 22 },
+                    { 208, "Shipka", 22 },
+                    { 209, "Targovishte", 23 },
+                    { 210, "Omurtag", 23 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "City",
+                columns: new[] { "Id", "CityName", "ProvinceId" },
+                values: new object[,]
+                {
+                    { 211, "Antonovo", 23 },
+                    { 212, "Opaka", 23 },
+                    { 213, "Popovo", 23 },
+                    { 214, "Varna", 24 },
+                    { 215, "Aksakovo", 24 },
+                    { 216, "Avren", 24 },
+                    { 217, "Beloslav", 24 },
+                    { 218, "Byala", 24 },
+                    { 219, "Devnya", 24 },
+                    { 220, "Dolni Chiflik", 24 },
+                    { 221, "Dalgopol", 24 },
+                    { 222, "Provadia", 24 },
+                    { 223, "Suvorovo", 24 },
+                    { 224, "Veliko Tarnovo", 25 },
+                    { 225, "Elena", 25 },
+                    { 226, "Gorna Oryahovitsa", 25 },
+                    { 227, "Lyaskovets", 25 },
+                    { 228, "Pavlikeni", 25 },
+                    { 229, "Svishtov", 25 },
+                    { 230, "Strazhitsa", 25 },
+                    { 231, "Suhindol", 25 },
+                    { 232, "Vidin", 26 },
+                    { 233, "Belogradchik", 26 },
+                    { 234, "Bregovo", 26 },
+                    { 235, "Boynitsa", 26 },
+                    { 236, "Gramada", 26 },
+                    { 237, "Dimovo", 26 },
+                    { 238, "Kula", 26 },
+                    { 239, "Vratsa", 27 },
+                    { 240, "Borovan", 27 },
+                    { 241, "Boychinovtsi", 27 },
+                    { 242, "Byala Slatina", 27 },
+                    { 243, "Kozloduy", 27 },
+                    { 244, "Mezdra", 27 },
+                    { 245, "Mizia", 27 },
+                    { 246, "Roman", 27 },
+                    { 247, "Hayredin", 27 },
+                    { 248, "Hristo Danovo", 27 },
+                    { 249, "Yambol", 28 },
+                    { 250, "Bolyarovo", 28 },
+                    { 251, "Elhovo", 28 },
+                    { 252, "Straldzha", 28 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "City",
+                columns: new[] { "Id", "CityName", "ProvinceId" },
+                values: new object[] { 253, "Tundzha", 28 });
+
+            migrationBuilder.InsertData(
                 table: "Sellers",
-                columns: new[] { "Id", "FirstName", "LastName", "PhoneNumber", "UserId" },
-                values: new object[] { new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "Vladimir", "Kotsev", "0899904741", new Guid("9faa9109-1c99-4e92-90fb-d76b96740db4") });
+                columns: new[] { "Id", "CityId", "FirstName", "LastName", "PhoneNumber", "UserId" },
+                values: new object[] { new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), 94, "Vladimir", "Kotsev", "0899904741", new Guid("6292b671-f731-4cf1-849e-4ab5fd6d2451") });
 
             migrationBuilder.InsertData(
                 table: "Cars",
-                columns: new[] { "Id", "ApplicationUserId", "CategoryId", "City", "ColorId", "Description", "EngineId", "EuroStandart", "ManufacturerId", "ModelId", "Odometer", "ProvinceId", "SellerId", "TechnicalSpecificationURL", "TransmissionType", "VinNumber", "Year" },
+                columns: new[] { "Id", "ApplicationUserId", "CategoryId", "ColorId", "Description", "EngineId", "EuroStandart", "ManufacturerId", "ModelId", "Odometer", "SellerId", "TechnicalSpecificationURL", "TransmissionType", "VinNumber", "Year" },
                 values: new object[,]
                 {
-                    { new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"), null, 7, "Sofia", 10, "Import from Switzerland. 4x4 with real 201000 km with catalytic converter. Works excellent.", 5, 4, 28, 350, 202000, 20, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/bg/skoda-octavia-ii-combi-2.0-fsi-150hp-4x4-14228", "Manual", null, 2007 },
-                    { new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"), null, 3, "Sofia", 1, "For sale is a car in excellent condition. I am the second owner. Imported from Italy 9 years ago. Always serviced on time and kept in a garage. It is not ridden in winter. No rust or rot. In the car, every system works without exception. A radio with a rear view camera for parking is integrated. Original alloy wheels for the model with good summer tires. There is also a set of winter tires on separate steel rims, which I never drove. Paid civil and examination. The car is fitted with gas injection and runs perfectly on both petrol and gas. With its three original keys - two black and one red service key. The original alarm system is working.", 7, 3, 4, 64, 148000, 20, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), null, "Manual", null, 1997 },
-                    { new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"), null, 7, "Sofia", 4, "This is my Audi A4 2008 wagon s-line trim", 4, 5, 1, 6, 160000, 20, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/bg/audi-a4-avant-b8-8k-3.0-tdi-v6-240hp-quattro-4344", "Automatic", null, 2008 },
-                    { new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"), null, 7, "Dupnitsa", 1, "Personal hybrid vehichle for sale.", 6, 6, 12, 166, 206600, 7, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), null, "Automatic", null, 2017 },
-                    { new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), null, 3, null, 3, null, 1, 5, 5, 88, 164000, 13, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/hyundai-ix35-1.7-crdi-115hp-18181", "Manual", null, 2013 },
-                    { new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), null, 2, null, 2, null, 3, 4, 1, 5, 209000, 9, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/audi-a3-sportback-8pa-facelift-2008-1.9-tdi-105hp-dpf-4215", "Manual", null, 2009 },
-                    { new Guid("913c5349-94de-4dc2-9e7d-346b57648227"), null, 2, null, 5, null, 2, 3, 10, 145, 219000, 7, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/fiat-punto-ii-188-3dr-1.2-80hp-6984", "Manual", null, 2000 }
+                    { new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"), null, 7, 10, "Import from Switzerland. 4x4 with real 201000 km with catalytic converter. Works excellent.", 5, 4, 28, 350, 202000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/bg/skoda-octavia-ii-combi-2.0-fsi-150hp-4x4-14228", "Manual", null, 2007 },
+                    { new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"), null, 3, 1, "For sale is a car in excellent condition. I am the second owner. Imported from Italy 9 years ago. Always serviced on time and kept in a garage. It is not ridden in winter. No rust or rot. In the car, every system works without exception. A radio with a rear view camera for parking is integrated. Original alloy wheels for the model with good summer tires. There is also a set of winter tires on separate steel rims, which I never drove. Paid civil and examination. The car is fitted with gas injection and runs perfectly on both petrol and gas. With its three original keys - two black and one red service key. The original alarm system is working.", 7, 3, 4, 64, 148000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), null, "Manual", null, 1997 },
+                    { new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"), null, 7, 4, "This is my Audi A4 2008 wagon s-line trim", 4, 5, 1, 6, 160000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/bg/audi-a4-avant-b8-8k-3.0-tdi-v6-240hp-quattro-4344", "Automatic", null, 2008 },
+                    { new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"), null, 7, 1, "Personal hybrid vehichle for sale.", 6, 6, 12, 166, 206600, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), null, "Automatic", null, 2017 },
+                    { new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), null, 3, 3, null, 1, 5, 5, 88, 164000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/hyundai-ix35-1.7-crdi-115hp-18181", "Manual", null, 2013 },
+                    { new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), null, 2, 2, null, 3, 4, 1, 5, 209000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "https://www.auto-data.net/en/audi-a3-sportback-8pa-facelift-2008-1.9-tdi-105hp-dpf-4215", "Manual", null, 2009 },
+                    { new Guid("a7979b5b-0402-4c36-bd84-6e506464193d"), null, 2, 1, "In a good shape.", 8, 5, 34, 403, 195000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), null, "Manual", null, 2010 }
                 });
 
             migrationBuilder.InsertData(
                 table: "SalePosts",
-                columns: new[] { "Id", "CarId", "ImageUrls", "Price", "PublishDate", "SellerId" },
+                columns: new[] { "Id", "CarId", "CreatedOn", "ImagePublicIds", "Price", "SellerId", "ThumbnailImagePublicId" },
                 values: new object[,]
                 {
-                    { new Guid("067ee0a8-c13a-4519-9e80-12b82e33f6f3"), new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg, v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg", 17000, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6238), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("2a84f9fc-7068-42a9-9dac-e49d33284196"), new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"), "v1691646413/64d3fb431a7e3d0fcf0b80e2o_anphwq.jpg, v1691646412/64d3fb46c29439437a06b363o_qwemd9.jpg, v1691646412/64d3fb483eb36bd7480a5833b_tmunek.jpg, v1691646415/64d3fb4b0a8dd40f8a0b10c3o_yb9znx.jpg, v1691646412/64d3fb4ddb9605406a046125o_xwnste.jpg, v1691646413/64d3fb4cd9de150f760d6f23o_sf6mqc.jpg", 28500, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6266), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("63edaa88-527b-4f48-bf3a-5d7c8922cbfd"), new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"), "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg, v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg", 6500, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6259), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("96b41a60-8da3-4a54-8422-5c570ae86705"), new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"), "v1691647266/64d3f8349b30846fd708b336o_fe1ma7.jpg, v1691647264/64d3f88754cff649d00f9462o_aefttq.jpg, v1691647264/64d3f88a9b30846fd708b337b_ptog3c.jpg, v1691647264/64d3f88d83abf0e673094a92b_uyfdtb.jpg, v1691647264/64d3f891f6111264730a6732b_u8wh49.jpg, v1691647264/64d3f894ad32aa131c03f293b_cxujvp.jpg, v1691647265/64d3f8a4e43d2c67140a7f12b_vzxxhz.jpg", 5100, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6283), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("9a5a58bd-9e4b-44a2-90a5-23ca5b97d2bc"), new Guid("913c5349-94de-4dc2-9e7d-346b57648227"), "v1690703960/20230701_162102_fuhvrm.jpg, v1690704036/20230219_151259-min_rcyhtb.jpg, v1690703960/20230701_162127_mv4jno.jpg, v1690703960/20230701_162102_fuhvrm.jpg", 2000, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6229), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("c43577f9-2764-437c-b0b6-a7f3bd6651e8"), new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg, v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg", 7000, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6170), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") },
-                    { new Guid("efe9de80-c4b1-478a-8b4e-9320bde47eb5"), new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"), "v1691400038/IMG_20230807_120600_154_v7y62d.jpg, v1691400036/AudiA4_divn3c.jpg, v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg", 18500, new DateTime(2023, 8, 10, 9, 4, 17, 75, DateTimeKind.Local).AddTicks(6245), new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16") }
+                    { new Guid("067ee0a8-c13a-4519-9e80-12b82e33f6f3"), new Guid("83f3d02f-e083-467f-a105-dc25ac02e3fa"), new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1261), "v1690705040/64c11d4d7f1d92d2780184a3o_wdzk9m.jpg, v1690705038/64c11d507f1d92d2780184a4o_sedhtb.jpg, v1690705038/64c37299fc2825af7307f104o_wbbnrh.jpg, v1690705038/64c11d5e0ccd31ea250803b2o_j83454.jpg", 17000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "v1690705038/64c11d4911a396d9060766d2o_j0myw0.jpg" },
+                    { new Guid("2a84f9fc-7068-42a9-9dac-e49d33284196"), new Guid("74483b38-f9ab-4deb-a155-2b04e9cfa647"), new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1295), "v1691646412/64d3fb46c29439437a06b363o_qwemd9.jpg, v1691646412/64d3fb483eb36bd7480a5833b_tmunek.jpg, v1691646415/64d3fb4b0a8dd40f8a0b10c3o_yb9znx.jpg, v1691646412/64d3fb4ddb9605406a046125o_xwnste.jpg, v1691646413/64d3fb4cd9de150f760d6f23o_sf6mqc.jpg", 28500, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "v1691646413/64d3fb431a7e3d0fcf0b80e2o_anphwq.jpg" },
+                    { new Guid("63edaa88-527b-4f48-bf3a-5d7c8922cbfd"), new Guid("2a42e928-40ec-4a02-b55e-694c229a6b81"), new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1276), "v1691400757/64c282cfa3ec05e92a0d3c72b_i01jew.jpg, v1691400756/64be408b482fc240c90e4192b_gs1y9y.jpg, v1691400756/64c282d304dc2d7edf0aea22b_daqssd.jpg, v1691400756/64be407d9592e31b710933a2b_ba4eny.jpg, v1691400756/64be4080695c53aef106a703b_k7uurm.jpg", 6500, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "v1691400757/64c282ca414e1af1a306f532b_yl45gs.jpg" },
+                    { new Guid("9597b286-3c2a-4fb5-85be-6625aebd2ec1"), new Guid("a7979b5b-0402-4c36-bd84-6e506464193d"), new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1314), "v1691694986/646d1ee92e0f90965c007009b_kjjfj0.jpg, v1691694986/646d1edae9827c54ff0ed554b_u9c2er.jpg, v1691694985/646d1edb304e77ceed0a5383b_d1umuk.jpg, v1691694985/646d1edd2e0f90965c007007b_k2ilqv.jpg, v1691694985/646d1ee82e0f90965c007008b_eacs1y.jpg, v1691694985/646d1ee2bfecf229390efce3b_pzk4dj.jpg, v1691694986/646d1ee52f544fc2bf0c7032b_ile2it.jpg, v1691694985/646d1ee6304e77ceed0a5384b_dcjzz1.jpg", 12000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "v1691694986/646d1ed7b8b79391c90f5463o_ku4zgx.jpg" },
+                    { new Guid("96b41a60-8da3-4a54-8422-5c570ae86705"), new Guid("35b8a5f3-59bd-4997-8b33-2c3b8381085f"), new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1307), "v1691647264/64d3f88754cff649d00f9462o_aefttq.jpg, v1691647264/64d3f88a9b30846fd708b337b_ptog3c.jpg, v1691647264/64d3f88d83abf0e673094a92b_uyfdtb.jpg, v1691647264/64d3f891f6111264730a6732b_u8wh49.jpg, v1691647264/64d3f894ad32aa131c03f293b_cxujvp.jpg, v1691647265/64d3f8a4e43d2c67140a7f12b_vzxxhz.jpg", 5100, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "v1691647266/64d3f8349b30846fd708b336o_fe1ma7.jpg" },
+                    { new Guid("c43577f9-2764-437c-b0b6-a7f3bd6651e8"), new Guid("864237e2-7f7a-469f-b019-697c848fc3aa"), new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1207), "v1690614481/64c3abbb2084b666c60eefc3o_gbppag.jpg, v1690614513/64c3abc10593558f030c7612o_b1ppoc.jpg, v1690614511/64c3abc0b533ff0b86051712o_y0v9mv.jpg, v1690614515/64c3abc50593558f030c7613o_ihll6b.jpg", 7000, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "v1690614468/64c3aba02084b666c60eefc2o_cjrfs0.jpg" },
+                    { new Guid("efe9de80-c4b1-478a-8b4e-9320bde47eb5"), new Guid("61b85678-863c-48d6-9809-f426b78e6bfb"), new DateTime(2023, 8, 10, 23, 36, 16, 878, DateTimeKind.Local).AddTicks(1269), "v1691400035/IMG_20230807_120742_550_qamzu3.jpg, v1691400038/IMG_20230807_120609_415_mozoxj.jpg, v1691400035/IMG_20230807_120625_938_nhev8z.jpg, v1691400035/IMG_20230807_120630_549_nuuzsu.jpg, v1691400035/IMG_20230807_120642_795_mny0df.jpg", 20500, new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), "v1691400038/IMG_20230807_120600_154_v7y62d.jpg" }
                 });
         }
 
@@ -741,6 +1045,1271 @@ namespace CarMarketplace.Data.Migrations
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 13);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 14);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 16);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 17);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 18);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 19);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 20);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 21);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 22);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 23);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 24);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 25);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 26);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 27);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 28);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 29);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 30);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 31);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 32);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 33);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 34);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 35);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 36);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 37);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 38);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 39);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 40);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 41);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 42);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 43);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 44);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 45);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 46);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 47);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 48);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 49);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 50);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 51);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 52);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 53);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 54);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 55);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 56);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 57);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 58);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 59);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 60);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 61);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 62);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 63);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 64);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 65);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 66);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 67);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 68);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 69);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 70);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 71);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 72);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 73);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 74);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 75);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 76);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 77);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 78);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 79);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 80);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 81);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 82);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 83);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 84);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 85);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 86);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 87);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 88);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 89);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 90);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 91);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 92);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 93);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 95);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 96);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 97);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 98);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 99);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 100);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 101);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 102);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 103);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 104);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 105);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 106);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 107);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 108);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 109);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 110);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 111);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 112);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 113);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 114);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 115);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 116);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 117);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 118);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 119);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 120);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 121);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 122);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 123);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 124);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 125);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 126);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 127);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 128);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 129);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 130);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 131);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 132);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 133);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 134);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 135);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 136);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 137);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 138);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 139);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 140);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 141);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 142);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 143);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 144);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 145);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 146);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 147);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 148);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 149);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 150);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 151);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 152);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 153);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 154);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 155);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 156);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 157);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 158);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 159);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 160);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 161);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 162);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 163);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 164);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 165);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 166);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 167);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 168);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 169);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 170);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 171);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 172);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 173);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 174);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 175);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 176);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 177);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 178);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 179);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 180);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 181);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 182);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 183);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 184);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 185);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 186);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 187);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 188);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 189);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 190);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 191);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 192);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 193);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 194);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 195);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 196);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 197);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 198);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 199);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 200);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 201);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 202);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 203);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 204);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 205);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 206);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 207);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 208);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 209);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 210);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 211);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 212);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 213);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 214);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 215);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 216);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 217);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 218);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 219);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 220);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 221);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 222);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 223);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 224);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 225);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 226);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 227);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 228);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 229);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 230);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 231);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 232);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 233);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 234);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 235);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 236);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 237);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 238);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 239);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 240);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 241);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 242);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 243);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 244);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 245);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 246);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 247);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 248);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 249);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 250);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 251);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 252);
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 253);
+
+            migrationBuilder.DeleteData(
+                table: "Colors",
+                keyColumn: "Id",
+                keyValue: 5);
 
             migrationBuilder.DeleteData(
                 table: "Colors",
@@ -813,6 +2382,11 @@ namespace CarMarketplace.Data.Migrations
                 keyValue: 20);
 
             migrationBuilder.DeleteData(
+                table: "Engines",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 2);
@@ -841,6 +2415,11 @@ namespace CarMarketplace.Data.Migrations
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "Manufacturers",
+                keyColumn: "Id",
+                keyValue: 10);
 
             migrationBuilder.DeleteData(
                 table: "Manufacturers",
@@ -946,11 +2525,6 @@ namespace CarMarketplace.Data.Migrations
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 33);
-
-            migrationBuilder.DeleteData(
-                table: "Manufacturers",
-                keyColumn: "Id",
-                keyValue: 34);
 
             migrationBuilder.DeleteData(
                 table: "Manufacturers",
@@ -1661,6 +3235,11 @@ namespace CarMarketplace.Data.Migrations
                 table: "Models",
                 keyColumn: "Id",
                 keyValue: 144);
+
+            migrationBuilder.DeleteData(
+                table: "Models",
+                keyColumn: "Id",
+                keyValue: 145);
 
             migrationBuilder.DeleteData(
                 table: "Models",
@@ -2940,11 +4519,6 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Models",
                 keyColumn: "Id",
-                keyValue: 403);
-
-            migrationBuilder.DeleteData(
-                table: "Models",
-                keyColumn: "Id",
                 keyValue: 404);
 
             migrationBuilder.DeleteData(
@@ -3163,126 +4737,6 @@ namespace CarMarketplace.Data.Migrations
                 keyValue: 447);
 
             migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 4);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 5);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 6);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 8);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 10);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 11);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 12);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 14);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 15);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 16);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 17);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 18);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 19);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 21);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 22);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 23);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 24);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 25);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 26);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 27);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 28);
-
-            migrationBuilder.DeleteData(
                 table: "SalePosts",
                 keyColumn: "Id",
                 keyValue: new Guid("067ee0a8-c13a-4519-9e80-12b82e33f6f3"));
@@ -3300,12 +4754,12 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "SalePosts",
                 keyColumn: "Id",
-                keyValue: new Guid("96b41a60-8da3-4a54-8422-5c570ae86705"));
+                keyValue: new Guid("9597b286-3c2a-4fb5-85be-6625aebd2ec1"));
 
             migrationBuilder.DeleteData(
                 table: "SalePosts",
                 keyColumn: "Id",
-                keyValue: new Guid("9a5a58bd-9e4b-44a2-90a5-23ca5b97d2bc"));
+                keyValue: new Guid("96b41a60-8da3-4a54-8422-5c570ae86705"));
 
             migrationBuilder.DeleteData(
                 table: "SalePosts",
@@ -3350,7 +4804,142 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Cars",
                 keyColumn: "Id",
-                keyValue: new Guid("913c5349-94de-4dc2-9e7d-346b57648227"));
+                keyValue: new Guid("a7979b5b-0402-4c36-bd84-6e506464193d"));
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 13);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 14);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 16);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 17);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 18);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 19);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 20);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 21);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 22);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 23);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 24);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 25);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 26);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 27);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 28);
 
             migrationBuilder.DeleteData(
                 table: "Categories",
@@ -3390,22 +4979,12 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Colors",
                 keyColumn: "Id",
-                keyValue: 5);
-
-            migrationBuilder.DeleteData(
-                table: "Colors",
-                keyColumn: "Id",
                 keyValue: 10);
 
             migrationBuilder.DeleteData(
                 table: "Engines",
                 keyColumn: "Id",
                 keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Engines",
-                keyColumn: "Id",
-                keyValue: 2);
 
             migrationBuilder.DeleteData(
                 table: "Engines",
@@ -3433,6 +5012,11 @@ namespace CarMarketplace.Data.Migrations
                 keyValue: 7);
 
             migrationBuilder.DeleteData(
+                table: "Engines",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 1);
@@ -3450,17 +5034,17 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Manufacturers",
                 keyColumn: "Id",
-                keyValue: 10);
-
-            migrationBuilder.DeleteData(
-                table: "Manufacturers",
-                keyColumn: "Id",
                 keyValue: 12);
 
             migrationBuilder.DeleteData(
                 table: "Manufacturers",
                 keyColumn: "Id",
                 keyValue: 28);
+
+            migrationBuilder.DeleteData(
+                table: "Manufacturers",
+                keyColumn: "Id",
+                keyValue: 34);
 
             migrationBuilder.DeleteData(
                 table: "Models",
@@ -3485,11 +5069,6 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Models",
                 keyColumn: "Id",
-                keyValue: 145);
-
-            migrationBuilder.DeleteData(
-                table: "Models",
-                keyColumn: "Id",
                 keyValue: 166);
 
             migrationBuilder.DeleteData(
@@ -3498,29 +5077,24 @@ namespace CarMarketplace.Data.Migrations
                 keyValue: 350);
 
             migrationBuilder.DeleteData(
-                table: "Provinces",
+                table: "Models",
                 keyColumn: "Id",
-                keyValue: 7);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 9);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 13);
-
-            migrationBuilder.DeleteData(
-                table: "Provinces",
-                keyColumn: "Id",
-                keyValue: 20);
+                keyValue: 403);
 
             migrationBuilder.DeleteData(
                 table: "Sellers",
                 keyColumn: "Id",
                 keyValue: new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"));
+
+            migrationBuilder.DeleteData(
+                table: "City",
+                keyColumn: "Id",
+                keyValue: 94);
+
+            migrationBuilder.DeleteData(
+                table: "Provinces",
+                keyColumn: "Id",
+                keyValue: 7);
         }
     }
 }

@@ -27,7 +27,7 @@
     }
     @foreach (var post in Model)
     {
-        imageSrc = ViewData["CloudDomain"] + @post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
+        imageSrc = ViewData["CloudDomain"] + @post.ThumbnailImage;
         <div class="border rounded shadow bg-white p-3 mb-4 mt-4">
             <div class="row">
                 <div class="col-5">
@@ -67,16 +67,10 @@
                         <br>
                         <span class="fs-3 fst-italic">@post.Car.TransmissionType</span>
                         <br>
-                        <span class="fs-3 fst-italic">
-                            @post.Car.Province.ProvinceName
-                            @if (@post.Car.City != null)
-                            {
-                                <span>@post.Car.City</span>
-                            }
-                        </span>
+                        <span class="fs-3 fst-italic">@post.Seller.City.Province.ProvinceName, @post.Seller.City.CityName</span>
                         <br>
                         <div class="mt-4 text-end fst-italic">
-                            <span class="fs-3">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                            <span class="fs-3">@post.CreatedOn.ToString("HH:mm:ss dd/MM/yyyy")</span>
                         </div>
                     </div>
                 </div>

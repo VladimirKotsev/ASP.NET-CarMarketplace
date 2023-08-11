@@ -11,9 +11,11 @@
 
         public int Price { get; set; }
 
-        public DateTime PublishDate { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public string ImageUrls { get; set; } = null!;
+
+        public string ThumbnailImage { get; set; } = null!;
 
         public int Likes { get; set; }
 

@@ -17,5 +17,9 @@
         [Required]
         [StringLength(LastNameMaxLength, MinimumLength = FirstNameMinLength)]
         public string LastName { get; set; } = null!;
+
+        [Required]
+        [StringLength(CityMaxLength, MinimumLength = CityMinLength)]
+        public string City { get; set; } = null!;
     }
 }

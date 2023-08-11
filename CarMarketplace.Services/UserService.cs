@@ -35,7 +35,7 @@
             {
                 SalePost = post,
                 User = user,
-                DateTimeAdded = DateTime.Now
+                LikedOn = DateTime.Now
             };
 
             user.Favorites.Add(userLikedPost);
@@ -70,16 +70,25 @@
                             TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                             EuroStandart = sp.Car.EuroStandart,
                             Odometer = sp.Car.Odometer,
-                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
-                            City = sp.Car.City,
                             VinNumber = sp.Car.VinNumber,
                             TransmissionType = sp.Car.TransmissionType,
                             Year = sp.Car.Year,
                             Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                         },
-                        Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
-                        PublishDate = sp.PublishDate,
-                        ImageUrls = sp.ImageUrls,
+                        Seller = new SellerViewModel()
+                        {
+                            FirstName = sp.Seller.FirstName,
+                            LastName = sp.Seller.LastName,
+                            PhoneNumber = sp.Seller.PhoneNumber,
+                            City = new CityViewModel()
+                            {
+                                CityName = sp.Seller.City.CityName,
+                                Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Seller.City.Province)
+                            }
+                        },
+                        CreatedOn = sp.CreatedOn,
+                        ThumbnailImage = sp.ThumbnailImagePublicId,
+                        ImageUrls = sp.ImagePublicIds,
                         Price = sp.Price,
                         Id = sp.Id
                     })
@@ -88,7 +97,7 @@
                 favSalePosts.Add(new FavouriteViewModel()
                 {
                     SalePost = salePost,
-                    DateTimeAdded = favourite.DateTimeAdded
+                    LikedOn = favourite.LikedOn
                 });
             }
 

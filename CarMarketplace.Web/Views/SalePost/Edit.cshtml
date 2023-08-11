@@ -8,22 +8,37 @@
         <h1 class="">@ViewData["Title"]</h1>
     </div>
     <div class="row justify-content-center gap-2">
+        @{
+            var imageSource = ViewData["CloudDomain"] + Model.ThumbnailImageUrl;
+        }
+        <img src="@imageSource" alt="Image" class="ml-2 img-edit" />
         @foreach (var image in Model.ImageUrls!.Split(", ", StringSplitOptions.RemoveEmptyEntries))
         {
-            var imageSource = ViewData["CloudDomain"] + image;
+            imageSource = ViewData["CloudDomain"] + image;
             <img src="@imageSource" alt="Image" class="ml-2 img-edit" />
         }
     </div>
 </div>
 <div class="container mt-1 row-">
     <form enctype="multipart/form-data" asp-action="Edit" method="post">
-        <div class="form-group col-12 mb-3 text-center">
-            <label class="form-label mt-4 fs-4">Choose up to 10 photos</label>
-            <input class="form-control" asp-for="Images" type="file" multiple required>
-            @if (Model.ImagesErrorMessage != null)
-            {
-                <span class="text-danger fs-4">@Model.ImagesErrorMessage</span>
-            }
+        <div class="row mt-3 text-center">
+            <span class="fs-3">Choose up to 10 photos</span>
+            <div class="form-group col-5 mb-3 text-center">
+                <label asp-for="ThumbnailImage" class="form-label fs-4">Thumbnail photo</label>
+                <input class="form-control" asp-for="ThumbnailImage" type="file" required>
+                @if (Model.ImagesErrorMessage != null)
+                {
+                    <span class="text-danger fs-4">@Model.ImagesErrorMessage</span>
+                }
+            </div>
+            <div class="form-group col-7 mb-3 text-center">
+                <label asp-for="Images" class="form-label fs-4">Photos</label>
+                <input class="form-control" asp-for="Images" type="file" multiple>
+                @if (Model.ImagesErrorMessage != null)
+                {
+                    <span class="text-danger fs-4">@Model.ImagesErrorMessage</span>
+                }
+            </div>
         </div>
         <div class="row col-lg-13">
             <div class="mb-3 col-4">
@@ -67,14 +82,9 @@
                 </select>
             </div>
             <div class="mb-3 col-4">
-                <label asp-for="ProvinceId" class="form-label fs-4">Province</label>
-                <select asp-for="ProvinceId" class="form-select" required>
-                    <option value="" selected disabled>Select a province</option>
-                    @foreach (var item in Model.Provinces!)
-                    {
-                        <option value="@item.Id">@item.ProvinceName</option>
-                    }
-                </select>
+                <label asp-for="Price" class="form-label fs-4">Price</label>
+                <input type="number" asp-for="Price" class="form-control" value="@((Model.Price != 0) ? Model.Price : null)" placeholder="Your price will be in BGN" required>
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
         </div>
         <div class="row col-lg-13">
@@ -95,30 +105,22 @@
                 <span asp-validation-for="EngineHorsePower" class="text-danger"></span>
             </div>
         </div>
-        <div class="mb-3">
-            <label asp-for="Price" class="form-label fs-4">Price</label>
-            <input type="number" asp-for="Price" class="form-control" value="@((Model.Price != 0) ? Model.Price : null)" placeholder="Your price will be in BGN" required>
-            <span asp-validation-for="Price" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Odometer" class="form-label fs-4">Odometer/Kilometers</label>
-            <input type="number" asp-for="Odometer" class="form-control" value="@((Model.Odometer != 0) ? Model.Odometer : null)" placeholder="e.g., 170000, 250000" required>
-            <span asp-validation-for="Odometer" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="City" class="form-label fs-4">City</label>
-            <input type="text" asp-for="City" class="form-control" value="@Model.City" placeholder="e.g., Ruse, Sofia, Plovdiv">
-            <span asp-validation-for="City" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="TransmissionType" class="form-label fs-4">Transmission</label>
-            <input type="text" asp-for="TransmissionType" class="form-control" placeholder="e.g., Manual, Automatic">
-            <span asp-validation-for="TransmissionType" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="EuroStandart" class="form-label fs-4">Euro</label>
-            <input type="number" asp-for="EuroStandart" class="form-control" value="@((Model.EuroStandart != 0) ? Model.EuroStandart : null)" placeholder="e.g., 2, 3" required>
-            <span asp-validation-for="EuroStandart" class="text-danger"></span>
+        <div class="row col-lg-13">
+            <div class="mb-3 col-4">
+                <label asp-for="Odometer" class="form-label fs-4">Odometer/Kilometers</label>
+                <input type="number" asp-for="Odometer" class="form-control" value="@((Model.Odometer != 0) ? Model.Odometer : null)" placeholder="e.g., 170000, 250000" required>
+                <span asp-validation-for="Odometer" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="TransmissionType" class="form-label fs-4">Transmission</label>
+                <input type="text" asp-for="TransmissionType" class="form-control" placeholder="e.g., Manual, Automatic">
+                <span asp-validation-for="TransmissionType" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="EuroStandart" class="form-label fs-4">Euro</label>
+                <input type="number" asp-for="EuroStandart" class="form-control" value="@((Model.EuroStandart != 0) ? Model.EuroStandart : null)" placeholder="e.g., 2, 3" required>
+                <span asp-validation-for="EuroStandart" class="text-danger"></span>
+            </div>
         </div>
         <div class="mb-3">
             <label asp-for="VinNumber" class="form-label fs-4">VinNumber</label>
@@ -135,7 +137,7 @@
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="d-grid col-3 mx-auto mt-3 mb-2">
-            <input type="submit" asp-route-postId="@Model.PostId" class="btn btn-warning fs-4" value="Edit"/>
+            <input type="submit" asp-route-postId="@Model.PostId" class="btn btn-warning fs-4" value="Edit" />
         </div>
     </form>
 </div>

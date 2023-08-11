@@ -23,7 +23,7 @@
         <div class="row">
             @foreach (var post in Model.Skip(i).Take(3))
             {
-                imageSrc = ViewData["CloudDomain"] + post.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries).First();
+                imageSrc = ViewData["CloudDomain"] + post.ThumbnailImage;
 
                 <div class="col-md-4">
                     <div class="card mb-4 p-2">
@@ -35,8 +35,8 @@
                             <br>
                             <span class="card-text fs-3">Year: <span class="fst-italic"></span>@post.Car.Year</span>
                             <br>
-                            <p class="card-text fs-3 fst-italic">@post.Car.Province.ProvinceName</p>
-                            <span class="card-text fs-4 fst-italic">@post.PublishDate.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                            <p class="card-text fs-3 fst-italic">@post.Seller.City.Province.ProvinceName, @post.Seller.City.CityName</p>
+                            <span class="card-text fs-4 fst-italic">@post.CreatedOn.ToString("HH:mm:ss dd/MM/yyyy")</span>
                             <br>
                             <div class="row justify-content-center mt-2">
                                 <div class="col-4">

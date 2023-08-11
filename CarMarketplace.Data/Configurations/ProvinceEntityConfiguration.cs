@@ -38,7 +38,7 @@
             provinces.Add(new Province() { Id = id++, ProvinceName = "Silistra" });
             provinces.Add(new Province() { Id = id++, ProvinceName = "Sliven" });
             provinces.Add(new Province() { Id = id++, ProvinceName = "Smolyan" });
-            provinces.Add(new Province() { Id = id++, ProvinceName = "Sofia-Grad" });
+            provinces.Add(new Province() { Id = id++, ProvinceName = "Sofia-City" });
             provinces.Add(new Province() { Id = id++, ProvinceName = "Sofia" });
             provinces.Add(new Province() { Id = id++, ProvinceName = "Stara Zagora" });
             provinces.Add(new Province() { Id = id++, ProvinceName = "Targovishte" });

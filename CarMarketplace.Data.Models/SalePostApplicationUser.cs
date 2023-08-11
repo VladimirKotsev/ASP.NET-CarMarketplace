@@ -15,8 +15,8 @@
 
         [Required]
         [ForeignKey(nameof(SalePostId))]
-        public SalePost SalePost { get; set; }
+        public virtual SalePost SalePost { get; set; } = null!;
 
-        public DateTime DateTimeAdded { get; set; }
+        public DateTime LikedOn { get; set; }
     }
 }

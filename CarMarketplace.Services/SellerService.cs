@@ -24,7 +24,11 @@
                 UserId = Guid.Parse(userId),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                PhoneNumber = model.PhoneNumber
+                PhoneNumber = model.PhoneNumber,
+                City = new City()
+                {
+                    CityName = model.City
+                }
             };
 
             await this.dbContext
@@ -57,7 +61,7 @@
             ICollection<SalePostViewModel> sellerPosts = await this.dbContext
                 .SalePosts
                 .Where(x => x.SellerId == sellerId)
-                .OrderBy(sp => sp.PublishDate)
+                .OrderBy(sp => sp.CreatedOn)
                 .Select(sp => new SalePostViewModel()
                 {
                     Car = new CarViewModel()
@@ -70,16 +74,25 @@
                         TechnicalSpecificationURL = sp.Car.TechnicalSpecificationURL,
                         EuroStandart = sp.Car.EuroStandart,
                         Odometer = sp.Car.Odometer,
-                        Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Car.Province),
-                        City = sp.Car.City,
                         VinNumber = sp.Car.VinNumber,
                         TransmissionType = sp.Car.TransmissionType,
                         Year = sp.Car.Year,
                         Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(sp.Car.Engine)
                     },
-                    Seller = AutoMapperConfig.MapperInstance.Map<SellerViewModel>(sp.Car.Seller),
-                    PublishDate = sp.PublishDate,
-                    ImageUrls = sp.ImageUrls,
+                    Seller = new SellerViewModel()
+                    {
+                        FirstName = sp.Seller.FirstName,
+                        LastName = sp.Seller.LastName,
+                        PhoneNumber = sp.Seller.PhoneNumber,
+                        City = new CityViewModel()
+                        {
+                            CityName = sp.Seller.City.CityName,
+                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(sp.Seller.City.Province)
+                        }
+                    },
+                    CreatedOn = sp.CreatedOn,
+                    ThumbnailImage = sp.ThumbnailImagePublicId,
+                    ImageUrls = sp.ImagePublicIds,
                     Price = sp.Price,
                     Id = sp.Id
                 })
