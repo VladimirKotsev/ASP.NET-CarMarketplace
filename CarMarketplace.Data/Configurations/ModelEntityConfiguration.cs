@@ -14,7 +14,7 @@
                 .WithOne(x => x.Model)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasData(this.GenerateHouses());
+            //builder.HasData(this.GenerateHouses());
         }
 
         //This method seeds data for car models in the database

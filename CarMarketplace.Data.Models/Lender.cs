@@ -1,16 +1,16 @@
 ﻿namespace CarMarketplace.Data.Models
 {
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
 
     using static Common.EntityValidations.Seller;
-
-    public class Seller
+    using static Common.EntityValidations.Lender;
+    public class Lender
     {
-        public Seller()
+        public Lender()
         {
             this.Id = Guid.NewGuid();
-            this.CarOnSale = new HashSet<SalePost>();
+            this.LendedCars = new HashSet<RentPost>();
         }
 
         public Guid Id { get; set; }
@@ -25,12 +25,8 @@
         public string PhoneNumber { get; set; } = null!;
 
         [Required]
-        [MaxLength(FirstNameMaxLength)]
-        public string FirstName { get; set; } = null!;
-
-        [Required]
-        [MaxLength(LastNameMaxLength)]
-        public string LastName { get; set; } = null!;
+        [MaxLength(CompanyNameMaxLength)]
+        public string CompanyName { get; set; } = null!;
 
         public int CityId { get; set; }
 
@@ -38,6 +34,10 @@
         [ForeignKey(nameof(CityId))]
         public virtual City City { get; set; } = null!;
 
-        public virtual ICollection<SalePost> CarOnSale { get; set; } = null!;
+        [Required]
+        [MaxLength(AddressMaxLength)]
+        public string Address { get; set; } = null!;
+
+        public virtual ICollection<RentPost> LendedCars { get; set; } = null!;
     }
 }

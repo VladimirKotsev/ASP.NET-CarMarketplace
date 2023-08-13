@@ -164,7 +164,7 @@
                 await this.dbContext.Models.AddAsync(model);
             }
 
-            Car car = new()
+            SaleCar car = new()
             {
                 Manufacturer = make,
                 Model = model,
@@ -183,9 +183,6 @@
             Seller seller = await this.dbContext
                 .Sellers
                 .FirstAsync(x => x.Id == sellerId);
-
-            car.Seller = seller;
-            car.SellerId = sellerId;
 
             var imagePublicIds = new HashSet<string>();
 
@@ -299,7 +296,7 @@
                 .SalePosts
                 .FirstAsync(sp => sp.Id == viewModel.PostId);
 
-            Car carToEdit = await this.dbContext
+            SaleCar carToEdit = await this.dbContext
                 .Cars
                 .FirstAsync(c => c.Id == postToEdit.CarId);
 

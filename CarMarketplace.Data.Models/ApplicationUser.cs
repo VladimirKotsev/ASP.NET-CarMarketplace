@@ -9,11 +9,11 @@
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid();
-            this.CarsOnSale = new HashSet<Car>();
+            this.CarsOnSale = new HashSet<SaleCar>();
             this.Favorites = new HashSet<SalePostApplicationUser>();
         }
 
-        public virtual ICollection<Car> CarsOnSale { get; set; }
+        public virtual ICollection<SaleCar> CarsOnSale { get; set; }
 
         public virtual ICollection<SalePostApplicationUser> Favorites { get; set; }
     }

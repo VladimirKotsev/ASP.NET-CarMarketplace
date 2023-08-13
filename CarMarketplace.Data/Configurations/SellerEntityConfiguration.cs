@@ -10,7 +10,7 @@
     {
         public void Configure(EntityTypeBuilder<Seller> builder)
         {
-            builder.HasData(this.GenerateSellers());
+            //builder.HasData(this.GenerateSellers());
         }
 
         //This method generates one seller

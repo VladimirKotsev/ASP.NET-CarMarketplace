@@ -9,7 +9,7 @@
     {
         public void Configure(EntityTypeBuilder<Engine> builder)
         {
-            builder.HasData(this.GenerateEngines());
+            //builder.HasData(this.GenerateEngines());
         }
 
         //This method seeds data for engines in the database

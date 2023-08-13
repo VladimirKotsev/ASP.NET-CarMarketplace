@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static CarMarketplace.Common.EntityValidations.Users;
+    using static CarMarketplace.Common.EntityValidations.Seller;
 
     public class SellerPersonalInfoViewModel
     {

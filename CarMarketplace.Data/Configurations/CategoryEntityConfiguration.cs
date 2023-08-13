@@ -9,7 +9,7 @@
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.HasData(GenerateData());
+            //builder.HasData(GenerateData());
         }
 
         //This method seeds all data for categories in the database

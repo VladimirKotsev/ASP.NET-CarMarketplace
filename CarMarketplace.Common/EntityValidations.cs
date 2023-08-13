@@ -53,9 +53,9 @@
             public const int FuelTypeMaxLength = 8;
         }
 
-        public static class Users
+        public static class Seller
         {
-            public const int PhoneNumberLegnth = 10;
+            public const int PhoneNumberLegnth = 13;
 
             public const int FirstNameMinLength = 3;
             public const int FirstNameMaxLength = 50;
@@ -71,6 +71,15 @@
         {
             public const int ProvinceNameMinLength = 4;
             public const int ProvinceNameMaxLength = 14;
+        }
+
+        public static class Lender
+        {
+            public const int CompanyNameMinLength = 5;
+            public const int CompanyNameMaxLength = 30;
+
+            public const int AddressMinLength = 5;
+            public const int AddressMaxLength = 60;
         }
 
     }

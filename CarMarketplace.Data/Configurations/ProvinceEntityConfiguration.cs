@@ -10,7 +10,7 @@
     {
         public void Configure(EntityTypeBuilder<Province> builder)
         {
-            builder.HasData(this.GenerateProvinces());
+            //builder.HasData(this.GenerateProvinces());
         }
 
         private Province[] GenerateProvinces()

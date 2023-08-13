@@ -10,7 +10,12 @@
     {
         public void Configure(EntityTypeBuilder<SalePost> builder)
         {
-            builder.HasData(this.GenerateSalePosts());
+            builder
+                .HasOne(x => x.Seller)
+                .WithMany(x => x.CarOnSale)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            //builder.HasData(this.GenerateSalePosts());
         }
 
         private SalePost[] GenerateSalePosts()

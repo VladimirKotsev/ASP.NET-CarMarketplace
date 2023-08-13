@@ -8,7 +8,7 @@
     {
         public CarManufacturer()
         {
-            this.Cars = new HashSet<Car>();
+            this.Cars = new HashSet<SaleCar>();
         }
 
         [Key]
@@ -18,6 +18,6 @@
         [MaxLength(ManufacturerMaxLength)]
         public string Name { get; set; } = null!;
 
-        public IEnumerable<Car> Cars { get; set; }
+        public IEnumerable<SaleCar> Cars { get; set; }
     }
 }

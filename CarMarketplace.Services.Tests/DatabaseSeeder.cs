@@ -10,7 +10,7 @@
         public static Seller Seller;
         public static Province Province;
         public static City City;
-        public static Car Car;
+        public static SaleCar Car;
         public static SalePost SalePost;
 
         public static void SeedDatabase(CarMarketplaceDbContext dbContext)
@@ -73,9 +73,8 @@
                 CityName = "Bobovdol"
             };
 
-            Car = new Car()
+            Car = new SaleCar()
             {
-                Seller = Seller,
                 ManufacturerId = 1,
                 ModelId = 5,
                 CategoryId = 3,

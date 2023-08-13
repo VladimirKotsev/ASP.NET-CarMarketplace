@@ -1,17 +1,16 @@
-﻿@model SellerPersonalInfoViewModel
+﻿@model LenderPersonalInfoViewModel
+
+@{
+    ViewData["Title"] = "Lender!";
+}
 
 <h3 class="mt-5 mb-2">We need your personal information in order to become a @ViewData["Title"]!</h3>
 
 <form asp-action="BecomeSeller" method="post">
     <div class="mb-3 mt-3">
-        <label asp-for="FirstName" class="form-label fs-4"></label>
-        <input asp-for="FirstName" class="form-control" required>
-        <span asp-validation-for="FirstName" class="text-danger fs-4"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="LastName" class="form-label fs-4"></label>
-        <input asp-for="LastName" class="form-control" required>
-        <span asp-validation-for="LastName" class="text-danger  fs-4"></span>
+        <label asp-for="CompanyName" class="form-label fs-4"></label>
+        <input asp-for="CompanyName" class="form-control" required>
+        <span asp-validation-for="CompanyName" class="text-danger fs-4"></span>
     </div>
     <div class="mb-3">
         <label asp-for="PhoneNumber" class="form-label fs-4"></label>

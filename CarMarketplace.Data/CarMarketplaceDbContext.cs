@@ -16,7 +16,7 @@
         {
         }
 
-        public DbSet<Car> Cars { get; set; } = null!;
+        public DbSet<SaleCar> Cars { get; set; } = null!;
         public DbSet<CarManufacturer> Manufacturers { get; set; } = null!;
         public DbSet<CarModel> Models { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
@@ -28,6 +28,8 @@
         public DbSet<Province> Provinces { get; set; } = null!;
         public DbSet<SalePostApplicationUser> SalePostApplicationUsers { get; set; } = null!;
         public DbSet<City> Cities { get; set; } = null!;
+        public DbSet<Lender> Lenders { get; set; } = null!;
+        public DbSet<RentPost> RentPosts { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -38,7 +38,7 @@
             }
 
             ViewData["Title"] = "seller";
-            return View("BecomeProvider");
+            return View();
         }
 
         [HttpPost]
@@ -62,7 +62,7 @@
 
             if (!ModelState.IsValid)
             {
-                return View("BecomeProvider");
+                return View();
             }
 
             await sellerService.RegisterUserAsSellerAsync(this.UserId, model);

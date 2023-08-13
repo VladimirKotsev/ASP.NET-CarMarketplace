@@ -20,13 +20,13 @@
                 .HasOne(sau => sau.User)
                 .WithMany(u => u.Favorites)
                 .HasForeignKey(sau => sau.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(sau => sau.SalePost)
                 .WithMany(sau => sau.SalePostUsers)
                 .HasForeignKey(sau => sau.SalePostId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

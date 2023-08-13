@@ -9,7 +9,7 @@
     {
         public void Configure(EntityTypeBuilder<Color> builder)
         {
-            builder.HasData(this.GenerateColors());
+            //builder.HasData(this.GenerateColors());
         }
 
 

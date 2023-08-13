@@ -8,7 +8,7 @@
     using CarMarketplace.Web.ViewModels.Common;
     using static CarMarketplace.Common.EntityValidations.Car;
     using static CarMarketplace.Common.EntityValidations.Engine;
-    using static CarMarketplace.Common.EntityValidations.Users;
+    using static CarMarketplace.Common.EntityValidations.Seller;
     using static CarMarketplace.Common.EntityValidations.CarModel;
 
     public class AddViewModel

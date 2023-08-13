@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    [Migration("20230810195058_InitialMigration")]
+    [Migration("20230813192041_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,75 +88,6 @@ namespace CarMarketplace.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("CarMarketplace.Data.Models.Car", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ApplicationUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ColorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EngineId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EuroStandart")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ManufacturerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ModelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Odometer")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("SellerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TechnicalSpecificationURL")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TransmissionType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VinNumber")
-                        .HasMaxLength(17)
-                        .HasColumnType("nvarchar(17)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ColorId");
-
-                    b.HasIndex("EngineId");
-
-                    b.HasIndex("ManufacturerId");
-
-                    b.HasIndex("ModelId");
-
-                    b.HasIndex("SellerId");
-
-                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.CarManufacturer", b =>
@@ -236,7 +167,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("ProvinceId");
 
-                    b.ToTable("City");
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Color", b =>
@@ -264,7 +195,7 @@ namespace CarMarketplace.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Displacement")
+                    b.Property<int?>("Displacement")
                         .HasColumnType("int");
 
                     b.Property<string>("FuelType")
@@ -277,6 +208,42 @@ namespace CarMarketplace.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Engines");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.Lender", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Lenders");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.Province", b =>
@@ -297,6 +264,157 @@ namespace CarMarketplace.Data.Migrations
                     b.ToTable("Provinces");
                 });
 
+            modelBuilder.Entity("CarMarketplace.Data.Models.RentCar", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EngineId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EuroStandart")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ManufacturerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModelId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("RentPostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TransmissionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("EngineId");
+
+                    b.HasIndex("ManufacturerId");
+
+                    b.HasIndex("ModelId");
+
+                    b.ToTable("RentCar");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.RentPost", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CarId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ClientId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsRented")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("LenderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("PricePerDay")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId")
+                        .IsUnique();
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("LenderId");
+
+                    b.ToTable("RentPosts");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.SaleCar", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ApplicationUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EngineId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EuroStandart")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ManufacturerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Odometer")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("SalePostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TechnicalSpecificationURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransmissionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VinNumber")
+                        .HasMaxLength(17)
+                        .HasColumnType("nvarchar(17)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("EngineId");
+
+                    b.HasIndex("ManufacturerId");
+
+                    b.HasIndex("ModelId");
+
+                    b.HasIndex("SalePostId");
+
+                    b.ToTable("Cars");
+                });
+
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
                 {
                     b.Property<Guid>("Id")
@@ -312,6 +430,9 @@ namespace CarMarketplace.Data.Migrations
                     b.Property<string>("ImagePublicIds")
                         .IsRequired()
                         .HasColumnType("varchar(5000)");
+
+                    b.Property<bool>("IsDelted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
@@ -371,8 +492,8 @@ namespace CarMarketplace.Data.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -521,7 +642,107 @@ namespace CarMarketplace.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CarMarketplace.Data.Models.Car", b =>
+            modelBuilder.Entity("CarMarketplace.Data.Models.City", b =>
+                {
+                    b.HasOne("CarMarketplace.Data.Models.Province", "Province")
+                        .WithMany("Cities")
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Province");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.Lender", b =>
+                {
+                    b.HasOne("CarMarketplace.Data.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.RentCar", b =>
+                {
+                    b.HasOne("CarMarketplace.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.Engine", "Engine")
+                        .WithMany()
+                        .HasForeignKey("EngineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.CarManufacturer", "Manufacturer")
+                        .WithMany()
+                        .HasForeignKey("ManufacturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.CarModel", "Model")
+                        .WithMany()
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Engine");
+
+                    b.Navigation("Manufacturer");
+
+                    b.Navigation("Model");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.RentPost", b =>
+                {
+                    b.HasOne("CarMarketplace.Data.Models.RentCar", "Car")
+                        .WithOne("RentPost")
+                        .HasForeignKey("CarMarketplace.Data.Models.RentPost", "CarId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarMarketplace.Data.Models.Lender", "Lender")
+                        .WithMany("LendedCars")
+                        .HasForeignKey("LenderId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Lender");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.SaleCar", b =>
                 {
                     b.HasOne("CarMarketplace.Data.Models.ApplicationUser", null)
                         .WithMany("CarsOnSale")
@@ -557,10 +778,10 @@ namespace CarMarketplace.Data.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("CarMarketplace.Data.Models.Seller", "Seller")
-                        .WithMany("CarOnSale")
-                        .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                    b.HasOne("CarMarketplace.Data.Models.SalePost", "SalePost")
+                        .WithMany()
+                        .HasForeignKey("SalePostId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -573,32 +794,21 @@ namespace CarMarketplace.Data.Migrations
 
                     b.Navigation("Model");
 
-                    b.Navigation("Seller");
-                });
-
-            modelBuilder.Entity("CarMarketplace.Data.Models.City", b =>
-                {
-                    b.HasOne("CarMarketplace.Data.Models.Province", "Province")
-                        .WithMany("Cities")
-                        .HasForeignKey("ProvinceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Province");
+                    b.Navigation("SalePost");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
                 {
-                    b.HasOne("CarMarketplace.Data.Models.Car", "Car")
+                    b.HasOne("CarMarketplace.Data.Models.SaleCar", "Car")
                         .WithMany()
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CarMarketplace.Data.Models.Seller", "Seller")
-                        .WithMany()
+                        .WithMany("CarOnSale")
                         .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Car");
@@ -611,13 +821,13 @@ namespace CarMarketplace.Data.Migrations
                     b.HasOne("CarMarketplace.Data.Models.SalePost", "SalePost")
                         .WithMany("SalePostUsers")
                         .HasForeignKey("SalePostId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "User")
                         .WithMany("Favorites")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("SalePost");
@@ -717,9 +927,20 @@ namespace CarMarketplace.Data.Migrations
                     b.Navigation("Sellers");
                 });
 
+            modelBuilder.Entity("CarMarketplace.Data.Models.Lender", b =>
+                {
+                    b.Navigation("LendedCars");
+                });
+
             modelBuilder.Entity("CarMarketplace.Data.Models.Province", b =>
                 {
                     b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("CarMarketplace.Data.Models.RentCar", b =>
+                {
+                    b.Navigation("RentPost")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>

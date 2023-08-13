@@ -6,22 +6,24 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @inject ISellerService SellerService
+@inject ILenderService LenderService
 @{
     bool isSeller = await SellerService.SellerExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
+    bool isLender = await LenderService.LenderExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
 }
 
 <ul class="navbar-nav fs-4">
     @if (SignInManager.IsSignedIn(User))
     {
-        @if (!isSeller)
-        {         
+        @if (!isLender && !isSeller)
+        {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-controller="User" asp-Action="BecomeSeller" title="Become">Become a seller!</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Lender" asp-Action="BecomeLender" title="Become">Become a lender!</a>
+            </li>
         }
-        @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="User" asp-Action="BecomeLender" title="Become">Become a lender!</a>
-        </li>*@
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>

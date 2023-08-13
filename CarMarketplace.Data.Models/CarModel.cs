@@ -9,7 +9,7 @@
     {
         public CarModel()
         {
-            this.Cars = new HashSet<Car>();
+            this.Cars = new HashSet<SaleCar>();
         }
 
         [Key]
@@ -22,6 +22,6 @@
         [Required]
         [MaxLength(ModelMaxLenght)]
         public string ModelName { get; set; } = null!;
-        public ICollection<Car> Cars { get; set; }
+        public ICollection<SaleCar> Cars { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace CarMarketplace.Data.Models
 {
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,7 +23,7 @@
 
         [Required]
         [ForeignKey(nameof(CarId))]
-        public virtual Car Car { get; set; } = null!;
+        public virtual SaleCar Car { get; set; } = null!;
 
         [Required]
         public int Price { get; set; }
@@ -38,6 +39,9 @@
         [Column(TypeName = "varchar(5000)")]
         public string ThumbnailImagePublicId { get; set; } = null!;
 
-        public ICollection<SalePostApplicationUser> SalePostUsers { get; set; }
+        [DefaultValue(0)]
+        public bool IsDelted { get; set; }
+
+        public virtual ICollection<SalePostApplicationUser> SalePostUsers { get; set; }
     }
 }

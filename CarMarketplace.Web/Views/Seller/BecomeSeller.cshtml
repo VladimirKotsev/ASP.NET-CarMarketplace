@@ -1,5 +1,9 @@
 ﻿@model SellerPersonalInfoViewModel
 
+@{
+    ViewData["Title"] = "Seller";
+}
+
 <h3 class="mt-5 mb-2">We need your personal information in order to become a @ViewData["Title"]!</h3>
 
 <form asp-action="BecomeSeller" method="post">

@@ -1,15 +1,11 @@
 ﻿namespace CarMarketplace.Data.Models
 {
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
 
-    using Microsoft.AspNetCore.Identity;
-
-    using static Common.EntityValidations.Car;
-
-    public class Car
+    public class RentCar
     {
-        public Car()
+        public RentCar()
         {
             this.Id = Guid.NewGuid();
         }
@@ -44,9 +40,6 @@
         public virtual Engine Engine { get; set; } = null!;
 
         [Required]
-        public int Odometer { get; set; }
-
-        [Required]
         public string TransmissionType { get; set; } = null!;
 
         [Required]
@@ -54,23 +47,13 @@
 
         public int CategoryId { get; set; }
 
-        [ForeignKey(nameof(CategoryId))]
         [Required]
+        [ForeignKey(nameof(CategoryId))]
         public virtual Category Category { get; set; } = null!;
 
-        public Guid SellerId { get; set; }
-
+        public Guid RentPostId { get; set; }
         [Required]
-        [ForeignKey(nameof(SellerId))]
-        public virtual Seller Seller { get; set; } = null!;
-
-        //Not required info about a car
-
-        public string? TechnicalSpecificationURL { get; set; }
-
-        public string? Description { get; set; }
-
-        [MaxLength(VINNumberFixedLength)]
-        public string? VinNumber { get; set; }
+        [ForeignKey(nameof(RentPostId))]
+        public virtual RentPost RentPost { get; set; }
     }
 }

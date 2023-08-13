@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Http;
     using static CarMarketplace.Common.EntityValidations.Car;
     using static CarMarketplace.Common.EntityValidations.Engine;
-    using static CarMarketplace.Common.EntityValidations.Users;
+    using static CarMarketplace.Common.EntityValidations.Seller;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Services.Mapping.Contracts;
     using Microsoft.EntityFrameworkCore.Query.Internal;

@@ -80,7 +80,7 @@ namespace CarMarketplace.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Displacement = table.Column<int>(type: "int", nullable: false),
+                    Displacement = table.Column<int>(type: "int", nullable: true),
                     Horsepower = table.Column<int>(type: "int", nullable: false),
                     FuelType = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -236,7 +236,57 @@ namespace CarMarketplace.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "City",
+                name: "RentCar",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ManufacturerId = table.Column<int>(type: "int", nullable: false),
+                    ModelId = table.Column<int>(type: "int", nullable: false),
+                    ColorId = table.Column<int>(type: "int", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    EngineId = table.Column<int>(type: "int", nullable: false),
+                    TransmissionType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EuroStandart = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    RentPostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RentCar", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RentCar_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RentCar_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RentCar_Engines_EngineId",
+                        column: x => x.EngineId,
+                        principalTable: "Engines",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RentCar_Manufacturers_ManufacturerId",
+                        column: x => x.ManufacturerId,
+                        principalTable: "Manufacturers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RentCar_Models_ModelId",
+                        column: x => x.ModelId,
+                        principalTable: "Models",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -246,11 +296,39 @@ namespace CarMarketplace.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_City", x => x.Id);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_City_Provinces_ProvinceId",
+                        name: "FK_Cities_Provinces_ProvinceId",
                         column: x => x.ProvinceId,
                         principalTable: "Provinces",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Lenders",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    CityId = table.Column<int>(type: "int", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lenders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Lenders_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Lenders_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -261,7 +339,7 @@ namespace CarMarketplace.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false)
@@ -276,11 +354,43 @@ namespace CarMarketplace.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Sellers_City_CityId",
+                        name: "FK_Sellers_Cities_CityId",
                         column: x => x.CityId,
-                        principalTable: "City",
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RentPosts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CarId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LenderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PricePerDay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IsRented = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RentPosts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RentPosts_AspNetUsers_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RentPosts_Lenders_LenderId",
+                        column: x => x.LenderId,
+                        principalTable: "Lenders",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_RentPosts_RentCar_CarId",
+                        column: x => x.CarId,
+                        principalTable: "RentCar",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -297,7 +407,7 @@ namespace CarMarketplace.Data.Migrations
                     TransmissionType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EuroStandart = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    SellerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SalePostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TechnicalSpecificationURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VinNumber = table.Column<string>(type: "nvarchar(17)", maxLength: 17, nullable: true),
@@ -339,11 +449,6 @@ namespace CarMarketplace.Data.Migrations
                         column: x => x.ModelId,
                         principalTable: "Models",
                         principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Cars_Sellers_SellerId",
-                        column: x => x.SellerId,
-                        principalTable: "Sellers",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -356,7 +461,8 @@ namespace CarMarketplace.Data.Migrations
                     Price = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ImagePublicIds = table.Column<string>(type: "varchar(5000)", nullable: false),
-                    ThumbnailImagePublicId = table.Column<string>(type: "varchar(5000)", nullable: false)
+                    ThumbnailImagePublicId = table.Column<string>(type: "varchar(5000)", nullable: false),
+                    IsDelted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -371,8 +477,7 @@ namespace CarMarketplace.Data.Migrations
                         name: "FK_SalePosts_Sellers_SellerId",
                         column: x => x.SellerId,
                         principalTable: "Sellers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -390,12 +495,14 @@ namespace CarMarketplace.Data.Migrations
                         name: "FK_SalePostApplicationUsers_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_SalePostApplicationUsers_SalePosts_SalePostId",
                         column: x => x.SalePostId,
                         principalTable: "SalePosts",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -468,14 +575,65 @@ namespace CarMarketplace.Data.Migrations
                 column: "ModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cars_SellerId",
+                name: "IX_Cars_SalePostId",
                 table: "Cars",
-                column: "SellerId");
+                column: "SalePostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_City_ProvinceId",
-                table: "City",
+                name: "IX_Cities_ProvinceId",
+                table: "Cities",
                 column: "ProvinceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lenders_CityId",
+                table: "Lenders",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lenders_UserId",
+                table: "Lenders",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentCar_CategoryId",
+                table: "RentCar",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentCar_ColorId",
+                table: "RentCar",
+                column: "ColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentCar_EngineId",
+                table: "RentCar",
+                column: "EngineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentCar_ManufacturerId",
+                table: "RentCar",
+                column: "ManufacturerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentCar_ModelId",
+                table: "RentCar",
+                column: "ModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentPosts_CarId",
+                table: "RentPosts",
+                column: "CarId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentPosts_ClientId",
+                table: "RentPosts",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentPosts_LenderId",
+                table: "RentPosts",
+                column: "LenderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SalePostApplicationUsers_SalePostId",
@@ -501,10 +659,50 @@ namespace CarMarketplace.Data.Migrations
                 name: "IX_Sellers_UserId",
                 table: "Sellers",
                 column: "UserId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Cars_SalePosts_SalePostId",
+                table: "Cars",
+                column: "SalePostId",
+                principalTable: "SalePosts",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Cars_AspNetUsers_ApplicationUserId",
+                table: "Cars");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Sellers_AspNetUsers_UserId",
+                table: "Sellers");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Cars_Categories_CategoryId",
+                table: "Cars");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Cars_Colors_ColorId",
+                table: "Cars");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Cars_Engines_EngineId",
+                table: "Cars");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Cars_Manufacturers_ManufacturerId",
+                table: "Cars");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Cars_Models_ModelId",
+                table: "Cars");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Cars_SalePosts_SalePostId",
+                table: "Cars");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -521,16 +719,22 @@ namespace CarMarketplace.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "RentPosts");
+
+            migrationBuilder.DropTable(
                 name: "SalePostApplicationUsers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "SalePosts");
+                name: "Lenders");
 
             migrationBuilder.DropTable(
-                name: "Cars");
+                name: "RentCar");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Categories");
@@ -548,13 +752,16 @@ namespace CarMarketplace.Data.Migrations
                 name: "Models");
 
             migrationBuilder.DropTable(
+                name: "SalePosts");
+
+            migrationBuilder.DropTable(
+                name: "Cars");
+
+            migrationBuilder.DropTable(
                 name: "Sellers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "City");
+                name: "Cities");
 
             migrationBuilder.DropTable(
                 name: "Provinces");
