@@ -43,7 +43,7 @@
 
         [HttpPost]
         [Route("User/BecomeSeller")]
-        public async Task<IActionResult> BecomeSeller(SellerPersonalnfoViewModel model)
+        public async Task<IActionResult> BecomeSeller(SellerPersonalInfoViewModel model)
         {
             bool isPhoneNumberTaken =
                 await sellerService.SellerExistbyPhoneNumberAsync(model.PhoneNumber);

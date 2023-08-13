@@ -8,7 +8,7 @@
         public Task<bool> SellerExistbyUserIdAsync(string userId);
         public Task<Guid> GetSellerIdByUserIdAsync(string userId);
         public Task<bool> SellerExistbyPhoneNumberAsync(string phoneNumber);
-        public Task RegisterUserAsSellerAsync(string userId, SellerPersonalnfoViewModel model);
+        public Task RegisterUserAsSellerAsync(string userId, SellerPersonalInfoViewModel model);
         public Task<ICollection<SalePostViewModel>> GetSellerPostsAsync(Guid sellerId);
 
         public Task<bool> CityExistByNameAsync(string name);

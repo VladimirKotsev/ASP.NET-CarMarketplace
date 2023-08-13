@@ -988,7 +988,7 @@ namespace CarMarketplace.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Sellers",
                 columns: new[] { "Id", "CityId", "FirstName", "LastName", "PhoneNumber", "UserId" },
-                values: new object[] { new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), 94, "Vladimir", "Kotsev", "0899904741", new Guid("6292b671-f731-4cf1-849e-4ab5fd6d2451") });
+                values: new object[] { new Guid("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"), 94, "Vladimir", "Kotsev", "0899904741", new Guid("1F0E6B36-F110-45D5-90DB-C940CA6FE7A2") });
 
             migrationBuilder.InsertData(
                 table: "Cars",

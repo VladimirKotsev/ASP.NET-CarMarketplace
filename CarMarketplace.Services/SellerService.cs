@@ -17,7 +17,7 @@
             this.dbContext = dbContext;
         }
 
-        public async Task RegisterUserAsSellerAsync(string userId, SellerPersonalnfoViewModel model)
+        public async Task RegisterUserAsSellerAsync(string userId, SellerPersonalInfoViewModel model)
         {
             var city = await this.dbContext
                 .Cities
