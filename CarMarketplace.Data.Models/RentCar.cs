@@ -33,6 +33,10 @@
 
         public int Year { get; set; }
 
+        public int BootCapacity { get; set; }
+
+        public int Seats { get; set; }
+
         public int EngineId { get; set; }
 
         [Required]

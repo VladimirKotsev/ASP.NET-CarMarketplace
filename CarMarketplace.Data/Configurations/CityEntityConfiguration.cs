@@ -9,7 +9,7 @@
     {
         public void Configure(EntityTypeBuilder<City> builder)
         {
-            //builder.HasData(this.GenerateCities());
+            builder.HasData(this.GenerateCities());
         }
 
         private City[] GenerateCities()

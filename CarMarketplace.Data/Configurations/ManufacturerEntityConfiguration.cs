@@ -14,7 +14,7 @@
                 .WithOne(x => x.Manufacturer)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            //builder.HasData(GenerateHouses());
+            builder.HasData(GenerateHouses());
         }
 
         //This method seeds data for car manufacturers/brands names in the database

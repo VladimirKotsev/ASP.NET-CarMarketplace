@@ -9,7 +9,7 @@
     {
         public void Configure(EntityTypeBuilder<Engine> builder)
         {
-            //builder.HasData(this.GenerateEngines());
+            builder.HasData(this.GenerateEngines());
         }
 
         //This method seeds data for engines in the database
@@ -74,6 +74,13 @@
                 Displacement = 1400,
                 Horsepower = 170,
                 FuelType = "Petrol"
+            });
+            engines.Add(new Engine()
+            {
+                Id = id++,
+                Displacement = 1400,
+                Horsepower = 90,
+                FuelType = "Diesel"
             });
 
             return engines.ToArray();

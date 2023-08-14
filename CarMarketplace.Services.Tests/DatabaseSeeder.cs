@@ -102,7 +102,7 @@
             dbContext.Sellers.Add(Seller);
             dbContext.Provinces.Add(Province);
             dbContext.Cities.Add(City);
-            dbContext.Cars.Add(Car);
+            dbContext.SaleCars.Add(Car);
             dbContext.SalePosts.Add(SalePost);
             dbContext.SaveChanges();
         }

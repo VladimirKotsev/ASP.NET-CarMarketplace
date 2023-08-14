@@ -16,7 +16,8 @@
         {
         }
 
-        public DbSet<SaleCar> Cars { get; set; } = null!;
+        public DbSet<SaleCar> SaleCars { get; set; } = null!;
+        public DbSet<RentCar> RentCars { get; set; } = null!;
         public DbSet<CarManufacturer> Manufacturers { get; set; } = null!;
         public DbSet<CarModel> Models { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;

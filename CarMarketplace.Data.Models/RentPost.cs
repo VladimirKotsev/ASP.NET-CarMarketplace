@@ -29,11 +29,6 @@
         [Required]
         public decimal PricePerDay { get; set; }
 
-        public Guid ClientId { get; set; }
-        [Required]
-        [ForeignKey(nameof(ClientId))]
-        public ApplicationUser Client { get; set; }
-
         [DefaultValue(0)]
         [Required]
         public bool IsRented { get; set; }

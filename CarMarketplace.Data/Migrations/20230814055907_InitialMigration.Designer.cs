@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketplace.Data.Migrations
 {
     [DbContext(typeof(CarMarketplaceDbContext))]
-    [Migration("20230813192041_InitialMigration")]
+    [Migration("20230814055907_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -270,6 +270,9 @@ namespace CarMarketplace.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("BootCapacity")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -291,6 +294,9 @@ namespace CarMarketplace.Data.Migrations
                     b.Property<Guid>("RentPostId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("Seats")
+                        .HasColumnType("int");
+
                     b.Property<string>("TransmissionType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -310,7 +316,7 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("RentCar");
+                    b.ToTable("RentCars");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.RentPost", b =>
@@ -320,9 +326,6 @@ namespace CarMarketplace.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CarId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsRented")
@@ -338,8 +341,6 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("CarId")
                         .IsUnique();
-
-                    b.HasIndex("ClientId");
 
                     b.HasIndex("LenderId");
 
@@ -410,9 +411,10 @@ namespace CarMarketplace.Data.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.HasIndex("SalePostId");
+                    b.HasIndex("SalePostId")
+                        .IsUnique();
 
-                    b.ToTable("Cars");
+                    b.ToTable("SaleCars");
                 });
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
@@ -445,8 +447,6 @@ namespace CarMarketplace.Data.Migrations
                         .HasColumnType("varchar(5000)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CarId");
 
                     b.HasIndex("SellerId");
 
@@ -723,12 +723,6 @@ namespace CarMarketplace.Data.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("CarMarketplace.Data.Models.ApplicationUser", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CarMarketplace.Data.Models.Lender", "Lender")
                         .WithMany("LendedCars")
                         .HasForeignKey("LenderId")
@@ -736,8 +730,6 @@ namespace CarMarketplace.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Car");
-
-                    b.Navigation("Client");
 
                     b.Navigation("Lender");
                 });
@@ -779,9 +771,9 @@ namespace CarMarketplace.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("CarMarketplace.Data.Models.SalePost", "SalePost")
-                        .WithMany()
-                        .HasForeignKey("SalePostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithOne("Car")
+                        .HasForeignKey("CarMarketplace.Data.Models.SaleCar", "SalePostId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -799,19 +791,11 @@ namespace CarMarketplace.Data.Migrations
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
                 {
-                    b.HasOne("CarMarketplace.Data.Models.SaleCar", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CarMarketplace.Data.Models.Seller", "Seller")
                         .WithMany("CarOnSale")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.Navigation("Car");
 
                     b.Navigation("Seller");
                 });
@@ -945,6 +929,9 @@ namespace CarMarketplace.Data.Migrations
 
             modelBuilder.Entity("CarMarketplace.Data.Models.SalePost", b =>
                 {
+                    b.Navigation("Car")
+                        .IsRequired();
+
                     b.Navigation("SalePostUsers");
                 });
 

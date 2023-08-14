@@ -210,7 +210,7 @@
                 Price = viewModel.Price
             };
 
-            await this.dbContext.Cars.AddAsync(car);
+            await this.dbContext.SaleCars.AddAsync(car);
             await this.dbContext.SalePosts.AddAsync(salePost);
             await this.dbContext.SaveChangesAsync();
         }
@@ -297,7 +297,7 @@
                 .FirstAsync(sp => sp.Id == viewModel.PostId);
 
             SaleCar carToEdit = await this.dbContext
-                .Cars
+                .SaleCars
                 .FirstAsync(c => c.Id == postToEdit.CarId);
 
             carToEdit.Manufacturer = make;

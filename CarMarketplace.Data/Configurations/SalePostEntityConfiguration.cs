@@ -15,7 +15,7 @@
                 .WithMany(x => x.CarOnSale)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            //builder.HasData(this.GenerateSalePosts());
+            builder.HasData(this.GenerateSalePosts());
         }
 
         private SalePost[] GenerateSalePosts()
