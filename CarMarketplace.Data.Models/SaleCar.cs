@@ -53,7 +53,6 @@
         public int EuroStandart { get; set; }
 
         public int CategoryId { get; set; }
-
         [Required]
         [ForeignKey(nameof(CategoryId))]
         public virtual Category Category { get; set; } = null!;

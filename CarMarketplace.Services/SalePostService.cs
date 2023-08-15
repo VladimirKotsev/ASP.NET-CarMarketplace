@@ -60,7 +60,7 @@
                 .Where(x => x.Id == postId)
                 .Select(sp => new SalePostViewModel()
                 {
-                    Car = new CarViewModel()
+                    Car = new SaleCarViewModel()
                     {
                         Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
                         Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),
@@ -98,12 +98,17 @@
             return postById;
 
         }
-        public async Task DeletePostAsync(Guid postId)
+        public async Task DeletePostAsync(Guid postId, Guid carId)
         {
             var post = await this.dbContext
                 .SalePosts
                 .FirstAsync(p => p.Id == postId);
 
+            var car = await this.dbContext
+                .SaleCars
+                .FirstAsync(c => c.Id == carId);
+
+            this.dbContext.SaleCars.Remove(car);
             this.dbContext.SalePosts.Remove(post);
             await this.dbContext.SaveChangesAsync();
         }
@@ -204,6 +209,7 @@
             {
                 Seller = seller,
                 Car = car,
+                CarId = car.Id,
                 ThumbnailImagePublicId = thumbnailImageId,
                 ImagePublicIds = String.Join(", ", imagePublicIds),
                 CreatedOn = DateTime.Now,
@@ -334,6 +340,16 @@
             postToEdit.ThumbnailImagePublicId = thumbnailImageId;
             postToEdit.ImagePublicIds = String.Join(", ", imagePublicIds);
 
+            await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task ArchivePostByIdAsync(Guid postId)
+        {
+            var post = await this.dbContext
+                .SalePosts
+                .FirstAsync(p => p.Id == postId);
+
+            post.IsDeleted = true;
             await this.dbContext.SaveChangesAsync();
         }
     }

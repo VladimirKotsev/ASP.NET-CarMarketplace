@@ -101,11 +101,21 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Delete(Guid postId)
+        public async Task<IActionResult> Delete(Guid postId, Guid carId)
         {
-            await this.salePostService.DeletePostAsync(postId);
+            await this.salePostService.DeletePostAsync(postId, carId);
 
             return Redirect("/Seller/UserPosts");
         }
+
+        [HttpGet]
+        [ActionName("Archive")]
+        public async Task<IActionResult> Archive(Guid postId)
+        {
+            await this.salePostService.ArchivePostByIdAsync(postId);
+
+            return Redirect("/Seller/UserPosts");
+        }
+
     }
 }

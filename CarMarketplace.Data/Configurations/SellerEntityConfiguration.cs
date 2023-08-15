@@ -21,7 +21,7 @@
                 new Seller()
                 {
                     Id = Guid.Parse("5e6eaf62-8e5d-405a-82a4-48c2e3da6e16"),
-                    UserId = Guid.Parse("348F281D-B9CB-43D2-AE6E-5D545F6343E3"),
+                    UserId = Guid.Parse("86B582F3-8998-43F1-A6C4-CC7F9E0EA91F"),
                     //Replace this with your auto generated user id copied from dto.AspNetUsers
                     CityId = 94,
                     PhoneNumber = "0899904741",

@@ -46,7 +46,8 @@
                 UserId = Guid.Parse(userId),
                 CompanyName = model.CompanyName,
                 PhoneNumber = model.PhoneNumber,
-                City = city
+                City = city,
+                CityId = city.Id
             };
 
             await this.dbContext

@@ -12,6 +12,12 @@
             <h1 class="my-4">@ViewData["Title"]</h1>
         </div>
         <div class="col-md-6 my-4 align-items-middle">
+            @if (Model.Any(x => x.IsDeleted == true))
+            {
+                <div class="d-grid col-3 mx-auto float-end mt-2">
+                    <a asp-controller="SalePost" asp-action="ArchivePosts" class="btn btn-primary btn-lg">See Archive</a>
+                </div>
+            }
             <div class="d-grid col-3 mx-auto float-end mt-2">
                 <a asp-controller="SalePost" asp-action="Add" class="btn btn-primary btn-lg">Add a post</a>
             </div>
@@ -46,7 +52,7 @@
                                     <a class="btn btn-primary col-lg-12" asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id">View</a>
                                 </div>
                                 <div class="col-4">
-                                    <a class="btn btn-primary btn-danger col-lg-12" onclick="showConfirmDelete('@post.Id')">Delete</a>
+                                    <a class="btn btn-primary btn-warning col-lg-12" onclick="showConfirmArchive('@post.Id')">Archive</a>
                                 </div>
                             </div>
                         </div>
@@ -70,15 +76,15 @@
     </div>
 </div>
 
-<div class="modal fade" id="confirmModalDelete" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmModalArchive" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-dialog-box">
             <div class="modal-body fs-3">
-                <p>Are you sure you want to <strong>delete</strong> your post?</p>
+                <p>Are you sure you want to <strong>archive</strong> your post?</p>
             </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelDelete()">Cancel</button>
-                <button type="button" id="confirmButtonDelete" class="btn btn-lg btn-danger">Confirm</button>
+                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="cancelArchive()">Cancel</button>
+                <button type="button" id="confirmButtonArchive" class="btn btn-lg btn-danger">Confirm</button>
             </div>
         </div>
     </div>
@@ -86,10 +92,10 @@
 
 
 <script>
-    function showConfirmDelete(id) {
-        var url = '@Url.Action("Delete", "SalePost")' + '?postId=' + id;
-        $('#confirmButtonDelete').get(0).addEventListener('click', () => { confirmActionDelete(url); });
-        $('#confirmModalDelete').modal('show');
+    function showConfirmArchive(id) {
+        var url = '@Url.Action("Archive", "SalePost")' + '?postId=' + id;
+        $('#confirmButtonArchive').get(0).addEventListener('click', () => { confirmActionArchive(url); });
+        $('#confirmModalArchive').modal('show');
     }
 
     function showConfirmEdit(id) {
@@ -98,8 +104,8 @@
         $('#confirmModalEdit').modal('show');
     }
 
-    function confirmActionDelete(url) {
-        $('#confirmModalDelete').modal('hide');
+    function confirmActionArchive(url) {
+        $('#confirmModalArchive').modal('hide');
         window.location.href = url;
     }
 
@@ -108,8 +114,8 @@
         window.location.href = url;
     }
 
-    function cancelDelete() {
-        $('#confirmModalDelete').modal('hide');
+    function cancelArchive() {
+        $('#confirmModalArchive').modal('hide');
     }
 
     function cancelEdit() {

@@ -18,7 +18,7 @@
             lenders.Add(new Lender()
             {
                 Id = Guid.Parse("a614c1dc-5f00-4549-82b3-2bc39de56c8f"),
-                UserId = Guid.Parse("70094B5F-3F95-4D8A-BAA4-CA1B71633913"),
+                UserId = Guid.Parse("90254096-594A-4E13-9718-7AF72D0132EE"),
                 CompanyName = "Rent Eood",
                 PhoneNumber = "0889904740",
                 Address = "Sofia Airport",

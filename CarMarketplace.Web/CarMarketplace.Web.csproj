@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Catalog\MyPosts.cshtml" />
+    <Content Remove="Views\Sale\MyPosts.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

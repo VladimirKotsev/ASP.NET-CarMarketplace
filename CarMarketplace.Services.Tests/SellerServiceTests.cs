@@ -6,6 +6,8 @@ namespace CarMarketplace.Services.Tests
 
     using static DatabaseSeeder;
     using CarMarketplace.Services.Contracts;
+    using CarMarketplace.Data.Models;
+    using CarMarketplace.Web.ViewModels.Common;
 
     public class SellerServiceTests
     {
@@ -63,7 +65,7 @@ namespace CarMarketplace.Services.Tests
         [Test]
         public async Task SellerExistbyPhoneNumberShouldReturnTrueWhenExisting()
         {
-            string existingSellerPhoneNumber = Seller.PhoneNumber;
+            string existingSellerPhoneNumber = SeededSeller.PhoneNumber;
 
             bool result = await this.SellerService.SellerExistbyPhoneNumberAsync(existingSellerPhoneNumber);
 
@@ -83,8 +85,8 @@ namespace CarMarketplace.Services.Tests
         [Test]
         public async Task GetSellerIdByUserIdShouldReturnCorrectSellerId()
         {
-            string userId = Seller.UserId.ToString();
-            string sellerId = Seller.Id.ToString();
+            string userId = SeededSeller.UserId.ToString();
+            string sellerId = SeededSeller.Id.ToString();
 
             Guid result = await this.SellerService.GetSellerIdByUserIdAsync(userId);
 
@@ -105,6 +107,20 @@ namespace CarMarketplace.Services.Tests
             string cityName = "This is a test city name";
 
             Assert.IsFalse(await this.SellerService.CityExistByNameAsync(cityName));
+        }
+
+        [Test]
+        public async Task GetSellerPostsShouldReturnCorrectPosts()
+        {
+            Guid sellerId = Guid.Parse("e7868936-cd31-43e4-8aa7-8a74e6642edd");
+
+            ICollection<SalePostViewModel> sellerPosts = await this.SellerService.GetSellerPostsAsync(sellerId);
+
+            SalePostViewModel firstPost = sellerPosts.First();
+            SalePostViewModel secondPost = sellerPosts.Skip(1).First();
+
+            Assert.That(firstPost.Id, Is.EqualTo(SalePosts[0].Id));
+            Assert.That(secondPost.Id, Is.EqualTo(SalePosts[1].Id));
         }
 
     }

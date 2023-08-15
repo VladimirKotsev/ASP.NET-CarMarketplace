@@ -5,7 +5,7 @@
     {
         public Guid Id { get; set; }
 
-        public CarViewModel Car { get; set; } = null!;
+        public SaleCarViewModel Car { get; set; } = null!;
 
         public SellerViewModel Seller { get; set; } = null!;
 
@@ -14,6 +14,7 @@
         public DateTime CreatedOn { get; set; }
 
         public string ImageUrls { get; set; } = null!;
+        public bool IsDeleted { get; set; }
 
         public string ThumbnailImage { get; set; } = null!;
 

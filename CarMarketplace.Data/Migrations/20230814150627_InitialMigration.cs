@@ -371,6 +371,8 @@ namespace CarMarketplace.Data.Migrations
                     CarId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LenderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PricePerDay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ImagePublicId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsRented = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -399,7 +401,7 @@ namespace CarMarketplace.Data.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ImagePublicIds = table.Column<string>(type: "varchar(5000)", nullable: false),
                     ThumbnailImagePublicId = table.Column<string>(type: "varchar(5000)", nullable: false),
-                    IsDelted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

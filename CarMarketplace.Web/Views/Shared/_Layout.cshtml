@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="~/CarMarketplace.Web.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/owl.carousel.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/owl.theme.default.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/owl.carousel.js"></script>
@@ -40,7 +41,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between mt-1 ms-2">
                     <ul class="navbar-nav flex-grow-1 fs-4">
                         <li class="nav-item ms-1">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="Home">Catalog</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Sale" asp-action="Home">Catalog</a>
                         </li>
                         @if (isSeller)
                         {
@@ -54,6 +55,9 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Favourites">Favourites</a>
                             </li>
                         }
+                        <li class="nav-item">
+                            <a class ="nav-link text-warning" asp-area="" asp-controller="Rent" asp-action="Catalog">Rental cars</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

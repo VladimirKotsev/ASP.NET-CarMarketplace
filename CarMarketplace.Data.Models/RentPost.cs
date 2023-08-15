@@ -29,6 +29,12 @@
         [Required]
         public decimal PricePerDay { get; set; }
 
+        [Required]
+        public DateTime CreatedOn { get; set; }
+
+        [Required]
+        public string ImagePublicId { get; set; } = null!;
+
         [DefaultValue(0)]
         [Required]
         public bool IsRented { get; set; }

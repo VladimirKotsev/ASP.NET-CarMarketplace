@@ -7,11 +7,11 @@
     {
         public static ApplicationUser User;
         public static ApplicationUser SellerUser;
-        public static Seller Seller;
+        public static Seller SeededSeller;
         public static Province Province;
         public static City City;
         public static SaleCar Car;
-        public static SalePost SalePost;
+        public static SalePost[] SalePosts;
 
         public static void SeedDatabase(CarMarketplaceDbContext dbContext)
         {
@@ -45,8 +45,9 @@
                 PhoneNumberConfirmed = false
             };
 
-            Seller = new Seller()
+            SeededSeller = new Seller()
             {
+                Id = Guid.Parse("e7868936-cd31-43e4-8aa7-8a74e6642edd"),
                 PhoneNumber = "+359888888888",
                 CityId = 1,
                 FirstName = "Gosho",
@@ -65,7 +66,7 @@
                 CityName = "Kuystendil"
             };
             dbContext.Cities.Add(City);
-            
+
 
             City = new City()
             {
@@ -73,37 +74,67 @@
                 CityName = "Bobovdol"
             };
 
-            Car = new SaleCar()
+            SaleCar[] Cars = new SaleCar[]
             {
-                ManufacturerId = 1,
-                ModelId = 5,
-                CategoryId = 3,
-                ColorId = 1, 
-                EngineId = 2,
-                EuroStandart = 3,
-                Odometer = 1200,
-                Year = 2007,
-                TransmissionType = "Manual"
+                new SaleCar()
+                {
+                    ManufacturerId = 1,
+                    ModelId = 5,
+                    CategoryId = 3,
+                    ColorId = 1,
+                    EngineId = 2,
+                    EuroStandart = 3,
+                    Odometer = 1200,
+                    Year = 2007,
+                    TransmissionType = "Manual"
+                },
+                new SaleCar()
+                {
+                    ManufacturerId = 3,
+                    ModelId = 20,
+                    CategoryId = 3,
+                    ColorId = 1,
+                    EngineId = 2,
+                    EuroStandart = 3,
+                    Odometer = 1200,
+                    Year = 2008,
+                    TransmissionType = "Automatic"
+                }
             };
 
-            SalePost = new SalePost()
+            ICollection<SalePost> SalePosts = new HashSet<SalePost>()
             {
-                Id = Guid.Parse("d094d27a-1aa4-4bff-b59b-1878c472960d"),
-                Car = Car,
-                Price = 12000,
-                CreatedOn = DateTime.Now,
-                ThumbnailImagePublicId = "",
-                ImagePublicIds = "",
-                Seller = Seller
+                new SalePost()
+                {
+                    Id = Guid.Parse("d094d27a-1aa4-4bff-b59b-1878c472960d"),
+                    Car = Cars[0],
+                    Price = 12000,
+                    CreatedOn = DateTime.Now,
+                    ThumbnailImagePublicId = "",
+                    ImagePublicIds = "",
+                    Seller = SeededSeller,
+                    SellerId = SeededSeller.Id
+                },
+                new SalePost()
+                {
+                    Id = Guid.Parse("5c5ae02d-1ef4-483d-8b44-e46ef7cfe1af"),
+                    Car = Cars[1],
+                    Price = 15000,
+                    CreatedOn = DateTime.Now,
+                    ThumbnailImagePublicId = "",
+                    ImagePublicIds = "",
+                    Seller = SeededSeller,
+                    SellerId = SeededSeller.Id
+                }
             };
 
             dbContext.Users.Add(User);
             dbContext.Users.Add(SellerUser);
-            dbContext.Sellers.Add(Seller);
+            dbContext.Sellers.Add(SeededSeller);
             dbContext.Provinces.Add(Province);
             dbContext.Cities.Add(City);
-            dbContext.SaleCars.Add(Car);
-            dbContext.SalePosts.Add(SalePost);
+            dbContext.SaleCars.AddRange(Cars);
+            dbContext.SalePosts.AddRange(SalePosts);
             dbContext.SaveChanges();
         }
     }

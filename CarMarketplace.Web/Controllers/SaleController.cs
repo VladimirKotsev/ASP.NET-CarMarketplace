@@ -8,10 +8,10 @@
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.ViewModels.Catalog;
-    public class CatalogController : BaseController
+    public class SaleController : BaseController
     {
-        private readonly ICatalogService catalogService;
-        public CatalogController(ICatalogService _catalogService)
+        private readonly ISaleService catalogService;
+        public SaleController(ISaleService _catalogService)
         {
             this.catalogService = _catalogService;
         }

@@ -36,7 +36,9 @@
                 CarId = Guid.Parse("5ac9b2bb-a45f-45b6-be4c-47dd5c44a954"),
                 PricePerDay = 78.23m,
                 IsRented = false,
-                LenderId = Guid.Parse("a614c1dc-5f00-4549-82b3-2bc39de56c8f")
+                CreatedOn = DateTime.UtcNow,
+                LenderId = Guid.Parse("a614c1dc-5f00-4549-82b3-2bc39de56c8f"),
+                ImagePublicId = "v1692020397/Renault-Clio-2017-1280-04_imukgz.jpg"
             });
 
             return posts.ToArray();

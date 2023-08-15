@@ -60,7 +60,7 @@
                     .SalePosts
                     .Select(sp => new SalePostViewModel()
                     {
-                        Car = new CarViewModel()
+                        Car = new SaleCarViewModel()
                         {
                             Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
                             Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),

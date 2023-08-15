@@ -11,11 +11,11 @@
     using CarMarketplace.Web.ViewModels.Common;
     using AutoMapper;
 
-    public class CatalogService : ICatalogService
+    public class SaleService : ISaleService
     {
         private readonly CarMarketplaceDbContext dbContext;
 
-        public CatalogService(CarMarketplaceDbContext _dbContext)
+        public SaleService(CarMarketplaceDbContext _dbContext)
         {
             this.dbContext = _dbContext;
         }
@@ -106,7 +106,7 @@
                 .SalePosts
                 .Select(sp => new SalePostViewModel()
                 {
-                    Car = new CarViewModel()
+                    Car = new SaleCarViewModel()
                     {
                         Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
                         Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),
@@ -154,7 +154,7 @@
                 .Take(6)
                 .Select(sp => new SalePostViewModel()
                 {
-                    Car = new CarViewModel()
+                    Car = new SaleCarViewModel()
                     {
                         Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
                         Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),
@@ -214,7 +214,7 @@
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
                     .Select(sp => new SalePostViewModel()
                     {
-                        Car = new CarViewModel()
+                        Car = new SaleCarViewModel()
                         {
                             Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
                             Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),
@@ -264,7 +264,7 @@
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
                     .Select(sp => new SalePostViewModel()
                     {
-                        Car = new CarViewModel()
+                        Car = new SaleCarViewModel()
                         {
                             Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
                             Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),
@@ -317,7 +317,7 @@
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
                     .Select(sp => new SalePostViewModel()
                     {
-                        Car = new CarViewModel()
+                        Car = new SaleCarViewModel()
                         {
                             Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
                             Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),

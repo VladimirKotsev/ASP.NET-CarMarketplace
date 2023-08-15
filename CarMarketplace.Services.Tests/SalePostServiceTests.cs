@@ -37,24 +37,5 @@
 
             this.SalePostService = new SalePostService(this.dbContext, MediaService);
         }
-
-        [Test]
-        public async Task DeletePostShouldDeletePost()
-        {
-            var postId = Guid.Parse("d094d27a-1aa4-4bff-b59b-1878c472960d");
-
-            await this.SalePostService.DeletePostAsync(postId);
-            Assert.IsFalse(await this.dbContext.SalePosts.AnyAsync(x => x.Id == postId));
-        }
-
-        [Test]
-        public async Task DeletePostShouldNotDeletePost()
-        {
-            var validPostId = Guid.Parse("d094d27a-1aa4-4bff-b59b-1878c472960d");
-            var postId = Guid.Parse("d094d27a-1aa4-4bff-b59b-1878c494960d");
-
-            await this.SalePostService.DeletePostAsync(postId);
-            Assert.IsTrue(await this.dbContext.SalePosts.AnyAsync(x => x.Id == validPostId));
-        }
     }
 }

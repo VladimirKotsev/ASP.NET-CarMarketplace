@@ -110,3 +110,10 @@ a .img-nav {
     object-fit: cover;
     object-position: center;
 }
+
+.bottom-right-div {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    margin-bottom: -60px
+}

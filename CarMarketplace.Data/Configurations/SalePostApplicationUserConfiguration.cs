@@ -4,7 +4,6 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     using CarMarketplace.Data.Models;
-    using System.Reflection.Emit;
 
     public class SalePostApplicationUserConfiguration : IEntityTypeConfiguration<SalePostApplicationUser>
     {

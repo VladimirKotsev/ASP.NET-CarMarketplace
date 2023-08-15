@@ -9,8 +9,9 @@
         public Task<AddViewModel> GetAddPostViewModelAsync(AddViewModel viewModel);
         public Task AddPostAsync(AddViewModel viewModel, Guid sellerId);
         public Task<EditViewModel> GetEditViewModelByPostIdAsync(EditViewModel viewModel, Guid postId);
-        public Task DeletePostAsync(Guid postId);
+        public Task DeletePostAsync(Guid postId, Guid carId);
 
         public Task EditPostByIdAsync(EditViewModel viewModel);
+        Task ArchivePostByIdAsync(Guid postId);
     }
 }

@@ -40,7 +40,7 @@
         public string ThumbnailImagePublicId { get; set; } = null!;
 
         [DefaultValue(0)]
-        public bool IsDelted { get; set; }
+        public bool IsDeleted { get; set; }
 
         public virtual ICollection<SalePostApplicationUser> SalePostUsers { get; set; }
     }

@@ -16,4 +16,8 @@
     <ProjectReference Include="..\CarMarketplace.Services.Mapping\CarMarketplace.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Rent\" />
+  </ItemGroup>
+
 </Project>

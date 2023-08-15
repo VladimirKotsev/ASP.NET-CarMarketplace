@@ -61,11 +61,11 @@
         {
             ICollection<SalePostViewModel> sellerPosts = await this.dbContext
                 .SalePosts
-                .Where(x => x.SellerId == sellerId)
+                .Where(x => x.SellerId == sellerId && x.IsDeleted == false)
                 .OrderBy(sp => sp.CreatedOn)
                 .Select(sp => new SalePostViewModel()
                 {
-                    Car = new CarViewModel()
+                    Car = new SaleCarViewModel()
                     {
                         Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(sp.Car.Manufacturer),
                         Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(sp.Car.Model),

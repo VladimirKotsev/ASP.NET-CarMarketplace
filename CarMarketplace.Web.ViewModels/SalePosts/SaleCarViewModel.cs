@@ -5,7 +5,7 @@
     using CarMarketplace.Services.Mapping.Contracts;
     using Data.Models;
 
-    public class CarViewModel : IMapFrom<SaleCar>
+    public class SaleCarViewModel : IMapFrom<SaleCar>
     {
         public CarManufacturerViewModel Make { get; set; } = null!;
 

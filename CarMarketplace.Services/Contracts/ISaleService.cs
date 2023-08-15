@@ -3,7 +3,7 @@
     using CarMarketplace.Web.ViewModels.Catalog;
     using CarMarketplace.Web.ViewModels.Common;
 
-    public interface ICatalogService
+    public interface ISaleService
     {
         public Task<ICollection<SalePostViewModel>> GetLatestSalePostsAsync();
 
