@@ -12,6 +12,7 @@
         public Task<ICollection<SalePostViewModel>> GetSellerPostsAsync(Guid sellerId);
 
         public Task<bool> CityExistByNameAsync(string name);
-
+        public Task<ICollection<SalePostViewModel>> GetSellerArchivePostsAsync(Guid sellerId);
+        public Task ActiveSellerPostAsync(Guid postId);
     }
 }

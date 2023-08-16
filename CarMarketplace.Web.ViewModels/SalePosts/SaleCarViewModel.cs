@@ -7,6 +7,7 @@
 
     public class SaleCarViewModel : IMapFrom<SaleCar>
     {
+        public Guid Id { get; set; }
         public CarManufacturerViewModel Make { get; set; } = null!;
 
         public CarModelViewModel Model { get; set; } = null!;

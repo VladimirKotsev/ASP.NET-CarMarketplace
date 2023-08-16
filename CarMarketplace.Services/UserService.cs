@@ -87,6 +87,7 @@
                             }
                         },
                         CreatedOn = sp.CreatedOn,
+                        IsDeleted = sp.IsDeleted,
                         ThumbnailImage = sp.ThumbnailImagePublicId,
                         ImageUrls = sp.ImagePublicIds,
                         Price = sp.Price,

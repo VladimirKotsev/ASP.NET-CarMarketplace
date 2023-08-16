@@ -2,6 +2,7 @@
 {
     using CarMarketplace.Web.ViewModels.Catalog;
     using CarMarketplace.Web.ViewModels.Common;
+    using CarMarketplace.Web.ViewModels.Page;
 
     public interface ISaleService
     {
@@ -9,7 +10,7 @@
 
         public Task<SearchViewModel> GetSearchViewModelAsync(SearchViewModel model);
 
-        public Task<ICollection<SalePostViewModel>> GetFilteredSalePostsAsync(SearchViewModel model);
+        public Task<CatalogViewModel> GetFilteredSalePostsAsync(SearchViewModel model, int pageNum);
 
         public Task<ICollection<SalePostViewModel>> GetSalePostsByNationAsync(string group);
     }

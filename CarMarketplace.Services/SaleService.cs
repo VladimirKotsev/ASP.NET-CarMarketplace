@@ -10,6 +10,7 @@
     using CarMarketplace.Services.Mapping;
     using CarMarketplace.Web.ViewModels.Common;
     using AutoMapper;
+    using CarMarketplace.Web.ViewModels.Page;
 
     public class SaleService : ISaleService
     {
@@ -100,10 +101,11 @@
         }
 
 
-        public async Task<ICollection<SalePostViewModel>> GetFilteredSalePostsAsync(SearchViewModel model)
+        public async Task<CatalogViewModel> GetFilteredSalePostsAsync(SearchViewModel model, int pageNum)
         {
             ICollection<SalePostViewModel> posts = await this.dbContext
                 .SalePosts
+                .Where(sp => sp.IsDeleted == false)
                 .Select(sp => new SalePostViewModel()
                 {
                     Car = new SaleCarViewModel()
@@ -133,23 +135,39 @@
                         }
                     },
                     CreatedOn = sp.CreatedOn,
-                    ImageUrls = sp.ImagePublicIds,
+                    IsDeleted = sp.IsDeleted,
                     ThumbnailImage = sp.ThumbnailImagePublicId,
+                    ImageUrls = sp.ImagePublicIds,
                     Price = sp.Price,
                     Id = sp.Id
                 })
                 .AsNoTracking()
                 .ToArrayAsync();
 
+            int postsCount = posts.Count;
+
+            posts = posts
+                .Skip(pageNum * 3)
+                .Take(3)
+                .ToArray();
+
             posts = FilterAllSalePosts(posts, model);
 
-            return posts;
+            var catalogModel = new CatalogViewModel()
+            {
+                CurrentPage = pageNum + 1,
+                PageCount = (int)Math.Ceiling((decimal)postsCount / 3),
+                SalePosts = posts
+            };
+
+            return catalogModel;
         }
 
         public async Task<ICollection<SalePostViewModel>> GetLatestSalePostsAsync()
         {
             ICollection<SalePostViewModel> lastPosts = await this.dbContext
                 .SalePosts
+                .Where(sp => sp.IsDeleted == false)
                 .OrderBy(sp => sp.CreatedOn)
                 .Take(6)
                 .Select(sp => new SalePostViewModel()
@@ -181,6 +199,7 @@
                         }
                     },
                     CreatedOn = sp.CreatedOn,
+                    IsDeleted = sp.IsDeleted,
                     ThumbnailImage = sp.ThumbnailImagePublicId,
                     ImageUrls = sp.ImagePublicIds,
                     Price = sp.Price,
@@ -211,7 +230,7 @@
 
                 posts = await this.dbContext
                     .SalePosts
-                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
+                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
                     .Select(sp => new SalePostViewModel()
                     {
                         Car = new SaleCarViewModel()
@@ -241,6 +260,7 @@
                             }
                         },
                         CreatedOn = sp.CreatedOn,
+                        IsDeleted = sp.IsDeleted,
                         ThumbnailImage = sp.ThumbnailImagePublicId,
                         ImageUrls = sp.ImagePublicIds,
                         Price = sp.Price,
@@ -261,7 +281,7 @@
 
                 posts = await this.dbContext
                     .SalePosts
-                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
+                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
                     .Select(sp => new SalePostViewModel()
                     {
                         Car = new SaleCarViewModel()
@@ -291,6 +311,7 @@
                             }
                         },
                         CreatedOn = sp.CreatedOn,
+                        IsDeleted = sp.IsDeleted,
                         ThumbnailImage = sp.ThumbnailImagePublicId,
                         ImageUrls = sp.ImagePublicIds,
                         Price = sp.Price,
@@ -314,7 +335,7 @@
 
                 posts = await this.dbContext
                     .SalePosts
-                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name))
+                    .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
                     .Select(sp => new SalePostViewModel()
                     {
                         Car = new SaleCarViewModel()
@@ -344,6 +365,7 @@
                             }
                         },
                         CreatedOn = sp.CreatedOn,
+                        IsDeleted = sp.IsDeleted,
                         ThumbnailImage = sp.ThumbnailImagePublicId,
                         ImageUrls = sp.ImagePublicIds,
                         Price = sp.Price,

@@ -31,14 +31,14 @@
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Result(SearchViewModel model)
+        public async Task<IActionResult> Result(SearchViewModel model, int pageNum)
         {
             if (!ModelState.IsValid)
             {
                 return this.View("Search", model);
             }
 
-            return View(await catalogService.GetFilteredSalePostsAsync(model));
+            return View(await catalogService.GetFilteredSalePostsAsync(model, pageNum));
         }
 
         [HttpGet]

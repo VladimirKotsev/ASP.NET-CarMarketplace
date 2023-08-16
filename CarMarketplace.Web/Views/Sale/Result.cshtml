@@ -1,4 +1,4 @@
-﻿@model ICollection<SalePostViewModel>
+﻿@model CatalogViewModel
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject IUserService UserService;
@@ -19,13 +19,13 @@
     <div class="d-grid gap-2 col-6 mx-auto text-center mt-5">
         <h1>@ViewData["Title"]</h1>
     </div>
-    @if (Model.Count == 0)
+    @if (Model.SalePosts.Count() == 0)
     {
         <div class="text-center mt-4">
             <img src="/img/Sad_car.png">
         </div>
     }
-    @foreach (var post in Model)
+    @foreach (var post in Model.SalePosts)
     {
         imageSrc = ViewData["CloudDomain"] + @post.ThumbnailImage;
         <div class="border rounded shadow bg-white p-3 mb-4 mt-4">
@@ -77,8 +77,17 @@
             </div>
         </div>
     }
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+            @for (var i = 1; i <= Model.PageCount; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="javascript:void(0);" onclick="loadPage(@i-1,event)">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
 </div>
-@*<partial name="_PagingPartial" model="@Model" />*@
 
 <script>
     function toggleHeart(button, postId) {
@@ -106,5 +115,26 @@
                 data: JSON.stringify(data)
             });
         }
+    }
+
+    function loadPage(pageNum, event) {
+
+        event.preventDefault();
+
+        const data = {
+            pageNum: pageNum,
+        }
+
+        $.ajax({
+            url: '@Url.Action("Result", "Sale")',
+            type: 'GET',
+            data: { data },
+            success: function (result) {
+                $('body').html(result);
+            },
+            error: function () {
+                alert('Error loading page.');
+            }
+        });
     }
 </script>

@@ -14,8 +14,8 @@
         <div class="col-md-6 my-4 align-items-middle">
             @if (Model.Any(x => x.IsDeleted == true))
             {
-                <div class="d-grid col-3 mx-auto float-end mt-2">
-                    <a asp-controller="SalePost" asp-action="ArchivePosts" class="btn btn-primary btn-lg">See Archive</a>
+                <div class="d-grid col-3 mx-auto float-end mt-2 ms-2">
+                    <a asp-controller="Seller" asp-action="Archive" class="btn btn-secondary text-black btn-lg">See Archive</a>
                 </div>
             }
             <div class="d-grid col-3 mx-auto float-end mt-2">
@@ -29,6 +29,10 @@
         <div class="row">
             @foreach (var post in Model.Skip(i).Take(3))
             {
+                if (post.IsDeleted == true)
+                {
+                    continue;
+                }
                 imageSrc = ViewData["CloudDomain"] + post.ThumbnailImage;
 
                 <div class="col-md-4">

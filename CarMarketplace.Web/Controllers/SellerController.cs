@@ -76,7 +76,16 @@
             return View("UserPosts", await this.sellerService.GetSellerPostsAsync(await this.sellerService.GetSellerIdByUserIdAsync(this.UserId)));
         }
 
+        public async Task<IActionResult> Archive()
+        {
+            return View(await this.sellerService.GetSellerArchivePostsAsync(await this.sellerService.GetSellerIdByUserIdAsync(this.UserId)));
+        }
 
-        
+        public async Task<IActionResult> ActivatePost([FromBody] string postId)
+        {
+            await this.sellerService.ActiveSellerPostAsync(Guid.Parse(postId));
+
+            return Redirect("/Seller/Archive");
+        }
     }
 }

@@ -101,7 +101,7 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Delete(Guid postId, Guid carId)
+        public async Task<IActionResult> Delete([FromBody] Guid postId, Guid carId)
         {
             await this.salePostService.DeletePostAsync(postId, carId);
 

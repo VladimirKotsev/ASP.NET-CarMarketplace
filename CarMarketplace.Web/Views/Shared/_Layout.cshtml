@@ -43,16 +43,16 @@
                         <li class="nav-item ms-1">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Sale" asp-action="Home">Catalog</a>
                         </li>
-                        @if (isSeller)
-                        {
-                            <li class="nav-item ms-1 me-1">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Seller" asp-action="UserPosts">My Posts</a>
-                            </li>
-                        }
                         @if (isLogged)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Favourites">Favourites</a>
+                            </li>
+                        }
+                        @if (isSeller)
+                        {
+                            <li class="nav-item ms-1 me-1">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Seller" asp-action="UserPosts">My Posts</a>
                             </li>
                         }
                         <li class="nav-item">
