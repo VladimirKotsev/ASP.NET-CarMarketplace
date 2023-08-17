@@ -1,91 +1,88 @@
-﻿@model RentPostViewModel
+﻿@model RentingViewModel
 @{
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
     var imageSrc = "";
 }
 
-@{imageSrc = ViewData["CloudDomain"] + @Model.ImagePublicId;}
+@{imageSrc = ViewData["CloudDomain"] + @Model.Post.ImagePublicId;}
 <div class="border rounded-5 shadow-lg bg-primary p-4 mb-4 mt-4">
     <div class="row text-decoration-none text-black">
         <div class="col-4">
-            <img src="@imageSrc" class="card-img-result rounded text-white" alt="@Model.Car.Make.Name @Model.Car.Model.ModelName">
+            <img src="@imageSrc" class="card-img-result rounded text-white" alt="@Model.Post.Car.Make.Name @Model.Post.Car.Model.ModelName">
         </div>
         <div class="col-4 d-flex flex-column text-white align-items-between mt-4">
-            <span class="fs-4"><i class="fa fa-lg fa-suitcase text-white" aria-hidden="true"></i> @Model.Car.BootCapacity liters</span>
+            <span class="fs-4"><i class="fa fa-lg fa-suitcase text-white" aria-hidden="true"></i> @Model.Post.Car.BootCapacity liters</span>
             <br>
-            <span class="fs-4"><i class="fa fa-lg fa-users text-white" aria-hidden="true"></i> @Model.Car.Seats seats</span>
+            <span class="fs-4"><i class="fa fa-lg fa-users text-white" aria-hidden="true"></i> @Model.Post.Car.Seats seats</span>
             <br>
-            <span class="fs-4 ms-1"><i class="fa fa-lg fa-map-marker" aria-hidden="true"></i> @Model.Lender.City.CityName</span>
+            <span class="fs-4 ms-1"><i class="fa fa-lg fa-map-marker" aria-hidden="true"></i> @Model.Post.Lender.City.CityName</span>
             <br>
-            <span class="fs-4"><i class="fa fa-lg fa-calendar" aria-hidden="true"></i> @Model.Car.Year</span>
+            <span class="fs-4"><i class="fa fa-lg fa-calendar" aria-hidden="true"></i> @Model.Post.Car.Year</span>
         </div>
         <div class="col-4 position-relative">
             <div class="d-flex flex-column align-items-between text-white mt-4">
                 <span class="fs-4">
-                    <img src="/img/gas-station.png" width="34" height="32" /> @Model.Car.Engine.FuelType
+                    <img src="/img/gas-station.png" width="34" height="32" /> @Model.Post.Car.Engine.FuelType
                 </span>
                 <br>
                 <span class="fs-4">
-                    <img src="/img/manual-transmission.png" width="34" height="32" /> @Model.Car.TransmissionType
+                    <img src="/img/manual-transmission.png" width="34" height="32" /> @Model.Post.Car.TransmissionType
                 </span>
                 <br>
                 <span class="fs-4">
-                    <i class="fa fa-lg fa-car" aria-hidden="true"></i> @Model.Car.Category.Name
+                    <i class="fa fa-lg fa-car" aria-hidden="true"></i> @Model.Post.Car.Category.Name
                 </span>
                 <br>
                 <span class="fs-4">
-                    <i class="fa fa-lg fa-leaf" aria-hidden="true"></i> @Model.Car.EuroStandart
+                    <i class="fa fa-lg fa-leaf" aria-hidden="true"></i> @Model.Post.Car.EuroStandart
                 </span>
             </div>
             <div class="fst-italic border border-warning rounded-3 p-1 bg-primary text-white shadow bottom-right-div">
                 <span class="fs-3">Price per day</span>
                 <br>
-                <span class="fs-3 p-2">@Model.PricePerDay<strong> BGN</strong></span>
+                <span class="fs-3 p-2">@Model.Post.PricePerDay<strong> BGN</strong></span>
             </div>
         </div>
         <div class="row ps-2 text-white d-flex flex-lg-row">
-            <h2 class="card-title float-start col-auto mt-2">@Model.Car.Make.Name @Model.Car.Model.ModelName</h2>
+            <h2 class="card-title float-start col-auto mt-2">@Model.Post.Car.Make.Name @Model.Post.Car.Model.ModelName</h2>
         </div>
     </div>
 </div>
 <div class="container mt-5">
     <h1 class="mb-4">Vehicle Rental Form</h1>
 
-    <form action="process_rental.php" method="post">
+    <form asp-action="RentVehicle" asp-route-postId="@Model.Post.Id" method="post">
         <div class="form-group">
-            <label for="full_name">Full Name:</label>
-            <input type="text" class="form-control" id="full_name" name="full_name" required>
+            <label asp-for="FullName">Full Name:</label>
+            <input type="text" asp-for="FullName" class="form-control" required>
+            <span class="text-danger" asp-validation-for="FullName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email:</label>
+            <input type="email" asp-for="Email" class="form-control" disabled>
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <label asp-for="PhoneNumber">Phone:</label>
+            <input type="tel" asp-for="PhoneNumber" class="form-control" required>
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
         </div>
 
         <div class="form-group">
-            <label for="phone">Phone:</label>
-            <input type="tel" class="form-control" id="phone" name="phone" required>
+            <label asp-for="PickUpDate">Pickup Date:</label>
+            <input type="date" asp-for="PickUpDate" class="form-control" required>
+            <span class="text-danger" asp-validation-for="PickUpDate"></span>
         </div>
 
         <div class="form-group">
-            <label for="vehicle_type">Vehicle Type:</label>
-            <select class="form-control" id="vehicle_type" name="vehicle_type" required>
-                <option value="car">Car</option>
-                <option value="motorcycle">Motorcycle</option>
-                <option value="truck">Truck</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="pickup_date">Pickup Date:</label>
-            <input type="date" class="form-control" id="pickup_date" name="pickup_date" required>
-        </div>
-
-        <div class="form-group">
-            <label for="return_date">Return Date:</label>
-            <input type="date" class="form-control" id="return_date" name="return_date" required>
+            <label asp-for="ReturnDate">Return Date:</label>
+            <input type="date" class="form-control" asp-for="ReturnDate" required>
+            <span class="text-danger" asp-validation-for="ReturnDate"></span>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

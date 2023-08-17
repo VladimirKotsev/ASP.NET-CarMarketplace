@@ -1,10 +1,12 @@
 ﻿namespace CarMarketplace.Services
 {
     using CarMarketplace.Data;
+    using CarMarketplace.Data.Models;
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Services.Mapping;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Web.ViewModels.Lender;
+    using CarMarketplace.Web.ViewModels.Rent;
     using CarMarketplace.Web.ViewModels.RentPosts;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
@@ -19,7 +21,7 @@
             this.dbContext = _dbContext;
         }
 
-        public async Task<RentPostViewModel> GetPostDetailsByIdAsync(Guid id)
+        public async Task<RentingViewModel> GetRentingPostViewModel(Guid id, string userEmail)
         {
             var post = await this.dbContext
                 .RentPosts
@@ -58,7 +60,39 @@
                 })
                 .FirstAsync(rp => rp.Id == id);
 
-            return post;
+            var model = new RentingViewModel()
+            {
+                Post = post,
+                Email = userEmail,
+                PickUpDate = DateTime.Now,
+                ReturnDate = DateTime.Now.AddDays(1)
+            };
+
+            return model;
+        }
+
+        public async Task RentVehicleAsync(string userId, Guid postId)
+        {
+            var user = await this.dbContext
+                .ApplicationUsers
+                .FirstAsync(x => x.Id == Guid.Parse(userId));
+
+            var post = await this.dbContext
+                .RentPosts
+                .FirstAsync(x => x.Id == postId);
+
+            var rented = new Rented()
+            {
+                ClientId = Guid.Parse(userId),
+                Client = user,
+                PostId = postId,
+                RentPost = post
+            };
+
+            post.IsRented = true;
+
+            await this.dbContext.Rents.AddAsync(rented);
+            await this.dbContext.SaveChangesAsync();
         }
 
         public async Task<ICollection<RentPostViewModel>> GetRentPostViewModelAsync()

@@ -11,6 +11,7 @@
     using CarMarketplace.Web.ViewModels.Common;
     using AutoMapper;
     using CarMarketplace.Web.ViewModels.Page;
+    using CarMarketplace.Web.ViewModels.Seller;
 
     public class SaleService : ISaleService
     {

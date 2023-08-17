@@ -1,4 +1,6 @@
-﻿namespace CarMarketplace.Web.ViewModels.Common
+﻿using CarMarketplace.Web.ViewModels.Seller;
+
+namespace CarMarketplace.Web.ViewModels.Common
 {
 
     public class SalePostViewModel

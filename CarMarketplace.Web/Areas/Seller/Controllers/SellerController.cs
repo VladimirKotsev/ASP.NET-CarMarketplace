@@ -117,10 +117,10 @@
             return Redirect("/Seller/UserPosts");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Delete([FromBody] Guid postId, Guid carId)
+        [Route("Seller/Delete")]
+        public async Task<IActionResult> Delete([FromBody] DeleteDataViewModel model)
         {
-            await this.salePostService.DeletePostAsync(postId, carId);
+            await this.salePostService.DeletePostAsync(model.PostId, model.CarId);
 
             return Redirect("/Seller/UserPosts");
         }

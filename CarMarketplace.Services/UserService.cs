@@ -11,6 +11,7 @@
     using Mapping;
     using Web.ViewModels.Common;
     using CarMarketplace.Web.ViewModels.User;
+    using CarMarketplace.Web.ViewModels.Seller;
 
     public class UserService : IUserService
     {

@@ -89,5 +89,12 @@
 
             public const int PhoneNumberFixedLength = 10;
         }
+
+        public static class RentPost
+        {
+            public const double PricePerDayMinValue = 1;
+            public const double PricePerDayMaxValue = 999.99;
+
+        }
     }
 }

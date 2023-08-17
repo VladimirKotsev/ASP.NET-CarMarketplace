@@ -2,12 +2,10 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
-    using CarMarketplace.Web.Controllers.Common;
-    using CarMarketplace.Services;
     using CarMarketplace.Services.Contracts;
     using System.Security.Claims;
     using CarMarketplace.Web.ViewModels.Lender;
-    using Microsoft.EntityFrameworkCore.Metadata.Internal;
+    using CarMarketplace.Web.Controllers.Common;
 
     public class LenderController : BaseController
     {
@@ -27,7 +25,7 @@
         [Route("User/BecomeLender")]
         public async Task<IActionResult> BecomeLender()
         {
-            bool isLender = await this.lenderService.LenderExistbyUserIdAsync(this.UserId);
+            bool isLender = await lenderService.LenderExistbyUserIdAsync(UserId);
 
             if (isLender)
             {
@@ -44,7 +42,7 @@
         public async Task<IActionResult> BecomeLender(LenderPersonalInfoViewModel model)
         {
             bool isPhoneNumberTaken =
-                await this.lenderService.LenderExistbyPhoneNumberAsync(model.PhoneNumber);
+                await lenderService.LenderExistbyPhoneNumberAsync(model.PhoneNumber);
             if (isPhoneNumberTaken)
             {
                 ModelState.AddModelError(nameof(model.PhoneNumber), "Lender with the provided phone number already exists!");
@@ -57,7 +55,7 @@
 
             try
             {
-                await this.lenderService.RegisterUserAsLenderAsync(this.UserId, model);
+                await lenderService.RegisterUserAsLenderAsync(UserId, model);
             }
             catch (ArgumentException exp)
             {

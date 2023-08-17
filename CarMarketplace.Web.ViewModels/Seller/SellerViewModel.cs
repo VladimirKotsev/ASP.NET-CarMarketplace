@@ -1,4 +1,6 @@
-﻿namespace CarMarketplace.Web.ViewModels.Common
+﻿using CarMarketplace.Web.ViewModels.Common;
+
+namespace CarMarketplace.Web.ViewModels.Seller
 {
     using CarMarketplace.Data.Models;
     using CarMarketplace.Services.Mapping.Contracts;

@@ -68,15 +68,33 @@
 
 
 <script>
-    function showConfirmDelete(id, carId) {
-        var url = '@Url.Action("Delete")' + '?postId=' + id + '?carId=' + carId;
-        $('#confirmButtonDelete').get(0).addEventListener('click', () => { confirmActionDelete(url); });
+    function showConfirmDelete(postId, carId) {
+        $('#confirmButtonDelete').get(0).addEventListener('click', () => { confirmActionDelete(postId, carId); });
         $('#confirmModalDelete').modal('show');
     }
 
-    function confirmActionDelete(url) {
+    function confirmActionDelete(postId, carId) {
         $('#confirmModalDelete').modal('hide');
-        window.location.href = url;
+
+        var url = '@Url.Action("Archive")';
+
+        const data = {
+            postId: postId,
+            carId: carId
+        }
+
+        console.log(data);
+
+        $.ajax({
+            contentType: "application/json",
+            type: 'POST',
+            url: 'Delete',
+            data: JSON.stringify(data),
+            success: function () {
+
+                window.location.href = url;
+            }
+        });
     }
 
     function cancelDelete() {
@@ -85,7 +103,7 @@
 
     function ActivatePost(postId){
 
-        var url = '@Url.Action("UserPosts")'
+        var url = '@Url.Action("UserPosts")';
 
         $.ajax({
             contentType: "application/json",

@@ -14,7 +14,7 @@
     using CarMarketplace.Web.ViewModels.SalePost;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Services.Mapping;
-    using static System.Net.Mime.MediaTypeNames;
+    using CarMarketplace.Web.ViewModels.Seller;
 
     public class SalePostService : ISalePostService
     {
@@ -342,7 +342,6 @@
 
             await this.dbContext.SaveChangesAsync();
         }
-
         public async Task ArchivePostByIdAsync(Guid postId)
         {
             var post = await this.dbContext

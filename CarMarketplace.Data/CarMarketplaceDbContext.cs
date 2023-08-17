@@ -31,6 +31,7 @@
         public DbSet<City> Cities { get; set; } = null!;
         public DbSet<Lender> Lenders { get; set; } = null!;
         public DbSet<RentPost> RentPosts { get; set; } = null!;
+        public DbSet<Rented> Rents { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
