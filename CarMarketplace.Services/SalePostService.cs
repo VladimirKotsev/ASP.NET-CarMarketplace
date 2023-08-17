@@ -310,7 +310,7 @@
             carToEdit.Engine = engine;
             carToEdit.Category = category;
             carToEdit.Color = color;
-            carToEdit.Model.ModelName = viewModel.Model;
+            carToEdit.Model = model;
             carToEdit.Year = viewModel.Year;
             carToEdit.Odometer = viewModel.Odometer;
             carToEdit.TransmissionType = viewModel.TransmissionType;

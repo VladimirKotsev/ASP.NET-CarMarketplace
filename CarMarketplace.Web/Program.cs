@@ -78,9 +78,11 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
+app.UseEndpoints(config =>
+{
+    config.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    config.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+    config.MapRazorPages();
+});
 
 app.Run();

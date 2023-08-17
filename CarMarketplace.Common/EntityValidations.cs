@@ -82,5 +82,12 @@
             public const int AddressMaxLength = 60;
         }
 
+        public static class Renter
+        {
+            public const int FullNameMinLength = 9;
+            public const int FullNameMaxLength = 100;
+
+            public const int PhoneNumberFixedLength = 10;
+        }
     }
 }

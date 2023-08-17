@@ -15,11 +15,11 @@
             @if (Model.Any(x => x.IsDeleted == true))
             {
                 <div class="d-grid col-3 mx-auto float-end mt-2 ms-2">
-                    <a asp-controller="Seller" asp-action="Archive" class="btn btn-secondary text-black btn-lg">See Archive</a>
+                    <a asp-area="Seller" asp-action="Archive" class="btn btn-secondary text-black btn-lg">See Archive</a>
                 </div>
             }
             <div class="d-grid col-3 mx-auto float-end mt-2">
-                <a asp-controller="SalePost" asp-action="Add" class="btn btn-primary btn-lg">Add a post</a>
+                <a asp-area="Seller" asp-action="Add" class="btn btn-primary btn-lg">Add a post</a>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
     @for (int i = 0; i < Model.Count; i += 3)
     {
         <div class="row">
-            @foreach (var post in Model.Skip(i).Take(3))
+            @foreach (var post in Model.Where(p => p.IsDeleted == false).Skip(i).Take(3))
             {
                 if (post.IsDeleted == true)
                 {
@@ -53,7 +53,7 @@
                                     <a class="btn btn-primary btn-warning col-lg-12" onclick="showConfirmEdit('@post.Id')">Edit</a>
                                 </div>
                                 <div class="col-4">
-                                    <a class="btn btn-primary col-lg-12" asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id">View</a>
+                                    <a class="btn btn-primary col-lg-12" asp-area="" asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id">View</a>
                                 </div>
                                 <div class="col-4">
                                     <a class="btn btn-primary btn-warning col-lg-12" onclick="showConfirmArchive('@post.Id')">Archive</a>
@@ -97,13 +97,13 @@
 
 <script>
     function showConfirmArchive(id) {
-        var url = '@Url.Action("Archive", "SalePost")' + '?postId=' + id;
+        var url = '@Url.Action("ArchivePost")' + '?postId=' + id;
         $('#confirmButtonArchive').get(0).addEventListener('click', () => { confirmActionArchive(url); });
         $('#confirmModalArchive').modal('show');
     }
 
     function showConfirmEdit(id) {
-        var url = '@Url.Action("Edit", "SalePost")' + '?postId=' + id;
+        var url = '@Url.Action("Edit")' + '?postId=' + id;
         $('#confirmButtonEdit').get(0).addEventListener('click', () => { confirmActionEdit(url); });
         $('#confirmModalEdit').modal('show');
     }

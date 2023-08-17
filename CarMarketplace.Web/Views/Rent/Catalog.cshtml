@@ -20,23 +20,23 @@
     {
         imageSrc = ViewData["CloudDomain"] + @post.ImagePublicId;
         <div class="border rounded-5 shadow-lg bg-primary p-4 mb-4 mt-4">
-            <a asp-controller="Rent" asp-action="Details" asp-route-id="@post.Id" class="row text-decoration-none text-black">
+            <div class="row text-decoration-none text-black">
                 <div class="col-4">
-                        <img src="@imageSrc" class="card-img-result rounded" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
+                    <img src="@imageSrc" class="card-img-result rounded" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
                 </div>
                 <div class="col-4 d-flex flex-column text-white align-items-between mt-4">
                     <span class="fs-4"><i class="fa fa-lg fa-suitcase text-white" aria-hidden="true"></i> @post.Car.BootCapacity liters</span>
                     <br>
                     <span class="fs-4"><i class="fa fa-lg fa-users text-white" aria-hidden="true"></i> @post.Car.Seats seats</span>
                     <br>
-                    <span class="fs-4"><i class="fa fa-lg fa-map-marker" aria-hidden="true"></i> @post.Lender.City.CityName</span>
+                    <span class="fs-4 ms-1"><i class="fa fa-lg fa-map-marker" aria-hidden="true"></i> @post.Lender.City.CityName</span>
                     <br>
                     <span class="fs-4"><i class="fa fa-lg fa-calendar" aria-hidden="true"></i> @post.Car.Year</span>
                 </div>
                 <div class="col-4 position-relative">
                     <div class="d-flex flex-column align-items-between text-white mt-4">
                         <span class="fs-4">
-                                <img src="/img/gas-station.png" width="34" height="32" /> @post.Car.Engine.FuelType
+                            <img src="/img/gas-station.png" width="34" height="32" /> @post.Car.Engine.FuelType
                         </span>
                         <br>
                         <span class="fs-4">
@@ -57,10 +57,13 @@
                         <span class="fs-3 p-2">@post.PricePerDay<strong> BGN</strong></span>
                     </div>
                 </div>
-                <div class="row ps-2 text-white">
-                    <h2 class="card-title float-start col-6 mt-2">@post.Car.Make.Name @post.Car.Model.ModelName</h2>
+                <div class="row ps-2 text-white d-flex flex-lg-row">
+                    <h2 class="card-title float-start col-auto mt-2">@post.Car.Make.Name @post.Car.Model.ModelName</h2>
+                    <div class="col-md-3 mt-2 ms-4">
+                        <a asp-controller="Rent" asp-action="RentVehicle" asp-route-postId="@post.Id" class="btn btn-primary border-warning btn-lg">Rent now</a>
+                    </div>
                 </div>
-            </a>
+            </div>
         </div>
     }
 </div>

@@ -18,7 +18,7 @@
             return View(await rentService.GetRentPostViewModelAsync());
         }
 
-        public async Task<IActionResult> Details(Guid postId)
+        public async Task<IActionResult> RentVehicle(Guid postId)
         {
             var model = await rentService.GetPostDetailsByIdAsync(postId);
 
