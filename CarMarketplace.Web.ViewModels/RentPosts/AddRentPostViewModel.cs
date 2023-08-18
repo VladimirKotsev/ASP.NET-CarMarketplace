@@ -10,6 +10,7 @@
     using static CarMarketplace.Common.EntityValidations.CarModel;
     using static CarMarketplace.Common.EntityValidations.Engine;
     using static CarMarketplace.Common.EntityValidations.RentPost;
+    using static CarMarketplace.Common.EntityValidations.RentCar;
     public class AddRentPostViewModel
     {
         public ICollection<CarManufacturerViewModel>? Makes { get; set; }
@@ -56,11 +57,21 @@
 
         [DisplayName("price per day")]
         [Required]
-        [Range(PricePerDayMaxValue, PricePerDayMinValue, ErrorMessage = ErrorMessage)]
+        [Range(PricePerDayMinValue, PricePerDayMaxValue, ErrorMessage = ErrorMessage)]
         public int PricePerDay { get; set; }
 
+        [DisplayName("boot capacity")]
         [Required]
-        public IFormFile ImagePublicId { get; set; } = null!;
+        [Range(BootCapacityMinValue, BootCapacityMaxValue, ErrorMessage = ErrorMessage)]
+        public int BootCapacity { get; set; }
+
+        [DisplayName("seats")]
+        [Required]
+        [Range(SeatsMinValue, SeatsMaxValue, ErrorMessage = ErrorMessage)]
+        public int Seats { get; set; }
+
+        [Required]
+        public IFormFile Image { get; set; } = null!;
 
         public string? ImagesErrorMessage { get; set; }
     }

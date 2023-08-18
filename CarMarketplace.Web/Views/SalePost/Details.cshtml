@@ -99,7 +99,10 @@
             <div class="col-md-4">
                 <h3>Engine specifications:</h3>
                 <hr />
-                <p class="fs-4">Displacement: @Model.Car.Engine.Displacement</p>
+                @if (@Model.Car.Engine.Displacement != null)
+                {             
+                    <p class="fs-4">Displacement: @Model.Car.Engine.Displacement</p>
+                }
                 <p class="fs-4">Horsepower: @Model.Car.Engine.Horsepower</p>
                 <p class="fs-4">Fuel: @Model.Car.Engine.FuelType</p>
             </div>

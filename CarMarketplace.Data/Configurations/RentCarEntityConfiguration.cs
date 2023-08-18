@@ -20,7 +20,6 @@
                 Id = Guid.Parse("5ac9b2bb-a45f-45b6-be4c-47dd5c44a954"),
                 BootCapacity = 45,
                 CategoryId = 2,
-                ColorId = 3,
                 EuroStandart = 6,
                 EngineId = 9,
                 ManufacturerId = 8,

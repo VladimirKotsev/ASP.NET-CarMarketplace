@@ -45,15 +45,6 @@
                 PhoneNumberConfirmed = false
             };
 
-            SeededSeller = new Seller()
-            {
-                Id = Guid.Parse("e7868936-cd31-43e4-8aa7-8a74e6642edd"),
-                PhoneNumber = "+359888888888",
-                CityId = 1,
-                FirstName = "Gosho",
-                LastName = "Petrov",
-                User = SellerUser
-            };
 
             Province = new Province()
             {
@@ -64,6 +55,16 @@
             {
                 Province = Province,
                 CityName = "Kuystendil"
+            };
+            SeededSeller = new Seller()
+            {
+                Id = Guid.Parse("e7868936-cd31-43e4-8aa7-8a74e6642edd"),
+                PhoneNumber = "+359888888888",
+                CityId = 1,
+                FirstName = "Gosho",
+                LastName = "Petrov",
+                User = SellerUser,
+                City = City,
             };
             dbContext.Cities.Add(City);
 
@@ -90,6 +91,7 @@
                 },
                 new SaleCar()
                 {
+                    Id = Guid.Parse("4a8698c4-dc3e-4585-93b1-a8a10cecfbe2"),
                     ManufacturerId = 3,
                     ModelId = 20,
                     CategoryId = 3,
@@ -110,8 +112,8 @@
                     Car = Cars[0],
                     Price = 12000,
                     CreatedOn = DateTime.Now,
-                    ThumbnailImagePublicId = "",
-                    ImagePublicIds = "",
+                    ThumbnailImagePublicId = "test",
+                    ImagePublicIds = "test",
                     Seller = SeededSeller,
                     SellerId = SeededSeller.Id
                 },
@@ -121,10 +123,11 @@
                     Car = Cars[1],
                     Price = 15000,
                     CreatedOn = DateTime.Now,
-                    ThumbnailImagePublicId = "",
-                    ImagePublicIds = "",
+                    ThumbnailImagePublicId = "test",
+                    ImagePublicIds = "test",
                     Seller = SeededSeller,
-                    SellerId = SeededSeller.Id
+                    SellerId = SeededSeller.Id,
+                    IsDeleted = true
                 }
             };
 

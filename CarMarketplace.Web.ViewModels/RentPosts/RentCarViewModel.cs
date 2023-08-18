@@ -4,11 +4,11 @@
 
     public class RentCarViewModel
     {
+
+        public Guid Id { get; set; }
         public CarManufacturerViewModel Make { get; set; } = null!;
 
         public CarModelViewModel Model { get; set; } = null!;
-
-        public ColorViewModel Color { get; set; } = null!;
 
         public int Year { get; set; }
 

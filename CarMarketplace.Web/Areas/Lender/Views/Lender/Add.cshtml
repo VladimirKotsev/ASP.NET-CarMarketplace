@@ -1,5 +1,115 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model AddRentPostViewModel
 @{
+    ViewData["Title"] = "Add a car for renting";
+}
+
+<div class="mx-auto text-center mt-2">
+    <h1>@ViewData["Title"]</h1>
+</div>
+<div class="container mt-5">
+    <form enctype="multipart/form-data" asp-area="Lender" asp-action="Post" method="post">
+        <div class="row text-center mt-3">
+            <span class="fs-3">Choose a photo</span>
+            <div class="form-group mb-3 text-center">
+                <input class="form-control" asp-for="Image" type="file" required>
+                @if (Model.ImagesErrorMessage != null)
+                {
+                    <span class="text-danger fs-4">@Model.ImagesErrorMessage</span>
+                }
+            </div>
+        </div>
+        <div class="row col-lg-13">
+            <div class="mb-3 col-4">
+                <label asp-for="MakeId" class="form-label fs-4">Manufaturer</label>
+                <select asp-for="MakeId" class="form-select" required>
+                    <option value="" selected disabled>Select a make</option>
+                    @foreach (var item in Model.Makes!)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3 col-4">
+                <label class="form-label fs-4" asp-for="Model">Model</label>
+                <input type="text" class="form-control" asp-for="Model" placeholder="e.g., Astra, Corsa, Zafira" required>
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="Year" class="form-label fs-4">Year</label>
+                <input type="number" class="form-control" asp-for="Year" value="@((Model.Year != 0) ? Model.Year : null)" min="1886" max="2023" placeholder="e.g., 2017" required>
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="CategoryId" class="form-label fs-4">Category</label>
+                <select asp-for="CategoryId" class="form-select" required>
+                    <option value="" selected disabled>Select a category</option>
+                    @foreach (var item in Model.Categories!)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="EuroStandart" class="form-label fs-4">Euro</label>
+                <input type="number" asp-for="EuroStandart" class="form-control" value="@((Model.EuroStandart != 0) ? Model.EuroStandart : null)" placeholder="e.g., 2, 3" required>
+                <span asp-validation-for="EuroStandart" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="PricePerDay" class="form-label fs-4">Price per day</label>
+                <input type="number" asp-for="PricePerDay" class="form-control" value="@((Model.PricePerDay != 0) ? Model.PricePerDay : null)" placeholder="Your price will be in BGN" required>
+                <span asp-validation-for="PricePerDay" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row col-lg-13">
+            <h3 class="mt-2">Engine specs:</h3>
+            <div class="mb-3 col-4">
+                <label class="form-label fs-4" asp-for="EngineDisplacement">Displacement</label>
+                <input type="number" class="form-control" asp-for="EngineDisplacement" value="@((Model.EngineDisplacement != 0) ? Model.EngineDisplacement : null)" min="0" max="99999" placeholder="e.g., 1600, 2000, 2500" required>
+                <span asp-validation-for="EngineDisplacement" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-4">
+                <label asp-for="EngineFuelType" class="form-label fs-4">Fuel</label>
+                <select asp-for="EngineFuelType" class="form-select" required>
+                    <option value="" selected disabled>Select a fuel type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Electric">Electric</option>
+                </select>
+            </div>
+            <div class="mb-3 col-4">
+                <label class="form-label fs-4" asp-for="EngineHorsePower">Horsepower</label>
+                <input type="number" class="form-control" asp-for="EngineHorsePower" value="@((Model.EngineHorsePower != 0) ? Model.EngineHorsePower : null)" min=0 max="9999" placeholder="e.g., 120, 170" required>
+                <span asp-validation-for="EngineHorsePower" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row col-lg-13">
+            <div class="mb-3 col-6">
+                <label asp-for="Seats" class="form-label fs-4">Number of seats</label>
+                <input type="number" asp-for="Seats" class="form-control" placeholder="e.g., 2, 4" required>
+                <span asp-validation-for="Seats" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="BootCapacity" class="form-label fs-4">Boot capacity in liters</label>
+                <input type="number" asp-for="BootCapacity" class="form-control" placeholder="e.g., 45, 100" required>
+                <span asp-validation-for="BootCapacity" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TransmissionType" class="form-label fs-4">Transmission</label>
+            <select asp-for="TransmissionType" class="form-select" required>
+                <option value="" selected disabled>Select a transmission</option>
+                <option value="Manual">Manual</option>
+                <option value="Automatic">Automatic</option>
+            </select>
+        </div>
+
+        <div class="d-grid col-3 mx-auto mt-3 mb-2">
+            <input type="submit" class="btn btn-primary fs-4" value="Post" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

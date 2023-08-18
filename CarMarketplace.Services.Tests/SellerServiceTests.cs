@@ -19,7 +19,7 @@ namespace CarMarketplace.Services.Tests
 
         public SellerServiceTests()
         {
-                
+
         }
 
         [OneTimeSetUp]
@@ -76,7 +76,7 @@ namespace CarMarketplace.Services.Tests
         [Test]
         public async Task SellerExistbyPhoneNumberShouldReturnFalseWhenExisting()
         {
-            string nonExistingSellerPhoneNumber = "089457789";
+            string nonExistingSellerPhoneNumber = "0894577899";
 
             bool result = await this.SellerService.SellerExistbyPhoneNumberAsync(nonExistingSellerPhoneNumber);
 
@@ -154,6 +154,18 @@ namespace CarMarketplace.Services.Tests
                 Assert.That(secondPost.Car.Year, Is.EqualTo(2008));
                 Assert.That(secondPost.Car.Model.Id, Is.EqualTo(20));
             });
+
+        }
+
+        [Test]
+        public async Task GetSellerArchivePostsShouldReturnCorrectPosts()
+        {
+            Guid sellerId = Guid.Parse("e7868936-cd31-43e4-8aa7-8a74e6642edd");
+
+            var archivedPosts = await this.SellerService.GetSellerArchivePostsAsync(sellerId);
+
+            Assert.That(archivedPosts.Count, Is.EqualTo(1));
+            Assert.IsTrue(archivedPosts.Any(x => x.Car.Id == Guid.Parse("4a8698c4-dc3e-4585-93b1-a8a10cecfbe2")));
         }
     }
 }

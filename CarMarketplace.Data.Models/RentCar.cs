@@ -25,12 +25,6 @@
         [Required]
         public virtual CarModel Model { get; set; } = null!;
 
-        public int ColorId { get; set; }
-
-        [ForeignKey(nameof(ColorId))]
-        [Required]
-        public virtual Color Color { get; set; } = null!;
-
         public int Year { get; set; }
 
         public int BootCapacity { get; set; }

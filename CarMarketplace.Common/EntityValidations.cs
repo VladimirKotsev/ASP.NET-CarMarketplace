@@ -96,5 +96,14 @@
             public const double PricePerDayMaxValue = 999.99;
 
         }
+
+        public static class RentCar
+        {
+            public const int BootCapacityMinValue = 20;
+            public const int BootCapacityMaxValue = 600;
+
+            public const int SeatsMinValue = 2;
+            public const int SeatsMaxValue = 8;
+        }
     }
 }
