@@ -26,10 +26,12 @@
         {
             var post = await this.dbContext
                 .SalePosts
+                .AsNoTracking()
                 .FirstAsync(sp => sp.Id == postId);
 
             var user = await this.dbContext
                 .ApplicationUsers
+                .AsNoTracking()
                 .FirstAsync(u => u.Id == Guid.Parse(userId));
 
             var userLikedPost = new SalePostApplicationUser()
@@ -134,11 +136,9 @@
                 .ApplicationUsers
                 .FirstAsync(u => u.Id == Guid.Parse(userId));
 
-            var userLikedPost = new SalePostApplicationUser()
-            {
-                SalePost = post,
-                User = user,
-            };
+            var userLikedPost = await this.dbContext
+                .SalePostApplicationUsers
+                .FirstAsync(su => su.SalePost == post && su.User == user);
 
             user.Favorites.Remove(userLikedPost);
             post.SalePostUsers.Remove(userLikedPost);

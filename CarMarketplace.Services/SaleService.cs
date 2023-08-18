@@ -169,7 +169,7 @@
             ICollection<SalePostViewModel> lastPosts = await this.dbContext
                 .SalePosts
                 .Where(sp => sp.IsDeleted == false)
-                .OrderBy(sp => sp.CreatedOn)
+                .OrderByDescending(sp => sp.CreatedOn)
                 .Take(6)
                 .Select(sp => new SalePostViewModel()
                 {

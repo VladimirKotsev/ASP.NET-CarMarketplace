@@ -3,7 +3,9 @@
     using CloudinaryDotNet.Actions;
     using CloudinaryDotNet;
 
-    public class CloudinaryService
+    using CarMarketplace.Services.Data.Contracts;
+
+    public class CloudinaryService : ICloudinaryService
     {
         private readonly Cloudinary cloudinary;
 
