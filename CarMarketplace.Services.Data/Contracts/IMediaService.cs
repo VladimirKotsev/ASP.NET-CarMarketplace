@@ -4,6 +4,6 @@
 
     public interface IMediaService
     {
-        public Task<string> UploadPicture(IFormFile file, Guid name);
+        public Task<string> UploadPictureAsync(IFormFile file, Guid name);
     }
 }

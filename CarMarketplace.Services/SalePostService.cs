@@ -196,13 +196,13 @@
 
                 foreach (var image in viewModel.Images)
                 {
-                    var imageUrl = await this.mediaService.UploadPicture(image, Guid.NewGuid());
+                    var imageUrl = await this.mediaService.UploadPictureAsync(image, Guid.NewGuid());
                     var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
                     imagePublicIds.Add(imageId);
                 }
             }
 
-            var thumbnailImageUrl = await this.mediaService.UploadPicture(viewModel.ThumbnailImage, Guid.NewGuid());
+            var thumbnailImageUrl = await this.mediaService.UploadPictureAsync(viewModel.ThumbnailImage, Guid.NewGuid());
             var thumbnailImageId = thumbnailImageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
 
             var salePost = new SalePost()
@@ -328,13 +328,13 @@
             {
                 foreach (var image in viewModel.Images)
                 {
-                    var imageUrl = await this.mediaService.UploadPicture(image, Guid.NewGuid());
+                    var imageUrl = await this.mediaService.UploadPictureAsync(image, Guid.NewGuid());
                     var imageId = imageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
                     imagePublicIds.Add(imageId);
                 }
             }
 
-            var thumbnailImageUrl = await this.mediaService.UploadPicture(viewModel.ThumbnailImage, Guid.NewGuid());
+            var thumbnailImageUrl = await this.mediaService.UploadPictureAsync(viewModel.ThumbnailImage, Guid.NewGuid());
             var thumbnailImageId = thumbnailImageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
 
             postToEdit.ThumbnailImagePublicId = thumbnailImageId;

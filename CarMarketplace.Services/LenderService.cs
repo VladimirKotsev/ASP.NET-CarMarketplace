@@ -104,7 +104,8 @@
                 CompanyName = model.CompanyName,
                 PhoneNumber = model.PhoneNumber,
                 City = city,
-                CityId = city.Id
+                CityId = city.Id,
+                Address = model.Address
             };
 
             await this.dbContext

@@ -164,25 +164,7 @@
                 })
                 .ToArrayAsync();
 
-            //var archivedPosts = await this.dbContext
-            //   .SalePosts
-            //   .Where(x => x.SellerId == sellerId && x.IsDeleted == true)
-            //   .OrderBy(sp => sp.CreatedOn)
-            //   .Select(x => new
-            //   {
-            //       Car = x.Car,
-            //       Seller = x.Seller,
-            //       CreatedOn = x.CreatedOn,
-            //       IsDeleted = x.IsDeleted,
-            //       ThumbnailImage = x.ThumbnailImagePublicId,
-            //       ImageUrls = x.ImagePublicIds,
-            //       Price = x.Price,
-            //       Id = x.Id
-            //   })
-            //   .ToArrayAsync();
-
             return archivedPosts;
-            //return null;
         }
 
         public async Task ActiveSellerPostAsync(Guid postId)

@@ -17,5 +17,9 @@
         [Required]
         [StringLength(CityMaxLength, MinimumLength = CityMinLength)]
         public string City { get; set; } = null!;
+
+        [Required]
+        [StringLength(AddressMaxLength, MinimumLength = AddressMaxLength)]
+        public string Address { get; set; } = null!;
     }
 }

@@ -108,7 +108,7 @@
                 .Lenders
                 .FirstAsync(x => x.Id == lenderId);
 
-            var thumbnailImageUrl = await this.mediaService.UploadPicture(viewModel.Image, Guid.NewGuid());
+            var thumbnailImageUrl = await this.mediaService.UploadPictureAsync(viewModel.Image, Guid.NewGuid());
             var publicImageId = thumbnailImageUrl.Split("upload/", StringSplitOptions.RemoveEmptyEntries)[1];
 
             var rentPost = new RentPost()

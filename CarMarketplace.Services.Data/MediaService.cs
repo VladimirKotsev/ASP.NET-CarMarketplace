@@ -8,14 +8,14 @@
 
     public class MediaService : IMediaService
     {
-        private readonly Cloudinary cloudinary;
+        private readonly ICloudinaryService cloudinary;
 
-        public MediaService(Cloudinary cloudinary)
+        public MediaService(ICloudinaryService cloudinary)
         {
             this.cloudinary = cloudinary;
         }
 
-        public async Task<string> UploadPicture(IFormFile file, Guid name)
+        public async Task<string> UploadPictureAsync(IFormFile file, Guid name)
         {
             byte[] destinationImage;
 
