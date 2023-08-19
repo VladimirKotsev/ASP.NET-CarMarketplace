@@ -90,6 +90,7 @@
                     IsDeleted = sp.IsDeleted,
                     ThumbnailImage = sp.ThumbnailImagePublicId,
                     ImageUrls = sp.ImagePublicIds,
+                    Likes = sp.SalePostUsers.Count,
                     Price = sp.Price,
                     Id = sp.Id
                 })

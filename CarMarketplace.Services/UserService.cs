@@ -29,12 +29,10 @@
         {
             var post = await this.dbContext
                 .SalePosts
-                .AsNoTracking()
                 .FirstAsync(sp => sp.Id == postId);
 
             var user = await this.dbContext
                 .ApplicationUsers
-                .AsNoTracking()
                 .FirstAsync(u => u.Id == Guid.Parse(userId));
 
             var userLikedPost = new SalePostApplicationUser()
