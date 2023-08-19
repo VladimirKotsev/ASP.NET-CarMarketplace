@@ -42,5 +42,19 @@
         {
             await this.userService.RemoveUserFavouritePostAsync(Guid.Parse(data.PostId), this.UserId);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Rented()
+        {
+            return View(await this.userService.GetUserRentedVehicle(this.UserId));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ReturnVehicle(Guid postId)
+        {
+            await this.userService.ReturnRentedCar(postId, this.UserId);
+
+            return Redirect("/Rent/Catalog");
+        }
     }
 }

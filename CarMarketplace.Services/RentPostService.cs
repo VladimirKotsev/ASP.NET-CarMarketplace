@@ -118,7 +118,7 @@
                 CarId = car.Id,
                 ImagePublicId = publicImageId,
                 CreatedOn = DateTime.Now,
-                PricePerDay = viewModel.PricePerDay
+                PricePerDay = (decimal)viewModel.PricePerDay
             };
 
             await this.dbContext.RentCars.AddAsync(car);

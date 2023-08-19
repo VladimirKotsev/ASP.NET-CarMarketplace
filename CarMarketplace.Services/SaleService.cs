@@ -107,6 +107,7 @@
             ICollection<SalePostViewModel> posts = await this.dbContext
                 .SalePosts
                 .Where(sp => sp.IsDeleted == false)
+                .OrderBy(sp => sp.Car.Manufacturer.Name)
                 .Select(sp => new SalePostViewModel()
                 {
                     Car = new SaleCarViewModel()
@@ -232,6 +233,7 @@
                 posts = await this.dbContext
                     .SalePosts
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
+                    .OrderBy(sp => sp.Car.Manufacturer.Name)
                     .Select(sp => new SalePostViewModel()
                     {
                         Car = new SaleCarViewModel()
@@ -283,6 +285,7 @@
                 posts = await this.dbContext
                     .SalePosts
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
+                    .OrderBy(sp => sp.Car.Manufacturer.Name)
                     .Select(sp => new SalePostViewModel()
                     {
                         Car = new SaleCarViewModel()
@@ -337,6 +340,7 @@
                 posts = await this.dbContext
                     .SalePosts
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
+                    .OrderBy(sp => sp.Car.Manufacturer.Name)
                     .Select(sp => new SalePostViewModel()
                     {
                         Car = new SaleCarViewModel()

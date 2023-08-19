@@ -1,6 +1,7 @@
 ﻿namespace CarMarketplace.Services.Contracts
 {
     using CarMarketplace.Web.ViewModels.Common;
+    using CarMarketplace.Web.ViewModels.RentPosts;
     using CarMarketplace.Web.ViewModels.User;
 
     public interface IUserService
@@ -9,5 +10,9 @@
         public Task AddToUserFavouritesAsync(Guid postId, string userId);
         public Task<ICollection<Guid>> GetUserFavouritePostIdsAsync(string userId);
         public Task RemoveUserFavouritePostAsync(Guid postId, string userId);
+
+        public Task<bool> UserHasRentedVehicle(string userId);
+        public Task<RentedViewModel> GetUserRentedVehicle(string userId);
+        public Task ReturnRentedCar(Guid postId, string userId);
     }
 }

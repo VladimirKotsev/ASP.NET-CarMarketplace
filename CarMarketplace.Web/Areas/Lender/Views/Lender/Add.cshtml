@@ -86,12 +86,12 @@
         <div class="row col-lg-13">
             <div class="mb-3 col-6">
                 <label asp-for="Seats" class="form-label fs-4">Number of seats</label>
-                <input type="number" asp-for="Seats" class="form-control" placeholder="e.g., 2, 4" required>
+                <input type="number" asp-for="Seats" class="form-control" placeholder="e.g., 2, 4" value="@((Model.Seats != 0) ? Model.Seats : null)" required>
                 <span asp-validation-for="Seats" class="text-danger"></span>
             </div>
             <div class="mb-3 col-6">
                 <label asp-for="BootCapacity" class="form-label fs-4">Boot capacity in liters</label>
-                <input type="number" asp-for="BootCapacity" class="form-control" placeholder="e.g., 45, 100" required>
+                <input type="number" asp-for="BootCapacity" class="form-control" placeholder="e.g., 45, 100" value="@((Model.BootCapacity != 0) ? Model.BootCapacity : null)" required>
                 <span asp-validation-for="BootCapacity" class="text-danger"></span>
             </div>
         </div>

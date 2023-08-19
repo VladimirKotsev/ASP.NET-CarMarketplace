@@ -19,7 +19,7 @@
         public string City { get; set; } = null!;
 
         [Required]
-        [StringLength(AddressMaxLength, MinimumLength = AddressMaxLength)]
+        [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
     }
 }

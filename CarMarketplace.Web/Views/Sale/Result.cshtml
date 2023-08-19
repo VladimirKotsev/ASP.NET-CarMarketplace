@@ -28,16 +28,16 @@
     @foreach (var post in Model.SalePosts)
     {
         imageSrc = ViewData["CloudDomain"] + @post.ThumbnailImage;
-        <div class="border rounded shadow bg-white p-3 mb-4 mt-4">
+        <div class="border rounded-4 shadow bg-white p-3 mb-4 mt-4">
             <div class="row">
                 <div class="col-5">
                     <a asp-controller="SalePost" asp-action="Details" asp-route-id="@post.Id">
-                        <img src="@imageSrc" class="card-img-result" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
+                        <img src="@imageSrc" class="card-img-result rounded-3" alt="@post.Car.Make.Name @post.Car.Model.ModelName">
                     </a>
                 </div>
                 <div class="col">
                     <div class="row justify-content-between">
-                        <h2 class="card-title float-start col-6"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h2>
+                        <h2 class="card-title float-start col-10"><strong>@post.Car.Make.Name @post.Car.Model.ModelName</strong></h2>
                         @if (isLogged)
                         {
                             <div class="col-2">
@@ -57,17 +57,17 @@
                         }
                     </div>
                     <hr>
-                    <div class="mt-4">
-                        <span class="fs-3"><span class="fst-italic">@post.Price</span> <strong>BGN</strong></span>
+                    <div class="">
+                        <span class="fs-2"><span class="fst-italic">@post.Price</span> <strong>BGN</strong></span>
                         <br>
                         @{
                             var displacement = (post.Car.Engine.Displacement / 100).ToString().Insert(1, ".") + "l";
                         }
-                        <span class="card-text fs-3 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
+                        <span class="card-text fs-2 fst-italic">@displacement @post.Car.Engine.FuelType @post.Car.Engine.Horsepower<span>hp</span></span>
                         <br>
-                        <span class="fs-3 fst-italic">@post.Car.TransmissionType</span>
+                        <span class="fs-2 fst-italic">@post.Car.TransmissionType</span>
                         <br>
-                        <span class="fs-3 fst-italic">@post.Seller.City.Province.ProvinceName, @post.Seller.City.CityName</span>
+                        <span class="fs-2 fst-italic">@post.Seller.City.Province.ProvinceName, @post.Seller.City.CityName</span>
                         <br>
                         <div class="mt-4 text-end fst-italic">
                             <span class="fs-3">@post.CreatedOn.ToString("HH:mm:ss dd/MM/yyyy")</span>

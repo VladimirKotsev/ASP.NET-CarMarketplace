@@ -6,21 +6,26 @@
 
 <h3 class="mt-5 mb-2">We need your personal information in order to become a @ViewData["Title"]!</h3>
 
-<form asp-action="BecomeSeller" method="post">
+<form asp-action="BecomeLender" method="post">
     <div class="mb-3 mt-3">
-        <label asp-for="CompanyName" class="form-label fs-4"></label>
+        <label asp-for="CompanyName" class="form-label fs-4">Company Name</label>
         <input asp-for="CompanyName" class="form-control" required>
         <span asp-validation-for="CompanyName" class="text-danger fs-4"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="PhoneNumber" class="form-label fs-4"></label>
+        <label asp-for="PhoneNumber" class="form-label fs-4"> Phone Number</label>
         <input asp-for="PhoneNumber" class="form-control" required>
         <span asp-validation-for="PhoneNumber" class="text-danger fs-4"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="City" class="form-label fs-4"></label>
+        <label asp-for="City" class="form-label fs-4">City</label>
         <input asp-for="City" class="form-control" required>
         <span asp-validation-for="City" class="text-danger fs-4"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label fs-4">Address</label>
+        <input asp-for="Address" class="form-control" required>
+        <span asp-validation-for="Address" class="text-danger fs-4"></span>
     </div>
     <div class="d-grid col-2 mx-auto float-start mt-2">
         <input type="submit" class="btn btn-primary mt-2 fs-4">

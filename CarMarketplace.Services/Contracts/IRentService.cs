@@ -8,6 +8,6 @@
         public Task<ICollection<RentPostViewModel>> GetRentPostViewModelAsync();
 
         public Task<RentingViewModel> GetRentingPostViewModel(Guid id, string userId);
-        public Task RentVehicleAsync(string userId, Guid postId);
+        public Task RentVehicleAsync(string userId, RentingViewModel model);
     }
 }

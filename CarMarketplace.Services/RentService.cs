@@ -70,7 +70,7 @@
             return model;
         }
 
-        public async Task RentVehicleAsync(string userId, Guid postId)
+        public async Task RentVehicleAsync(string userId, RentingViewModel model)
         {
             var user = await this.dbContext
                 .ApplicationUsers
@@ -78,14 +78,19 @@
 
             var post = await this.dbContext
                 .RentPosts
-                .FirstAsync(x => x.Id == postId);
+                .FirstAsync(x => x.Id == model.PostId);
 
             var rented = new Rented()
             {
                 ClientId = Guid.Parse(userId),
                 Client = user,
-                PostId = postId,
-                RentPost = post
+                PostId = post.Id,
+                RentPost = post,
+                PickUpDate = model.PickUpDate,
+                ReturnDate = model.ReturnDate,
+                Email = model.Email,
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber
             };
 
             post.IsRented = true;

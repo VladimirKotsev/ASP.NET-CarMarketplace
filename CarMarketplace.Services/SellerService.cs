@@ -63,7 +63,7 @@
             ICollection<SalePostViewModel> sellerPosts = await this.dbContext
                 .SalePosts
                 .Where(x => x.SellerId == sellerId)
-                .OrderBy(sp => sp.CreatedOn)
+                .OrderByDescending(sp => sp.CreatedOn)
                 .Select(sp => new SalePostViewModel()
                 {
                     Car = new SaleCarViewModel()

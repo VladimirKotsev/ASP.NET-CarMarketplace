@@ -1,10 +1,12 @@
 ﻿@inject ISellerService SellerService
+@inject IUserService UserService
 @inject SignInManager<ApplicationUser> SignInManager
 @inject ILenderService LenderService
 @{
     bool isSeller = await SellerService.SellerExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
     bool isLogged = SignInManager.IsSignedIn(User);
     bool isLender = await LenderService.LenderExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
+    bool hasRented = await UserService.UserHasRentedVehicle(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
 }
 
 <!DOCTYPE html>
@@ -64,8 +66,14 @@
                             </li>
                         }
                         <li class="nav-item">
-                            <a class ="nav-link text-warning" asp-area="" asp-controller="Rent" asp-action="Catalog">Rental cars</a>
+                            <a class="nav-link text-warning" asp-area="" asp-controller="Rent" asp-action="Catalog">Rental cars</a>
                         </li>
+                        @if (hasRented)
+                        {
+                            <li class="nav-item ms-1 me-1">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Rented">My Rented</a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

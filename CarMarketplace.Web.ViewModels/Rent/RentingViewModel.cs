@@ -7,6 +7,7 @@
     using static CarMarketplace.Common.EntityValidations.Renter;
     public class RentingViewModel
     {
+        public Guid PostId { get; set; }
         public RentPostViewModel? Post { get; set; }
 
         [Required]

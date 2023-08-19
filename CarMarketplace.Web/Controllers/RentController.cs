@@ -32,12 +32,15 @@
         [HttpPost]
         public async Task<IActionResult> RentVehicle(RentingViewModel viewModel, Guid postId)
         {
+            viewModel.PostId = postId;
+            viewModel.Email = User.Identity!.Name!;
+
             if (!ModelState.IsValid)
             {
                 return View(postId);
             }
 
-            await rentService.RentVehicleAsync(User.FindFirstValue(ClaimTypes.NameIdentifier), postId);
+            await rentService.RentVehicleAsync(User.FindFirstValue(ClaimTypes.NameIdentifier), viewModel);
 
             return RedirectToAction("Catalog");
         }

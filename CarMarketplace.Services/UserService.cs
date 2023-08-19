@@ -12,6 +12,9 @@
     using Web.ViewModels.Common;
     using CarMarketplace.Web.ViewModels.User;
     using CarMarketplace.Web.ViewModels.Seller;
+    using CarMarketplace.Web.ViewModels.RentPosts;
+    using CarMarketplace.Web.ViewModels.Lender;
+    using AutoMapper;
 
     public class UserService : IUserService
     {
@@ -143,6 +146,87 @@
             user.Favorites.Remove(userLikedPost);
             post.SalePostUsers.Remove(userLikedPost);
             this.dbContext.SalePostApplicationUsers.Remove(userLikedPost);
+
+            await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> UserHasRentedVehicle(string userId)
+        {
+            if (userId != null)
+            {
+                var result = await this.dbContext
+                    .Rents
+                    .AnyAsync(x => x.ClientId == Guid.Parse(userId));
+
+                return result;
+            }
+
+            return false;
+        }
+
+        public async Task<RentedViewModel> GetUserRentedVehicle(string userId)
+        {
+            var model = await this.dbContext
+                .Rents
+                .Where(x => x.ClientId == Guid.Parse(userId))
+                .Select(r => new RentedViewModel()
+                {
+                    Car = new RentCarViewModel() 
+                    {
+                        Id = r.RentPost.CarId,
+                        Make = AutoMapperConfig.MapperInstance.Map<CarManufacturerViewModel>(r.RentPost.Car.Manufacturer),
+                        Model = AutoMapperConfig.MapperInstance.Map<CarModelViewModel>(r.RentPost.Car.Model),
+                        Category = AutoMapperConfig.MapperInstance.Map<CategoryViewModel>(r.RentPost.Car.Category),
+                        BootCapacity = r.RentPost.Car.BootCapacity,
+                        Seats = r.RentPost.Car.Seats,
+                        EuroStandart = r.RentPost.Car.EuroStandart,
+                        TransmissionType = r.RentPost.Car.TransmissionType,
+                        Year = r.RentPost.Car.Year,
+                        Engine = AutoMapperConfig.MapperInstance.Map<EngineViewModel>(r.RentPost.Car.Engine)
+                    },
+                    Lender = new LenderViewModel()
+                    {
+                        Id = r.RentPost.LenderId,
+                        PhoneNumber = r.RentPost.Lender.PhoneNumber,
+                        CompanyName = r.RentPost.Lender.CompanyName,
+                        City = new CityViewModel()
+                        {
+                            Province = AutoMapperConfig.MapperInstance.Map<ProvinceViewModel>(r.RentPost.Lender.City.Province),
+                            CityName = r.RentPost.Lender.City.CityName,
+                            CityId = r.RentPost.Lender.CityId
+                        },
+                        Address = r.RentPost.Lender.Address
+                    },
+                    ImagePublicId = r.RentPost.ImagePublicId,
+                    PricePerDay = r.RentPost.PricePerDay,
+                    Id = r.RentPost.Id,
+                    FullName = r.FullName,
+                    Email = r.Email,
+                    PhoneNumber = r.PhoneNumber,
+                    PickUpDate = r.PickUpDate,
+                    ReturnDate = r.ReturnDate
+                })
+                .FirstAsync();
+
+            return model;
+        }
+
+        public async Task ReturnRentedCar(Guid postId, string userId)
+        {
+            var post = await this.dbContext
+                .RentPosts
+                .FirstAsync(x => x.Id == postId);
+
+            var user = await this.dbContext
+                .ApplicationUsers
+                .FirstAsync(x => x.Id == Guid.Parse(userId));
+
+            var rented = await this.dbContext
+                .Rents
+                .FirstAsync(r => r.PostId == postId && r.ClientId == Guid.Parse(userId));
+
+            this.dbContext.Rents.Remove(rented);
+            post.IsRented = false;
 
             await this.dbContext.SaveChangesAsync();
         }

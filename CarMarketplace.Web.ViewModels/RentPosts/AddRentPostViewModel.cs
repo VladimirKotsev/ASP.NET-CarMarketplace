@@ -55,10 +55,10 @@
         [Required]
         public int CategoryId { get; set; }
 
-        [DisplayName("price per day")]
         [Required]
+        [DisplayName("price per day")]
         [Range(PricePerDayMinValue, PricePerDayMaxValue, ErrorMessage = ErrorMessage)]
-        public int PricePerDay { get; set; }
+        public double PricePerDay { get; set; }
 
         [DisplayName("boot capacity")]
         [Required]
