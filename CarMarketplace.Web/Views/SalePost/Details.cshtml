@@ -45,7 +45,7 @@
                     imagePublicId = Model.ImageUrls.Split(", ", StringSplitOptions.RemoveEmptyEntries)[i];
                     image = ViewData["CloudDomain"] + imagePublicId;
                     <div class="col-2">
-                        <img src="@image" class="rounded img-nav" onclick="loadCarouselItem(@i)" alt="@Model.Car.Make.Name @Model.Car.Model.ModelName">
+                        <img src="@image" class="rounded img-nav" onclick="loadCarouselItem(@i + 1)" alt="@Model.Car.Make.Name @Model.Car.Model.ModelName">
                     </div>
                 }
             </div>

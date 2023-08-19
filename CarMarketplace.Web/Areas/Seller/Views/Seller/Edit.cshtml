@@ -95,8 +95,14 @@
                 <span asp-validation-for="EngineDisplacement" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">
-                <label class="form-label fs-4" asp-for="EngineFuelType">Fuel</label>
-                <input type="text" class="form-control" asp-for="EngineFuelType" placeholder="e.g., Petrol, Diesel, Hybrid" required>
+                <label asp-for="EngineFuelType" class="form-label fs-4">Fuel</label>
+                <select asp-for="EngineFuelType" class="form-select" required>
+                    <option value="" selected disabled>Select a fuel type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Electric">Electric</option>
+                </select>
                 <span asp-validation-for="EngineFuelType" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">
@@ -113,7 +119,11 @@
             </div>
             <div class="mb-3 col-4">
                 <label asp-for="TransmissionType" class="form-label fs-4">Transmission</label>
-                <input type="text" asp-for="TransmissionType" class="form-control" placeholder="e.g., Manual, Automatic">
+                <select asp-for="TransmissionType" class="form-select" required>
+                    <option value="" selected disabled>Select a transmission</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
                 <span asp-validation-for="TransmissionType" class="text-danger"></span>
             </div>
             <div class="mb-3 col-4">

@@ -262,9 +262,9 @@
             return lastPosts;
         }
 
-        public async Task<ICollection<SalePostViewModel>> GetSalePostsByNationAsync(string group)
+        public async Task<CatalogViewModel> GetSalePostsByNationAsync(string group, int pageNum)
         {
-            ICollection<SalePostViewModel> posts = new HashSet<SalePostViewModel>();
+            ICollection<SalePostViewModel> actualPosts = new HashSet<SalePostViewModel>();
 
             if (group == "german")
             {
@@ -280,7 +280,7 @@
                     "Smart"
                 };
 
-                posts = await this.dbContext
+                actualPosts = await this.dbContext
                     .SalePosts
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
                     .OrderBy(sp => sp.Car.Manufacturer.Name)
@@ -332,7 +332,7 @@
                     "Lancia"
                 };
 
-                posts = await this.dbContext
+                actualPosts = await this.dbContext
                     .SalePosts
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
                     .OrderBy(sp => sp.Car.Manufacturer.Name)
@@ -387,7 +387,7 @@
                     "Subaru"
                 };
 
-                posts = await this.dbContext
+                actualPosts = await this.dbContext
                     .SalePosts
                     .Where(sp => brands.Contains(sp.Car.Manufacturer.Name) && sp.IsDeleted == false)
                     .OrderBy(sp => sp.Car.Manufacturer.Name)
@@ -429,7 +429,21 @@
                     .ToArrayAsync();
             }
 
-            return posts;
+            int postsCount = actualPosts.Count;
+
+            var posts = actualPosts
+                 .Skip(pageNum * 3)
+                 .Take(3)
+                 .ToArray();
+
+            var catalogModel = new CatalogViewModel()
+            {
+                CurrentPage = pageNum + 1,
+                PageCount = (int)Math.Ceiling((decimal)postsCount / 3),
+                SalePosts = posts
+            };
+
+            return catalogModel;
         }
 
         public async Task<SearchViewModel> GetSearchViewModelAsync(SearchViewModel model)

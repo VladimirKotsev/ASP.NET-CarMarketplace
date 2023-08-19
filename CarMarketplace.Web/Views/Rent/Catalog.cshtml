@@ -67,16 +67,19 @@
     }
 </div>
 
-<nav aria-label="...">
-    <ul class="pagination justify-content-center">
-        @for (var i = 1; i <= Model.PageCount; i++)
-        {
-            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                <a class="page-link" href="javascript:void(0);" onclick="loadPage(@i-1,event)">@i</a>
-            </li>
-        }
-    </ul>
-</nav>
+@if (Model.PageCount != 1)
+{
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @for (var i = 1; i <= Model.PageCount; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="javascript:void(0);" onclick="loadPage(@i-1,event)">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
 
 <script>
     function loadPage(pageNum, event) {

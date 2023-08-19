@@ -12,6 +12,6 @@
 
         public Task<CatalogViewModel> GetFilteredSalePostsAsync(SearchViewModel model, int pageNum);
 
-        public Task<ICollection<SalePostViewModel>> GetSalePostsByNationAsync(string group);
+        public Task<CatalogViewModel> GetSalePostsByNationAsync(string group, int pageNum);
     }
 }

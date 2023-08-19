@@ -51,6 +51,7 @@
         public async Task<IActionResult> Result(int pageNum)
         {
             var searchViewModel = JsonConvert.DeserializeObject<SearchViewModel>(HttpContext.Session.GetString("search"));
+            HttpContext.Session.SetString("action", "catalog");
 
             return View(await catalogService.GetFilteredSalePostsAsync(searchViewModel, pageNum));
         }
@@ -58,9 +59,10 @@
         [HttpGet]
         [AllowAnonymous]
         [ActionName("Results")]
-        public async Task<IActionResult> ResultGroups(string group)
+        public async Task<IActionResult> ResultGroups(string group, int pageNum)
         {
-            return this.View("Result", await this.catalogService.GetSalePostsByNationAsync(group));
+            HttpContext.Session.SetString("action", "groups");
+            return this.View("Result", await this.catalogService.GetSalePostsByNationAsync(group, pageNum));
         }
     }
 }

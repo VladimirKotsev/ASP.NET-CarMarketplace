@@ -49,7 +49,6 @@
 
         [DisplayName("fuel type")]
         [Required]
-        [StringLength(FuelTypeMaxLength, MinimumLength = FuelTypeMinLength)]
         public string EngineFuelType { get; set; } = null!;
 
         [DisplayName("horsepower")]
@@ -63,7 +62,6 @@
 
         [DisplayName("transmission")]
         [Required]
-        [StringLength(TransmissionTypeMaxLength, MinimumLength = TransmissionTypeMinLength, ErrorMessage = ErrorMessage)]
         public string TransmissionType { get; set; } = null!;
 
         [DisplayName("euro standart")]
