@@ -26,10 +26,10 @@ At the **Car Marketplace**, we've embarked on a journey to transform the way you
 * AJAX real-time Requests
 
 ## :wrench: DB Diagram
-![](https://res.cloudinary.com/carmarketplace/image/upload/v1691784550/image_2023-08-11_230907744_nfvjjg.png)
+![](https://res.cloudinary.com/carmarketplace/image/upload/v1692467413/image_2023-08-19_205011563_ov9j4o.png)
 
 ## :chart: Unit tests code coverage
-![](https://res.cloudinary.com/carmarketplace/image/upload/v1691784702/image_2023-08-11_231141488_uzktvb.png)
+![](https://res.cloudinary.com/carmarketplace/image/upload/v1692466917/image_2023-08-19_204155090_vwq3hc.png)
 
 ## :muscle: Template authors
 
