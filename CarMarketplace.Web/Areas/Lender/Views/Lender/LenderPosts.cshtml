@@ -1,4 +1,4 @@
-﻿@model ICollection<RentPostViewModel>
+﻿@model CatalogRentViewModel
 
 @{
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
@@ -18,10 +18,10 @@
         </div>
     </div>
 
-    @for (int i = 0; i < Model.Count; i += 3)
+    @for (int i = 0; i < Model.RentPosts.Count(); i += 3)
     {
         <div class="row">
-            @foreach (var post in Model.Skip(i).Take(3))
+            @foreach (var post in Model.RentPosts)
             {
                 imageSrc = ViewData["CloudDomain"] + post.ImagePublicId;
 
@@ -62,6 +62,17 @@
         </div>
     }
 </div>
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        @for (var i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" href="javascript:void(0);" onclick="loadPage(@i-1,event)">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
 <div class="modal fade" id="confirmModalDelete" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-dialog-box">
@@ -107,6 +118,22 @@
 
     function cancelDelete() {
         $('#confirmModalDelete').modal('hide');
+    }
+
+    function loadPage(pageNum, event) {
+        event.preventDefault();
+        $.ajax({
+            url: '@Url.Action("UserPosts", "Lender")',
+            type: 'GET',
+            data: { pageNum: pageNum },
+            success: function (result) {
+                $('body').html(result);
+                window.scrolTo(0, 0);
+            },
+            error: function () {
+                alert('Error loading page.');
+            }
+        });
     }
 </script>
 

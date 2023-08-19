@@ -77,7 +77,7 @@
             </div>
         </div>
     }
-    <nav aria-label="...">
+    <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             @for (var i = 1; i <= Model.PageCount; i++)
             {
@@ -121,16 +121,13 @@
 
         event.preventDefault();
 
-        const data = {
-            pageNum: pageNum,
-        }
-
         $.ajax({
             url: '@Url.Action("Result", "Sale")',
             type: 'GET',
-            data: { data },
+            data: { pageNum: pageNum },
             success: function (result) {
                 $('body').html(result);
+                window.scrollTo(0, 0);
             },
             error: function () {
                 alert('Error loading page.');

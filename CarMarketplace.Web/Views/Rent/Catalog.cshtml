@@ -1,5 +1,4 @@
-﻿@model ICollection<RentPostViewModel>
-
+﻿@model CatalogRentViewModel
 @{
     ViewData["Title"] = "Rental Cars";
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
@@ -10,13 +9,13 @@
     <div class="d-grid gap-2 col-6 mx-auto text-center mt-5">
         <h1>@ViewData["Title"]</h1>
     </div>
-    @if (Model.Count == 0)
+    @if (Model.RentPosts.Count() == 0)
     {
         <div class="text-center mt-4">
             <img src="/img/Sad_car.png">
         </div>
     }
-    @foreach (var post in Model)
+    @foreach (var post in Model.RentPosts)
     {
         imageSrc = ViewData["CloudDomain"] + @post.ImagePublicId;
         <div class="border rounded-5 shadow-lg bg-primary p-4 mb-4 mt-4">
@@ -67,3 +66,33 @@
         </div>
     }
 </div>
+
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        @for (var i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" href="javascript:void(0);" onclick="loadPage(@i-1,event)">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<script>
+    function loadPage(pageNum, event) {
+        event.preventDefault();
+        $.ajax({
+            url: '@Url.Action("Catalog", "Rent")',
+            type: 'GET',
+            data: { pageNum: pageNum },
+            success: function (result) {
+
+                $('body').html(result);
+                window.scrollTo(0, 0);
+            },
+            error: function () {
+                alert('Error loading page.');
+            }
+        });
+    }
+</script>

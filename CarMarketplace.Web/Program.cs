@@ -51,6 +51,7 @@ string apiSecret = builder.Configuration.GetValue<string>("Cloudinary:ApiSecret"
 
 Account cloudinaryCredentials = new Account(clouldName, apiKey, apiSecret);
 Cloudinary cloudinary = new Cloudinary(cloudinaryCredentials);
+builder.Services.AddSession();
 
 builder.Services.AddSingleton(cloudinary);
 
@@ -77,6 +78,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSession();
 
 app.UseEndpoints(config =>
 {

@@ -6,6 +6,7 @@
     using CarMarketplace.Services.Mapping;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Web.ViewModels.Lender;
+    using CarMarketplace.Web.ViewModels.Page;
     using CarMarketplace.Web.ViewModels.RentPosts;
     using Microsoft.EntityFrameworkCore;
     using System.Threading.Tasks;
@@ -29,9 +30,9 @@
             return lender.Id;
         }
 
-        public async Task<ICollection<RentPostViewModel>> GetLenderPostsAsync(Guid lenderId)
+        public async Task<CatalogRentViewModel> GetLenderPostsAsync(Guid lenderId, int pageNum)
         {
-            var posts = await this.dbContext
+            var rentPosts = await this.dbContext
                 .RentPosts
                 .Where(rp => rp.LenderId == lenderId)
                 .Select(rp => new RentPostViewModel()
@@ -70,7 +71,22 @@
                 })
                 .ToArrayAsync();
 
-            return posts;
+            int postsCount = rentPosts.Count();
+
+            var posts = rentPosts
+                 .Skip(pageNum * 3)
+                 .Take(3)
+                 .ToArray();
+
+
+            var catalogModel = new CatalogRentViewModel()
+            {
+                CurrentPage = pageNum + 1,
+                PageCount = (int)Math.Ceiling((decimal)postsCount / 3),
+                RentPosts = posts
+            };
+
+            return catalogModel;
         }
 
         public async Task<bool> LenderExistbyPhoneNumberAsync(string phoneNumber)
@@ -95,7 +111,7 @@
         {
             var city = await this.dbContext
                 .Cities
-                .FirstOrDefaultAsync(c => c.CityName == model.City) ?? 
+                .FirstOrDefaultAsync(c => c.CityName == model.City) ??
                 throw new ArgumentException("The provided city name does not exist");
 
             var lender = new Lender()

@@ -148,21 +148,16 @@
             await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task<bool> UserHasRentedVehicle(string userId)
+        public async Task<bool> UserHasRentedVehicleAsync(string userId)
         {
-            if (userId != null)
-            {
-                var result = await this.dbContext
-                    .Rents
-                    .AnyAsync(x => x.ClientId == Guid.Parse(userId));
+            bool result = await dbContext
+                .Rents
+                .AnyAsync(s => s.ClientId.ToString() == userId);
 
-                return result;
-            }
-
-            return false;
+            return result;
         }
 
-        public async Task<RentedViewModel> GetUserRentedVehicle(string userId)
+        public async Task<RentedViewModel> GetUserRentedVehicleAsync(string userId)
         {
             var model = await this.dbContext
                 .Rents
@@ -209,7 +204,7 @@
             return model;
         }
 
-        public async Task ReturnRentedCar(Guid postId, string userId)
+        public async Task ReturnRentedCarAsync(Guid postId, string userId)
         {
             var post = await this.dbContext
                 .RentPosts

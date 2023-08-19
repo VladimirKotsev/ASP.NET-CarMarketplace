@@ -11,8 +11,8 @@
         public Task<ICollection<Guid>> GetUserFavouritePostIdsAsync(string userId);
         public Task RemoveUserFavouritePostAsync(Guid postId, string userId);
 
-        public Task<bool> UserHasRentedVehicle(string userId);
-        public Task<RentedViewModel> GetUserRentedVehicle(string userId);
-        public Task ReturnRentedCar(Guid postId, string userId);
+        public Task<bool> UserHasRentedVehicleAsync(string userId);
+        public Task<RentedViewModel> GetUserRentedVehicleAsync(string userId);
+        public Task ReturnRentedCarAsync(Guid postId, string userId);
     }
 }

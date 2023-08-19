@@ -1,19 +1,19 @@
 ﻿namespace CarMarketplace.Services.Tests
 {
-    using CarMarketplace.Data;
     using CarMarketplace.Data.Models;
+    using CarMarketplace.Data;
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Services.Mapping;
     using CarMarketplace.Web.ViewModels.Common;
-    using CarMarketplace.Web.ViewModels.Lender;
     using Microsoft.EntityFrameworkCore;
+    using CarMarketplace.Web.ViewModels.Rent;
 
-    public class LenderServiceTests
+    public class RentServiceTests
     {
         private DbContextOptions<CarMarketplaceDbContext> dbOptions;
         private CarMarketplaceDbContext dbContext;
 
-        private ILenderService lenderService;
+        private IRentService rentService;
 
         public static ApplicationUser User;
         public static ApplicationUser LenderUser;
@@ -36,7 +36,7 @@
 
             this.dbContext.Database.EnsureCreated();
 
-            this.lenderService = new LenderService(this.dbContext);
+            this.rentService = new RentService(this.dbContext);
 
             SeedDatabase(this.dbContext);
 
@@ -44,100 +44,53 @@
         }
 
         [Test]
-        public async Task GetLenderIdByUserIdShouldReturnCorrectLenderId()
+        public async Task GetRentingPostViewModelShouldReturnCorrectModel()
         {
-            var lenderId = await lenderService.GetLenderIdByUserIdAsync(LenderUser.Id.ToString());
+            var postId = FirstPost.Id;
+            var userEmail = User.UserName;
 
-            Assert.That(SeededLender.Id, Is.EqualTo(lenderId));
+            var model = await this.rentService.GetRentingPostViewModelAsync(postId, userEmail);
+
+            Assert.IsNotNull(model);
+            Assert.That(model.Post.Id, Is.EqualTo(postId));
+            Assert.That(model.Email, Is.EqualTo(userEmail));
         }
 
         [Test]
-        public async Task GetLenderPostsShouldReturnCorrectPosts()
+        public async Task RentVehicleShouldRentVehicleForUserSuccessfully()
         {
-            Guid lenderId = SeededLender.Id;
+            var userId = User.Id.ToString();
 
-            var postCollection = await lenderService.GetLenderPostsAsync(lenderId, 0);
-
-            Assert.That(2, Is.EqualTo(postCollection.RentPosts.Count()));
-        }
-
-        [Test]
-        public async Task LenderExistbyPhoneNumberShouldReturnTrueWhenExisting()
-        {
-            string lenderPhoneNumber = SeededLender.PhoneNumber;
-
-            bool result = await this.lenderService.LenderExistbyPhoneNumberAsync(lenderPhoneNumber);
-
-            Assert.That(result, Is.True);
-        }
-
-        [Test]
-        public async Task LenderExistbyPhoneNumberShouldReturnFalseWhenNotExisting()
-        {
-            string lenderPhoneNumber = "0894566787";
-
-            bool result = await this.lenderService.LenderExistbyPhoneNumberAsync(lenderPhoneNumber);
-
-            Assert.That(result, Is.False);
-        }
-
-        [Test]
-        public async Task LenderExistbyUserIdShouldReturnTrueWhenExising()
-        {
-            string userId = LenderUser.Id.ToString();
-
-            bool result = await this.lenderService.LenderExistbyUserIdAsync(userId);
-
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public async Task LenderExistbyUserIdShouldReturnFalseWhenNotExising()
-        {
-            string userId = User.Id.ToString();
-
-            bool result = await this.lenderService.LenderExistbyUserIdAsync(userId);
-
-            Assert.IsFalse(result);
-        }
-
-        [Test]
-        public async Task RegisterUserAsLenderShouldRegisterUser()
-        {
-            string userId = User.Id.ToString();
-
-            LenderPersonalInfoViewModel model = new LenderPersonalInfoViewModel()
+            var model = new RentingViewModel()
             {
-                PhoneNumber = "0894543212",
-                CompanyName = "testCompany",
-                City = "Sofia",
-                Address = "testAddress"
+                PostId = SecondPost.Id,
+                Email = User.Email,
+                FullName = "test name",
+                PhoneNumber = "+359745367345",
+                PickUpDate = DateTime.Now,
+                ReturnDate = DateTime.Now.AddDays(1)
             };
-           
-            await this.lenderService.RegisterUserAsLenderAsync(userId, model);
 
-            Assert.IsTrue(await this.dbContext.Lenders.AnyAsync(l => l.PhoneNumber == model.PhoneNumber));
-            Assert.IsTrue(await this.dbContext.Lenders.AnyAsync(l => l.CompanyName == model.CompanyName));
-            Assert.IsTrue(await this.dbContext.Lenders.AnyAsync(l => l.City.CityName == model.City));
-            Assert.IsTrue(await this.dbContext.Lenders.AnyAsync(l => l.Address == model.Address));
+            await this.rentService.RentVehicleAsync(userId, model);
+
+            Assert.IsTrue(await this.dbContext.Rents.AnyAsync(x => x.ClientId == Guid.Parse(userId)));
+            Assert.IsTrue(await this.dbContext.Rents.AnyAsync(x => x.Email == User.Email));
+            Assert.IsTrue(await this.dbContext.Rents.AnyAsync(x => x.PhoneNumber == model.PhoneNumber));
+            Assert.IsTrue(await this.dbContext.Rents.AnyAsync(x => x.FullName == model.FullName));
+            Assert.IsTrue(this.dbContext.RentPosts.First(x => x.Id == SecondPost.Id).IsRented);
         }
 
         [Test]
-        public async Task RegisterUserAsLenderShouldThrowException()
+        public async Task GetRentPostViewModelShouldReturnCorrectCollection()
         {
-            string userId = User.Id.ToString();
+            var model = await this.rentService.GetRentPostViewModelAsync(0);
 
-            LenderPersonalInfoViewModel model = new LenderPersonalInfoViewModel()
-            {
-                PhoneNumber = "0894543212",
-                CompanyName = "testCompany",
-                City = "testCity",
-                Address = "testAddress"
-            };
-   
-            Assert.ThrowsAsync<ArgumentException>(() => this.lenderService.RegisterUserAsLenderAsync(userId, model));      
+            Assert.IsNotNull(model);
+            Assert.IsNotNull(model.RentPosts);
+            Assert.IsNotEmpty(model.RentPosts);
+            Assert.IsTrue(await this.dbContext.RentPosts.AnyAsync(x => x.Id == FirstPost.Id));
+            Assert.IsTrue(await this.dbContext.RentPosts.AnyAsync(x => x.Id == SecondPost.Id));
         }
-
 
 
         public static void SeedDatabase(CarMarketplaceDbContext dbContext)
@@ -269,6 +222,5 @@
             dbContext.RentPosts.Add(SecondPost);
             dbContext.SaveChanges();
         }
-
     }
 }

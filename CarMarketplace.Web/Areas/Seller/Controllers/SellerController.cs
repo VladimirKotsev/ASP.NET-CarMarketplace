@@ -33,9 +33,9 @@
         }
 
         [Route("Seller/UserPosts")]
-        public async Task<IActionResult> UserPosts()
+        public async Task<IActionResult> UserPosts(int pageNum)
         {
-            return View("UserPosts", await this.sellerService.GetSellerPostsAsync(await this.sellerService.GetSellerIdByUserIdAsync(this.UserId)));
+            return View("UserPosts", await this.sellerService.GetSellerPostsAsync(await this.sellerService.GetSellerIdByUserIdAsync(this.UserId), pageNum));
         }
 
         [Route("Seller/Archive")]

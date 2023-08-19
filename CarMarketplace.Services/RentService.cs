@@ -6,6 +6,7 @@
     using CarMarketplace.Services.Mapping;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Web.ViewModels.Lender;
+    using CarMarketplace.Web.ViewModels.Page;
     using CarMarketplace.Web.ViewModels.Rent;
     using CarMarketplace.Web.ViewModels.RentPosts;
     using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@
             this.dbContext = _dbContext;
         }
 
-        public async Task<RentingViewModel> GetRentingPostViewModel(Guid id, string userEmail)
+        public async Task<RentingViewModel> GetRentingPostViewModelAsync(Guid id, string userEmail)
         {
             var post = await this.dbContext
                 .RentPosts
@@ -99,7 +100,7 @@
             await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task<ICollection<RentPostViewModel>> GetRentPostViewModelAsync()
+        public async Task<CatalogRentViewModel> GetRentPostViewModelAsync(int pageNum)
         {
             ICollection<RentPostViewModel> rentPosts = await this.dbContext
                 .RentPosts
@@ -138,7 +139,22 @@
                 })
                 .ToArrayAsync();
 
-            return rentPosts;
+            int postsCount = rentPosts.Count;
+
+            var posts = rentPosts
+                 .Skip(pageNum * 3)
+                 .Take(3)
+                 .ToArray();
+
+
+            var catalogModel = new CatalogRentViewModel()
+            {
+                CurrentPage = pageNum + 1,
+                PageCount = (int)Math.Ceiling((decimal)postsCount / 3),
+                RentPosts = posts
+            };
+
+            return catalogModel;
         }
     }
 }

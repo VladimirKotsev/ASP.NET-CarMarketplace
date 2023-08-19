@@ -46,13 +46,13 @@
         [HttpGet]
         public async Task<IActionResult> Rented()
         {
-            return View(await this.userService.GetUserRentedVehicle(this.UserId));
+            return View(await this.userService.GetUserRentedVehicleAsync(this.UserId));
         }
 
         [HttpGet]
         public async Task<IActionResult> ReturnVehicle(Guid postId)
         {
-            await this.userService.ReturnRentedCar(postId, this.UserId);
+            await this.userService.ReturnRentedCarAsync(postId, this.UserId);
 
             return Redirect("/Rent/Catalog");
         }

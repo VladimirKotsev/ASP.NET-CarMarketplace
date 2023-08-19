@@ -6,7 +6,7 @@
     bool isSeller = await SellerService.SellerExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
     bool isLogged = SignInManager.IsSignedIn(User);
     bool isLender = await LenderService.LenderExistbyUserIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
-    bool hasRented = await UserService.UserHasRentedVehicle(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
+    bool hasRented = await UserService.UserHasRentedVehicleAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)).ConfigureAwait(false);
 }
 
 <!DOCTYPE html>

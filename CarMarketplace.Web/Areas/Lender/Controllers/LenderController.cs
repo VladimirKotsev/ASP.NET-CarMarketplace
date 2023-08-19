@@ -26,9 +26,9 @@
         }
 
         [Route("Lender/UserPosts")]
-        public async Task<IActionResult> UserPosts()
+        public async Task<IActionResult> UserPosts(int pageNum)
         {
-            return View("LenderPosts", await this.lenderService.GetLenderPostsAsync(await this.lenderService.GetLenderIdByUserIdAsync(this.UserId)));
+            return View("LenderPosts", await this.lenderService.GetLenderPostsAsync(await this.lenderService.GetLenderIdByUserIdAsync(this.UserId), pageNum));
         }
 
         [HttpGet]

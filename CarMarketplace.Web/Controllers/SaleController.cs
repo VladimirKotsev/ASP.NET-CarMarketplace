@@ -8,6 +8,8 @@
     using CarMarketplace.Web.Controllers.Common;
     using CarMarketplace.Services.Contracts;
     using CarMarketplace.Web.ViewModels.Catalog;
+    using Newtonsoft.Json;
+
     public class SaleController : BaseController
     {
         private readonly ISaleService catalogService;
@@ -17,9 +19,24 @@
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Search(SearchViewModel model)
+        public async Task<IActionResult> Search()
         {
+            SearchViewModel model = new SearchViewModel();
             return View(await this.catalogService.GetSearchViewModelAsync(model));
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult Search(SearchViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View("Search");
+            }
+
+            string serializedModel = JsonConvert.SerializeObject(model);
+            HttpContext.Session.SetString("search", serializedModel);
+
+            return Redirect("/Sale/Result");
         }
 
         [AllowAnonymous]
@@ -31,14 +48,11 @@
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Result(SearchViewModel model, int pageNum)
+        public async Task<IActionResult> Result(int pageNum)
         {
-            if (!ModelState.IsValid)
-            {
-                return this.View("Search", model);
-            }
+            var searchViewModel = JsonConvert.DeserializeObject<SearchViewModel>(HttpContext.Session.GetString("search"));
 
-            return View(await catalogService.GetFilteredSalePostsAsync(model, pageNum));
+            return View(await catalogService.GetFilteredSalePostsAsync(searchViewModel, pageNum));
         }
 
         [HttpGet]

@@ -1,4 +1,4 @@
-﻿@model ICollection<SalePostViewModel>
+﻿@model CatalogViewModel
 
 @{
     ViewData["CloudDomain"] = "https://res.cloudinary.com/carmarketplace/image/upload/";
@@ -12,7 +12,7 @@
             <h1 class="my-4">@ViewData["Title"]</h1>
         </div>
         <div class="col-md-6 my-4 align-items-middle">
-            @if (Model.Any(x => x.IsDeleted == true))
+            @if (Model.SalePosts.Any(x => x.IsDeleted == true))
             {
                 <div class="d-grid col-3 mx-auto float-end mt-2 ms-2">
                     <a asp-area="Seller" asp-action="Archive" class="btn btn-secondary text-black btn-lg">See Archive</a>
@@ -24,10 +24,10 @@
         </div>
     </div>
 
-    @for (int i = 0; i < Model.Count; i += 3)
+    @for (int i = 0; i < Model.SalePosts.Count(); i += 3)
     {
         <div class="row">
-            @foreach (var post in Model.Where(p => p.IsDeleted == false).Skip(i).Take(3))
+            @foreach (var post in Model.SalePosts.Where(p => p.IsDeleted == false).Skip(i).Take(3))
             {
                 if (post.IsDeleted == true)
                 {
@@ -94,6 +94,17 @@
     </div>
 </div>
 
+<nav aria-label="...">
+        <ul class="pagination justify-content-center">
+            @for (var i = 1; i <= Model.PageCount; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="javascript:void(0);" onclick="loadPage(@i-1,event)">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+
 
 <script>
     function showConfirmArchive(id) {
@@ -124,6 +135,24 @@
 
     function cancelEdit() {
         $('#confirmModalEdit').modal('hide');
+    }
+    
+    function loadPage(pageNum, event) {
+
+        event.preventDefault();
+
+        $.ajax({
+            url: '@Url.Action("UserPosts", "Seller")',
+            type: 'GET',
+            data: { pageNum: pageNum },
+            success: function (result) {
+                $('body').html(result);
+                window.scrollTo(0, 0);
+            },
+            error: function () {
+                alert('Error loading page.');
+            }
+        });
     }
 </script>
 

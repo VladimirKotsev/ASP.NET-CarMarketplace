@@ -22,7 +22,57 @@
             this.dbContext = _dbContext;
         }
 
-        private static ICollection<SalePostViewModel> FilterAllSalePosts(ICollection<SalePostViewModel> posts, SearchViewModel model)
+        //private static bool IsInRange(int? value, int min, int max)
+        //{
+        //    return value.HasValue && value >= min && value <= max;
+        //}
+        //private static Func<SalePostViewModel, bool> CreateRangeFilter(int? minValue, int? maxValue, Func<SalePostViewModel, int> propertySelector)
+        //{
+        //    return p => (!minValue.HasValue || propertySelector(p) >= minValue.Value) &&
+        //                (!maxValue.HasValue || propertySelector(p) <= maxValue.Value);
+        //}
+
+        //private static Func<SalePostViewModel, bool> CreatePriceFilter(SearchViewModel model)
+        //{
+        //    return CreateRangeFilter(model.FromPrice, model.ToPrice, p => p.Price);
+        //}
+
+        //private static Func<SalePostViewModel, bool> CreateHorsepowerFilter(SearchViewModel model)
+        //{
+        //    return CreateRangeFilter(model.FromHorsepower, model.ToHorsepower, p => p.Car.Engine.Horsepower);
+        //}
+
+        //private static Func<SalePostViewModel, bool> CreateKilometersFilter(SearchViewModel model)
+        //{
+        //    return CreateRangeFilter(model.FromKilometers, model.ToKilometers, p => p.Car.Odometer);
+        //}
+
+        //private static Func<SalePostViewModel, bool> CreateYearFilter(SearchViewModel model)
+        //{
+        //    return CreateRangeFilter(model.FromYear, model.ToYear, p => p.Car.Year);
+        //}
+
+        //private static ICollection<SalePostViewModel> FilterPosts(ICollection<SalePostViewModel> posts, SearchViewModel model)
+        //{
+        //    var priceFilter = CreatePriceFilter(model);
+        //    var horsepowerFilter = CreateHorsepowerFilter(model);
+        //    var kilometersFilter = CreateKilometersFilter(model);
+        //    var yearFilter = CreateYearFilter(model);
+
+        //    return posts.Where(p =>
+        //        (model.Make == null || p.Car.Make.Id == model.Make) &&
+        //        (model.ModelName == null || p.Car.Model.ModelName == model.ModelName) &&
+        //        priceFilter(p) &&
+        //        horsepowerFilter(p) &&
+        //        kilometersFilter(p) &&
+        //        yearFilter(p) &&
+        //        (model.EngineFuelType == null || model.EngineFuelType == "0" || p.Car.Engine.FuelType == model.EngineFuelType) &&
+        //        (model.TransmissionType == null || model.TransmissionType == "0" || p.Car.TransmissionType == model.TransmissionType) &&
+        //        (model.Category == null || model.Category == 0 || p.Car.Category.Id == model.Category))
+        //    .ToList();
+        //}
+
+        private static ICollection<SalePostViewModel> FilterPosts(ICollection<SalePostViewModel> posts, SearchViewModel model)
         {
             if (model.Make != 0)
             {
@@ -146,14 +196,14 @@
                 .AsNoTracking()
                 .ToArrayAsync();
 
+            posts = FilterPosts(posts, model);
+
             int postsCount = posts.Count;
 
             posts = posts
                 .Skip(pageNum * 3)
                 .Take(3)
                 .ToArray();
-
-            posts = FilterAllSalePosts(posts, model);
 
             var catalogModel = new CatalogViewModel()
             {

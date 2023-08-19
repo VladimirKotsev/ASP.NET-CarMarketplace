@@ -9,6 +9,7 @@
     using Web.ViewModels.Common;
     using Services.Mapping;
     using System.ComponentModel.DataAnnotations;
+    using CarMarketplace.Web.ViewModels.Page;
 
     public class SellerService : ISellerService
     {
@@ -58,7 +59,7 @@
             return result;
         }
 
-        public async Task<ICollection<SalePostViewModel>> GetSellerPostsAsync(Guid sellerId)
+        public async Task<CatalogViewModel> GetSellerPostsAsync(Guid sellerId, int pageNum)
         {
             ICollection<SalePostViewModel> sellerPosts = await this.dbContext
                 .SalePosts
@@ -101,7 +102,22 @@
                 })
                 .ToArrayAsync();
 
-            return sellerPosts;
+            int postsCount = sellerPosts.Count;
+
+            var posts = sellerPosts
+                 .Skip(pageNum * 6)
+                 .Take(6)
+                 .ToArray();
+
+
+            var catalogModel = new CatalogViewModel()
+            {
+                CurrentPage = pageNum + 1,
+                PageCount = (int)Math.Ceiling((decimal)postsCount / 6),
+                SalePosts = posts
+            };
+
+            return catalogModel;
         }
 
         public async Task<Guid> GetSellerIdByUserIdAsync(string userId)

@@ -9,6 +9,8 @@ namespace CarMarketplace.Services.Tests
     using CarMarketplace.Data.Models;
     using CarMarketplace.Web.ViewModels.Common;
     using CarMarketplace.Web.ViewModels.Seller;
+    using CarMarketplace.Web.ViewModels.Page;
+    using CarMarketplace.Services.Mapping;
 
     public class SellerServiceTests
     {
@@ -45,7 +47,10 @@ namespace CarMarketplace.Services.Tests
             this.dbContext.Database.EnsureCreated();
 
             this.SellerService = new SellerService(this.dbContext);
+
             SeedDatabase();
+
+            AutoMapperConfig.RegisterMappings(typeof(CarManufacturerViewModel).Assembly);
         }
 
         [SetUp]
@@ -144,26 +149,26 @@ namespace CarMarketplace.Services.Tests
         {
             Guid sellerId = Guid.Parse("e7868936-cd31-43e4-8aa7-8a74e6642edd");
 
-            ICollection<SalePostViewModel> sellerPosts = await this.SellerService.GetSellerPostsAsync(sellerId);
+            CatalogViewModel sellerPosts = await this.SellerService.GetSellerPostsAsync(sellerId, 0);
 
-            SalePostViewModel firstPost = sellerPosts.First();
-            SalePostViewModel secondPost = sellerPosts.Skip(1).First();
+            SalePostViewModel firstPost = sellerPosts.SalePosts.First();
+            SalePostViewModel secondPost = sellerPosts.SalePosts.Skip(1).First();
 
 
-            Assert.That(sellerPosts.Count, Is.EqualTo(2));
+            Assert.That(sellerPosts.SalePosts.Count(), Is.EqualTo(2));
             Assert.Multiple(() =>
             {
-                Assert.That(firstPost.Id, Is.EqualTo(Guid.Parse("d094d27a-1aa4-4bff-b59b-1878c472960d")));
-                Assert.That(firstPost.Price, Is.EqualTo(12000));
-                Assert.That(firstPost.Car.Year, Is.EqualTo(2007));
-                Assert.That(firstPost.Car.Model.Id, Is.EqualTo(5));
+                Assert.That(firstPost.Id, Is.EqualTo(Guid.Parse("5c5ae02d-1ef4-483d-8b44-e46ef7cfe1af")));
+                Assert.That(firstPost.Price, Is.EqualTo(15000));
+                Assert.That(firstPost.Car.Year, Is.EqualTo(2008));
+                Assert.That(firstPost.Car.Model.Id, Is.EqualTo(20));
             });
             Assert.Multiple(() =>
             {
-                Assert.That(secondPost.Id, Is.EqualTo(Guid.Parse("5c5ae02d-1ef4-483d-8b44-e46ef7cfe1af")));
-                Assert.That(secondPost.Price, Is.EqualTo(15000));
-                Assert.That(secondPost.Car.Year, Is.EqualTo(2008));
-                Assert.That(secondPost.Car.Model.Id, Is.EqualTo(20));
+                Assert.That(secondPost.Id, Is.EqualTo(Guid.Parse("d094d27a-1aa4-4bff-b59b-1878c472960d")));
+                Assert.That(secondPost.Price, Is.EqualTo(12000));
+                Assert.That(secondPost.Car.Year, Is.EqualTo(2007));
+                Assert.That(secondPost.Car.Model.Id, Is.EqualTo(5));
             });
 
         }
@@ -176,7 +181,7 @@ namespace CarMarketplace.Services.Tests
             var archivedPosts = await this.SellerService.GetSellerArchivePostsAsync(sellerId);
 
             Assert.That(archivedPosts.Count, Is.EqualTo(1));
-            Assert.IsTrue(archivedPosts.Any(x => x.Car.Id == Guid.Parse("4a8698c4-dc3e-4585-93b1-a8a10cecfbe2")));
+            Assert.IsTrue(archivedPosts.Any(x => x.Id == Guid.Parse("5c5ae02d-1ef4-483d-8b44-e46ef7cfe1af")));
         }
 
         [Test]

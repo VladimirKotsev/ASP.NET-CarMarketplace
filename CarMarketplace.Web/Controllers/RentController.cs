@@ -15,16 +15,16 @@
             this.rentService = _rentService;
         }
 
-        public async Task<IActionResult> Catalog()
+        public async Task<IActionResult> Catalog(int pageNum)
         {
-            return View(await rentService.GetRentPostViewModelAsync());
+            return View(await rentService.GetRentPostViewModelAsync(pageNum));
         }
 
 
         [HttpGet]
         public async Task<IActionResult> RentVehicle(Guid postId)
         {
-            var model = await rentService.GetRentingPostViewModel(postId, User.Identity!.Name!);
+            var model = await rentService.GetRentingPostViewModelAsync(postId, User.Identity!.Name!);
 
             return View(model);
         }

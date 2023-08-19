@@ -192,7 +192,7 @@
 
             var imagePublicIds = new HashSet<string>();
 
-            if (viewModel.Images!.Count > 0)
+            if (viewModel.Images.Count > 0)
             {
 
                 foreach (var image in viewModel.Images)
